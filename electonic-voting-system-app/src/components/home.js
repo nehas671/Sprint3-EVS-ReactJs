@@ -4,7 +4,7 @@ import * as regularicons from '@fortawesome/fontawesome-svg-core'
 
 import Carousel from 'react-bootstrap/Carousel'
 
-const AddElection = (props) => {
+const Home = (props) => {
     
     return (
       <div>
@@ -182,14 +182,6 @@ remote e-voting via the Internet (also called i-voting) where the voter submits 
     </footer>
 
 
-
-
-
-
-
-
-
-
 </div>
 )
 
@@ -200,51 +192,6 @@ remote e-voting via the Internet (also called i-voting) where the voter submits 
       
 }
 
-export default AddElection;
+export default Home;
 
 
-{/*
-          <header class="bg-dark">
-          <div class="container d-flex justify-content-around">
-
-          <div class=""><img src="logo.jpg" alt="brand-name" class="logo"/></div>
-            <h1 class="text-light">Electronic Voting System</h1>
-            </div>
-          </header>
-          <div class="container">
-          <nav class="navbar navbar-expand-lg ">
-         
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-       </div>*/}
