@@ -12,8 +12,27 @@ function App() {
   return (
     <div className="App">
 
-    <Home></Home>
-  
+<Router>
+    <div className="App">
+      
+            <Link to="/"></Link>
+
+      <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route path="/election">
+          <AddElection/>
+          </Route>
+          <Route path="/showelection">
+          <ShowElections/>
+          </Route>
+        </Switch> 
+        </div>       
+        </Router>
+
+
+    
   { /*<AddElection></AddElection>*/}
    { /*<ShowElections/>*/}
 
