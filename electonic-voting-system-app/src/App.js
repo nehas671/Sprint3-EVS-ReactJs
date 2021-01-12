@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import AddElection from './components/add_election'
+import Home from './components/home'
+
 
 function App() {
   return (
     <div className="App">
-     <AddElection></AddElection>
+     <Home></Home>
+    
     </div>
   );
 }
