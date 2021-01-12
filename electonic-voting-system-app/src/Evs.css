@@ -78,6 +78,10 @@ body {
     border: 2px solid ;
 }
 
+.state{
+    width: 100px;
+}
+
 
 
 .remove-box-shadow:focus {
