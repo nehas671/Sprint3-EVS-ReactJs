@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-
+import RegisterUser from './components/register_user';
+import AddCandidate from './components/addCandidate';
 import ApproveRequest from './components/approve_request';
 import AddVoterRequest from './components/add_voter_request';
 import Home from './components/home'
@@ -12,7 +13,7 @@ function App() {
   return (
     <div className="App">
 
-    <Home></Home>
+    <RegisterUser></RegisterUser>
     
 
     </div>
