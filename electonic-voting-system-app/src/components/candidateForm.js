@@ -14,7 +14,7 @@ const CandidateForm= (props) => {
 
     dispatch = useDispatch();
     history = useHistory();
-    let partyList = useSelector(state => state);
+    let partyList = useSelector(state => state.candidateReducer);
 
     React.useEffect(() => {
         PartyList()

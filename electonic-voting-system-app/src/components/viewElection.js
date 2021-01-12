@@ -10,7 +10,7 @@ import viewByDateAction from '../actions/viewByDate';
 let dispatch;
 const ShowElections = (props) => {
 
-  let electionList = useSelector(state => state);
+  let electionList = useSelector(state => state.electionReducer);
   
    dispatch = useDispatch();
 

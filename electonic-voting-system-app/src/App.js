@@ -26,8 +26,8 @@ function App() {
    <ViewCandidates></ViewCandidates>*/}
 
    
-   <CandidateForm></CandidateForm>
-   {/* 
+   {/*<CandidateForm></CandidateForm>*/}
+    
 
    <Router>
     <div className="App">
@@ -48,7 +48,7 @@ function App() {
         </div>       
         </Router>
         
-   */}
+   
 
     </div>
   );

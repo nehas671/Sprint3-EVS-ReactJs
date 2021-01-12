@@ -17,7 +17,7 @@ const AddElection= (props) => {
 
   dispatch = useDispatch();
   history = useHistory();
-  let statlist = useSelector(state => state);
+  let statlist = useSelector(state => state.electionReducer);
 
   React.useEffect(() => {
       StatesList()
