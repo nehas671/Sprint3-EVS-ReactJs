@@ -27,7 +27,7 @@ const CandidateForm= (props) => {
     
     return (
     <div>
-        <h3>Add Candidate</h3>
+        <h3 align='center'>Add Candidate</h3>
         <div class="col-6 border border-dark p-5 ml-auto mr-auto">
         <form  onSubmit={handleSubmit}>
             
@@ -75,7 +75,7 @@ const CandidateForm= (props) => {
     </select>
     </div>
     
-    <button>ADD-Candidate</button>
+    <center><button>ADD-Candidate</button></center>
   
 </form>
 </div>
