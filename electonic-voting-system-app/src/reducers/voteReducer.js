@@ -6,7 +6,7 @@ const castVoteReducer = (state=intitialState, action) =>
         case 'GET_CANDIDATE':
             return action.payload;
         default:
-            return state;
+            return [];
     }
 }
 
