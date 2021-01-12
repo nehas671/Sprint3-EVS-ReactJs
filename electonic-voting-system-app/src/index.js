@@ -5,10 +5,24 @@ import './index.css';
 import './Evs.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createStore, applyMiddleware, compose } from 'redux';
+import electionReducer from './reducers/electionReducer';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
+
+
+let store = createStore(electionReducer, 
+  compose(applyMiddleware(ReduxThunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+
+store.subscribe(()=>console.log('Current State: ', store.getState()));
+
 
 ReactDOM.render(
   <React.StrictMode>
+     <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
