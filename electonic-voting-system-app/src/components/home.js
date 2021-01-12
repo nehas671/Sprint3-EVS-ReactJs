@@ -73,11 +73,11 @@ const Home = (props) => {
         </div>
 
 
-        <section class="Custom-container technology-container">
+       <section class="Custom-container technology-container">
             <div class="row mx-0 px-sm-0 mb-4  ">
                               
 
-            <main class="col-8  pl-0 pr-5">
+            <main class="col-8  pl-0 pr-5"> 
 
             <Carousel>  
                          <Carousel.Item style={{'height':"500px"}} >  
