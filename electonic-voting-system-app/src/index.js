@@ -5,6 +5,7 @@ import './index.css';
 import './Evs.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+<<<<<<< HEAD
 import {BrowserRouter} from 'react-router-dom';
 import { createStore, applyMiddleware, compose ,combineReducers} from 'redux';
 import stateReducer from './reducers/stateReducer';
@@ -28,6 +29,24 @@ ReactDOM.render(
     <App />
     </Provider>
     </BrowserRouter>
+=======
+import { createStore, applyMiddleware, compose } from 'redux';
+import castVoteReducer from './reducers/voteReducer';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
+
+let store = createStore(castVoteReducer, 
+  compose(applyMiddleware(ReduxThunk)));
+
+store.subscribe(()=>console.log('Current State: ', store.getState()));
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store = {store}>
+      <App />
+    </Provider>
+>>>>>>> 0fd64cba6f5076fb212c490b49cab564129aca81
   </React.StrictMode>,
   document.getElementById('root')
 );
