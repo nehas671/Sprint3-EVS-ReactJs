@@ -6,9 +6,23 @@ import './Evs.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+import { createStore, applyMiddleware, compose } from 'redux';
+import candidateReducer from './reducers/candidateReducer';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
+
+let store = createStore(candidateReducer, 
+  compose(applyMiddleware(ReduxThunk)));
+ // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+
+ store.subscribe(()=>console.log('Current State: ', store.getState()));
+
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
