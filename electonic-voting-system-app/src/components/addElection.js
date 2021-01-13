@@ -115,7 +115,7 @@ const AddElection= (props) => {
     <div class="col-8">
       <input type="text" class="form-control" id="electionName" name="name" placeholder="Enter Election Name" onBlur={validateElectionName}></input>
       <small id="namevalid" class="form-text text-danger invalid-feedback">
-        Electionname should only contain characters
+        Electionname should only  contain characters 
        </small>
     </div>
   </div>
