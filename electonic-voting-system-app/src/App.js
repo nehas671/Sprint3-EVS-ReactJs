@@ -11,8 +11,8 @@ import ShowElections from './components/viewElection'
 import AddResult from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import CandidateForm from './components/candidateForm';
-
-
+import AddRequest from './components/addVoterRequest';
+import RegisterUser from './components/register_user';
 
 
 function App() {
@@ -45,9 +45,9 @@ function App() {
           <Route path="/showelection">
           <ShowElections/>
           </Route>
-          
-            
-          
+          <Route exact path="/RegisterUser">
+            <RegisterUser></RegisterUser>
+          </Route>
         </Switch> 
         </div>       
         </Router>

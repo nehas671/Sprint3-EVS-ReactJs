@@ -9,14 +9,17 @@ import { createStore, applyMiddleware, compose,combineReducers } from 'redux';
 import electionReducer from './reducers/electionReducer';
 import castVoteReducer from './reducers/voteReducer';
 import candidateReducer from './reducers/candidateReducer';
+import resultReducer from './reducers/resultReducer';
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 
+import stateReducer from './reducers/stateReducer';
 
-let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer})
+
+let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer})
 let store = createStore(allReducers, 
-  compose(applyMiddleware(ReduxThunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+  compose(applyMiddleware(ReduxThunk)
+  ) );
 
 
 
@@ -38,4 +41,4 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals()

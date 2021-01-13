@@ -3,16 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as icons from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'react-bootstrap';
-
+import VoterRequest from '../models/VoterRequest';
 
 
 let dispatch;
-const RegisterUser = (props) => {
+const AddRequest = (props) => {
    
     dispatch = useDispatch();
    
 
-    const RegisterUser = ()=>{
+    const addVoterRequest = ()=>{
         
     }
     return (
@@ -22,7 +22,7 @@ const RegisterUser = (props) => {
     <main>
         <div class="jumbotron sky-color jumbotron-custom mb-0 px-sm-0 rounded-0">
         <div class="col-6 border border-dark p-5 ml-auto mr-auto">
-        <h2>Register User</h2>
+        <h2>Add Voter Request</h2>
         <br></br>
         <form>
             <div class="form-group row ">
@@ -48,7 +48,7 @@ const RegisterUser = (props) => {
     </div>
 
     <div class="form-group row ">
-            <label for="Constituency" class="col-4 col-form-label font-weight-bold">Address :</label>
+            <label for="Constituency" class="col-4 col-form-label font-weight-bold">Constituency :</label>
             <div class="col-8">
         <input type="text"  class="form-control" id="Constituency" required></input>
     </div>
@@ -70,7 +70,7 @@ const RegisterUser = (props) => {
     </select>
     </div>
     
-    <Button variant="primary" name="add" value="Register User" onClick={RegisterUser}>RegisterUser</Button>
+    <Button variant="primary" name="add" value="ADD VOTER REQUEST" onClick={addVoterRequest}>ADD VOTER REQUEST</Button>
   
 </form>
         </div>
@@ -85,5 +85,5 @@ const RegisterUser = (props) => {
 )
 };
 
-export default RegisterUser;
+export default AddRequest;
 
