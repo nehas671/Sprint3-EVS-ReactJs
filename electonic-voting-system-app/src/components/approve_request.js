@@ -51,19 +51,87 @@ const ApproveRequest = (props)=>{
 
     </header>
 
-            <br></br>
-        <h2>Approve/Reject Voter Request</h2>
-        <br></br>
-        <br></br>
+    <main>
+    <section class="jumbotron sky-color jumbotron-custom mb-0 px-sm-0 rounded-0">
+            <div class="row mx-0 px-sm-2 mb-4  ">
+                              
+
+            <main class="col-8  pl-0 pr-5"> 
+            
+                <h2>Approve/Reject Voter Request</h2>
+        
         
             <form action="">
-                <label for='Name'>Name</label>
+                <label for='Name'>Name  : </label>
                 <input type="text" name="Name" id="name" ></input>
-                <label for="Contact Number">Contact Number</label>
+                <label for="Contact Number">Contact Number:</label>
                 <input type="text" name="Contact Number"></input>
 
             </form>
+            </main>
+
+            <aside class="col-4  rounded  pr-0  aside-custom d-flex justify-content-center"><div class=" border border-dark text-light bg-lg-dark pb-5 quick-link">
+          <h3>Quick Links</h3>
+          <ul class="nav flex-column mb-4">
+            <li class="nav-item">
+              <a class="nav-link text-primary font-weight-bold" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary font-weight-bold" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary font-weight-bold" href="#">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary font-weight-bold" href="#">Login</a>
+            </li>
+          </ul>
+          <h3><marquee direction="up" height="210" width="200" >Scrolling News</marquee>
+          </h3>
+          </div></aside>
+            </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class=" footer-before">
+            <div class="row Custom-container  word-break">
+                <div class="col-lg-6 col-md-6 light-grey mb-3 mb-md-0 px-sm-0 pr-md-4 ">
+                    <div class="footer-headings">About Us</div>
+                    <p>E-voting which is physically supervised by representatives of governmental or independent electoral authorities.
+remote e-voting via the Internet (also called i-voting) where the voter submits his or her vote electronically to the election authorities, from any location.</p>
+                </div>
+
+
+                <div class="col-lg-6 col-md-6  text-lg-right light-grey  mb-3 mb-md-0 px-sm-0 px-md-2">
+                    <div class="footer-headings mb-1">Follow Us</div>
+                    <div class="d-flex flex-wrap justify-content-lg-end"><i class=" ml-0 fab fa-twitter footer-icons btn rounded-0 text-white "></i>
+                        <i class="fab fa-google-plus-g  footer-icons-google btn rounded-0 footer-icons text-white"></i><i class="fab fa-youtube btn rounded-0 footer-icons text-white "></i>
+                        <i class="fab fa-skype btn footer-icons-skype rounded-0 footer-icons text-white "></i>
+                    </div>
+                </div>
+
+
+
+                
+
+
+
+            </div>
+
         </div>
+        <div class="footer-after">
+            <div class="row Custom-container d-flex justify-content-center py-4 ">
+                
+                <div class="text-muted small align-center">&copy; Copyright 2021.All Rights Reserved</div>
+               
+            </div>
+        </div>
+
+    </footer>
+
+        </div>
+        
     )
 }
 
