@@ -1,22 +1,31 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as icons from '@fortawesome/free-solid-svg-icons'
 import * as regularicons from '@fortawesome/fontawesome-svg-core'
-
-
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import AddElection from '../components/addElection'
 import ShowElections from '../components/viewElection'
+
 import Carouselcomponent from '../components/Carousel'
 import Header from './header';
 import Aside from './aside';
 import Footer from './footer';
 import Slogan from './slogan';
 
+
 import Carousel from 'react-bootstrap/Carousel'
+
 const Home = (props) => {
     return (
 
       <div>
+
+          <Router>
+            <Link to="/election"></Link>
+          
+          
+            <Link to="/showelection"></Link>
+          
+        </Router>
 
         <Header/>
 
@@ -45,7 +54,20 @@ const Home = (props) => {
 
     <Footer/>
 
+
+
+
+
 </div>
-)            
+)
+
+
+
+      
+        
+      
 }
+
 export default Home;
+
+

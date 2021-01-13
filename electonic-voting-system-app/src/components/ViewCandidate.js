@@ -6,7 +6,7 @@ import viewCandidatesAction from '../actions/viewCandidate';
 const ViewCandidates = (props) => {
 
 
-    let candidateList = useSelector(state => state);
+    let candidateList = useSelector(state => state.candidateReducer);
 
     const dispatch = useDispatch();
 
@@ -24,19 +24,20 @@ const ViewCandidates = (props) => {
         candidateList = [];
         console.log("Set candidateList to blank array");
     }
-    return (<div>
+    return (<div class="container col-6 pt-5">
     <center>
-    <h2>Candidate List</h2>
-    <table border="2">
+    <h2 class="font-weight-bold">Candidate List</h2>
+    <table class="table table-border table-striped">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Candidate_Name</th>
+            <th>Name</th>
             <th>Address</th>
             <th>Age</th>
-            <th>Phone_Number</th>
+            <th>PhoneNumber</th>
             <th>Email</th>
-            <th>Party_Name</th>
+            <th>PartyName</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -61,9 +62,17 @@ function renderTableData(candidateList) {
              <td>{contact_number}</td>
              <td>{email}</td>
              <td>{partyName}</td>
+
+             
+             <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+             <button type="button" class="btn btn-outline-warning" disabled>Edit</button>
+             <button type="button" class="btn btn-outline-danger" disabled>Delete</button>
+             
+             </div>
+            </td>
           </tr>
        )
     })
  };
 
-export default ViewCandidates
+export default ViewCandidates;
