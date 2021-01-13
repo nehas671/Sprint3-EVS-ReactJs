@@ -14,7 +14,6 @@ import CandidateForm from './components/candidateForm';
 import AddRequest from './components/addVoterRequest';
 
 
-
 function App() {
   return(
     <div>
