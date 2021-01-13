@@ -4,6 +4,7 @@ let viewCandidatesAction = () => {
             "http://localhost:8080/evs/candidate"
           );
           const data = await res.json();
+          console.log("showPartysAction ", data);
           dispatch({type: "VIEW_CANDIDATE", payload: data});
     }
 }

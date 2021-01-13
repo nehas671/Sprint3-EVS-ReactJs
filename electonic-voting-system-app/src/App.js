@@ -14,29 +14,25 @@ import CandidateForm from './components/candidateForm';
 
 
 
+
 function App() {
   return(
-    <div>
-
-{ /*<AddElection></AddElection>*/}
-   { /*<ShowElections/>*/}
-
-    
-   { /*<AddElection></AddElection>
-   <ViewCandidates></ViewCandidates>*/}
-
-   
-   <CandidateForm></CandidateForm>
-   {/* 
-
    <Router>
     <div className="App">
       
-            <Link to="/"></Link>
+            <Link to="/">Home</Link>&nbsp;&nbsp;
+            <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
+            <Link to ="/view_candidate">Show</Link>
 
       <Switch>
           <Route exact path="/">
             <Home/>
+          </Route>
+          <Route path="/add_candidate">
+            <AddCandidate/>
+          </Route>
+          <Route path="/view_candidate">
+          <ViewCandidates/>
           </Route>
           <Route path="/election">
           <AddElection/>
@@ -47,10 +43,6 @@ function App() {
         </Switch> 
         </div>       
         </Router>
-        
-   */}
-
-    </div>
   );
 }
 
