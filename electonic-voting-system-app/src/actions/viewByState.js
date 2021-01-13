@@ -1,5 +1,6 @@
 let viewByStateAction = (state) => {
     return async function (dispatch) {
+        console.log("state in action",state);
         const res = await fetch(
             `http://localhost:8080/evs/election/state/${state}`, {
                 method: "GET",

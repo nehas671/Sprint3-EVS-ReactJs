@@ -12,13 +12,7 @@ const Home = (props) => {
 
       <div>
 
-          <Router>
-            <Link to="/election"></Link>
-          
-          
-            <Link to="/showelection"></Link>
-          
-        </Router>
+         
 
 
 

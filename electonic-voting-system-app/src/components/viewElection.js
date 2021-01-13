@@ -14,13 +14,13 @@ const ShowElections = (props) => {
   
    dispatch = useDispatch();
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
       ElectionList()
     }, []);
   
     const ElectionList = () => {
       dispatch(showElectionAction())
-    }
+    }*/
   console.log("employeeList: ", electionList);
   if(!Array.isArray(electionList)) {
       electionList = [];
@@ -39,6 +39,7 @@ const ShowElections = (props) => {
     <div class=" form-inline row">
     <label for="view" class=" col-4 mr-3 font-weight-bold">Select Option:</label>
     <select class="form-control col-5 " id="view">
+    <option value="ViewAll">View All</option>
       <option value="State">State</option>
       <option value="ElectionName">Election Name</option>
       <option value="Constituency">Constituency</option>
@@ -106,7 +107,11 @@ function handleSearch(event) {
 var selected = e.options[e.selectedIndex].value;
  console.log("value :",value);
  console.log("view selected",selected);
-  if(selected==="State")
+ if(selected==="ViewAll"){
+
+  dispatch(showElectionAction());
+
+ }else if(selected==="State")
   {
     dispatch(viewByStateAction(value));
   }else if(selected==="Constituency")
