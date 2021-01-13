@@ -20,7 +20,7 @@ function App() {
     <div>
 
 {/* <AddElection></AddElection>*/}
-   { /*<ShowElections/>*/}
+   
 
     
    { /*<AddElection></AddElection>

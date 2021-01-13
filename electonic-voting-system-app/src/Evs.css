@@ -43,6 +43,20 @@ body {
     box-shadow: none;
 }*/
 
+.custom-valid {
+    border-color: green;
+    display: block;
+}
+
+.custom-invalid {
+    width: 100%;
+    border-color: #dc3545;
+}
+
+.custom-invalid~.invalid-feedback {
+    display: block;
+}
+
 .logo{
     height: 80px;
     width: 80px;
@@ -80,6 +94,11 @@ body {
 
 .state{
     width: 100px;
+}
+
+
+.addElectionTitle{
+    font-family:normalbold;
 }
 
 

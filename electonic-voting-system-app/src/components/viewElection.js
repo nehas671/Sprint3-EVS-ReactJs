@@ -14,13 +14,13 @@ const ShowElections = (props) => {
   
    dispatch = useDispatch();
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
       ElectionList()
     }, []);
   
     const ElectionList = () => {
       dispatch(showElectionAction())
-    }
+    }*/
   console.log("employeeList: ", electionList);
   if(!Array.isArray(electionList)) {
       electionList = [];
@@ -31,14 +31,15 @@ const ShowElections = (props) => {
 <div class="container col-6 pt-5">
 <form onSubmit={handleSearch}>
   <div class="form-group row ">
-    <div class="form-inline">
-    <label for="name" class="col-form-label font-weight-bold">Name:</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Enter Value"></input>
+    <div class="form-inline col-5">
+    <label for="name" class="col-form-label font-weight-bold">Enter choice:</label>
+      <input type="text" class="form-control " id="name" name="name" placeholder="Enter Value"></input>
     </div>
 
     <div class=" form-inline row">
     <label for="view" class=" col-4 mr-3 font-weight-bold">Select Option:</label>
     <select class="form-control col-5 " id="view">
+    <option value="ViewAll">View All</option>
       <option value="State">State</option>
       <option value="ElectionName">Election Name</option>
       <option value="Constituency">Constituency</option>
@@ -106,7 +107,11 @@ function handleSearch(event) {
 var selected = e.options[e.selectedIndex].value;
  console.log("value :",value);
  console.log("view selected",selected);
-  if(selected==="State")
+ if(selected==="ViewAll"){
+
+  dispatch(showElectionAction());
+
+ }else if(selected==="State")
   {
     dispatch(viewByStateAction(value));
   }else if(selected==="Constituency")
