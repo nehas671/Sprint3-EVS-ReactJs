@@ -1,24 +1,52 @@
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import showElectionAction from '../actions/view_election';
+import viewByStateAction from '../actions/viewByState';
+import viewByConstituencyAction from '../actions/viewByConstituency';
+import viewByElectionNameAction from '../actions/viewByElectionName';
+import viewByDateAction from '../actions/viewByDate';
+
+
+let dispatch;
 const ShowElections = (props) => {
+
+  let electionList = useSelector(state => state.electionReducer);
+  
+   dispatch = useDispatch();
+
+  React.useEffect(() => {
+      ElectionList()
+    }, []);
+  
+    const ElectionList = () => {
+      dispatch(showElectionAction())
+    }
+  console.log("employeeList: ", electionList);
+  if(!Array.isArray(electionList)) {
+      electionList = [];
+      console.log("Set electionList to blank array");
+  }
 
     return (<div>
 <div class="container col-6 pt-5">
-<form>
+<form onSubmit={handleSearch}>
   <div class="form-group row ">
-    <div class="col-4">
-      <input type="text" class="form-control" id="electionName" placeholder="Enter Value"></input>
+    <div class="form-inline">
+    <label for="name" class="col-form-label font-weight-bold">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter Value"></input>
     </div>
 
-    <div class=" form-group row">
-    <label for="exampleFormControlSelect1" class=" col-4 mr-3 font-weight-bold">Select Option:</label>
-    <select class="form-control col-5 " id="exampleFormControlSelect1">
-      <option>State</option>
-      <option>Election Name</option>
-      <option>Constituency</option>
-      <option>Date</option>
+    <div class=" form-inline row">
+    <label for="view" class=" col-4 mr-3 font-weight-bold">Select Option:</label>
+    <select class="form-control col-5 " id="view">
+      <option value="State">State</option>
+      <option value="ElectionName">Election Name</option>
+      <option value="Constituency">Constituency</option>
+      <option value="Date">Date</option>
     </select>
   </div>
   <div class="col-2">
-  <div class="btn btn-outline-primary  ">Search</div>
+  <button>Search</button>
   </div>
   
   </div>
@@ -38,34 +66,7 @@ const ShowElections = (props) => {
         </tr>
     </thead>
     <tbody>
-    <tr>
-            <td>1</td>
-            <td>Loksabha</td>
-            <td>Maharashtra</td>
-            <td>Pune</td>
-            <td>2021-02-21</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Loksabha</td>
-            <td>Madhya Pradesh</td>
-            <td>Jabalpur</td>
-            <td>2021-04-12</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Loksabha</td>
-            <td>Goa</td>
-            <td>Panji</td>
-            <td>2021-03-02</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Loksabha</td>
-            <td>Maharashtra</td>
-            <td>Mumbai</td>
-            <td>2021-02-10</td>
-        </tr>
+    {renderTableData(electionList)}
     </tbody>
     </table>
     
@@ -74,5 +75,51 @@ const ShowElections = (props) => {
 </div>);
 };
 
+
+
+function renderTableData(electionList) {
+  console.log("employeeList: ", electionList);
+  return electionList.map((election, index) => {
+     const { electionId, state,constituency,date , election_name} = election //destructuring
+     return (
+        <tr key={electionId}>
+           <td>{electionId}</td>
+           <td>{election_name}</td>
+           <td>{state}</td>
+           <td>{constituency}</td>
+           <td>{date}</td>
+        </tr>
+     )
+  })
+};
+
+
+
+function handleSearch(event) {
+  event.preventDefault();
+  const data = new FormData(event.target);
+ 
+  console.log("in handle submit:",data)
+  const value = data.get('name');
+
+ var e = document.getElementById("view");
+var selected = e.options[e.selectedIndex].value;
+ console.log("value :",value);
+ console.log("view selected",selected);
+  if(selected==="State")
+  {
+    dispatch(viewByStateAction(value));
+  }else if(selected==="Constituency")
+  {
+    dispatch(viewByConstituencyAction(value));
+  }else if(selected==="ElectionName")
+  {
+    dispatch(viewByElectionNameAction(value));
+  }else if(selected==="Date")
+  {
+    dispatch(viewByDateAction(value));
+  }
+  
+}
 
 export  default ShowElections;

@@ -11,10 +11,10 @@ import resultReducer from '../reducers/resultReducer';
 
 let selectedstateId;
 let history;
-
+let dispatch
 export const AddResult= (props) => {
    
-  let dispatch = useDispatch();
+   dispatch = useDispatch();
   
   let stateList = useSelector(state => state.stateReducer);
 
@@ -28,20 +28,18 @@ export const AddResult= (props) => {
 
   
 
-
   let resultList= useSelector(state=> state.resultReducer)
-
-  const ResultList= () => {
+  const ResultList = () => {
     dispatch(showVoteCountAction())
   }
   React.useEffect(() => {
     ResultList()
   }, []);
 
-
+ 
   
    return (<div>
-<h2 class="head mu-4 mb-4">Declare Result</h2>
+<h2 class="head mu-4 mb-4 align-center">Declare Result</h2>
 
         <div class="col-8 border border-dark p-5 ml-auto mr-auto">
        <form>
@@ -53,12 +51,14 @@ export const AddResult= (props) => {
   </div>
   <div class=" form-group row">
     <label for="statename" class="col-4 mr-3 font-weight-bold">Select State :</label>
-    <select class="form-control col-7 state" id="statename">
-   
+    <select class="form-control col-7 state" id="statename" >
+   <option>Maharastra</option> 
+   <option>Madhya Pradesh</option>
+   <option> Uttar Pradesh</option>
     </select>
   </div>
 
-  <button onClick={renderTableData(resultList,dispatch)}>CountVote</button>CountVote
+  <button onClick={renderTableData(resultList)}>CountVote</button>CountVote
       <button >Add Result</button>
         <div class='table  border border-dark col-12'>
       <table class="table table-hover col-12" >
@@ -74,7 +74,7 @@ export const AddResult= (props) => {
   </tr>
 </thead>
     <tbody>
-    {renderTableData(resultList,dispatch)}
+    {renderTableData(resultList)}
     </tbody>
 
 </table>
@@ -105,10 +105,15 @@ function handleChange(event)
    event.preventDefault();
   selectedstateId = event.target.value
   console.log("selected state: ", selectedstateId);
+}*/
+
+function renderTableData(resultList ) {
+
+
+const ResultList= () => {
+
 }
-*/
-function renderTableData(resultList , dispatch) {
-dispatch(showVoteCountAction)
+
 return resultList.map((resultList, index) => {
      const { election_name, state,date, candidate_name, party_name, constituency, votes} = resultList //destructuring
      return (
@@ -132,16 +137,4 @@ return resultList.map((resultList, index) => {
  
 
 
-  /*return employeeList.map((employee, index) => {
-      const deptName = employee.department.name;
-     const { employeeId, name, sal } = employee //destructuring
-     return (
-        <tr key={employeeId}>
-           <td>{employeeId}</td>
-           <td>{name}</td>
-           <td>{sal}</td>
-           <td>{deptName}</td>
-        </tr>
-     )
-  })*/
 

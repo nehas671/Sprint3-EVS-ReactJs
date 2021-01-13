@@ -5,38 +5,40 @@ import './index.css';
 import './Evs.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import {BrowserRouter} from 'react-router-dom';
-import { createStore, applyMiddleware, compose ,combineReducers} from 'redux';
-import stateReducer from './reducers/stateReducer';
-import { Provider } from 'react-redux';
-import ReduxThunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose,combineReducers } from 'redux';
+import electionReducer from './reducers/electionReducer';
+import castVoteReducer from './reducers/voteReducer';
+import candidateReducer from './reducers/candidateReducer';
 import resultReducer from './reducers/resultReducer';
+import {Provider} from 'react-redux';
+import ReduxThunk from 'redux-thunk';
+
+import stateReducer from './reducers/stateReducer';
 
 
-
-let allReducers= combineReducers({'stateReducer':stateReducer, 'resultReducer':resultReducer})
-let myStore = createStore(allReducers,
+let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer})
+let store = createStore(allReducers, 
   compose(applyMiddleware(ReduxThunk)
-  ));
+  ) );
 
-myStore.subscribe(()=>console.log('Current State: ', myStore.getState()));
+
+
+
+store.subscribe(()=>console.log('Current State: ', store.getState()));
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-     <Provider store={myStore}>
+
+     <Provider store={store}>
     <App />
     </Provider>
-    </BrowserRouter>
-
-
-  </React.StrictMode>,
+  </React.StrictMode>
+  ,
   document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-
+reportWebVitals()

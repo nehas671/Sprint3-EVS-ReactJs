@@ -1,29 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './components/home'
+
+import Officer from './components/electrorall_officer';
+import AddCandidate from './components/candidateForm';
+import ViewCandidates from './components/ViewCandidate';
+
 import AddElection from './components/addElection'
 
-import {AddResult} from './components/addresult';
-
-
 import ShowElections from './components/viewElection'
-
-
+import AddResult from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
+import CandidateForm from './components/candidateForm';
 import ViewResult from './components/viewresult';
 
 
 function App() {
-  return (
-    <div className="App">
+  return(
+    <div>
 
-    {/*<Home></Home>*/}
-   { /*<AddElection></AddElection>*/}
- <AddResult></AddResult>
-  {/* <ViewResult></ViewResult>*/}
+{ /*<AddElection></AddElection>*/}
+   { /*<ShowElections/>*/}
 
-{/*
-<Router>
+    
+   { /*<AddElection></AddElection>
+   <ViewCandidates></ViewCandidates>*/}
+
+   
+   {/*<CandidateForm></CandidateForm>*/}
+    
+<ViewResult></ViewResult>
+   {/*<Router>
     <div className="App">
       
             <Link to="/"></Link>
@@ -40,23 +46,15 @@ function App() {
           </Route>
         </Switch> 
         </div>       
-        </Router>
+   </Router>*/}
+        
+   
 
-
-    */}
-  { /*<AddElection></AddElection>*/}
-   { /*<ShowElections/>*/}
-
-    
-   { /*<AddElection></AddElection>*/}
-  
-
-
-   </div>
-  );
-
-
- 
+    </div>
+   );
 }
+
+
+
 
 export default App;
