@@ -19,10 +19,11 @@ import ReduxThunk from 'redux-thunk';
 import { BrowserRouter} from "react-router-dom";
 
 import stateReducer from './reducers/stateReducer';
+import UserReducer from './reducers/userReducer';
 
 
 let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer
-,'officerReducer':OfficerReducer})
+,'officerReducer':OfficerReducer,'userReducer':UserReducer})
 let store = createStore(allReducers, 
   compose(applyMiddleware(ReduxThunk)
   ) );
