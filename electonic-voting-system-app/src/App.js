@@ -11,7 +11,7 @@ import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import CandidateForm from './components/candidateForm';
 import AddRequest from './components/addVoterRequest';
-
+import RegisterUser from './components/register_user';
 
 function App() {
   return(
@@ -19,7 +19,19 @@ function App() {
 
 
 {/* <AddElection></AddElection>*/}
+<<<<<<< HEAD
+   { /*<ShowElections/>*/}
+
+    
+   { /*<AddElection></AddElection>
+   <ViewCandidates></ViewCandidates>*/}
+
    
+   {/*<CandidateForm></CandidateForm>*/}
+
+=======
+   
+>>>>>>> 198785c73a1ab407b26ff729f892647ac3294440
 
     
    { /*<AddElection></AddElection>
@@ -55,8 +67,8 @@ function App() {
           <Route path="/showelection">
           <ShowElections/>
           </Route>
-          <Route exact path="/addVoterRequest">
-            <AddRequest></AddRequest>
+          <Route exact path="/RegisterUser">
+            <RegisterUser></RegisterUser>
           </Route>
         </Switch> */}
             
