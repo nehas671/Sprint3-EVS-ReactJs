@@ -8,13 +8,12 @@ import AddVoterRequest from './components/add_voter_request';
 import Home from './components/home'
 
 import Officer from './components/electrorall_officer';
-import AddCandidate from './components/candidateForm';
 import ViewCandidates from './components/ViewCandidate';
 
 import AddElection from './components/addElection'
 
 import ShowElections from './components/viewElection'
-import AddResult from './components/addresult';
+import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import CandidateForm from './components/candidateForm';
 import ViewResult from './components/viewresult';
@@ -32,26 +31,20 @@ function App() {
    <ViewCandidates></ViewCandidates>*/}
 
    
-   {/*<CandidateForm></CandidateForm>*/}
+   {/*<CandidateForm></CandidateForm>
     
-<<<<<<< HEAD
-<ViewResult></ViewResult>
+
+
+
+
+   <RegisterUser></RegisterUser>
+
+   <Home></Home>*/}
+ 
+<AddResult></AddResult>
+{/*<ViewResult></ViewResult>*/}
    {/*<Router>
-=======
 
-
-
-
-    <RegisterUser></RegisterUser>
-
-    <Home></Home>
-  
-
-<Router>
-
-   <Router>
-
->>>>>>> 891ca4f71a3ce5979a358d0300f090e91b227e77
     <div className="App">
       
             <Link to="/"></Link>
@@ -84,15 +77,7 @@ function App() {
    { /*<AddElection></AddElection>*/}
   
 
-   </div>
-
-    </div>
-<<<<<<< HEAD
-   );
-=======
-
-  );
->>>>>>> 891ca4f71a3ce5979a358d0300f090e91b227e77
+   </div>);
 }
 
 

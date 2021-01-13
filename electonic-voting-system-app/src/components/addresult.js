@@ -13,9 +13,9 @@ let selectedstateId;
 let history;
 let dispatch
 export const AddResult= (props) => {
-   
-   dispatch = useDispatch();
   
+   dispatch = useDispatch();
+   let resultList= useSelector(state=> state.resultReducer)
   let stateList = useSelector(state => state.stateReducer);
 
     
@@ -28,37 +28,34 @@ export const AddResult= (props) => {
 
   
 
-  let resultList= useSelector(state=> state.resultReducer)
-  const ResultList = () => {
+  /*const ResultList = () => {
     dispatch(showVoteCountAction())
   }
+
   React.useEffect(() => {
     ResultList()
-  }, []);
+  }, []);*/
 
- 
-  
+
    return (<div>
 <h2 class="head mu-4 mb-4 align-center">Declare Result</h2>
 
         <div class="col-8 border border-dark p-5 ml-auto mr-auto">
-       <form>
+       <form onSubmit={handleVoteCount}>
   <div class="form-group row ">
-    <label for="electionName" class="col-4 col-form-label font-weight-bold">Election Name :</label>
+    <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name :</label>
     <div class="col-8">
-      <input type="text"  class="form-control" id="electionName" ></input>
+      <input type="text"  class="form-control" name="electionname" id="electionname" ></input>
     </div>
   </div>
   <div class=" form-group row">
     <label for="statename" class="col-4 mr-3 font-weight-bold">Select State :</label>
     <select class="form-control col-7 state" id="statename" >
-   <option>Maharastra</option> 
-   <option>Madhya Pradesh</option>
-   <option> Uttar Pradesh</option>
+    {renderStates(stateList )}
     </select>
   </div>
 
-  <button onClick={renderTableData(resultList)}>CountVote</button>CountVote
+  <button >CountVote</button>
       <button >Add Result</button>
         <div class='table  border border-dark col-12'>
       <table class="table table-hover col-12" >
@@ -86,8 +83,7 @@ export const AddResult= (props) => {
 
 }
 
-
-/*function renderStates(stateList ) {
+function renderStates(stateList ) {
 
   console.log("stateList: ", stateList);
   return stateList.map((states, index) => {
@@ -99,21 +95,14 @@ export const AddResult= (props) => {
 };
 
 
-
 function handleChange(event)
  {
    event.preventDefault();
   selectedstateId = event.target.value
   console.log("selected state: ", selectedstateId);
-}*/
-
-function renderTableData(resultList ) {
-
-
-const ResultList= () => {
-
 }
 
+function renderTableData(resultList ) {
 return resultList.map((resultList, index) => {
      const { election_name, state,date, candidate_name, party_name, constituency, votes} = resultList //destructuring
      return (
@@ -130,11 +119,14 @@ return resultList.map((resultList, index) => {
         </tr>
      )
   })
-
-
 };
-
- 
-
+function handleVoteCount(event) {
+  event.preventDefault();
+  const data = new FormData(event.target);
+  console.log("in handle voteCount:",data)
+  const value = data.get('electionname');
+  var e = document.getElementById("statename").value;
+  dispatch(showVoteCountAction(value,e))
+}
 
 
