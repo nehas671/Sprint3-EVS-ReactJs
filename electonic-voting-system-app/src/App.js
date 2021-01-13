@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import RegisterUser from './components/register_user';
@@ -7,25 +6,47 @@ import ApproveRequest from './components/approve_request';
 import AddVoterRequest from './components/add_voter_request';
 
 import Home from './components/home'
+
+import Officer from './components/electrorall_officer';
+import AddCandidate from './components/candidateForm';
+import ViewCandidates from './components/ViewCandidate';
+
 import AddElection from './components/addElection'
 
 import ShowElections from './components/viewElection'
 import AddResult from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
+import CandidateForm from './components/candidateForm';
+
 
 
 function App() {
-  return (
-    <div className="App">
+  return(
+    <div>
 
-<<<<<<< HEAD
+{ /*<AddElection></AddElection>*/}
+   { /*<ShowElections/>*/}
+
+    
+   { /*<AddElection></AddElection>
+   <ViewCandidates></ViewCandidates>*/}
+
+   
+   {/*<CandidateForm></CandidateForm>*/}
+    
+
+
+
 
     <RegisterUser></RegisterUser>
 
     <Home></Home>
   
-=======
+
 <Router>
+
+   <Router>
+
     <div className="App">
       
             <Link to="/"></Link>
@@ -43,10 +64,13 @@ function App() {
         </Switch> 
         </div>       
         </Router>
+        
+   
+
 
 
     
->>>>>>> ef6b01bbb6307c6c59ac03e8ffb62a815da47294
+
   { /*<AddElection></AddElection>*/}
    { /*<ShowElections/>*/}
 
@@ -56,10 +80,13 @@ function App() {
   
 
    </div>
+
+    </div>
+
   );
-
-
- 
 }
+
+
+
 
 export default App;
