@@ -28,31 +28,22 @@ function App() {
    
    {/*<CandidateForm></CandidateForm>
     
-
-
-
-
    <RegisterUser></RegisterUser>
-
    <Home></Home>*/}
  
-{/*<AddResult></AddResult>*/}
-<ViewResult></ViewResult>
+<AddResult></AddResult>
+
+{/*<ViewResult></ViewResult>*/}
    {/*<Router>
-
-
-
    
-
     <div className="App">
       
-<<<<<<< HEAD
+ 
             <Link to="/"></Link>
-=======
+
            {/* <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
-  <Link to ="/view_candidate">Show</Link>*/}
->>>>>>> d4883cb74461d59971c797eca3aa796a184a36ef
+  <Link to ="/view_candidate">Show</Link>
 
       <Switch>
           <Route exact path="/">
@@ -67,19 +58,10 @@ function App() {
           <Route exact path="/addVoterRequest">
             <AddRequest></AddRequest>
           </Route>
-        </Switch> 
-        </div>       
-           
-
-  { /*<AddElection></AddElection>*/}
-   { /*<ShowElections/>*/}
-
-
-    
-   { /*<AddElection></AddElection>*/}
+        </Switch> */}
+            
   
-
-   </div>);
+        </div>   );
  
 }
 

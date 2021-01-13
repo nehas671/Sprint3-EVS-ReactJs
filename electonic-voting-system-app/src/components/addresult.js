@@ -11,7 +11,7 @@ import showStateAction from '../actions/add_states';
 import showVoteCountAction from '../actions/vote_count';
 import stateReducer from '../reducers/stateReducer';
 import resultReducer from '../reducers/resultReducer';
-
+import addResultAction from '../actions/add_result';
 
 let selectedstateId;
 let history;
@@ -20,16 +20,15 @@ export const AddResult= (props) => {
   
    dispatch = useDispatch();
    let resultList= useSelector(state=> state.resultReducer)
-  let stateList = useSelector(state => state.stateReducer);
-
-    
+  /*let stateList = useSelector(state => state.stateReducer);
+ 
   const StateList = () => {
     dispatch(showStateAction())
   }
   React.useEffect(() => {
     StateList()
   }, []);
-
+/*
   
 
   /*const ResultList = () => {
@@ -40,15 +39,14 @@ export const AddResult= (props) => {
     ResultList()
   }, []);*/
 
-
    return (<div>
 
 <Header></Header>
 <Slogal></Slogal>
-<h2 align='center'>Declare Result</h2>
+<h1 align='center'>Declare Result</h1>
 
         <div class="col-8 border border-dark p-5 ml-auto mr-auto">
-       <form onSubmit={handleVoteCount}>
+       <form onSubmit={handleAdd} >
   <div class="form-group row ">
     <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name :</label>
     <div class="col-8">
@@ -58,13 +56,14 @@ export const AddResult= (props) => {
   <div class=" form-group row">
     <label for="statename" class="col-4 mr-3 font-weight-bold">Select State :</label>
     <select class="form-control col-7 state" id="statename" >
-    {renderStates(stateList )}
+    <option>Maharashtra</option>
+    <option>Madhya Pradesh</option>
     </select>
 
   </div>
 
-  <button >CountVote</button>
-      <button >Add Result</button>
+  <button  onClick={handleAlternative} >CountVote</button>
+      <button  type="submit">Add Result</button>
         <div class='table  border border-dark col-12'>
       <table class="table table-hover col-12" >
       <thead>
@@ -130,13 +129,19 @@ return resultList.map((resultList, index) => {
      )
   })
 };
-function handleVoteCount(event) {
+function handleAdd(event) {
   event.preventDefault();
   const data = new FormData(event.target);
   console.log("in handle voteCount:",data)
   const value = data.get('electionname');
   var e = document.getElementById("statename").value;
-  dispatch(showVoteCountAction(value,e))
+  dispatch(addResultAction(value,e))
 }
 
 
+function  handleAlternative(event) {
+  event.preventDefault();
+  const value=document.getElementById('electionname').value;
+  var e = document.getElementById("statename").value;
+  dispatch(showVoteCountAction(value,e))
+}
