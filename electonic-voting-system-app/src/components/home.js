@@ -163,10 +163,8 @@ remote e-voting via the Internet (also called i-voting) where the voter submits 
 
                 <div class="col-lg-6 col-md-6  text-lg-right light-grey  mb-3 mb-md-0 px-sm-0 px-md-2">
                     <div class="footer-headings mb-1">Follow Us</div>
-                    <div class="d-flex flex-wrap justify-content-lg-end"><i class=" ml-0 fab fa-twitter footer-icons btn rounded-0 text-white "></i>
-                        <i class="fab fa-google-plus-g  footer-icons-google btn rounded-0 footer-icons text-white"></i><i class="fab fa-youtube btn rounded-0 footer-icons text-white "></i>
-                        <i class="fab fa-skype btn footer-icons-skype rounded-0 footer-icons text-white "></i>
-                    </div>
+                    <div class="d-flex flex-wrap justify-content-lg-end"><img src="followus.png" class="col-2" alt="followus"/>
+                                            </div>
                 </div>
 
 

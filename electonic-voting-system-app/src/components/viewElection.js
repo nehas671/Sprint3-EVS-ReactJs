@@ -31,9 +31,9 @@ const ShowElections = (props) => {
 <div class="container col-6 pt-5">
 <form onSubmit={handleSearch}>
   <div class="form-group row ">
-    <div class="form-inline">
-    <label for="name" class="col-form-label font-weight-bold">Name:</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Enter Value"></input>
+    <div class="form-inline col-5">
+    <label for="name" class="col-form-label font-weight-bold">Enter choice:</label>
+      <input type="text" class="form-control " id="name" name="name" placeholder="Enter Value"></input>
     </div>
 
     <div class=" form-inline row">
