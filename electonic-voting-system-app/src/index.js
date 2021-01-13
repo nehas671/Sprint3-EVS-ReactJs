@@ -11,6 +11,7 @@ import castVoteReducer from './reducers/voteReducer';
 import candidateReducer from './reducers/candidateReducer';
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
+import { BrowserRouter} from "react-router-dom";
 
 
 let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer})
@@ -28,7 +29,9 @@ ReactDOM.render(
   <React.StrictMode>
 
      <Provider store={store}>
+     <BrowserRouter>
     <App />
+    </BrowserRouter>
     </Provider>
   </React.StrictMode>
   ,
