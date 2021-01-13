@@ -1,13 +1,26 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as icons from '@fortawesome/free-solid-svg-icons'
 import * as regularicons from '@fortawesome/fontawesome-svg-core'
-
+import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
+import AddElection from '../components/addElection'
+import ShowElections from '../components/viewElection'
 import Carousel from 'react-bootstrap/Carousel'
 
 const Home = (props) => {
     
     return (
+
       <div>
+
+          <Router>
+            <Link to="/election"></Link>
+          
+          
+            <Link to="/showelection"></Link>
+          
+        </Router>
+
+
 
 <header class="Custom-container py-md-2 py-3   ">
   <div class="header-before"><span class="mr-4"><img src="logo.jpg" alt="brand-name" class="logo"/></span><h1 class="d-inline">Electronic Voting System</h1></div>

@@ -1,35 +1,62 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './components/home'
+
+import Officer from './components/electrorall_officer';
+import AddCandidate from './components/candidateForm';
+import ViewCandidates from './components/ViewCandidate';
+
 import AddElection from './components/addElection'
+
+import ShowElections from './components/viewElection'
 import AddResult from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
-import AddCandidate from './components/addCandidate';
-import AddVoterRequest from './components/add_voter_request';
-import ApproveRequest from './components/approve_request';
-import Officer from './components/electrorall_officer';
-import AddRequest from './components/add_voter_request'
-import CastVote from './components/castVote';
+import CandidateForm from './components/candidateForm';
+import AddRequest from './components/addVoterRequest';
+
 
 
 function App() {
-  return (
+  return(
+    <div>
+
+{/* <AddElection></AddElection>*/}
+   { /*<ShowElections/>*/}
+
+    
+   { /*<AddElection></AddElection>
+   <ViewCandidates></ViewCandidates>*/}
+
+   
+   {/*<CandidateForm></CandidateForm>*/}
+    
+
+   <Router>
     <div className="App">
+      
+            <Link to="/"></Link>
 
-    <Home></Home>
-    
-    
-
+      <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route path="/election">
+          <AddElection/>
+          </Route>
+          <Route path="/showelection">
+          <ShowElections/>
+          </Route>
+          <Route exact path="/addVoterRequest">
+            <AddRequest></AddRequest>
+          </Route>
+        </Switch> 
+        </div>       
+        </Router>
+        
     </div>
-
-    
-   
-  
-   
   );
-
-
- 
 }
+
+
+
 
 export default App;

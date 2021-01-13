@@ -1,9 +1,9 @@
 import React, {useDispatch} from 'react';
 import { Form, FormGroup, Button, Card} from 'react-bootstrap';
 import Election from '../models/election';
-import getCandidateListAction from '../actions/getCandidateList';
+import GetCandidateList from '../components/getCandidateList';
 
-let dispatch;
+//let dispatch;
 const CastVote =(props)=>
 {
     //dispatch = useDispatch();
@@ -60,7 +60,7 @@ const CastVote =(props)=>
                 <input type='text' id='date' name='date' value={date} readOnly></input>
             </FormGroup>
             
-            <Button type='submit' variant='outline-success' >Get Candidate List</Button>
+            <Button variant='outline-success' onClick={handleSubmit}>Get Candidate List</Button>
         </Form>
         </Card.Body>
         </Card>
@@ -84,7 +84,7 @@ function handleElectionNameChange(event)
 function handleStateChange(event)
 {
     var enteredState=event.target.value;
-    let pattern = /^[a-zA-z]([a-zA-Z&](\s*)?){2,9}$/;
+    let pattern = /^[a-zA-z]([a-zA-Z&](\s*)?){2,}$/;
     if(enteredState.match(pattern))
     {
         console.log({enteredState});
@@ -140,7 +140,7 @@ function handleSubmit(event)
     console.log({date});
 
     const electionObj = new Election(electionName, state, constituency, date);
-    dispatch(getCandidateListAction(electionObj));
+    <GetCandidateList election = {electionObj}/>
 }
 
 export default CastVote;
