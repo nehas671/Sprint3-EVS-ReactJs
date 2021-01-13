@@ -8,6 +8,14 @@ import Carousel from 'react-bootstrap/Carousel'
 
 const Header = (props) => {
     return(
+        <div>
+
+            
+         
+            <Link to="/services"></Link>
+            
+          
+        
         <header class="Custom-container py-md-2 py-3   ">
   <div class="header-before"><span class="mr-4"><img src="logo.jpg" alt="brand-name" class="logo"/></span><h1 class="d-inline">Electronic Voting System</h1></div>
         <nav class="navbar navbar-expand-md  navbar-light d-md-block d-lg-flex px-sm-0 py-0 text-wrap ">
@@ -32,7 +40,7 @@ const Header = (props) => {
                         <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="#">Contact Us</a>
                     </li>
                     <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        <a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">Login</a>
+                        <a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="/services">Login</a>
                     </li>
                     <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
                         <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">FAQ</a>
@@ -53,7 +61,7 @@ const Header = (props) => {
 
     </header>
 
-
+    </div>
     )
 }
 

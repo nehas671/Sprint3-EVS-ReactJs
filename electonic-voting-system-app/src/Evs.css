@@ -43,6 +43,11 @@ body {
     box-shadow: none;
 }*/
 
+.show>.dropdown-menu {
+    display: block;
+    position: absolute;
+  }
+
 
 .custom-valid {
     border-color: green;

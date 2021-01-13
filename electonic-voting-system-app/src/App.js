@@ -12,6 +12,8 @@ import AddResult from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import CandidateForm from './components/candidateForm';
 import AddRequest from './components/addVoterRequest';
+import AdminService from './components/adminService';
+import Services from './components/login';
 
 
 
@@ -19,8 +21,6 @@ function App() {
   return(
     <div>
     
-
-   
     <div className="App">
       
            {/* <Link to="/">Home</Link>&nbsp;&nbsp;
@@ -30,6 +30,14 @@ function App() {
       <Switch>
           <Route exact path="/">
             <Home/>
+          </Route>
+
+          <Route exact path="/services">
+            <Services/>
+          </Route>
+
+          <Route path="/admin_services">
+            <AdminService/>
           </Route>
 
           <Route path="/add_candidate">
