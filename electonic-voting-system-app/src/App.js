@@ -30,7 +30,7 @@ function App() {
    {/*<CandidateForm></CandidateForm>*/}
     
 
-   <Router>
+   
     <div className="App">
       
             <Link to="/"></Link>
@@ -50,7 +50,7 @@ function App() {
           </Route>
         </Switch> 
         </div>       
-        </Router>
+       
         
     </div>
   );

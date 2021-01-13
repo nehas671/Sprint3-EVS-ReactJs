@@ -25,12 +25,14 @@ const RegisterUser = (props) => {
         <h2>Register User</h2>
         <br></br>
         <form>
-            <div class="form-group row ">
+        <div class="form-group row ">
             <label for="Name" class="col-4 col-form-label font-weight-bold">Name :</label>
             <div class="col-8">
         <input type="text"  class="form-control" id="Name" required></input>
     </div>
     </div>
+    
+
     
 
     <div class="form-group row ">
@@ -64,9 +66,9 @@ const RegisterUser = (props) => {
     <div class=" form-group row">
         <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">District :</label>
         <select class="form-control col-7 state" id="exampleFormControlSelect1" required>
-            <option>Surguja</option>
-            <option>Surajpur</option>
-            <option>Balrampur</option>
+            <option>Washim</option>
+            <option>Akola</option>
+            <option>Balapur</option>
     </select>
     </div>
     
@@ -83,6 +85,7 @@ const RegisterUser = (props) => {
 
 </div>
 )
+let validName=false;
 };
 
 export default RegisterUser;
