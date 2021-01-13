@@ -63,7 +63,7 @@ const ApproveRequest = (props)=>{
         
             <form action="">
                 <label for='Name'>Name  : </label>
-                <input type="text" name="Name" id="name" ></input><br></br>
+                <input type="text" name="Name" id="name" ></input>
                 <label for="Contact Number">Contact Number:</label>
                 <input type="text" name="Contact Number"></input>
 
