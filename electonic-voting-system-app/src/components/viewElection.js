@@ -5,6 +5,10 @@ import viewByStateAction from '../actions/viewByState';
 import viewByConstituencyAction from '../actions/viewByConstituency';
 import viewByElectionNameAction from '../actions/viewByElectionName';
 import viewByDateAction from '../actions/viewByDate';
+import Header from './header';
+import Aside from './aside';
+import Footer from './footer';
+import Slogan from './slogan';
 
 
 let dispatch;
@@ -27,53 +31,86 @@ const ShowElections = (props) => {
       console.log("Set electionList to blank array");
   }
 
-    return (<div>
-<div class="container col-6 pt-5">
-<form onSubmit={handleSearch}>
-  <div class="form-group row ">
-    <div class="form-inline col-5">
-    <label for="name" class="col-form-label font-weight-bold">Enter choice:</label>
-      <input type="text" class="form-control " id="name" name="name" placeholder="Enter Value"></input>
-    </div>
+    return (
 
-    <div class=" form-inline row">
-    <label for="view" class=" col-4 mr-3 font-weight-bold">Select Option:</label>
-    <select class="form-control col-5 " id="view">
-    <option value="ViewAll">View All</option>
-      <option value="State">State</option>
-      <option value="ElectionName">Election Name</option>
-      <option value="Constituency">Constituency</option>
-      <option value="Date">Date</option>
-    </select>
-  </div>
-  <div class="col-2">
-  <button>Search</button>
-  </div>
-  
-  </div>
-  
-  </form>
-    <center>
-    <h2 class="font-weight-bold">Election List</h2>
-    
-    <table class="table table-border table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>State</th>
-            <th>Constituency</th>
-            <th>Date</th>
-        </tr>
-    </thead>
-    <tbody>
-    {renderTableData(electionList)}
-    </tbody>
-    </table>
-    
-    </center>
+<div>
+  <Header/>
+      <main>
+
+      <Slogan/>
+
+      <section class="Custom-container technology-container">
+          <div class="row mx-0 px-sm-0 mb-4  ">
+                            
+
+          <div class="col-8  pl-0 pr-5 bg-light">
+
+          <div class="container pt-5 ">
+            
+          <form onSubmit={handleSearch}>
+            <div class="form-group row ">
+              <div class="form-inline col-5">
+              <label for="name" class="col-form-label font-weight-bold">Enter choice:</label>
+                <input type="text" class="form-control " id="name" name="name" placeholder="Enter Value"></input>
+              </div>
+
+              <div class=" form-inline row">
+              <label for="view" class=" col-4 mr-3 font-weight-bold">Select Option:</label>
+              <select class="form-control col-5 " id="view">
+              <option value="ViewAll">View All</option>
+                <option value="State">State</option>
+                <option value="ElectionName">Election Name</option>
+                <option value="Constituency">Constituency</option>
+                <option value="Date">Date</option>
+              </select>
+            </div>
+            <div class="col-2">
+            <button>Search</button>
+            </div>
+            
+            </div>
+            
+            </form>
+          <center>
+          <h2 class="font-weight-bold">Election List</h2>
+          
+          <table class="table table-border table-striped">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>State</th>
+                  <th>Constituency</th>
+                  <th>Date</th>
+              </tr>
+          </thead>
+          <tbody>
+          {renderTableData(electionList)}
+          </tbody>
+          </table>
+          
+          </center>
     </div>
-</div>);
+    
+          
+          </div>
+          
+          <Aside/>
+          
+
+          </div>
+      </section>          
+     
+
+  </main>
+
+<Footer/>
+
+  </div>
+
+   
+     
+);
 };
 
 
