@@ -15,6 +15,7 @@ import Candidate from '../models/candidate';
 let dispatch;
 let history;
 let selectedPartyName;
+const validateCandidateName=false;
 
 const CandidateForm= (props) => {
 
@@ -40,7 +41,7 @@ const CandidateForm= (props) => {
             <div class="form-group row ">
             <label for="candidateName" class="col-4 col-form-label font-weight-bold">Candidate Name :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="candidateName" name="candidateName"></input>
+        <input type="text"  class="form-control" id="candidateName" name="candidateName" placeholder="Enter Candidate Name" onBlur={validateCandidateName}></input>
     </div>
     </div>
 
@@ -89,10 +90,13 @@ const CandidateForm= (props) => {
 )
 };
 
+
+
+
 function handleChange(event) {
     selectedPartyName = event.target.value
     console.log("selected party: ", selectedPartyName);
-}
+};
 
 function renderPartys(partyList) {
     console.log("PartyList: ", partyList);
@@ -113,6 +117,7 @@ function renderPartys(partyList) {
     const age = data.get('age');
     const contact_number = data.get('contact_number');
     const email = data.get('email');
+    /*
     if(candidateName==='' || candidateName===null) {
         alert("Name cannot be blank");
         return;
@@ -121,9 +126,12 @@ function renderPartys(partyList) {
         alert("Age must be a number");
         return;
     }
+    */
     const candidateObj = new Candidate(candidateName, address, age, contact_number, email, selectedPartyName);
     dispatch(addCandidateAction(candidateObj));
     history.push('/');
-}
+};
+
+  
 
 export default CandidateForm;

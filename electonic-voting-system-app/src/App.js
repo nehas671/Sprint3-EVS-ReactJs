@@ -11,12 +11,15 @@ import ShowElections from './components/viewElection'
 import AddResult from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import CandidateForm from './components/candidateForm';
-
+import AddRequest from './components/addVoterRequest';
 
 
 
 function App() {
   return(
+    <div>
+    
+
    <Router>
     <div className="App">
       
@@ -28,21 +31,28 @@ function App() {
           <Route exact path="/">
             <Home/>
           </Route>
+
           <Route path="/add_candidate">
             <AddCandidate/>
           </Route>
           <Route path="/view_candidate">
           <ViewCandidates/>
           </Route>
+
           <Route path="/election">
           <AddElection/>
           </Route>
           <Route path="/showelection">
           <ShowElections/>
           </Route>
+          <Route exact path="/addVoterRequest">
+            <AddRequest></AddRequest>
+          </Route>
         </Switch> 
         </div>       
         </Router>
+        
+    </div>
   );
 }
 

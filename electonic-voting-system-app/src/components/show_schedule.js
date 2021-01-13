@@ -1,12 +1,32 @@
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as icons from '@fortawesome/free-solid-svg-icons'
+import viewScheduleAction from '../actions/schedule_action'
+import {useRef} from 'react'
 
-const ApproveRequest = (props)=>{
+const ViewSchedule = (props) => {
 
+
+    let scheduleList = useSelector(state => state);
+
+    const dispatch = useDispatch();
+    const myInput = useRef();
+    React.useEffect(() => {
+        ScheduleList()
+      }, []);
+    
+      const ScheduleList = () => {
+        dispatch(viewScheduleAction())
+      }
+    console.log("schedule: ", scheduleList);
+    if(!Array.isArray(scheduleList)) {
+        scheduleList = [];
+        console.log("Set schedule to blank array");
+    }
     return (
         <div>
-
-<header class="Custom-container py-md-2 py-3   ">
+            <header class="Custom-container py-md-2 py-3   ">
   <div class="header-before"><span class="mr-4"><img src="logo.jpg" alt="brand-name" class="logo"/></span><h1 class="d-inline">Electronic Voting System</h1></div>
         <nav class="navbar navbar-expand-md  navbar-light d-md-block d-lg-flex px-sm-0 py-0 text-wrap ">
 
@@ -50,28 +70,44 @@ const ApproveRequest = (props)=>{
 
 
     </header>
+    
 
-    <main>
-    <section class="jumbotron sky-color jumbotron-custom mb-0 px-sm-0 rounded-0">
-            <div class="row mx-0 px-sm-2 mb-4  ">
-                              
 
-            <main class="col-8  pl-0 pr-5"> 
-            
-                <h2>Approve/Reject Voter Request</h2>
-        
-        
-            <form action="">
-                <label for='Name'>Name  : </label>
-                <input type="text" name="Name" id="name" ></input>
-                <label for="Contact Number">Contact Number:</label>
-                <input type="text" name="Contact Number"></input>
-
-            </form>
-            </main>
-
-            <aside class="col-4  rounded  pr-0  aside-custom d-flex justify-content-center"><div class=" border border-dark text-light bg-lg-dark pb-5 quick-link">
-          <h3>Quick Links</h3>
+    <div class="row">
+    <div class="col-sm-8">
+    
+    <h2>Scheduled Elections </h2>
+   {/* <form>
+    <h4>View schedule by:</h4>
+	<select class="form-control" ref='first' id='firstList' name='firstList' onClick={getScheduleBy}>
+        {view()}
+	</select>
+    <h4>Food Item</h4>
+	<select class="form-control"  id='secondList' name='secondList' >
+	</select></form>*/}
+    
+    <table  class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">ElectionName</th>
+            <th scope="col">State</th>
+            <th scope="col">Constituency</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {renderTableData(scheduleList)}
+    </tbody>
+    </table>
+    
+    </div>
+    
+ 
+  <aside class="col-4  rounded  pr-0  aside-custom d-flex justify-content-center">
+  <div class=" border border-dark text-light bg-lg-dark pb-5 quick-link">
+  
+  <h3>Quick Links</h3>
           <ul class="nav flex-column mb-4">
             <li class="nav-item">
               <a class="nav-link text-primary font-weight-bold" href="#">Home</a>
@@ -88,13 +124,14 @@ const ApproveRequest = (props)=>{
           </ul>
           <h3><marquee direction="up" height="210" width="200" >Scrolling News</marquee>
           </h3>
-          </div></aside>
-            </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class=" footer-before">
+          </div>
+          
+          </aside>
+  
+  
+   </div>         
+  <footer>
+        <div class=" footer-before">
             <div class="row Custom-container  word-break">
                 <div class="col-lg-6 col-md-6 light-grey mb-3 mb-md-0 px-sm-0 pr-md-4 ">
                     <div class="footer-headings">About Us</div>
@@ -110,13 +147,6 @@ remote e-voting via the Internet (also called i-voting) where the voter submits 
                         <i class="fab fa-skype btn footer-icons-skype rounded-0 footer-icons text-white "></i>
                     </div>
                 </div>
-
-
-
-                
-
-
-
             </div>
 
         </div>
@@ -128,11 +158,82 @@ remote e-voting via the Internet (also called i-voting) where the voter submits 
             </div>
         </div>
 
-    </footer>
+    </footer>  
+            
 
-        </div>
+</div>);
+};
+
+
+function renderTableData(scheduleList) {
+    console.log("scheduleList: ", scheduleList);
+    return scheduleList.map((schedule, index) => {
         
-    )
-}
+       const { electionId, election_name, state,constituency,date } = schedule //destructuring
+       return (
+          <tr key={electionId}>
+             <td>{electionId}</td>
+             <td>{election_name}</td>
+             <td>{state}</td>
+             <td>{constituency}</td>
+             <td>{date}</td>
+          </tr>
+       )
+    })
+ };
 
-export default ApproveRequest
+ function renderTableData2(scheduleList) {
+    console.log("scheduleList: ", scheduleList);
+    return scheduleList.map((schedule, index) => {
+        
+       const { electionId,state } = schedule //destructuring
+       return (
+          <tr key={electionId}>
+             
+             <td>{state}</td>
+          </tr>
+       )
+    })
+ };
+{/*
+function view(){
+   var list1 = document.getElementById('firstList');
+	
+		list1.options[0] = new Option('--Select--', '');
+		list1.options[1] = new Option('Snacks', 'Snacks');
+		list1.options[2] = new Option('Drinks', 'Drinks');
+}
+ function getScheduleBy(){
+   var list1 = document.getElementById("firstList");
+ var list2 = document.getElementById("secondList");
+ 
+    var list1SelectedValue = list1.options[list1.selectedIndex].value;
+    
+    if (list1SelectedValue=='Snacks')
+    {
+        
+        list2.options.length=0;
+        list2.options[0] = new Option('--Select--', '');
+        list2.options[1] = new Option('Burger', 'Burger');
+        list2.options[2] = new Option('Pizza', 'Pizza');
+        list2.options[3] = new Option('Hotdog', 'Hotdog');
+        list2.options[4] = new Option('Potato Chips', 'Potato Chips');
+        list2.options[5] = new Option('French Fries', 'French Fries');
+        
+    }
+    else if (list1SelectedValue=='Drinks')
+    {
+        
+        list2.options.length=0;
+        list2.options[0] = new Option('--Select--', '');
+        list2.options[1] = new Option('Coca Cola', 'Coca Cola');
+        list2.options[2] = new Option('7up', '7up');
+        list2.options[3] = new Option('Pepsi', 'Pepsi');
+        list2.options[4] = new Option('Coffee', 'Coffee');
+        list2.options[5] = new Option('Tea', 'Tea');
+        
+    }
+}
+*/}
+export default ViewSchedule
+

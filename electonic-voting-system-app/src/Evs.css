@@ -58,7 +58,6 @@ body {
     display: block;
 }
 
-
 .logo{
     height: 80px;
     width: 80px;
@@ -96,6 +95,11 @@ body {
 
 .state{
     width: 100px;
+}
+
+
+.addElectionTitle{
+    font-family:normalbold;
 }
 
 
