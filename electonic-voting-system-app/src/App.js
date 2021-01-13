@@ -18,11 +18,35 @@ function App() {
   return (
     <div className="App">
 
+<<<<<<< HEAD
 
     <RegisterUser></RegisterUser>
 
     <Home></Home>
   
+=======
+<Router>
+    <div className="App">
+      
+            <Link to="/"></Link>
+
+      <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route path="/election">
+          <AddElection/>
+          </Route>
+          <Route path="/showelection">
+          <ShowElections/>
+          </Route>
+        </Switch> 
+        </div>       
+        </Router>
+
+
+    
+>>>>>>> ef6b01bbb6307c6c59ac03e8ffb62a815da47294
   { /*<AddElection></AddElection>*/}
    { /*<ShowElections/>*/}
 
