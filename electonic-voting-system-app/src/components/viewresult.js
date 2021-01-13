@@ -5,6 +5,9 @@ import viewResultByStateNameAction from '../actions/viewResultByStateName';
 import viewResultByElectionNameAction from '../actions/viewrResultByElectionName';
 import viewAllResultAction from '../actions/viewAllResult';
 import viewResultByPartyNameAction from '../actions/viewResultByPartyName';
+import Header from './header';
+import Slogal from './slogan';
+import Footer from './footer';
 import showVoteCountAction from '../actions/vote_count'
 import viewByElectionNameAction from '../actions/viewByElectionName';
 
@@ -20,7 +23,6 @@ export const ViewResult= (props) => {
     ResultList()
   }, []);
 
- 
 
     console.log("ResultList: ", resultList);
     if(!Array.isArray(resultList)) {
@@ -29,14 +31,14 @@ export const ViewResult= (props) => {
     }
    
     
-
-
     return (<div>
 
-
-<h2 class="head mu-4  ml-10 mb-4">View Result</h2>
+<Header>
+</Header>
+<Slogal></Slogal>
+<h1 align='center'>View Result</h1>
 <div class="col-9 border border-dark p-5 ml-auto mr-auto">
-    
+ 
 <form onSubmit={filterResult}>
   <div class=" form-group row">
     <label for="viewby" class="col-4 mr-3 font-weight-bold">View Result:</label>
@@ -49,22 +51,20 @@ export const ViewResult= (props) => {
 
   <div class="form-group row ">
     <label for="viewbyfilter" class="col-4 col-form-label font-weight-bold">Enter Value</label>
-    <div class="col-8">
+    <div class="col-4" >
       <input type="text"  class="form-control"  name="viewbyfilter" id="viewbyfilter" ></input>
+      <br></br>
+      <button align='center' id='btn1'>Search</button>
     </div>
-    <div class="col-2">
+    <div class="col-8 pl-7" >
 
-   <button id='btn1'>Search</button>
+  
     </div>
   </div>
 
-
-
-
-
 </form>
 
-          <h2 class="font-weight-bold">Election List</h2>
+          <h2 class="font-weight-bold " >Result</h2>
           <div class='table  border border-dark col-12'>
       <table class="table table-hover col-12" >
         <thead>
@@ -88,7 +88,10 @@ export const ViewResult= (props) => {
 </table>
          
           </div>
-     </div> </div>);
+     </div>
+     
+     <Footer/>
+      </div>);
       
 
 

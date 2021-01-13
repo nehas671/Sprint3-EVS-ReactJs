@@ -1,71 +1,241 @@
-const RegisterUser = (props)=>{
-    return(
-        <div>
-            <h2>Register User</h2>
-            <br></br>
-            <br></br>
-            <div class="container">
-            <form action="" style={{width:'500px', margin:'auto'}}>
-            <div class="row">
-                <div class="col-25">
-                <label for='Name'>Name :</label>
-                </div>
-                <div class="col-75">
-                <input type="text" name="Name" id="name" className="form-control" placeholder="Enter Your Name"></input>
-                </div>
-                </div>
+import React, { useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as icons from '@fortawesome/free-solid-svg-icons'
+import { useSelector, useDispatch } from 'react-redux';
+import { Button } from 'react-bootstrap';
 
-                <div class="row">
-                <div class="col-25">
-                <label for="Gender" >Gender:</label>
-                </div>
-                <div class="col-75">
-                <select name="Gender" id="gender" className="form-control" placeholder="Gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-                </div>
-                </div>
-                
-                <div class="row">
-                <div class="col-25">
-                <label for="Contact Number">Contact Number :</label>
-                </div>
-                <div class="col-75">
-                <input type="text" name="Contact Number" className="form-control" placeholder="Your Number"></input>
-                </div>
-                </div>
 
-                <div class="row">
-                <div class="col-25">
-                <label for="Email Id">Email Id:</label>
-                </div>
-                <div class="col-75">
-                <input type="text" name="Email Id" className="form-control" placeholder="Your Email Id"></input>
-                </div>
-                </div>
 
-                
+let dispatch;
+const RegisterUser = (props) => {
+   
+    dispatch = useDispatch();
+   
 
-                <div class="row">
-                <div class="col-25">
-                <label for="State" >District:</label>
-                </div>
-                <div class="col-75">
-                <select name="District" id="district" className="form-control">
-                    <option value="Washim">Washim</option>
-                    <option value="Akola">Akola</option>
-                    <option value="Digras">Digras</option>
-                </select>
-                </div>
-                </div>
+    const RegisterUser = ()=>{
+        
+    }
+    return (
+    <div>
+    <div>
+    
+    <main>
+        <div class="jumbotron sky-color jumbotron-custom mb-0 px-sm-0 rounded-0">
+        <div class="col-6 border border-dark p-5 ml-auto mr-auto">
+        <h2>Register User</h2>
+        <br></br>
+        <form>
+        <div class="form-group row ">
+            <label for="Name" class="col-4 col-form-label font-weight-bold">Name :</label>
+            <div class="col-8">
+        <input type="text"  class="form-control" id="Name"  onBlur={validateUserName} required></input>
+        <small id="namevalid" class="form-text text-danger invalid-feedback">
+            Name should only contain characters
+       </small>
+    </div>
+    </div>
+    
 
-                           
-            </form>
-            </div>
+    
+
+    <div class="form-group row ">
+            <label for="contactNumber" class="col-4 col-form-label font-weight-bold">Mobile Number :</label>
+            <div class="col-8">
+        <input type="text"  class="form-control" id="contactNumber"  onBlur={validateMobileNumber} required></input>
+        <small id="numbervalid" class="form-text text-danger invalid-feedback">
+            Number should only contain 10 digits
+       </small>
+    </div>
+    </div>
+
+    <div class="form-group row ">
+            <label for="emailId" class="col-4 col-form-label font-weight-bold">Email Id :</label>
+            <div class="col-8">
+        <input type="text"  class="form-control" id="emailId" onBlur={validateEmailId} required></input>
+        <small id="numbervalid" class="form-text text-danger invalid-feedback">
+            Email Id should be in proper format
+       </small>
+    </div>
+    </div>
+
+    <div class="form-group row ">
+            <label for="Constituency" class="col-4 col-form-label font-weight-bold">Address :</label>
+            <div class="col-8">
+        <input type="text"  class="form-control" id="Address" onBlur={validateAddress} required></input>
+        
+    </div>
+    </div>
+
+    <div class="form-group row">
+  <label for="dob" class="col-4 col-form-label mr-3 font-weight-bold">Date Of Birth :</label>
+  <input type="date" id="dob" name="dob" class="col-4 " required></input>
+   
+      </div>
+
+
+    <div class=" form-group row">
+        <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">District :</label>
+        <select class="form-control col-7 state" id="exampleFormControlSelect1" required>
+            <option>Washim</option>
+            <option>Akola</option>
+            <option>Balapur</option>
+    </select>
+    </div>
+    
+    <Button variant="primary" name="add" value="Register User" onClick={RegisterUser}>RegisterUser</Button>
+  
+</form>
         </div>
+        
+</div>
+</main>
+            
+</div>
+
+
+</div>
     )
+};
+let validUsername=false;
+let validNumber=false;
+let validEmailId=false;
+let validAddress=false;
+let validDate=false;
+
+function validateUserName(event) {
+    
+    const data = event.target.value;
+  console.log("target",data);
+ 
+  let regex = /[a-zA-Z]{3,15}$/;
+  let inputdata = data;
+  let str = inputdata.trim();
+  console.log(regex, str);
+   if (regex.test(str) && str != "") {
+
+    event.target.classList.remove('custom-invalid');
+    event.target.classList.add('custom-valid');
+     // valid(username);
+     validUsername = true;
+
+  } else {
+
+    event.target.classList.remove('custom-valid');
+    event.target.classList.add('custom-invalid');
+    
+        // inputRequired(username, str);
+        validUsername = false;
+
+
+  }
+}
+function validateMobileNumber(event) {
+    const data = event.target.value;
+    console.log("target",data);
+    let regex = /\d{10}$/;
+
+    let inputdata = data;
+    let str = inputdata.trim();
+    console.log(regex, str);
+    if (regex.test(str) && str != "") {
+   
+       event.target.classList.remove('custom-invalid');
+       event.target.classList.add('custom-valid');
+        // valid(username);
+        validNumber = true;
+   } 
+    else {
+   
+       event.target.classList.remove('custom-valid');
+       event.target.classList.add('custom-invalid');
+       
+           // inputRequired(username, str);
+           validNumber = false;
+   
+   
+     }
 }
 
+function validateEmailId(event) {
+    const data = event.target.value;
+    console.log("target",data);
+    let regex=/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;  
+
+    let inputdata = data;
+    let str = inputdata.trim();
+    console.log(regex, str);
+    if (regex.test(str) && str != "") {
+   
+       event.target.classList.remove('custom-invalid');
+       event.target.classList.add('custom-valid');
+        // valid(username);
+        validEmailId = true;
+   } 
+    else {
+   
+       event.target.classList.remove('custom-valid');
+       event.target.classList.add('custom-invalid');
+       
+           // inputRequired(username, str);
+        validEmailId = false;
+   
+   
+     }
+}
+
+function validateAddress(event){
+
+    const data = event.target.value;
+    console.log("target",data);
+   
+    let regex = /[a-zA-Z]{3,15}$/;
+    let inputdata = data;
+    let str = inputdata.trim();
+    console.log(regex, str);
+     if (regex.test(str) && str != "") {
+  
+      event.target.classList.remove('custom-invalid');
+      event.target.classList.add('custom-valid');
+       // valid(username);
+       validAddress = true;
+  
+    } else {
+  
+      event.target.classList.remove('custom-valid');
+      event.target.classList.add('custom-invalid');
+      
+          // inputRequired(username, str);
+        validAddress = false;
+  
+  
+    }
+}
+
+function validateDate(event) {
+    const data = event.target.value;
+    console.log("target",data);
+   
+   
+    var today = new Date();
+    
+    if (Date.parse(data)<Date.parse(today)) {
+  
+      event.target.classList.remove('custom-invalid');
+      event.target.classList.add('custom-valid');
+       // valid(username);
+       validDate = true;
+  
+    } else {
+  
+      event.target.classList.remove('custom-valid');
+      event.target.classList.add('custom-invalid');
+      
+          validDate = false;
+  
+  
+    }
+  }
+
+ 
 export default RegisterUser;
+
