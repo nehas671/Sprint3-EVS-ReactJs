@@ -13,7 +13,6 @@ import CandidateForm from './components/candidateForm';
 import AddRequest from './components/addVoterRequest';
 
 
-
 function App() {
   return(
     <div>
@@ -47,7 +46,13 @@ function App() {
 
     <div className="App">
       
+<<<<<<< HEAD
             <Link to="/"></Link>
+=======
+           {/* <Link to="/">Home</Link>&nbsp;&nbsp;
+            <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
+  <Link to ="/view_candidate">Show</Link>*/}
+>>>>>>> d4883cb74461d59971c797eca3aa796a184a36ef
 
       <Switch>
           <Route exact path="/">
