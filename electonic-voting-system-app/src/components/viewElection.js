@@ -63,11 +63,11 @@ const ShowElections = (props) => {
                     </li>
                     <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
                         {/*<a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">Election</a>*/}
-                        <a class="nav-link  text-dark px-md-0  border-primary  nav-custom-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link  text-dark px-md-0  position-relative border-primary  nav-custom-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          Election
                         </a>
-                        <div class="dropdown-menu  nav-custom-link" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Add Election</a>
+                        <div class="dropdown-menu  " aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item drop " href="#">Add Election</a>
                           <a class="dropdown-item" href="#">View Election</a>
                         </div>
 
@@ -109,32 +109,36 @@ const ShowElections = (props) => {
           <div class="row mx-0 px-sm-0 mb-4  ">
                             
 
-          <div class="col-8  pl-0 pr-5 bg-light">
+          <div class="col-8  border border-dark pl-0 pr-5 bg-light">
 
-          <div class="container pt-5 ">
+          <div class="container pt-5 px-5 ">
             
-          <form onSubmit={handleSearch}>
-            <div class="form-group row ">
-              <div class="form-inline col-5">
-              <label for="name" class="col-form-label font-weight-bold">Enter choice:</label>
-                <input type="text" class="form-control " id="name" name="name" placeholder="Enter Value"></input>
-              </div>
+          <h3 class="addElectionTitle mb-3">VIEW ELECTION</h3>
+          <form onSubmit={handleSearch} class="d-flex mb-4">
+            <div className="col-9">
+                      <div class=" form-inline row mb-3">
+                      <label for="view" class=" mr-3 font-weight-bold mr-4">View Election By :</label>
+                      <select class="form-control col-5 " id="view">
+                      <option value="ViewAll">View All</option>
+                        <option value="State">State</option>
+                        <option value="ElectionName">Election Name</option>
+                        <option value="Constituency">Constituency</option>
+                        <option value="Date">Date</option>
+                      </select>
+                    </div>
 
-              <div class=" form-inline row">
-              <label for="view" class=" col-4 mr-3 font-weight-bold">Select Option:</label>
-              <select class="form-control col-5 " id="view">
-              <option value="ViewAll">View All</option>
-                <option value="State">State</option>
-                <option value="ElectionName">Election Name</option>
-                <option value="Constituency">Constituency</option>
-                <option value="Date">Date</option>
-              </select>
-            </div>
-            <div class="col-2">
-            <button>Search</button>
-            </div>
-            
-            </div>
+                      <div class="form-group row ">
+                        <div class="form-inline ">
+                        <label for="name" class="col-form-label font-weight-bold mr-2">Enter Search Value : </label>
+                          <input type="text" class="form-control " id="name" name="name" placeholder="Enter Value"></input>
+                        </div>
+                        </div>
+                        </div>
+                  <div class="mt-4">
+                  <button className="btn btn-primary">Search</button>
+                  </div>
+                  
+           
             
             </form>
           <center>
