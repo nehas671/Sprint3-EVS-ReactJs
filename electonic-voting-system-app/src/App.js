@@ -17,27 +17,27 @@ import AddRequest from './components/addVoterRequest';
 function App() {
   return(
     <div>
-
-{/* <AddElection></AddElection>*/}
-   
-
-    
-   { /*<AddElection></AddElection>
-   <ViewCandidates></ViewCandidates>*/}
-
-   
-   {/*<CandidateForm></CandidateForm>*/}
     
 
-   <Router>
+   
     <div className="App">
       
-            <Link to="/"></Link>
+           {/* <Link to="/">Home</Link>&nbsp;&nbsp;
+            <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
+  <Link to ="/view_candidate">Show</Link>*/}
 
       <Switch>
           <Route exact path="/">
             <Home/>
           </Route>
+
+          <Route path="/add_candidate">
+            <AddCandidate/>
+          </Route>
+          <Route path="/view_candidate">
+          <ViewCandidates/>
+          </Route>
+
           <Route path="/election">
           <AddElection/>
           </Route>
@@ -49,7 +49,7 @@ function App() {
           </Route>
         </Switch> 
         </div>       
-        </Router>
+       
         
     </div>
   );

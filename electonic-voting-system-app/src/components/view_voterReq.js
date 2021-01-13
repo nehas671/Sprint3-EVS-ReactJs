@@ -1,69 +1,73 @@
 import React from 'react';
-
-import { Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import viewReqByDistrictAction from '../actions/viewReqByDistrict';
+import viewReqByStatusAction from '../actions/viewReqByStatus';
 import ViewVoterReqAction from '../actions/view_voterReq'
+import Header from '../components/header';
 
-
-var selected=document.getElementById("viewBy"); 
+let dispatch
 const ViewVoterReq =(props)=>{
 
-    let voterList=useSelector(state=>state);
-    const dispatch =useDispatch();
-    React.useEffect(()=>{
+    let voterList=useSelector(state=>state.officerReducer);
+     dispatch =useDispatch();
+   /* React.useEffect(()=>{
         VoterList()
     },[]);
     const VoterList=()=>{
         dispatch(ViewVoterReqAction())
-    }
+    }*/
     console.log("List:",voterList);
     if(!Array.isArray(voterList)){
         voterList=[];
         console.log("set to null array");
     }
-    return(
-        
-        <div >
-            <center>
-                <br></br>
-                <h2>Voter Request List</h2>
-                <br/>
-                <label for="viewBy">View By:&nbsp;&nbsp;</label>
+    return( 
+         <div >
+             <Header></Header>
+             <div class='container col-6 pt-5'>
+                 <form onSubmit={handleSearch}>
+                     <div class='form-group row'>
+                         <div class="form-inline col-5">
+                             <label for="name" class="col-form-label font-weight-bold">Enter choice:</label>
+                             <input type='text' class='form-control' id='name' name='name' placeholder='Enter value'></input>
+                         </div>
 
-<select  id="viewBy" onClick={getValue}>
-    <option value='' selected disabled hidden>--Select--</option>
-    <option value='district'>district</option>
-    <option value='status'>status</option>
-</select> &nbsp;&nbsp;&nbsp;
-<label for="option">Choose an Option:&nbsp;&nbsp; </label>
-
-<select   id="option" >
-<option value='' selected disabled hidden>--Select--</option>
-{handleDrop(voterList)}</select>&nbsp;&nbsp;&nbsp;
-
-        <button type="submit" class="btn btn-primary">Search</button>
-                <br></br>
-                <br></br>
-                <table border='1'>
-                    <thead>
-                        <tr>
-                            <th>UserId</th>
+                         <div class='form-inline row'>
+                             <label for='view' class='col-4 mr-3 font-weight-bold'>Select Option:</label>
+                             <select class= "form-control col-5" id='view'>
+                                 <option value='' selected disabled hidden>--Select--</option>
+                                 <option value='viewAll'>View All</option>
+                                 <option value='status'>Status</option>
+                                 <option value='district'>District</option>
+                             </select>
+                         </div>
+                         <div class='col-2'>
+                             <button>Search</button>
+                         </div>
+                     </div>
+                 </form>
+                 <center>
+                     <h2 class='font-weight-bold'>Voter Request List</h2>
+                     <table class= 'table table-border table-striped'>
+                         <thead>
+                             <tr>
+                             <th>UserId</th>
                             <th>Name</th>
                             <th>date of birth</th>
                             <th>District</th>
                             <th>VoterId</th>
                             <th>Status</th>
                             <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {renderTableData(voterList) }
-                    </tbody>
-                </table>
-            </center>
-
-
-        </div>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             {renderTableData(voterList)}
+                         </tbody>
+                     </table>
+                 </center>
+                  </div>
+                   </div>
     );
 
 };
@@ -79,7 +83,7 @@ function renderTableData(voterList){
                 <td>{district}</td>
                 <td>{voterId}</td>
                 <td>{status}</td>
-                <td><Button as="input" type="button" value="approve/reject"></Button> &nbsp;
+                <td><Button as="input" type="button" value="approve/reject"></Button>
         
             </td>
             </tr>
@@ -87,36 +91,28 @@ function renderTableData(voterList){
     })
     
 };
+function handleSearch(event){
+    event.preventDefault();
+    const data = new FormData(event.target);
 
-const getValue= e=>{
-    selected=e.target.value;
-    console.log(selected);
-}
-function handleDrop(voterList){
-    if(selected=='district'){
+    console.log("in handle:",data);
+    const value=data.get("name");
 
-        console.log("list:",voterList);
-        return voterList.map((voter,index)=>{
-            const{user_id,district}=voter;
-            console.log(district);
-            return(
-                <option key={user_id} value={user_id}>{district}</option>
-               
-            )
-        })
+    var e=document.getElementById("view");
+    var selected=e.options[e.selectedIndex].value;
+    console.log('value: ',value);
+    console.log("selected:",selected);
+
+    if(selected==='viewAll'){
+        dispatch(ViewVoterReqAction());
+    }
+    else if(selected==='district'){
+        dispatch(viewReqByDistrictAction(value));
+
     }
     else if(selected==='status'){
-        console.log("list:",voterList);
-        return voterList.map((voter,index)=>{
-            const{user_id,district}=voter;
-            console.log(district);
-            return(
-                <option key={user_id} value={user_id}>{district}</option>
-               
-            )
-        })
+        dispatch(viewReqByStatusAction(value));
 
     }
-
-    };
+}
 export default ViewVoterReq;

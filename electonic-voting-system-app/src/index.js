@@ -10,13 +10,16 @@ import electionReducer from './reducers/electionReducer';
 import castVoteReducer from './reducers/voteReducer';
 import candidateReducer from './reducers/candidateReducer';
 import resultReducer from './reducers/resultReducer';
+import OfficerReducer from './reducers/officerReducer';
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
+import { BrowserRouter} from "react-router-dom";
 
 import stateReducer from './reducers/stateReducer';
 
 
-let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer})
+let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer
+,'officerReducer':OfficerReducer})
 let store = createStore(allReducers, 
   compose(applyMiddleware(ReduxThunk)
   ) );
@@ -31,7 +34,9 @@ ReactDOM.render(
   <React.StrictMode>
 
      <Provider store={store}>
+     <BrowserRouter>
     <App />
+    </BrowserRouter>
     </Provider>
   </React.StrictMode>
   ,
