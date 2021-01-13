@@ -1,6 +1,8 @@
-let addVoterRequestAction = (voterRequest) => {
+import axios from "axios";
+
+const addVoterRequestAction = (voterRequest) => {
     return async function (dispatch) {
-        const res = await fetch(
+        const res = await axios.post(
             "http://localhost:8080/evs/user/voter_request", { 
                 method: "POST", 
                 body: JSON.stringify({ 
@@ -9,14 +11,14 @@ let addVoterRequestAction = (voterRequest) => {
                     constituency: voterRequest.constituency,
                     contactNumber: voterRequest.contactNumber,
                     emailId: voterRequest.emailId,
-                    applicationStatus:voterRequest.applicationStatus
+                    applicationStatus:"Pending"
                 }), 
                 headers: { 
                     "Content-type": "application/json; charset=UTF-8"
                 }
             });
-          const data = await res.json();
-          dispatch({type: "AddVoterRequest", payload: data});
+            console.log('Add Voter Request serverResponse: ', res.data);
+          dispatch({type: "AddVoterRequest", payload: res.data});
     }
 }
 
