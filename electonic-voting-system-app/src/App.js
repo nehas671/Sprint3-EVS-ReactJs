@@ -1,10 +1,4 @@
 import './App.css';
-
-import RegisterUser from './components/register_user';
-import AddCandidate from './components/addCandidate';
-import ApproveRequest from './components/approve_request';
-import AddVoterRequest from './components/add_voter_request';
-
 import Home from './components/home'
 
 import Officer from './components/electrorall_officer';
@@ -16,15 +10,16 @@ import ShowElections from './components/viewElection'
 import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import CandidateForm from './components/candidateForm';
-import ViewResult from './components/viewresult';
+import AddRequest from './components/addVoterRequest';
+
 
 
 function App() {
   return(
     <div>
 
-{ /*<AddElection></AddElection>*/}
-   { /*<ShowElections/>*/}
+{/* <AddElection></AddElection>*/}
+   
 
     
    { /*<AddElection></AddElection>
@@ -33,6 +28,7 @@ function App() {
    
    {/*<CandidateForm></CandidateForm>
     
+<<<<<<< HEAD
 
 
 
@@ -44,6 +40,10 @@ function App() {
 <AddResult></AddResult>
 {/*<ViewResult></ViewResult>*/}
    {/*<Router>
+
+
+
+   
 
     <div className="App">
       
@@ -59,10 +59,14 @@ function App() {
           <Route path="/showelection">
           <ShowElections/>
           </Route>
+          <Route exact path="/addVoterRequest">
+            <AddRequest></AddRequest>
+          </Route>
         </Switch> 
         </div>       
-   </Router>*/}
+       
         
+
    
 
 
@@ -78,8 +82,9 @@ function App() {
   
 
    </div>);
-}
 
+    
+}
 
 
 
