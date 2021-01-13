@@ -20,6 +20,10 @@ import Services from './components/login';
 
 import RegisterUser from './components/register_user';
 
+//import ButtonForm from './components/button';
+
+
+
 
 function App() {
   return(
@@ -37,7 +41,11 @@ function App() {
    
    {/*<CandidateForm></CandidateForm>*/}
 
+
+
+
    
+
 
 
    { /*<AddElection></AddElection>
@@ -46,15 +54,19 @@ function App() {
    
    {/*<CandidateForm></CandidateForm>
     
-
-
-
-
    <RegisterUser></RegisterUser>
-
    <Home></Home>*/}
  
 {/*<AddResult></AddResult>*/}
+
+{/*<ButtonForm></ButtonForm>*/}
+{/*<ViewResult></ViewResult>*/}
+   {/*<Router>
+   
+    <div className="App">
+      
+ 
+=======
 {/*<ViewResult></ViewResult>*/}
  
 
@@ -66,11 +78,16 @@ function App() {
     <div className="App">
       
 
+
             <Link to="/"></Link>
 
            {/* <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
+
+  <Link to ="/view_candidate">Show</Link>
+
   <Link to ="/view_candidate">Show</Link>*/}
+
 
 
       <Switch>
@@ -103,13 +120,17 @@ function App() {
           <Route exact path="/RegisterUser">
             <RegisterUser></RegisterUser>
           </Route>
+
         </Switch> 
+            
+
+       
         </div>       
            
 
-  
 
-   </div>);
+  
+        </div>   );
  
 }
 

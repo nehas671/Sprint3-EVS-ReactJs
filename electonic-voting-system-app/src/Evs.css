@@ -78,6 +78,10 @@ body {
     width: 80px;
 }
 
+.service
+{
+font-family:'Times New Roman', Times, serif;
+}
 
 .header-before{
     text-align: left;
