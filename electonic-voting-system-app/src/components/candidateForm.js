@@ -1,14 +1,21 @@
 import React from 'react';
+
+
 import { useSelector, useDispatch } from 'react-redux';
 import showPartysAction from '../actions/getParty';
-import addCandidateAction from '../actions/addCandidate';
 import { useHistory } from "react-router-dom";
+
+
+import addCandidateAction from '../actions/addCandidate';
 import Candidate from '../models/candidate';
+
+
+
 
 let dispatch;
 let history;
-let selectedPartyId;
-
+let selectedPartyName;
+const validateCandidateName=false;
 
 const CandidateForm= (props) => {
 
@@ -18,12 +25,12 @@ const CandidateForm= (props) => {
 
     React.useEffect(() => {
         PartyList()
-      }, []);
+    }, []);
     
-      const PartyList = () => {
+    const PartyList = () => {
         dispatch(showPartysAction())
-      }
-    console.log("partyList: ", partyList);
+    }
+    console.log("PartysList: ", partyList);
     
     return (
     <div>
@@ -34,14 +41,14 @@ const CandidateForm= (props) => {
             <div class="form-group row ">
             <label for="candidateName" class="col-4 col-form-label font-weight-bold">Candidate Name :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="candidateName" name="candidateName"></input>
+        <input type="text"  class="form-control" id="candidateName" name="candidateName" placeholder="Enter Candidate Name" onBlur={validateCandidateName}></input>
     </div>
     </div>
 
     <div class="form-group row ">
             <label for="address" class="col-4 col-form-label font-weight-bold">Address :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="address" name="address"></input>
+        <textarea  class="form-control" id="address" name="address"></textarea>
     </div>
     </div>
 
@@ -83,14 +90,16 @@ const CandidateForm= (props) => {
 )
 };
 
+
+
+
 function handleChange(event) {
-    selectedPartyId = event.target.value
-    console.log("selected party: ", selectedPartyId);
-}
+    selectedPartyName = event.target.value
+    console.log("selected party: ", selectedPartyName);
+};
 
 function renderPartys(partyList) {
-    console.log("partyList: inside renderDepartment ", partyList);
-    //console.log("deptList[0].deptId: ", deptList[0].deptId);
+    console.log("PartyList: ", partyList);
     return partyList.map((party, index) => {
        const { partyName, leader, symbol } = party //destructuring
        return (
@@ -102,11 +111,13 @@ function renderPartys(partyList) {
  function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
+    console.log("in handle submit data:", data);
     const candidateName = data.get('candidateName');
     const address = data.get('address');
     const age = data.get('age');
     const contact_number = data.get('contact_number');
     const email = data.get('email');
+    /*
     if(candidateName==='' || candidateName===null) {
         alert("Name cannot be blank");
         return;
@@ -115,11 +126,12 @@ function renderPartys(partyList) {
         alert("Age must be a number");
         return;
     }
-    const candidateObj = new Candidate(candidateName, address, age, contact_number, email, selectedPartyId);
+    */
+    const candidateObj = new Candidate(candidateName, address, age, contact_number, email, selectedPartyName);
     dispatch(addCandidateAction(candidateObj));
-}
+    history.push('/');
+};
+
+  
 
 export default CandidateForm;
-
-
-

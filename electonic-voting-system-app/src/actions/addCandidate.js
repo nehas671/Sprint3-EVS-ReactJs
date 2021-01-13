@@ -1,5 +1,9 @@
 let addCandidateAction = (candidate) => {
     return async function (dispatch) {
+        console.log("in action",candidate.party.partyName);
+        let name=candidate.party.partyName;
+        let leader=candidate.party.leader;
+        let symbol=candidate.party.symbol;
         const res = await fetch(
             "http://localhost:8080/evs/candidate", { 
                 method: "POST", 
@@ -9,15 +13,16 @@ let addCandidateAction = (candidate) => {
                     age: candidate.age,
                     contact_number: candidate.contact_number,
                     email: candidate.email,
-                    party: {"partyName": candidate.party.partyName, "leader": candidate.party.leadre, 
-                    "symbol": candidate.party.symbol}
+                    party: {"partyName": name, "leader": leader, 
+                    "symbol": symbol}
+                    
                 }), 
                 headers: { 
                     "Content-type": "application/json; charset=UTF-8"
                 }
             });
           const data = await res.json();
-          dispatch({type: "ADD_Candidate", payload: data});
+          dispatch({type: "ADD_CANDIDATE", payload: data});
     }
 }
 
