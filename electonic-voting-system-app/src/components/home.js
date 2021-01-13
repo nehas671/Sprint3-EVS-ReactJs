@@ -4,6 +4,15 @@ import * as regularicons from '@fortawesome/fontawesome-svg-core'
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import AddElection from '../components/addElection'
 import ShowElections from '../components/viewElection'
+<<<<<<< HEAD
+=======
+import Carouselcomponent from '../components/Carousel'
+import Header from './header';
+import Aside from './aside';
+import Footer from './footer';
+import Slogan from './slogan';
+
+>>>>>>> a3d94abeb7db7d65a36300a6515004f6f03497bb
 import Carousel from 'react-bootstrap/Carousel'
 
 const Home = (props) => {
@@ -12,6 +21,7 @@ const Home = (props) => {
 
       <div>
 
+<<<<<<< HEAD
           <Router>
             <Link to="/election"></Link>
           
@@ -19,6 +29,37 @@ const Home = (props) => {
             <Link to="/showelection"></Link>
           
         </Router>
+=======
+        <Header/>
+
+    <main>
+
+        <Slogan/>
+
+        <section class="Custom-container technology-container">
+            <div class="row mx-0 px-sm-0 mb-4  ">
+                              
+
+            <div class="col-8  pl-0 pr-5">
+
+        <Carouselcomponent></Carouselcomponent>
+            
+            </div>
+            
+            <Aside/>
+            
+
+            </div>
+        </section>          
+       
+
+    </main>
+
+    <Footer/>
+
+
+         
+>>>>>>> a3d94abeb7db7d65a36300a6515004f6f03497bb
 
 
 
@@ -194,7 +235,10 @@ remote e-voting via the Internet (also called i-voting) where the voter submits 
 
     </footer>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a3d94abeb7db7d65a36300a6515004f6f03497bb
 </div>
 )
 

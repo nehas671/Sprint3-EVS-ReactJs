@@ -12,6 +12,7 @@ import candidateReducer from './reducers/candidateReducer';
 import resultReducer from './reducers/resultReducer';
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
+import { BrowserRouter} from "react-router-dom";
 
 import stateReducer from './reducers/stateReducer';
 
@@ -31,7 +32,9 @@ ReactDOM.render(
   <React.StrictMode>
 
      <Provider store={store}>
+     <BrowserRouter>
     <App />
+    </BrowserRouter>
     </Provider>
   </React.StrictMode>
   ,

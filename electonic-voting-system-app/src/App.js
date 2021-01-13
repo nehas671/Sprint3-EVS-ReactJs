@@ -20,7 +20,7 @@ function App() {
     <div>
     
 
-   <Router>
+   
     <div className="App">
       
             <Link to="/">Home</Link>&nbsp;&nbsp;
@@ -50,7 +50,7 @@ function App() {
           </Route>
         </Switch> 
         </div>       
-        </Router>
+       
         
     </div>
   );
