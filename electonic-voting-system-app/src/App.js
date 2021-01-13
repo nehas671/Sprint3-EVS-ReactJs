@@ -23,9 +23,9 @@ function App() {
    
     <div className="App">
       
-            <Link to="/">Home</Link>&nbsp;&nbsp;
+           {/* <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
-            <Link to ="/view_candidate">Show</Link>
+  <Link to ="/view_candidate">Show</Link>*/}
 
       <Switch>
           <Route exact path="/">
