@@ -12,14 +12,14 @@ import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-do
 import CandidateForm from './components/candidateForm';
 import AddRequest from './components/addVoterRequest';
 import RegisterUser from './components/register_user';
-
+import ButtonForm from './components/button';
 function App() {
   return(
     <div>
 
 
 {/* <AddElection></AddElection>*/}
-<<<<<<< HEAD
+
    { /*<ShowElections/>*/}
 
     
@@ -29,9 +29,7 @@ function App() {
    
    {/*<CandidateForm></CandidateForm>*/}
 
-=======
-   
->>>>>>> 198785c73a1ab407b26ff729f892647ac3294440
+
 
     
    { /*<AddElection></AddElection>
@@ -43,8 +41,8 @@ function App() {
    <RegisterUser></RegisterUser>
    <Home></Home>*/}
  
-<AddResult></AddResult>
-
+{/*<AddResult></AddResult>*/}
+<ButtonForm></ButtonForm>
 {/*<ViewResult></ViewResult>*/}
    {/*<Router>
    
