@@ -6,21 +6,18 @@ import * as regularicons from '@fortawesome/fontawesome-svg-core'
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import AddElection from '../components/addElection'
 import ShowElections from '../components/viewElection'
-<<<<<<< HEAD
 import Carouselcomponent from '../components/Carousel'
 import Header from './header';
 import Aside from './aside';
 import Footer from './footer';
 import Slogan from './slogan';
-=======
->>>>>>> e354884bd15475c8c0593b6db9bb9cc267b2a3b9
 
 import Carousel from 'react-bootstrap/Carousel'
 const Home = (props) => {
     return (
 
       <div>
-<<<<<<< HEAD
+
         <Header/>
 
     <main>
@@ -48,7 +45,6 @@ const Home = (props) => {
 
     <Footer/>
 
-=======
 
          
 
@@ -183,7 +179,7 @@ remote e-voting via the Internet (also called i-voting) where the voter submits 
             </div>
         </div>
     </footer>
->>>>>>> e354884bd15475c8c0593b6db9bb9cc267b2a3b9
+
 </div>
 )            
 }
