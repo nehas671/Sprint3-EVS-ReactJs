@@ -8,7 +8,7 @@ import {useRef} from 'react'
 const ViewSchedule = (props) => {
 
 
-    let scheduleList = useSelector(state => state);
+    let scheduleList = useSelector(state => state.scheduleReducer);
 
     const dispatch = useDispatch();
     const myInput = useRef();
