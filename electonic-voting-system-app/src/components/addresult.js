@@ -1,13 +1,17 @@
 
 import React, { useEffect, useState } from 'react';
 import { render } from 'react-dom';
-
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import Header from './header';
+import Slogal from './slogan';
+import Footer from './footer';
+import Aside from './aside';
+ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import showStateAction from '../actions/add_states';
 import showVoteCountAction from '../actions/vote_count';
 import stateReducer from '../reducers/stateReducer';
 import resultReducer from '../reducers/resultReducer';
+
 
 let selectedstateId;
 let history;
@@ -38,7 +42,10 @@ export const AddResult= (props) => {
 
 
    return (<div>
-<h2 class="head mu-4 mb-4 align-center">Declare Result</h2>
+
+<Header></Header>
+<Slogal></Slogal>
+<h2 align='center'>Declare Result</h2>
 
         <div class="col-8 border border-dark p-5 ml-auto mr-auto">
        <form onSubmit={handleVoteCount}>
@@ -53,6 +60,7 @@ export const AddResult= (props) => {
     <select class="form-control col-7 state" id="statename" >
     {renderStates(stateList )}
     </select>
+
   </div>
 
   <button >CountVote</button>
@@ -76,8 +84,10 @@ export const AddResult= (props) => {
 
 </table>
 </div>
+
 </form>
 </div>
+<Footer></Footer>
     </div>)
 
 

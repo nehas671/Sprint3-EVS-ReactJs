@@ -5,6 +5,9 @@ import viewResultByStateNameAction from '../actions/viewResultByStateName';
 import viewResultByElectionNameAction from '../actions/viewrResultByElectionName';
 import viewAllResultAction from '../actions/viewAllResult';
 import viewResultByPartyNameAction from '../actions/viewResultByPartyName';
+import Header from './header';
+import Slogal from './slogan';
+import Footer from './footer';
 import showVoteCountAction from '../actions/vote_count'
 import viewByElectionNameAction from '../actions/viewByElectionName';
 
@@ -30,7 +33,9 @@ export const ViewResult= (props) => {
     
     return (<div>
 
-
+<Header>
+</Header>
+<Slogal></Slogal>
 <h1 align='center'>View Result</h1>
 <div class="col-9 border border-dark p-5 ml-auto mr-auto">
  
@@ -85,7 +90,10 @@ export const ViewResult= (props) => {
 </table>
          
           </div>
-     </div> </div>);
+     </div>
+     
+     <Footer/>
+      </div>);
       
 
 

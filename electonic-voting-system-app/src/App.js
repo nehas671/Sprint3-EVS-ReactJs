@@ -5,7 +5,7 @@ import Officer from './components/electrorall_officer';
 import ViewCandidates from './components/ViewCandidate';
 
 import AddElection from './components/addElection'
-
+import ViewResult from './components/viewresult'
 import ShowElections from './components/viewElection'
 import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
@@ -18,6 +18,7 @@ function App() {
   return(
     <div>
 
+
 {/* <AddElection></AddElection>*/}
    
 
@@ -28,7 +29,6 @@ function App() {
    
    {/*<CandidateForm></CandidateForm>
     
-<<<<<<< HEAD
 
 
 
@@ -37,8 +37,8 @@ function App() {
 
    <Home></Home>*/}
  
-<AddResult></AddResult>
-{/*<ViewResult></ViewResult>*/}
+{/*<AddResult></AddResult>*/}
+<ViewResult></ViewResult>
    {/*<Router>
 
 
@@ -64,14 +64,7 @@ function App() {
           </Route>
         </Switch> 
         </div>       
-       
-        
-
-   
-
-
-
-    
+           
 
   { /*<AddElection></AddElection>*/}
    { /*<ShowElections/>*/}
@@ -82,10 +75,7 @@ function App() {
   
 
    </div>);
-
-    
+ 
 }
-
-
 
 export default App;
