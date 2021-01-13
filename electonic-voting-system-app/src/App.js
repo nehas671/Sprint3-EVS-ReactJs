@@ -1,10 +1,4 @@
 import './App.css';
-
-import RegisterUser from './components/register_user';
-import AddCandidate from './components/addCandidate';
-import ApproveRequest from './components/approve_request';
-import AddVoterRequest from './components/add_voter_request';
-
 import Home from './components/home'
 
 import Officer from './components/electrorall_officer';
@@ -20,11 +14,12 @@ import CandidateForm from './components/candidateForm';
 
 
 
+
 function App() {
   return(
     <div>
 
-{ /*<AddElection></AddElection>*/}
+{/* <AddElection></AddElection>*/}
    { /*<ShowElections/>*/}
 
     
@@ -35,18 +30,7 @@ function App() {
    {/*<CandidateForm></CandidateForm>*/}
     
 
-
-
-
-    <RegisterUser></RegisterUser>
-
-    <Home></Home>
-  
-
-<Router>
-
    <Router>
-
     <div className="App">
       
             <Link to="/"></Link>
@@ -61,28 +45,14 @@ function App() {
           <Route path="/showelection">
           <ShowElections/>
           </Route>
+          
+            
+          
         </Switch> 
         </div>       
         </Router>
         
-   
-
-
-
-    
-
-  { /*<AddElection></AddElection>*/}
-   { /*<ShowElections/>*/}
-
-
-    
-   { /*<AddElection></AddElection>*/}
-  
-
-   </div>
-
     </div>
-
   );
 }
 
