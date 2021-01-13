@@ -15,7 +15,6 @@ import Slogan from './slogan';
 import Carousel from 'react-bootstrap/Carousel'
 
 const Home = (props) => {
-    
     return (
 
       <div>
