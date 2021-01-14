@@ -27,7 +27,6 @@ let store = createStore(allReducers,
 
 
 
-
 store.subscribe(()=>console.log('Current State: ', store.getState()));
 
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-const ViewDistrict = (props)=>{
+/*const ViewDistrict = (props)=>{
 
     let listDistrict = useSelector(state=> district);
 
@@ -14,4 +14,4 @@ const ViewDistrict = (props)=>{
       const DistrictList = () => {
         dispatch(viewScheduleAction())
       }
-}
+}*/
