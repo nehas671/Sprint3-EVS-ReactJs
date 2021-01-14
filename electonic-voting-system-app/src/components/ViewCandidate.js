@@ -12,6 +12,8 @@ import Aside from "./aside";
 import Footer from "./footer";
 import viewByPartyNameAction from '../actions/viewByPartyName';
 
+
+
 let dispatch;
 
 const ViewCandidates = (props) => {
@@ -141,8 +143,20 @@ const ViewCandidates = (props) => {
           {renderTableData(candidateList)}
           </tbody>
           </table>
-      
-          
+
+          <div>
+                <ul class="pagination -lg pager">
+                    <li class="previous"><a href="#">Previous</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li class="next"><a href="#">Next</a></li>
+                </ul>
+            </div>
+
+            
           </center>
     </div>
     

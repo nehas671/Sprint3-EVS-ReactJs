@@ -104,7 +104,7 @@ const AddCandidate= (props) => {
             <div class="form-group row ">
             <label for="candidateName" class="col-4 col-form-label font-weight-bold">Candidate Name :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="candidateName" name="candidateName" placeholder="Enter Full Name" onBlur={validateCandidateName}></input>
+        <input type="text"  class="form-control" id="candidateName" name="candidateName" placeholder="Enter Full Name" onBlur={validateCandidateName} required></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
         Candidate name should only contain character between 3 to 10
        </small>
@@ -114,9 +114,9 @@ const AddCandidate= (props) => {
     <div class="form-group row ">
             <label for="address" class="col-4 col-form-label font-weight-bold">Address :</label>
             <div class="col-8">
-        <textarea  class="form-control" id="address" name="address" placeholder="Enter address between 3 to 30 characters" onBlur={validateCandidateAddress}></textarea>
+        <textarea  class="form-control" id="address" name="address" placeholder="Enter address here" onBlur={validateCandidateAddress} required></textarea>
         <small id="addressvalid" class="form-text text-danger invalid-feedback">
-        Address should contain character between 3 to 30
+        Address should contain at least 3 characters 
        </small>
     </div>
     </div>
@@ -124,7 +124,7 @@ const AddCandidate= (props) => {
     <div class="form-group row ">
             <label for="age" class="col-4 col-form-label font-weight-bold">Age :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="age" name="age" placeholder="Enter age greter than 25" onBlur={validateCandidateAge}></input>
+        <input type="text"  class="form-control" id="age" name="age" placeholder="Enter age greter than 25" onBlur={validateCandidateAge} required></input>
         <small id="agevalid" class="form-text text-danger invalid-feedback">
         Age must be greater the 25
        </small>
@@ -135,7 +135,7 @@ const AddCandidate= (props) => {
     <div class="form-group row ">
             <label for="contact_number" class="col-4 col-form-label font-weight-bold">Mobile Number :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="contact_number" name="contact_number" placeholder="eg. 9100011134" onBlur={validateCandidateNumber}></input>
+        <input type="text"  class="form-control" id="contact_number" name="contact_number" placeholder="eg. 9100011134" onBlur={validateCandidateNumber} required></input>
         <small id="emailvalid" class="form-text text-danger invalid-feedback">
         Phone number should be of 10 digits only 
        </small>
@@ -145,7 +145,7 @@ const AddCandidate= (props) => {
     <div class="form-group row ">
             <label for="email" class="col-4 col-form-label font-weight-bold">Email :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="email" name="email" placeholder="eg. hello@gmail.com" onBlur={validateCandidateEmail}></input>
+        <input type="text"  class="form-control" id="email" name="email" placeholder="eg. hello@gmail.com" onBlur={validateCandidateEmail} required></input>
         <small id="emailvalid" class="form-text text-danger invalid-feedback">
         Email must in hello@gmail.com format
        </small>
@@ -247,16 +247,11 @@ function validateCandidateAddress(event){
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
-       
-       validateCandidateAddress = true;
   
     } else {
   
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
-      
-          
-          validateCandidateAddress = false;
     }
 
 }
@@ -274,16 +269,11 @@ function validateCandidateAge(event){
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
-       
-       validateCandidateAddress = true;
   
     } else {
   
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
-      
-          
-          validateCandidateAddress = false;
     }
 
 }
@@ -301,16 +291,11 @@ function validateCandidateNumber(event){
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
-       
-       validateCandidateAddress = true;
   
     } else {
   
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
-      
-          
-          validateCandidateAddress = false;
     }
 
 }
@@ -328,16 +313,11 @@ function validateCandidateEmail(event){
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
-       
-       validateCandidateAddress = true;
   
     } else {
   
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
-      
-          
-          validateCandidateAddress = false;
     }
 
 }
