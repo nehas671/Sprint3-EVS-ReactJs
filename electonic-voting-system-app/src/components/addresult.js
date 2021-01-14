@@ -42,19 +42,27 @@ export const AddResult= (props) => {
    return (<div>
 
 <Header></Header>
-<Slogal></Slogal>
-<h1 align='center'>Declare Result</h1>
 
+<main>
+
+<Slogal/>
+<section class="Custom-container technology-container">
+            <div class="row mx-0 px-sm-0 mb-4">
+
+<div class="col-8  pl-0 pr-5">
         <div class="col-8 border border-dark p-5 ml-auto mr-auto">
+        <h2 class="addElectionTitle">Declare Result</h2>
        <form onSubmit={handleAdd} >
-  <div class="form-group row ">
-    <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name :</label>
+  <div class="form-group row pt-4 pb-3 ">
+
+    
+    <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name</label>
     <div class="col-8">
       <input type="text"  class="form-control" name="electionname" id="electionname" ></input>
     </div>
   </div>
   <div class=" form-group row">
-    <label for="statename" class="col-4 mr-3 font-weight-bold">Select State :</label>
+    <label for="statename" class="col-4 mr-3 font-weight-bold">Select State</label>
     <select class="form-control col-7 state" id="statename" >
     <option>Maharashtra</option>
     <option>Madhya Pradesh</option>
@@ -62,10 +70,12 @@ export const AddResult= (props) => {
 
   </div>
 
-  <button  onClick={handleAlternative} >CountVote</button>
-      <button  type="submit">Add Result</button>
-        <div class='table  border border-dark col-12'>
-      <table class="table table-hover col-12" >
+  
+  <button  onClick={handleAlternative} type="button" class="btn btn-outline-primary ml-5 mr-5">CountVote</button>
+  <button type="submit" class="btn btn-outline-primary">Add Result</button>
+     
+  <div class="col-3">
+      <table class="table table-border table-striped">
       <thead>
             <tr>
 <th>Election Name</th>
@@ -85,9 +95,16 @@ export const AddResult= (props) => {
 </div>
 
 </form>
-</div>
-<Footer></Footer>
-    </div>)
+      </div>
+            </div>
+
+            <Aside/>
+          </div>
+        </section>
+
+        </main>
+        <Footer/>
+    </div>);
 
 
 }

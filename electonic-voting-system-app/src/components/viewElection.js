@@ -62,14 +62,7 @@ const ShowElections = (props) => {
                         <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="#">Contact Us</a>
                     </li>
                     <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        {/*<a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">Election</a>*/}
-                        <a class="nav-link  text-dark px-md-0  position-relative border-primary  nav-custom-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         Election
-                        </a>
-                        <div class="dropdown-menu  " aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item drop " href="#">Add Election</a>
-                          <a class="dropdown-item" href="#">View Election</a>
-                        </div>
+                        <a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">Election</a>
 
                     </li>
                     <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">

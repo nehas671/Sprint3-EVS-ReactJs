@@ -20,10 +20,10 @@ import { BrowserRouter} from "react-router-dom";
 
 import stateReducer from './reducers/stateReducer';
 import UserReducer from './reducers/userReducer';
-
+import scheduleReducer from './reducers/schedule_reducer';
 
 let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer
-,'officerReducer':OfficerReducer,'userReducer':UserReducer})
+,'officerReducer':OfficerReducer,'userReducer':UserReducer,'scheduleReducer':scheduleReducer})
 let store = createStore(allReducers, 
   compose(applyMiddleware(ReduxThunk)
   ) );
