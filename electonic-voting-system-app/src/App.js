@@ -15,10 +15,11 @@ import AddRequest from './components/addVoterRequest';
 
 import AdminService from './components/adminService';
 import Services from './components/login';
-
+import VoterServices from './components/voter_services'
 
 
 import RegisterUser from './components/register_user';
+
 
 //import ButtonForm from './components/button';
 
@@ -102,6 +103,10 @@ function App() {
 
           <Route path="/admin_services">
             <AdminService/>
+          </Route>
+
+          <Route path="/VoterServices">
+          <VoterServices/>
           </Route>
 
           <Route path="/add_candidate">

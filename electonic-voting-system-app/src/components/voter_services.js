@@ -39,19 +39,36 @@ const VoterServices = (props) => {
                     <li class="nav-item  nav-item-custom  mb-2 mb-md-0 flex-wrap ">
                         <a class="nav-link text-dark px-md-0 border-primary nav-custom-link  " href="#">About Us</a>
                     </li>
-                    <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        <a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">
-                        <select >
-                        <option value="" selected disabled hidden>Voter Services</option>
-                        <option value="VoterRequest" >Add Voter Request</option>
-                        <option value="voterId" >View Voter ID</option>
-                        <option value="schedule" >View Schedule</option>
-                        <option value="candidate" >View Candidate</option>
-                        <option value="castVote" >Cast vote</option>
-                        <option value="result" >View Result</option>
-                    </select>
-                        </a>
-                    </li>
+
+
+                    <div className='btn-group dropdown'>
+                <li class="nav-item  nav-item-custom  mb-2 mb-md-0 flex-wrap ">
+                <a class="nav-link  text-dark px-md-0  position-relative border-primary  nav-custom-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Voter Services
+                </a>
+                <div class="dropdown-menu nav-drop-custom  nav-drop position-absolute " aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item drop " href="#">
+                  Add Voter Request
+                  </a>
+                  <a class="dropdown-item drop" href="#">
+                  View Voter ID
+                  </a>
+                  <a class="dropdown-item drop" href="#">
+                  View Schedule
+                  </a>
+                  <a class="dropdown-item drop" href="#">
+                  View Candidate
+                  </a>
+                  <a class="dropdown-item drop" href="#">
+                  Cast vote
+                  </a>
+                  <a class="dropdown-item drop" href="#">
+                  View Result
+                  </a>
+               </div>
+                </li>
+                </div>
+               
                     <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
                         <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="#">Contact Us</a>
                     </li>
