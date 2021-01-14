@@ -35,11 +35,6 @@ const VoterServices = (props) =>
                                 Home
                             </a>
                         </li>
-                        <li class="nav-item  nav-item-custom  mb-2 mb-md-0 flex-wrap ">
-                            <a class="nav-link text-dark px-md-0 border-primary nav-custom-link  " href="#">
-                                About Us
-                            </a>
-                        </li>
                         <div className = 'btn-group dropdown'>
                             <li class="nav-item  nav-item-custom  mb-2 mb-md-0 flex-wrap ">
                                 <a class="nav-link  text-dark px-md-0  position-relative border-primary  nav-custom-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,6 +62,11 @@ const VoterServices = (props) =>
                                 </div>
                             </li>
                         </div>
+                        <li class="nav-item  nav-item-custom  mb-2 mb-md-0 flex-wrap ">
+                            <a class="nav-link text-dark px-md-0 border-primary nav-custom-link  " href="#">
+                                About Us
+                            </a>
+                        </li>
                         <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
                             <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="#">
                                 Contact Us
