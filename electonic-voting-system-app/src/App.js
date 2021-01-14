@@ -100,7 +100,7 @@ function App() {
   <Link to ="/view_candidate">Show</Link>*/}
 
 
-      <Switch>
+     <Switch>
 
           <Route exact path="/">
             <Home/>
@@ -153,10 +153,10 @@ function App() {
           </Route>
 
           
-        </Switch> 
+     </Switch> 
 
-
-        
+         
+  
             
 
        
