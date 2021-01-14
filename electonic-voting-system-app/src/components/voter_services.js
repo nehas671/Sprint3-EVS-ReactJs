@@ -37,31 +37,33 @@ const VoterServices = (props) => {
                         <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="#">Home</a>
                     </li>
                     <li class="nav-item  nav-item-custom  mb-2 mb-md-0 flex-wrap ">
-                        <a class="nav-link text-dark px-md-0 border-primary nav-custom-link  " href="#">About Us</a>
-                    </li>
-                    <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        <a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">
-                        <select >
-                        <option value="" selected disabled hidden>Voter Services</option>
-                        <option value="VoterRequest" >Add Voter Request</option>
-                        <option value="voterId" >View Voter ID</option>
-                        <option value="schedule" >View Schedule</option>
-                        <option value="candidate" >View Candidate</option>
-                        <option value="castVote" >Cast vote</option>
-                        <option value="result" >View Result</option>
-                    </select>
+                        <a class="nav-link text-dark px-md-0 border-primary nav-custom-link  " href="#">
+                        Add Voter Request
                         </a>
                     </li>
                     <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="#">Contact Us</a>
+                        <a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">
+                        View Voter ID
+                        </a>
+                    </li>
+                    <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
+                        <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="#">
+                        View Schedule
+                        </a>
                     </li>
                     
                     <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">FAQ</a>
+                        <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">
+                        View Candidate
+                        </a>
                     </li>
                     <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">Logout</a>
+                        <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">Cast Vote</a>
                     </li>
+                    <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
+                        <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">View Result</a>
+                    </li>
+                    
                 </ul>
 
                 <div class=" d-flex sky-color search-box ">
