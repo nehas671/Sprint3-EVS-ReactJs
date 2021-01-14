@@ -1,15 +1,17 @@
 
 import React from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as icons from '@fortawesome/free-solid-svg-icons'
 import viewScheduleAction from '../actions/schedule_action'
 import {useRef} from 'react'
+import viewScheduleStateListAction from '../actions/schedule_statelist_action';
 let selectedElectionId
 const ViewScheduleState = (props) => {
 
-
-    let scheduleList = useSelector(state => state.scheduleReducer);
+    let [filter, setFilter] = useState();
+    let scheduleList = useSelector(state => state.scheduleReducer.filter);
 
     const dispatch = useDispatch();
     const myInput = useRef();
@@ -18,7 +20,7 @@ const ViewScheduleState = (props) => {
       }, []);
     
       const ScheduleList = () => {
-        dispatch(viewScheduleAction())
+        dispatch(viewScheduleStateListAction())
       }
     console.log("schedule: ", scheduleList);
     if(!Array.isArray(scheduleList)) {
@@ -43,10 +45,10 @@ function handleChange(event) {
 function renderScheduleStates(scheduleList) {
     console.log("stateList: ", scheduleList);
     //console.log("scheduleList[0].state: ", scheduleList[0].state);
-    return scheduleList.map((schedule, index) => {
-       const {  electionId,state } = schedule //destructuring
+    return scheduleList.map((state) => {
+      
        return (
-        <option key={electionId} value={state}>{state}</option>
+        <option value={state}>{state}</option>
        )
     })
  };

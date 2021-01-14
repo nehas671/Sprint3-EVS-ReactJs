@@ -1,7 +1,7 @@
 import './App.css';
 import Home from './components/home'
 
-import Officer from './components/electrorall_officer';
+import OfficerService from './components/officerService';
 import ViewCandidates from './components/ViewCandidate';
 
 
@@ -11,6 +11,7 @@ import ShowElections from './components/viewElection'
 import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import AddRequest from './components/addVoterRequest';
+import viewParty from './components/view_party';
 
 import AdminService from './components/adminService';
 import Services from './components/login';
@@ -21,7 +22,7 @@ import RegisterUser from './components/register_user';
 import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
-import ApproveRequest from './components/approve_request'
+import ApproveRequest from './components/approveVoterRequest'
 //import ButtonForm from './components/button';
 
 
@@ -30,7 +31,7 @@ import ApproveRequest from './components/approve_request'
 function App() {
   return(
     <div>
-
+ 
 
 {/* <AddElection></AddElection>*/}
 
@@ -41,14 +42,14 @@ function App() {
    <ViewCandidates></ViewCandidates>*/}
 
    
+
+   {/*<CandidateForm></CandidateForm>
+    
+   
+
   
    {/*<CandidateForm></CandidateForm>*/}
    {/*<CandidateForm></CandidateForm>*/}
-
-
-
-
-   
 
 
 
@@ -63,6 +64,8 @@ function App() {
  
 
 {/*<AddResult></AddResult>*/}
+
+
 {/*<AddResult></AddResult>*/}
 
 {/*<ButtonForm></ButtonForm>*/}
@@ -84,12 +87,18 @@ function App() {
       
 
 
+            <Link to="/"></Link>
+
+           {/* <Link to="/">Home</Link>&nbsp;&nbsp;
+
+
            {/* <Link to="/"></Link>
 
             <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
   <Link to ="/view_candidate">Show</Link>
   <Link to ="/view_candidate">Show</Link>*/}
+
 
       <Switch>
 
@@ -140,18 +149,18 @@ function App() {
           </Route>
 
           <Route exact path="/Officer_services">
-            <Officer></Officer>
+            <OfficerService></OfficerService>
           </Route>
 
           
         </Switch> 
+
 
         
             
 
        
         </div>       
-           
 
 
   
