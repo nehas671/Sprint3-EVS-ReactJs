@@ -19,12 +19,12 @@ import Services from './components/login';
 
 
 import RegisterUser from './components/register_user';
-<<<<<<< HEAD
-import ButtonForm from './components/button';
-=======
 
 
->>>>>>> e437de086e34073815da23f2b79c6c629b496791
+
+
+
+
 function App() {
   return(
     <div>
@@ -39,13 +39,7 @@ function App() {
    <ViewCandidates></ViewCandidates>*/}
 
    
-   {/*<CandidateForm></CandidateForm>*/}
-
-<<<<<<< HEAD
-
-=======
-   
->>>>>>> e437de086e34073815da23f2b79c6c629b496791
+   <CandidateForm></CandidateForm>
 
 
    { /*<AddElection></AddElection>
@@ -57,16 +51,16 @@ function App() {
    <RegisterUser></RegisterUser>
    <Home></Home>*/}
  
-{/*<AddResult></AddResult>*/}
-<<<<<<< HEAD
-<ButtonForm></ButtonForm>
+<AddResult></AddResult>
+
+{/*<ButtonForm></ButtonForm>*/}
 {/*<ViewResult></ViewResult>*/}
    {/*<Router>
    
     <div className="App">
       
  
-=======
+
 {/*<ViewResult></ViewResult>*/}
  
 
@@ -78,19 +72,19 @@ function App() {
     <div className="App">
       
 
->>>>>>> e437de086e34073815da23f2b79c6c629b496791
+
             <Link to="/"></Link>
 
            {/* <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
-<<<<<<< HEAD
+
   <Link to ="/view_candidate">Show</Link>
-=======
+
   <Link to ="/view_candidate">Show</Link>*/}
 
->>>>>>> e437de086e34073815da23f2b79c6c629b496791
 
-      <Switch>
+
+{/*      <Switch>
           <Route exact path="/">
             <Home/>
           </Route>
@@ -120,15 +114,14 @@ function App() {
           <Route exact path="/RegisterUser">
             <RegisterUser></RegisterUser>
           </Route>
-<<<<<<< HEAD
         </Switch> */}
             
-=======
-        </Switch> 
+
+       
         </div>       
            
 
->>>>>>> e437de086e34073815da23f2b79c6c629b496791
+
   
         </div>   );
  
