@@ -1,9 +1,12 @@
+
+
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import viewScheduleStateAction from '../actions/schedule_state_action'
 import viewScheduleAction from '../actions/schedule_action'
 import viewScheduleElectionNameAction from '../actions/schedule_electionname_action';
 import viewScheduleConstituencyAction from '../actions/schedule_constutuency_action';
+import viewScheduleMonthAction from '../actions/schedule_month_action';
 import Header from '../components/header';
 import Aside from '../components/aside';
 import Slogan from '../components/slogan';
@@ -46,7 +49,7 @@ const ShowSchedules = (props) => {
       <option value="State" id="state">State</option>
       <option value="ElectionName">Election Name</option>
       <option value="Constituency">Constituency</option>
-      <option value="Date">Date</option>
+      <option value="month">Month</option>
     </select>
     </div>
     <div class="form-group" >
@@ -132,6 +135,10 @@ var selected = e.options[e.selectedIndex].value;
   else if(selected==="Constituency")
   {
     dispatch(viewScheduleConstituencyAction(value));
+  }
+  else if(selected==="month")
+  {
+    dispatch(viewScheduleMonthAction (value));
   }
   
 }
