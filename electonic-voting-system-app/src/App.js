@@ -23,6 +23,7 @@ import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
 import ApproveRequest from './components/approveVoterRequest'
+import CastVote from './components/castVote';
 //import ButtonForm from './components/button';
 
 
@@ -150,8 +151,9 @@ function App() {
           <Route exact path="/Officer_services">
             <OfficerService></OfficerService>
           </Route>
-
-          
+          <Route exact path='/votecast'>
+            <CastVote />
+          </Route>
      </Switch> 
 
          
