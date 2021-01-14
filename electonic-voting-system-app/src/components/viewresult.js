@@ -6,18 +6,20 @@ import viewResultByElectionNameAction from '../actions/viewrResultByElectionName
 import viewAllResultAction from '../actions/viewAllResult';
 import viewResultByPartyNameAction from '../actions/viewResultByPartyName';
 import Header from './header';
-import Slogal from './slogan';
+
 import Footer from './footer';
 import showVoteCountAction from '../actions/vote_count'
 import viewByElectionNameAction from '../actions/viewByElectionName';
+import VoterAsideComponent from './voterAside';
+import VoterHeader from './voterHeader';
 
-
+import Slogal from './slogan';
 
 let dispatch
 export const ViewResult= (props) => {
   dispatch = useDispatch();
     
-  let resultList= useSelector(state=> state.resultReducer)
+  let resultList= useSelector(state=> state.resultReducer.viewresult)
   /*const ResultList = () => {
     dispatch(viewAllResultAction())
   }
@@ -31,14 +33,22 @@ export const ViewResult= (props) => {
         console.log("Set resultList to blank array");
     }
     return (<div>
-      
-<div class="container col-6 pt-5">
+ 
+ <VoterHeader />
+ <main>
+ <Slogal/>
+          
+
+                <section class="Custom-container technology-container">
+            <div class="row mx-0 px-sm-0 mb-4">
+            <div class="col-8  pl-0 pr-5">
+            <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
+              <h2 class="addElectionTitle"> View Election Result</h2>
 <form onSubmit={filterResult}>
-  <div class="form-group row ">
-   
-  <div class=" form-inline row">
-    <label for="viewby" class="col-4 mr-3 font-weight-bold">View Result:</label>
-    <select class="form-control col-5 " id="viewby">
+
+<div class=" form-group row">
+<label for="viewby" class="col-4 mr-3 font-weight-bold">View Result:</label>
+<select class="form-control col-7 state"  id="viewby">
       <option value="election"> By Election Name</option>
       <option value="state"> By State Name</option>
       <option value="party"> By Party Name</option>
@@ -47,30 +57,25 @@ export const ViewResult= (props) => {
   </div>
 
 
-  <div class="form-inline col-5">
-    <label for="viewbyfilter" class="col-form-label font-weight-bold">Enter Value</label>
-      <input type="text"  class="form-control"  name="viewbyfilter" id="viewbyfilter" ></input>
+
+  <div class="form-group row pt-4 pb-3">
+  <label for="viewbyfilter" class="col-4 col-form-label font-weight-bold">Enter Value</label>
+  <div class="col-8">
+  <input type="text"  class="form-control"  name="viewbyfilter" id="viewbyfilter" ></input>
+
   </div>
+</div>
+
      
-
-  <div class="col-2">
-  <button>Search</button>
-  </div>
-
-
+<center><button type="submit" class="btn btn-outline-primary mb-3 ml-5 mr-5">Search</button></center>
   
-  </div>
-  </form>
-    <center>
+  
 
-
-    <h2 class="font-weight-bold">Result List</h2>
     
-    
-    <table class="table table-hover col-12" >
-        <thead>
-          
-            <tr>
+    <div class="col-4">
+    <table class="table table-border table-striped">
+    <thead>
+          <tr>
                 <th>ResultId</th>
 <th>Election Name</th>
 <th>State</th> 
@@ -85,72 +90,26 @@ export const ViewResult= (props) => {
   {renderResult(resultList)}
 </tbody>
 </table>
+</div>
 
 
-</center>
+</form>
     </div>
+    </div>
+    <aside class="col-4  rounded  pr-0  aside-custom d-flex justify-content-center">
+                        <VoterAsideComponent/>
+                    </aside>
+                
+                </div>
+              
+            </section>
+            </main>
+       
+        <Footer/>
+
 </div>);
 };
 
-
-
-
-{/*<Header>
-</Header>
-<Slogal></Slogal>
-<h1 align='center'>View Result</h1>
-<div class="col-9 border border-dark p-5 ml-auto mr-auto">
-<form onSubmit={filterResult}>
-  <div class=" form-group row">
-    <label for="viewby" class="col-4 mr-3 font-weight-bold">View Result:</label>
-    <select class="form-control col-7 state" id="viewby">
-      <option value="election"> View By Election Name</option>
-      <option value="state"> View By State Name</option>
-      <option value="party"> View By Party Name</option>
-      <option value="view">View All Result</option>
-    </select>
-  </div>
-
-  <div class="form-group row ">
-    <label for="viewbyfilter" class="col-4 col-form-label font-weight-bold">Enter Value</label>
-    <div class="col-4" >
-      <input type="text"  class="form-control"  name="viewbyfilter" id="viewbyfilter" ></input>
-      <br></br>
-      <button align='center' id='btn1'>Search</button>
-    </div>
-    <div class="col-8 pl-7" >
-    </div>
-  </div>
-
-</form>
-
-          <h2 class="font-weight-bold " >Result</h2>
-          <div class='table  border border-dark col-12'>
-      <table class="table table-hover col-12" >
-        <thead>
-          
-            <tr>
-                <th>ResultId</th>
-<th>Election Name</th>
-<th>State</th> 
-<th>Date</th>
-<th>Candidate Name</th>
-<th>Party Name</th>
-<th>Constituency</th>
-<th> Votes</th>
-  </tr>
-</thead>
-<tbody>
-  {renderResult(resultList)}
-</tbody>
-</table>
-         
-          </div>
-     </div>
-     
-     <Footer/>
-      </div>);
-    }*/}
 
 
     function renderResult(resultList) {

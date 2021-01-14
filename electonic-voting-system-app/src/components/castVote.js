@@ -135,10 +135,13 @@ const handleList = (event)=>
     
     const election_name = data.get('electionName');
     console.log({election_name});
+    
     const state = data.get('state');
     console.log({state});
+    
     const constituency = data.get('constituency');
     console.log({constituency});
+    
     const date = data.get('date');
     console.log({date});
 
@@ -197,18 +200,25 @@ const CastVote =(props)=>
     {
         event.preventDefault();
         console.log("In handle submit")
+        
         let election_name = electionNameRef.current.value;
         console.log({election_name});
+        
         let state = stateRef.current.value;
         console.log({state});
+        
         let constituency = constituencyRef.current.value;
         console.log({constituency});
+        
         let date = dateRef.current.value;
         console.log({date});
+        
         let candidate_name = candidateNameRef.current.value;
         console.log({candidate_name});
+        
         let party_name = partyNameRef.current.value;
         console.log({party_name});
+        
         let voter_id = voterIDRef.current.value;
         console.log({voter_id});
 
@@ -217,141 +227,139 @@ const CastVote =(props)=>
         dispatch(castVoteAction(castVoteObj));
         history.push('/');
         console.log({castVoteObj});
-
     }
 
     return(
     <div>
         <VoterHeader/>
         <main>
-        <Slogan />
-        <section className = 'Custom-container technology-container'>
-        <div className="row mx-0 px-sm-0 mb-4">
-        <div className="col-8  pl-0 pr-5">
-        <div className="col border border-dark bg-light p-5 ml-auto mr-auto">
-        <h4>Please fill the details as required to cast your vote</h4>
-        <br></br>
-        <Card border='primary'>
-        <Card.Body>
-        <form onSubmit={handleList}>    
-            <div className="form-group row pb-2">
-                <label htmlFor='electionName' className='col-3 col-form-label font-weight-bold'>
-                    Election Name:
-                </label>
-                <div>
-                    <select id="electionName" name="electionName" ref={electionNameRef} onBlur={handleElectionNameChange} required>
-                        <option></option>
-                        <option>Lok Sabha</option>
-                        <option>Vidhan Sabha</option>
-                    </select>
-                    <small id="namevalid" class="form-text text-danger invalid-feedback">
-                        Please select valid Election Name from the list!
-                    </small>
-                </div>
-            </div>
-            <div className="form-group row pb-2">
-                <label htmlFor="state" className='col-3 col-form-label font-weight-bold'>
-                    Election State:
-                </label>
-                <div>
-                    <input id="state" name="state" type="text" placeholder="Eg. Maharashtra"  ref={stateRef} onBlur={handleStateChange} required/>
-                    <small id="namevalid" class="form-text text-danger invalid-feedback">
-                        State should only contain characters!
-                    </small> 
-                </div>
-            </div>
-            <div className="form-group row pb-2" >
-                <label htmlFor='constituency' className='col-3 col-form-label font-weight-bold' >
-                    Constituency:
-                </label>
-                <div>
-                    <input id='constituency' name='constituency' type ='text' placeholder='Eg. Mumbai' ref={constituencyRef} onBlur={handleConstituencyChange} required></input>
-                    <small id="namevalid" class="form-text text-danger invalid-feedback">
-                        Constituency should only contain characters!
-                    </small>
-                </div>
-            </div>
-            <div className="form-group row pb-2">
-                <label htmlFor='date' className='col-3 col-form-label font-weight-bold' >
-                    Election Date:
-                </label>
-                <div>
-                    <input type='text' id='date' name='date' ref={dateRef} value={date} readOnly></input>
-                </div>
-            </div>
-            <Button type = 'submit' variant='outline-primary'>Get Candidate List</Button>
-        </form>
-        {
-            listState?
-        <div>
-            <div>
-                <br></br>
-                <h4>Choose a Candidate from the below List</h4>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Candidate Name</th>
-                            <th>Party Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {renderTableData(candidateList)}
-                    </tbody>
-                </Table>
-            </div>
-            <br></br>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group row pb-2" >
-                        <label htmlFor="candidate_name" className='col-4 col-form-label font-weight-bold' >
-                            Candidate Name:
-                        </label>
-                        <div>
-                            <input id="candidate_name" name="candidate_name" type="text" placeholder="Candidate Name"  ref={candidateNameRef} onBlur={handleCandidateNameChange} required/>
-                            <small id="namevalid" class="form-text text-danger invalid-feedback">
-                                Candidate Name should only contain characters!
-                            </small>
+            <Slogan />
+            <section className = 'Custom-container technology-container'>
+                <div className="row mx-0 px-sm-0 mb-4">
+                    <div className="col-8  pl-0 pr-5">
+                        <div className="col border border-dark bg-light p-5 ml-auto mr-auto">
+                            <h4>Please fill the details as required to cast your vote</h4>
+                            <br></br>
+                            <Card border='primary'>
+                                <Card.Body>
+                                    <form onSubmit={handleList}>
+                                        <div className="form-group row pb-2">
+                                            <label htmlFor='electionName' className='col-3 col-form-label font-weight-bold'>
+                                                Election Name:
+                                            </label>
+                                            <div>
+                                                <select id="electionName" name="electionName" ref={electionNameRef} onBlur={handleElectionNameChange} required>
+                                                    <option></option>
+                                                    <option>Lok Sabha</option>
+                                                    <option>Vidhan Sabha</option>
+                                                </select>
+                                                <small id="namevalid" class="form-text text-danger invalid-feedback">
+                                                    Please select valid Election Name from the list!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div className="form-group row pb-2">
+                                            <label htmlFor="state" className='col-3 col-form-label font-weight-bold'>
+                                                Election State:
+                                            </label>
+                                            <div>
+                                                <input id="state" name="state" type="text" placeholder="Eg. Maharashtra"  ref={stateRef} onBlur={handleStateChange} required/>
+                                                <small id="namevalid" class="form-text text-danger invalid-feedback">
+                                                    State should only contain characters!
+                                                </small> 
+                                            </div>
+                                        </div>
+                                        <div className="form-group row pb-2" >
+                                            <label htmlFor='constituency' className='col-3 col-form-label font-weight-bold' >
+                                                Constituency:
+                                            </label>
+                                            <div>
+                                                <input id='constituency' name='constituency' type ='text' placeholder='Eg. Mumbai' ref={constituencyRef} onBlur={handleConstituencyChange} required></input>
+                                                <small id="namevalid" class="form-text text-danger invalid-feedback">
+                                                    Constituency should only contain characters!
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div className="form-group row pb-2">
+                                            <label htmlFor='date' className='col-3 col-form-label font-weight-bold' >
+                                                Election Date:
+                                            </label>
+                                            <div>
+                                                <input type='text' id='date' name='date' ref={dateRef} value={date} readOnly></input>
+                                            </div>
+                                        </div>
+                                        <Button type = 'submit' variant='outline-primary'>Get Candidate List</Button>
+                                    </form>
+                                    {
+                                    listState?
+                                    <div>
+                                        <div>
+                                            <br></br>
+                                            <h4>Choose a Candidate from the below List</h4>
+                                            <Table striped bordered hover>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Candidate Name</th>
+                                                        <th>Party Name</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {renderTableData(candidateList)}
+                                                </tbody>
+                                            </Table>
+                                        </div>
+                                        <br></br>
+                                        <div>
+                                            <form onSubmit={handleSubmit}>
+                                                <div className="form-group row pb-2" >
+                                                    <label htmlFor="candidate_name" className='col-4 col-form-label font-weight-bold' >
+                                                        Candidate Name:
+                                                    </label>
+                                                    <div>
+                                                        <input id="candidate_name" name="candidate_name" type="text" placeholder="Candidate Name"  ref={candidateNameRef} onBlur={handleCandidateNameChange} required/>
+                                                        <small id="namevalid" class="form-text text-danger invalid-feedback">
+                                                            Candidate Name should only contain characters!
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div className="form-group row pb-2">
+                                                    <label htmlFor="party_name" className='col-4 col-form-label font-weight-bold'>
+                                                        Party Name:
+                                                    </label>
+                                                    <div>
+                                                        <input id="party_name" name="party_name" type="text" placeholder="Party Name"  ref={partyNameRef} onBlur={handlePartyNameChange} required/>
+                                                        <small id="namevalid" class="form-text text-danger invalid-feedback">
+                                                            Party Name should only contain characters!
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <div className = 'form-group row pb-2'>
+                                                    <label htmlFor="voter_id" className='col-4 col-form-label font-weight-bold'>
+                                                        Voter ID:
+                                                    </label>
+                                                    <div>
+                                                        <input id="voter_id" name="voter_id" type="number" placeholder="Voter ID"  ref={voterIDRef} required/>
+                                                    </div>
+                                                </div>
+                                                <Button type='submit' variant='outline-success'>Click to submit your Vote</Button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    :null
+                                    }
+                                </Card.Body>
+                            </Card>
                         </div>
                     </div>
-                    <div className="form-group row pb-2">
-                        <label htmlFor="party_name" className='col-4 col-form-label font-weight-bold'>
-                            Party Name:
-                        </label>
-                        <div>
-                            <input id="party_name" name="party_name" type="text" placeholder="Party Name"  ref={partyNameRef} onBlur={handlePartyNameChange} required/>
-                            <small id="namevalid" class="form-text text-danger invalid-feedback">
-                                Party Name should only contain characters!
-                            </small>
-                        </div>
-                    </div>
-                    <div className = 'form-group row pb-2'>
-                        <label htmlFor="voter_id" className='col-4 col-form-label font-weight-bold'>
-                            Voter ID:
-                        </label>
-                        <div>
-                            <input id="voter_id" name="voter_id" type="number" placeholder="Voter ID"  ref={voterIDRef} required/>
-                        </div>
-                    </div>
-                    <Button type='submit' variant='outline-success'>Click to submit your Vote</Button>
-                </form>
-            </div>
-        </div>
-        :null
-        }
-        </Card.Body>
-        </Card>
-        </div>
-        </div>
-        <aside class="col-4  rounded  pr-0  aside-custom d-flex justify-content-center">
-            <VoterAsideComponent/>
-        </aside>
-        </div>
-        </section>
+                    <aside class="col-4  rounded  pr-0  aside-custom d-flex justify-content-center">
+                        <VoterAsideComponent/>
+                    </aside>
+                </div>
+            </section>
         </main>
         <Footer/>
     </div>
     );
-
 };
 
 export default CastVote;

@@ -20,15 +20,42 @@ let history;
 let dispatch
 export const AddResult= (props) => {
    dispatch = useDispatch();
-   let resultList= useSelector(state=> state.resultReducer)
-  /*let stateList = useSelector(state => state.stateReducer);
+   let [filter, setStatelist] = useState();
+   let [result,setResultList] = useState();
+  let stateList = useSelector(state => state.resultReducer.statelist);
  
-  const StateList = () => {
-    dispatch(showStateAction())
-  }
   React.useEffect(() => {
     StateList()
   }, []);
+
+
+  const StateList = () => {
+    dispatch(showStateAction())
+    .then((response) => {
+      console.log("REsponse: ", response);
+      console.log("routeList: ", stateList);
+      setStatelist(stateList);
+  })
+}
+
+
+
+
+ 
+  if(!Array.isArray(stateList)) {
+    stateList = [];
+      console.log("Set stateList to blank array");
+  }
+
+
+
+
+  let resultList= useSelector(state=> state.resultReducer.votecount)
+
+  if(!Array.isArray(resultList)) {
+    resultList = [];
+      console.log("Set stateList to blank array");
+  }
 /*
   /*const ResultList = () => {
     dispatch(showVoteCountAction())
@@ -62,9 +89,8 @@ export const AddResult= (props) => {
 
   <div class=" form-group row">
     <label for="statename" class="col-4 mr-3 font-weight-bold">Select State</label>
-    <select class="form-control col-7 state" id="statename" >
-    <option>Maharashtra</option>
-    <option>Madhya Pradesh</option>
+    <select class="form-control col-7 state" id="statename" onChange={handleChange} >
+   {renderStates(stateList)}
     </select>
 
   </div>
@@ -90,26 +116,18 @@ export const AddResult= (props) => {
     <tbody>
     {renderTableData(resultList)}
     </tbody>
-
 </table>
 </div>
-
-
-
 </form>
 </div>
-            </div>
-            
-            <Aside/>
-           
+            </div>            
+            <Aside/>         
             </div>
         </section>
     </main>
    <Footer/>
 
     </div>);
-
-
 }
 
 function renderStates(stateList ) {

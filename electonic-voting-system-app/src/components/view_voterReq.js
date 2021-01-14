@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import viewReqByDistrictAction from '../actions/viewReqByDistrict';
 import viewReqByStatusAction from '../actions/viewReqByStatus';
-import ViewVoterReqAction from '../actions/view_voterReq'
+import ViewVoterReqAction from '../actions/view_voterReq' 
 import Header from '../components/header';
 import Aside from './aside';
 import Footer from './footer';
