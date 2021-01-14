@@ -10,7 +10,6 @@ import ViewResult from './components/viewresult'
 import ShowElections from './components/viewElection'
 import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
-import CandidateForm from './components/candidateForm';
 import AddRequest from './components/addVoterRequest';
 
 import AdminService from './components/adminService';
@@ -19,6 +18,7 @@ import Services from './components/login';
 
 
 import RegisterUser from './components/register_user';
+import AddCandidate from './components/addCandidate';
 
 //import ButtonForm from './components/button';
 
@@ -105,7 +105,7 @@ function App() {
           </Route>
 
           <Route path="/add_candidate">
-            <CandidateForm/>
+            <AddCandidate/>
           </Route>
           <Route path="/view_candidate">
           <ViewCandidates/>
