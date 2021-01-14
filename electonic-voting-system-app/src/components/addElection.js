@@ -108,7 +108,7 @@ const AddElection= (props) => {
   </div>
    
       </div>
-      <button class="btn btn-primary" disabled={setdisable}>ADD</button>
+      <button class="btn btn-primary">ADD</button>
 </form>
 </div>
             </div>
@@ -149,10 +149,7 @@ function renderStates(statlist) {
 function handleSubmit(event) {
   event.preventDefault();
 
-  /*if(validConstituency&&validElectionname&&validDate)
-  {
-      disable=false;   
-  }*/
+ 
   const data = new FormData(event.target);
   console.log("in handle submit:",data)
   const name = data.get('name');
@@ -167,7 +164,6 @@ function handleSubmit(event) {
   const empObj = new Election(name, selectedState, constituency,date);
   console.log("electionObj:",empObj);
   dispatch(addElectionAction(empObj));
-  alert("Election Added Succesfully");
   history.push('/election');
   
   
