@@ -5,6 +5,9 @@ const userReducer = (state=initialState, action) =>
     switch(action.type) {
         case 'Add_VoterRequest':
             return action.payload;
+
+        case 'Register_User':
+                return action.payload;
         
         case 'SHOW_DISTRICTS':
             return action.payload;

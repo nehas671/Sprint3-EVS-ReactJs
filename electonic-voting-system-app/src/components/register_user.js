@@ -69,6 +69,9 @@ const RegisterUser = (props) => {
     <div class="form-group row">
   <label for="dob" class="col-4 col-form-label mr-3 font-weight-bold">Date Of Birth :</label>
   <input type="date" id="dob" name="dob" class="col-4 " required></input>
+  <small id="namevalid" class="form-text text-danger invalid-feedback">
+                Date of Birth can not greater than the current Date
+        </small>
    
       </div>
 
