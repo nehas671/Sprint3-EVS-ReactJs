@@ -21,10 +21,9 @@ import VoterServices from './components/voter_services'
 import RegisterUser from './components/register_user';
 
 
-<<<<<<< HEAD
-=======
+
 //import ButtonForm from './components/button';
->>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
+
 
 
 
@@ -39,13 +38,13 @@ function App() {
    { /*<ShowElections/>*/}
 
     
-   { /*<AddElection></AddElection>
-   <ViewCandidates></ViewCandidates>*/}
+   { /*<AddElection></AddElection>*/}
+   { /*<ViewCandidates></ViewCandidates>*/}
 
    
-<<<<<<< HEAD
-   <CandidateForm></CandidateForm>
-=======
+
+   { /* <CandidateForm></CandidateForm>*/}
+
    {/*<CandidateForm></CandidateForm>*/}
 
 
@@ -53,26 +52,24 @@ function App() {
 
    
 
->>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
 
 
-   { /*<AddElection></AddElection>
-   <ViewCandidates></ViewCandidates>*/}
+
+   { /*<AddElection></AddElection>*/}
+   {/* <ViewCandidates></ViewCandidates>*/}
 
    
-   {/*<CandidateForm></CandidateForm>
+   {/*<CandidateForm></CandidateForm>*/}
     
-   <RegisterUser></RegisterUser>
-   <Home></Home>*/}
+   {/*<RegisterUser></RegisterUser> */}
+   {/*<Home></Home> */}
  
-<<<<<<< HEAD
 <AddResult></AddResult>
-=======
+
 {/*<AddResult></AddResult>*/}
->>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
 
 {/*<ButtonForm></ButtonForm>*/}
-{/*<ViewResult></ViewResult>*/}
+<ViewResult></ViewResult>
    {/*<Router>
    
     <div className="App">
@@ -100,10 +97,8 @@ function App() {
 
   <Link to ="/view_candidate">Show</Link>*/}
 
-<<<<<<< HEAD
-=======
 
->>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
+
 
 
 {/*      <Switch>
@@ -140,21 +135,19 @@ function App() {
           <Route exact path="/RegisterUser">
             <RegisterUser></RegisterUser>
           </Route>
-<<<<<<< HEAD
-        </Switch> */}
-=======
 
-        </Switch> 
->>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
+        </Switch> */}
+
+
+
             
 
        
         </div>       
            
+</div>
 
-
-  
-        </div>   );
+    );
  
 }
 

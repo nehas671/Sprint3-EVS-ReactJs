@@ -58,7 +58,12 @@ export const AddResult= (props) => {
     
     <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name</label>
     <div class="col-8">
-      <input type="text"  class="form-control" name="electionname" id="electionname" ></input>
+      <input type="text"  class="form-control" name="electionname" id="electionname" placeholder="Enter Election Name" onBlur={validateElectionName} ></input>
+      <small id="namevalid" class="form-text text-danger invalid-feedback">
+        Election Name only contain characters and Size should be greater than 3
+       </small>
+
+   
     </div>
   </div>
   <div class=" form-group row">
@@ -161,4 +166,26 @@ function  handleAlternative(event) {
   const value=document.getElementById('electionname').value;
   var e = document.getElementById("statename").value;
   dispatch(showVoteCountAction(value,e))
+}
+
+
+let validElectionname=false;
+function validateElectionName(event) {
+  const data = event.target.value;
+  console.log("target",data);
+  let regex = /[a-zA-Z]{3,10}$/;
+  let inputdata = data;
+  let str = inputdata.trim();
+  console.log(regex, str);
+  if (regex.test(str) && str != "") {
+
+    event.target.classList.remove('custom-invalid');
+    event.target.classList.add('custom-valid');
+  validElectionname = true;
+
+  } else {
+event.target.classList.remove('custom-valid');
+ event.target.classList.add('custom-invalid');
+  validElectionname = false;
+  }
 }

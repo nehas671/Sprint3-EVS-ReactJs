@@ -11,26 +11,25 @@ import Footer from './footer';
 import showVoteCountAction from '../actions/vote_count'
 import viewByElectionNameAction from '../actions/viewByElectionName';
 
+
+
 let dispatch
 export const ViewResult= (props) => {
   dispatch = useDispatch();
     
   let resultList= useSelector(state=> state.resultReducer)
-  const ResultList = () => {
+  /*const ResultList = () => {
     dispatch(viewAllResultAction())
   }
   React.useEffect(() => {
     ResultList()
-  }, []);
-
+  }, []);*/
 
     console.log("ResultList: ", resultList);
     if(!Array.isArray(resultList)) {
        resultList = [];
         console.log("Set resultList to blank array");
     }
-   
-    
     return (<div>
 
 <Header>
@@ -38,14 +37,14 @@ export const ViewResult= (props) => {
 <Slogal></Slogal>
 <h1 align='center'>View Result</h1>
 <div class="col-9 border border-dark p-5 ml-auto mr-auto">
- 
 <form onSubmit={filterResult}>
   <div class=" form-group row">
     <label for="viewby" class="col-4 mr-3 font-weight-bold">View Result:</label>
     <select class="form-control col-7 state" id="viewby">
-      <option value="election">Election Name</option>
-      <option value="state">State Name</option>
-      <option value="party">Party Name</option>
+      <option value="election"> View By Election Name</option>
+      <option value="state"> View By State Name</option>
+      <option value="party"> View By Party Name</option>
+      <option value="view">View All Result</option>
     </select>
   </div>
 
@@ -57,8 +56,6 @@ export const ViewResult= (props) => {
       <button align='center' id='btn1'>Search</button>
     </div>
     <div class="col-8 pl-7" >
-
-  
     </div>
   </div>
 
@@ -80,10 +77,8 @@ export const ViewResult= (props) => {
 <th> Votes</th>
   </tr>
 </thead>
-
 <tbody>
   {renderResult(resultList)}
-
 </tbody>
 </table>
          
@@ -92,10 +87,6 @@ export const ViewResult= (props) => {
      
      <Footer/>
       </div>);
-      
-
-
-
     };
 
 
@@ -141,75 +132,12 @@ export const ViewResult= (props) => {
       {
         dispatch(viewResultByPartyNameAction(value));
       }
-      
+      else if(selected=="view")
+      {
+        dispatch(viewAllResultAction());
+      }
     }
 
 
 
-
-/*
-
-   
-<div class='table  border border-dark col-12'>
-      <table class="table table-hover col-12" >
-        <thead>
-            <tr>
-                <th>ResultId</th>
-<th>Election Name</th>
-<th>State</th> 
-<th>Date</th>
-<th>Candidate Name</th>
-<th>Party Name</th>
-<th>Constituency</th>
-<th> Votes</th>
-  </tr>
-</thead>
-
-<tbody>
-  {renderResult(resultList)}
-
-</tbody>
-</table>
-</div>
-  
-
-
-</div>
-</div>
-    );
-};
-
-
-
-
-
-function handleSearch(event) {
-  event.preventDefault();
-  const data = new FormData(event.target);
- 
-  console.log("in handle submit:",data)
-  const val = data.get('viewbyfilter');
-
- var e = document.getElementById("viewby");
-var selected = e.options[e.selectedIndex].val;
- console.log("value :",val);
- console.log("view selected",selected);
-  if(selected==="election")
-  {
-    dispatch(viewResultByElectionNameAction(val));
-  }else if(selected==="state")
-  {
-    dispatch(viewResultByStateNameAction(val));
-  }else if(selected==="party")
-  {
-    dispatch(viewResultByPartyNameAction(val));
-  }
-}
-
-
-
-export default ViewResult;
-
-
-*/
 export default ViewResult
