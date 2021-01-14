@@ -1,7 +1,7 @@
 import './App.css';
 import Home from './components/home'
 
-import Officer from './components/electrorall_officer';
+import OfficerService from './components/officerService';
 import ViewCandidates from './components/ViewCandidate';
 
 
@@ -30,7 +30,7 @@ import ApproveRequest from './components/approve_request'
 function App() {
   return(
     <div>
-
+ 
 
 {/* <AddElection></AddElection>*/}
 
@@ -140,7 +140,7 @@ function App() {
           </Route>
 
           <Route exact path="/Officer_services">
-            <Officer></Officer>
+            <OfficerService></OfficerService>
           </Route>
 
           

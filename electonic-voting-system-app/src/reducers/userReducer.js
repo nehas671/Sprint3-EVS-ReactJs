@@ -1,11 +1,12 @@
 const initialState=[];
-const UserReducer =(state=initialState,action)=>{
+const userReducer =(state=initialState,action)=>{
     switch(action.type){
         case 'VIEW_VOTERID':
+            console.log("In reducer",action.payload);
             return action.payload;
         default:
             return [];
 
     }
 }
-export default UserReducer;
+export default userReducer;

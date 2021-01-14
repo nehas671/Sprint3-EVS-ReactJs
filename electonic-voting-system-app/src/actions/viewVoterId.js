@@ -1,7 +1,8 @@
-let viewVoterIdAction=(user)=>{
+let viewVoterIdAction=(user_id)=>{
     return async function (dispatch){
+        console.log("IN action id",user_id);
         const res=await fetch(
-            `http://localhost:8080/evs/user/voterId/${user}`,{
+            `http://localhost:8080/evs/user/voterId/${user_id}`,{
                 method:"GET",
                 headers:{
                     "Access-Control-Allow-Origin":"*"
