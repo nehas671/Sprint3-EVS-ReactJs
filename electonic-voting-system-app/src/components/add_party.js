@@ -47,10 +47,13 @@ function AddParty(){
                           <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="#">Contact Us</a>
                       </li>
                       <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                          <a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">Election</a>
+                          <a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">Add Party</a>
                       </li>
                       <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                          <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">View Election</a>
+                          <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">View Party</a>
+                      </li>
+                      <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
+                          <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">Logout</a>
                       </li>
                   </ul>
   

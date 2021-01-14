@@ -1,12 +1,13 @@
-let viewCandidatesAction = () => {
+import axios from 'axios';
+
+let ViewCandidatesAction  = () => {
     return async function (dispatch) {
-        const res = await fetch(
+        const res = await axios.get(
             "http://localhost:8080/evs/candidate"
           );
-          const data = await res.json();
-          console.log("showPartysAction ", data);
-          dispatch({type: "VIEW_CANDIDATE", payload: data});
+          dispatch({type: "VIEW_CANDIDATE", payload: res.data});
     }
 }
 
-export default viewCandidatesAction;
+export default ViewCandidatesAction
+
