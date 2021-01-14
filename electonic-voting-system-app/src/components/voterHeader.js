@@ -46,7 +46,7 @@ const VoterHeader = (props)=>
                                     <a class="dropdown-item drop" href="#">
                                         Cast Vote
                                     </a>
-                                    <a class="dropdown-item drop" href="#">
+                                    <a class="dropdown-item drop" href="/viewResult">
                                         View Result
                                     </a>
                                 </div>

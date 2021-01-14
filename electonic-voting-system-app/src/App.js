@@ -69,7 +69,7 @@ function App() {
 {/*<AddResult></AddResult>*/}
 
 {/*<ButtonForm></ButtonForm>*/}
-{/*<ViewResult></ViewResult>*/}
+<ViewResult></ViewResult>
    {/*<Router>
    
     <div className="App">
@@ -93,7 +93,6 @@ function App() {
 
 
            {/* <Link to="/"></Link>
-
             <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
   <Link to ="/view_candidate">Show</Link>

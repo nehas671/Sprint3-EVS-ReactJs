@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { render } from 'react-dom';
 import Header from './header';
-import Slogal from './slogan';
+
 import Footer from './footer';
 import Aside from './aside';
  import { useSelector, useDispatch, shallowEqual } from 'react-redux';
@@ -12,25 +12,51 @@ import showVoteCountAction from '../actions/vote_count';
 import stateReducer from '../reducers/stateReducer';
 import resultReducer from '../reducers/resultReducer';
 import addResultAction from '../actions/add_result';
+import AdminHeader from './adminheader';
+import Slogal from './slogan';
 
 let selectedstateId;
 let history;
 let dispatch
 export const AddResult= (props) => {
-  
    dispatch = useDispatch();
-   let resultList= useSelector(state=> state.resultReducer)
-  /*let stateList = useSelector(state => state.stateReducer);
+   let [filter, setStatelist] = useState();
+   let [result,setResultList] = useState();
+  let stateList = useSelector(state => state.resultReducer.statelist);
  
-  const StateList = () => {
-    dispatch(showStateAction())
-  }
   React.useEffect(() => {
     StateList()
   }, []);
-/*
-  
 
+
+  const StateList = () => {
+    dispatch(showStateAction())
+    .then((response) => {
+      console.log("REsponse: ", response);
+      console.log("routeList: ", stateList);
+      setStatelist(stateList);
+  })
+}
+
+
+
+
+ 
+  if(!Array.isArray(stateList)) {
+    stateList = [];
+      console.log("Set stateList to blank array");
+  }
+
+
+
+
+  let resultList= useSelector(state=> state.resultReducer.votecount)
+
+  if(!Array.isArray(resultList)) {
+    resultList = [];
+      console.log("Set stateList to blank array");
+  }
+/*
   /*const ResultList = () => {
     dispatch(showVoteCountAction())
   }
@@ -40,40 +66,40 @@ export const AddResult= (props) => {
   }, []);*/
 
    return (<div>
+<AdminHeader></AdminHeader>
+    <main>
+      
+<Slogal></Slogal>
 
-<Header></Header>
-
-<main>
-
-<Slogal/>
-<section class="Custom-container technology-container">
+        <section class="Custom-container technology-container">
             <div class="row mx-0 px-sm-0 mb-4">
-
-<div class="col-8  pl-0 pr-5">
-        <div class="col-8 border border-dark p-5 ml-auto mr-auto">
-        <h2 class="addElectionTitle">Declare Result</h2>
-       <form onSubmit={handleAdd} >
-  <div class="form-group row pt-4 pb-3 ">
-
-    
-    <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name</label>
+            <div class="col-8  pl-0 pr-5">
+            <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
+              <h2 class="addElectionTitle">Declare Result</h2>
+              <form onSubmit={handleAdd} >
+  <div class="form-group row pt-4 pb-3">
+  <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name</label>
     <div class="col-8">
-      <input type="text"  class="form-control" name="electionname" id="electionname" ></input>
+      <input type="text"  class="form-control" name="electionname" id="electionname" placeholder="Enter Election Name" onBlur={validateElectionName} ></input>
+      <small id="namevalid" class="form-text text-danger invalid-feedback">
+        Election Name only contain characters and Size should be greater than 3
+       </small>
     </div>
   </div>
+
   <div class=" form-group row">
     <label for="statename" class="col-4 mr-3 font-weight-bold">Select State</label>
-    <select class="form-control col-7 state" id="statename" >
-    <option>Maharashtra</option>
-    <option>Madhya Pradesh</option>
+    <select class="form-control col-7 state" id="statename" onChange={handleChange} >
+   {renderStates(stateList)}
     </select>
 
   </div>
 
-  
-  <button  onClick={handleAlternative} type="button" class="btn btn-outline-primary ml-5 mr-5">CountVote</button>
-  <button type="submit" class="btn btn-outline-primary">Add Result</button>
+ 
+  <button  onClick={handleAlternative} type="button" class="btn btn-outline-primary ml-5 mb-3 mr-5">Vote Count</button>
+  <button type="submit" class="btn btn-outline-primary mb-3">Add Result</button>
      
+
   <div class="col-3">
       <table class="table table-border table-striped">
       <thead>
@@ -90,23 +116,18 @@ export const AddResult= (props) => {
     <tbody>
     {renderTableData(resultList)}
     </tbody>
-
 </table>
 </div>
-
 </form>
-      </div>
+</div>
+            </div>            
+            <Aside/>         
             </div>
-
-            <Aside/>
-          </div>
         </section>
+    </main>
+   <Footer/>
 
-        </main>
-        <Footer/>
     </div>);
-
-
 }
 
 function renderStates(stateList ) {
@@ -161,4 +182,26 @@ function  handleAlternative(event) {
   const value=document.getElementById('electionname').value;
   var e = document.getElementById("statename").value;
   dispatch(showVoteCountAction(value,e))
+}
+
+
+let validElectionname=false;
+function validateElectionName(event) {
+  const data = event.target.value;
+  console.log("target",data);
+  let regex = /[a-zA-Z]{3,10}$/;
+  let inputdata = data;
+  let str = inputdata.trim();
+  console.log(regex, str);
+  if (regex.test(str) && str != "") {
+
+    event.target.classList.remove('custom-invalid');
+    event.target.classList.add('custom-valid');
+  validElectionname = true;
+
+  } else {
+event.target.classList.remove('custom-valid');
+ event.target.classList.add('custom-invalid');
+  validElectionname = false;
+  }
 }
