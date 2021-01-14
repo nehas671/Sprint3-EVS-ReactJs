@@ -1,11 +1,9 @@
 import { Container } from "react-bootstrap";
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import showStatesAction from '../actions/get_states';
-import addElectionAction from '../actions/add_election';
 import { useHistory } from "react-router-dom";
-import Election from '../models/election';
-import States from '../models/state';
+import Party from '../models/party'; 
+import showPartyAction from '../actions/view_party'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as icons from '@fortawesome/free-solid-svg-icons'
 import Carousel from 'react-bootstrap/Carousel'
@@ -15,7 +13,25 @@ import Slogan from "./slogan";
 import Aside from "./aside";
 import Footer from "./footer";
 
-function ViewParty(){
+let dispatch;
+
+const ViewParty = (props) => {
+
+
+    let partyList = useSelector(state => state.partyReducer);
+
+    dispatch = useDispatch();
+    React.useEffect(() => {
+        PartyList()
+      }, []);
+    
+      const PartyList = () => {
+        dispatch(showPartyAction())
+      }
+
+    console.log("partyList: ", partyList);
+
+
     return (
         <div>
   
@@ -90,7 +106,6 @@ function ViewParty(){
     <table class="table table-border table-striped"  >
     <thead>
         <tr>
-            <th>ID</th>
             <th>PartyName</th>
             <th>LeaderName</th>
             <th>Symbol</th>
@@ -98,7 +113,7 @@ function ViewParty(){
         </tr>
     </thead>
     <tbody>
-  
+        {renderTableData(partyList)}
     </tbody>
     </table>
     </div>
@@ -120,4 +135,19 @@ function ViewParty(){
   </div>
   )
 }
+
+function renderTableData(partyList) {
+    console.log("partyList: ", partyList);
+    return partyList.map((party, index) => {
+       const { party_name, leader, symbol} = party //destructuring
+       return (
+          <tr key={party_name}>
+              <td>party_name</td>
+             <td>{leader}</td>
+             <td>{symbol}</td>
+          </tr>
+       )
+    })
+  };
+  
 export default ViewParty

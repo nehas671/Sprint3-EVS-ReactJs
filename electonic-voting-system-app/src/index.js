@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import 'react-toastify/dist/ReactToastify.css';
 import $ from 'jquery';
 import Popper from 'popper.js';
 import React from 'react';
@@ -12,6 +13,7 @@ import { createStore, applyMiddleware, compose,combineReducers } from 'redux';
 import electionReducer from './reducers/electionReducer';
 import castVoteReducer from './reducers/voteReducer';
 import candidateReducer from './reducers/candidateReducer';
+import partyReducer from './reducers/partyReducer';
 import resultReducer from './reducers/resultReducer';
 import OfficerReducer from './reducers/officerReducer';
 import {Provider} from 'react-redux';
@@ -24,7 +26,7 @@ import UserReducer from './reducers/userReducer';
 import scheduleReducer from './reducers/schedule_reducer';
 
 let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer,
-'officerReducer':OfficerReducer,'userReducer':UserReducer,'scheduleReducer':scheduleReducer})
+'officerReducer':OfficerReducer,'userReducer':UserReducer,'scheduleReducer':scheduleReducer, 'partyReducer':partyReducer})
 
 let store = createStore(allReducers, 
   compose(applyMiddleware(ReduxThunk)

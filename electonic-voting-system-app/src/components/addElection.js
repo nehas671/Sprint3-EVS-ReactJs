@@ -15,6 +15,8 @@ import Slogan from "./slogan";
 import Aside from "./aside";
 import Footer from "./footer";
 import AdminHeader from "./adminheader";
+import { useState } from 'react';
+
 
 
 
@@ -22,14 +24,15 @@ import AdminHeader from "./adminheader";
 let dispatch;
 let history;
 let selectedState;
-let disable=true;
+
 
 const AddElection= (props) => {
 
-
+  let [filter, setdisable] = useState();
+   setdisable=true;
   dispatch = useDispatch();
   history = useHistory();
-  let statlist = useSelector(state => state.electionReducer);
+  let statlist = useSelector(state => state.electionReducer.statelist);
 
   React.useEffect(() => {
       StatesList()
@@ -39,7 +42,12 @@ const AddElection= (props) => {
       dispatch(showStatesAction())
     }
   console.log("StatesList: ", statlist);
-
+  
+  if(!Array.isArray(statlist)) {
+    statlist = [];
+     
+      console.log("Set electionList to blank array");
+  }
     
     return (
       <div>
@@ -62,8 +70,10 @@ const AddElection= (props) => {
 
             <div class="col-8  pl-0 pr-5">
             <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
+           
               <h2 class="addElectionTitle">ADD ELECTION</h2>
 <form onSubmit={handleSubmit}>
+
   <div class="form-group row pt-4 pb-3">
     <label for="electionName" class="col-4 col-form-label font-weight-bold">Election Name :</label>
     <div class="col-8">
@@ -98,7 +108,7 @@ const AddElection= (props) => {
   </div>
    
       </div>
-      <button class="btn btn-primary" >ADD</button>
+      <button class="btn btn-primary" disabled={setdisable}>ADD</button>
 </form>
 </div>
             </div>
@@ -157,7 +167,11 @@ function handleSubmit(event) {
   const empObj = new Election(name, selectedState, constituency,date);
   console.log("electionObj:",empObj);
   dispatch(addElectionAction(empObj));
-  history.push('/');
+  alert("Election Added Succesfully");
+  history.push('/election');
+  
+  
+    
 
 }
 

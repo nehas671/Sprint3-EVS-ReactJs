@@ -89,16 +89,16 @@ function AddParty(){
     <div class="form-group row pt-4 pb-3">
       <label for="electionName" class="col-4 col-form-label font-weight-bold">Party Name :</label>
       <div class="col-8">
-        <input type="text" class="form-control" id="partyName" name="name" placeholder="Enter Party Name" ></input>
+        <input type="text" class="form-control" id="partyName" name="name" placeholder="Enter Party Name" onBlur={validatePartyName}></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
-          Electionname should only  contain characters 
+          PrtyName should only  contain characters 
          </small>
       </div>
     </div>
     <div class=" form-group row pb-3">
       <label for="state" class="col-4 col-form-label font-weight-bold">Leader Name :</label>
       <div class="col-8">
-        <input type="text" class="form-control" id="leaderName" name="leaderName" placeholder="Enter Leader Name" ></input>
+        <input type="text" class="form-control" id="leaderName" name="leaderName" placeholder="Enter Leader Name" onBlur={validateLeaderName} ></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
           leader name should only  contain characters 
          </small>
@@ -107,7 +107,7 @@ function AddParty(){
     <div class="form-group row pb-3">
     <label for="constituency" class="col-4 col-form-label font-weight-bold">Symbol :</label>
       <div class="col-8">
-        <input type="text"  class="form-control" id="symbol" name="symbol" placeholder="Enter Symbol" ></input>
+        <input type="text"  class="form-control" id="symbol" name="symbol" placeholder="Enter Symbol" required></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
           Constituency name should only contain characters
          </small>
@@ -132,5 +132,60 @@ function AddParty(){
           
   </div>
   )
+}
+let validPartyname=false;
+let validLeadername=false;
+function validatePartyName(event) {
+  const data = event.target.value;
+  console.log("target",data);
+ 
+  let regex = /[a-zA-Z]{3,10}$/;
+  let inputdata = data;
+  let str = inputdata.trim();
+  console.log(regex, str);
+  if (regex.test(str) && str != "") {
+
+    event.target.classList.remove('custom-invalid');
+    event.target.classList.add('custom-valid');
+     // valid(username);
+     validPartyname = true;
+
+  } else {
+
+    event.target.classList.remove('custom-valid');
+    event.target.classList.add('custom-invalid');
+    
+        // inputRequired(username, str);
+        validPartyname = false;
+
+
+  }
+}
+
+function validateLeaderName(event) {
+  const data = event.target.value;
+  console.log("target",data);
+ 
+  let regex = /[a-zA-Z]{3,10}$/;
+  let inputdata = data;
+  let str = inputdata.trim();
+  console.log(regex, str);
+  if (regex.test(str) && str != "") {
+
+    event.target.classList.remove('custom-invalid');
+    event.target.classList.add('custom-valid');
+     // valid(username);
+     validLeadername = true;
+
+  } else {
+
+    event.target.classList.remove('custom-valid');
+    event.target.classList.add('custom-invalid');
+    
+        // inputRequired(username, str);
+        validLeadername = false;
+
+
+  }
 }
 export default AddParty
