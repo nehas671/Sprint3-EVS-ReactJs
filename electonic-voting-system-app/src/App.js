@@ -3,7 +3,7 @@ import Home from './components/home'
 
 import Officer from './components/electrorall_officer';
 import ViewCandidates from './components/ViewCandidate';
-import AddCandidate from './components/addCandidate';
+
 
 import AddElection from './components/addElection'
 import ViewResult from './components/viewresult'
@@ -15,12 +15,16 @@ import AddRequest from './components/addVoterRequest';
 
 import AdminService from './components/adminService';
 import Services from './components/login';
-
+import VoterServices from './components/voter_services'
 
 
 import RegisterUser from './components/register_user';
 
 
+<<<<<<< HEAD
+=======
+//import ButtonForm from './components/button';
+>>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
 
 
 
@@ -39,7 +43,17 @@ function App() {
    <ViewCandidates></ViewCandidates>*/}
 
    
+<<<<<<< HEAD
    <CandidateForm></CandidateForm>
+=======
+   {/*<CandidateForm></CandidateForm>*/}
+
+
+
+
+   
+
+>>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
 
 
    { /*<AddElection></AddElection>
@@ -51,7 +65,11 @@ function App() {
    <RegisterUser></RegisterUser>
    <Home></Home>*/}
  
+<<<<<<< HEAD
 <AddResult></AddResult>
+=======
+{/*<AddResult></AddResult>*/}
+>>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
 
 {/*<ButtonForm></ButtonForm>*/}
 {/*<ViewResult></ViewResult>*/}
@@ -82,6 +100,10 @@ function App() {
 
   <Link to ="/view_candidate">Show</Link>*/}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
 
 
 {/*      <Switch>
@@ -98,8 +120,12 @@ function App() {
             <AdminService/>
           </Route>
 
+          <Route path="/VoterServices">
+          <VoterServices/>
+          </Route>
+
           <Route path="/add_candidate">
-            <AddCandidate/>
+            <CandidateForm/>
           </Route>
           <Route path="/view_candidate">
           <ViewCandidates/>
@@ -114,7 +140,12 @@ function App() {
           <Route exact path="/RegisterUser">
             <RegisterUser></RegisterUser>
           </Route>
+<<<<<<< HEAD
         </Switch> */}
+=======
+
+        </Switch> 
+>>>>>>> d95d119c0069a3dcde92158a33be2a44f8068a54
             
 
        

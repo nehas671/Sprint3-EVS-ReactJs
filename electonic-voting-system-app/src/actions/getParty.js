@@ -1,4 +1,4 @@
-let showPartysAction = () => {
+let ShowPartysAction = () => {
     return async function (dispatch) {
         const res = await fetch(
             "http://localhost:8080/evs/party"
@@ -9,4 +9,4 @@ let showPartysAction = () => {
     }
 }
 
-export default showPartysAction;
+export default ShowPartysAction;
