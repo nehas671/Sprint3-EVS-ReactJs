@@ -14,12 +14,13 @@ import OfficerReducer from './reducers/officerReducer';
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { BrowserRouter} from "react-router-dom";
+import userReducer from './reducers/userReducer';
 
 import stateReducer from './reducers/stateReducer';
 
 
 let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer
-,'officerReducer':OfficerReducer})
+,'officerReducer':OfficerReducer, 'userReducer':userReducer})
 let store = createStore(allReducers, 
   compose(applyMiddleware(ReduxThunk)
   ) );
