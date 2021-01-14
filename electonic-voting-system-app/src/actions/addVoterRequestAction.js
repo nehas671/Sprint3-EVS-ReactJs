@@ -18,7 +18,7 @@ const addVoterRequestAction = (voterRequest) => {
                 }
             });
             console.log('Add Voter Request serverResponse: ', res.data);
-          dispatch({type: "AddVoterRequest", payload: res.data});
+          dispatch({type: "Add_VoterRequest", payload: res.data});
     }
 }
 
