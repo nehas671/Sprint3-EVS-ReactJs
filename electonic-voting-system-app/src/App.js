@@ -115,10 +115,14 @@ function App() {
   <Link to ="/view_candidate">Show</Link>*/}
 
 
+<<<<<<< HEAD
 
 
 
       <Switch>
+=======
+     <Switch>
+>>>>>>> 06adc08ff7a40a0d34db7f2a12953b5c4c52685e
 
           <Route exact path="/">
             <Home/>
@@ -178,8 +182,9 @@ function App() {
           </Route>
 
           
-        </Switch> 
+     </Switch> 
 
+<<<<<<< HEAD
         </div>       
        
         
@@ -187,6 +192,10 @@ function App() {
   );
 }
         
+=======
+         
+  
+>>>>>>> 06adc08ff7a40a0d34db7f2a12953b5c4c52685e
             
 
 
