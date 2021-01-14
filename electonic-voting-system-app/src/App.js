@@ -10,7 +10,6 @@ import ViewResult from './components/viewresult'
 import ShowElections from './components/viewElection'
 import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
-import CandidateForm from './components/candidateForm';
 import AddRequest from './components/addVoterRequest';
 
 import AdminService from './components/adminService';
@@ -19,6 +18,7 @@ import VoterServices from './components/voter_services'
 
 
 import RegisterUser from './components/register_user';
+import AddCandidate from './components/addCandidate';
 
 
 //import ButtonForm from './components/button';
@@ -40,6 +40,7 @@ function App() {
    <ViewCandidates></ViewCandidates>*/}
 
    
+  
    {/*<CandidateForm></CandidateForm>*/}
    {/*<CandidateForm></CandidateForm>*/}
 
@@ -59,6 +60,7 @@ function App() {
    <RegisterUser></RegisterUser>
    <Home></Home>*/}
  
+
 {/*<AddResult></AddResult>*/}
 {/*<AddResult></AddResult>*/}
 
@@ -77,21 +79,19 @@ function App() {
    
 
 
-    <div className="App">
+  <div className="App">
       
 
 
-            <Link to="/"></Link>
+           {/* <Link to="/"></Link>
 
-           {/* <Link to="/">Home</Link>&nbsp;&nbsp;
+            <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
   <Link to ="/view_candidate">Show</Link>
   <Link to ="/view_candidate">Show</Link>*/}
 
+      <Switch>
 
-
-
-        <Switch>
           <Route exact path="/">
             <Home/>
           </Route>
@@ -105,7 +105,7 @@ function App() {
           <VoterServices/>
           </Route>
           <Route path="/add_candidate">
-            <CandidateForm/>
+            <AddCandidate/>
           </Route>
           <Route path="/view_candidate">
           <ViewCandidates/>
