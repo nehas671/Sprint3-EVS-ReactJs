@@ -25,7 +25,7 @@ let history;
 let selectedPartyName;
 
 
-const CandidateForm= (props) => {
+const AddCandidate= (props) => {
 
     dispatch = useDispatch();
     history = useHistory();
@@ -206,16 +206,6 @@ function renderPartys(partyList) {
     const age = data.get('age');
     const contact_number = data.get('contact_number');
     const email = data.get('email');
-    /*
-    if(candidateName==='' || candidateName===null) {
-        alert("Name cannot be blank");
-        return;
-    }
-    else if(!Number(age)) {
-        alert("Age must be a number");
-        return;
-    }
-    */
     const candidateObj = new Candidate(candidateName, address, age, contact_number, email, selectedPartyName);
     dispatch(AddCandidateAction(candidateObj));
     history.push('/');
@@ -357,4 +347,4 @@ function validateCandidateEmail(event){
 
   
 
-export default CandidateForm;
+export default AddCandidate;

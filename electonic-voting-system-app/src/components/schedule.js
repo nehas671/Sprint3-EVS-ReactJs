@@ -26,7 +26,7 @@ const ShowSchedules = (props) => {
     return (<div >
         <div class="border border-0" class="bg-light text-dark" style={{'height':"500px",'padding': "50px 15px 25px 15px"}}>
             
-<h1 class="font-weight-bold" style={{'text-shadow':"2px 2px  5px blue"}}><center>Schedule</center></h1><br/>
+        <h2 class="font-weight-bold"><center>VIEW SCHEDULE</center></h2><br/>
 <form onSubmit={handleSearch} class="form-inline">
 
   
@@ -58,8 +58,8 @@ const ShowSchedules = (props) => {
   
   
   </form>
-    <div class=" h-100 p-12"><br/><br/>
-    <h2 class="font-weight-bold"><center>Scheduled  Elections</center></h2>
+    <div class=" h-100 p-12"><br/>
+    
     
     <table class="table table-border table-striped"  >
     <thead>

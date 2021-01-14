@@ -100,7 +100,7 @@ const ViewCandidates = (props) => {
           <form onSubmit={handleSearch} class="d-flex mb-4">
             <div className="col-9">
                       <div class=" form-inline row mb-3">
-                      <label for="view" class=" mr-3 font-weight-bold mr-4">Enter Name</label>
+                      <label for="view" class=" mr-3 font-weight-bold mr-4">Select View By</label>
                       <select class="form-control col-5 " id="view">
                       <option value="ViewAll">View All</option>
                         <option value="CandidateName">Candidate Name</option>
@@ -124,8 +124,8 @@ const ViewCandidates = (props) => {
             </form>
           <center>
           <h2 class="font-weight-bold">Candidate List</h2>
-          
-          <table class="table table-border table-striped">
+      
+          <table class="table table-border table-striped table table w-auto text-xsmall" id="tableData">
           <thead>
               <tr>
                   <th>ID</th>
@@ -141,6 +141,7 @@ const ViewCandidates = (props) => {
           {renderTableData(candidateList)}
           </tbody>
           </table>
+      
           
           </center>
     </div>
@@ -175,13 +176,13 @@ function renderTableData(candidateList) {
              <td>{contact_number}</td>
              <td>{email}</td>
              <td>{partyName}</td>
-
+             
              {/*
-             <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+             <td> <div class="btn-group" role="group" aria-label="Basic mixed styles example">
              <button type="button" class="btn btn-outline-warning" disabled>Edit</button>
-             <button type="button" class="btn btn-outline-danger" disabled>Delete</button>
-             </div>
-             </td>*/}
+             <button class="btn btn-outline-danger" onClick={handleDelete}>Delete</button>
+             
+            </td>*/}
              
           </tr>
        )
@@ -194,7 +195,7 @@ function renderTableData(candidateList) {
     const data = new FormData(event.target);
    
     console.log("in handle submit:",data)
-    const value = data.get('name');
+    const value = data.get("name");
   
    var e = document.getElementById("view");
   var selected = e.options[e.selectedIndex].value;
@@ -213,6 +214,8 @@ function renderTableData(candidateList) {
       dispatch(viewByPartyNameAction(value));
     }
   }
+
+
 
 export default ViewCandidates;
 

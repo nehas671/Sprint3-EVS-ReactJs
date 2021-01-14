@@ -15,13 +15,9 @@ import Slogan from "./slogan";
 import Aside from "./aside";
 import Footer from "./footer";
 
-function AddParty(){
+function ViewParty(){
     return (
         <div>
-  
-          
-          
-  
   
           <header class="Custom-container py-md-2 py-3   ">
     <div class="header-before"><span class="mr-4"><img src="logo.jpg" alt="brand-name" class="logo"/></span><h1 class="d-inline">Electronic Voting System</h1></div>
@@ -83,41 +79,32 @@ function AddParty(){
                                 
   
               <div class="col-8  pl-0 pr-5">
+              <div >
               <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
-                <h2 class="font-weight-bold">ADD PARTY</h2>
-  <form>
-    <div class="form-group row pt-4 pb-3">
-      <label for="electionName" class="col-4 col-form-label font-weight-bold">Party Name :</label>
-      <div class="col-8">
-        <input type="text" class="form-control" id="partyName" name="name" placeholder="Enter Party Name" ></input>
-        <small id="namevalid" class="form-text text-danger invalid-feedback">
-          Electionname should only  contain characters 
-         </small>
-      </div>
+            
+<h2 class="font-weight-bold" >VIEW PARTY</h2><br/>
+
+    <div class=" h-100 p-12"><br/><br/>
+    
+    
+    <table class="table table-border table-striped"  >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>PartyName</th>
+            <th>LeaderName</th>
+            <th>Symbol</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+  
+    </tbody>
+    </table>
     </div>
-    <div class=" form-group row pb-3">
-      <label for="state" class="col-4 col-form-label font-weight-bold">Leader Name :</label>
-      <div class="col-8">
-        <input type="text" class="form-control" id="leaderName" name="leaderName" placeholder="Enter Leader Name" ></input>
-        <small id="namevalid" class="form-text text-danger invalid-feedback">
-          leader name should only  contain characters 
-         </small>
-      </div>
-    </div>
-    <div class="form-group row pb-3">
-    <label for="constituency" class="col-4 col-form-label font-weight-bold">Symbol :</label>
-      <div class="col-8">
-        <input type="text"  class="form-control" id="symbol" name="symbol" placeholder="Enter Symbol" ></input>
-        <small id="namevalid" class="form-text text-danger invalid-feedback">
-          Constituency name should only contain characters
-         </small>
-      </div>
-    </div>
-    <center>
-        <button class="btn btn-primary" >ADD</button>
-        </center>
-  </form>
-  </div>
+   
+    
+</div></div>
               </div>
               
               <Aside/>
@@ -133,4 +120,4 @@ function AddParty(){
   </div>
   )
 }
-export default AddParty
+export default ViewParty
