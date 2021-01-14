@@ -15,6 +15,8 @@ import Slogan from "./slogan";
 import Aside from "./aside";
 import Footer from "./footer";
 import AdminHeader from "./adminheader";
+import { useState } from 'react';
+
 
 
 
@@ -22,11 +24,12 @@ import AdminHeader from "./adminheader";
 let dispatch;
 let history;
 let selectedState;
-let disable=true;
+
 
 const AddElection= (props) => {
 
-
+  let [filter, setdisable] = useState();
+   setdisable=true;
   dispatch = useDispatch();
   history = useHistory();
   let statlist = useSelector(state => state.electionReducer.statelist);
@@ -105,7 +108,7 @@ const AddElection= (props) => {
   </div>
    
       </div>
-      <button class="btn btn-primary" >ADD</button>
+      <button class="btn btn-primary" disabled={setdisable}>ADD</button>
 </form>
 </div>
             </div>
