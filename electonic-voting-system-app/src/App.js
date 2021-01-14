@@ -41,6 +41,7 @@ function App() {
 
    
    {/*<CandidateForm></CandidateForm>*/}
+   {/*<CandidateForm></CandidateForm>*/}
 
 
 
@@ -59,6 +60,7 @@ function App() {
    <Home></Home>*/}
  
 {/*<AddResult></AddResult>*/}
+{/*<AddResult></AddResult>*/}
 
 {/*<ButtonForm></ButtonForm>*/}
 {/*<ViewResult></ViewResult>*/}
@@ -67,7 +69,6 @@ function App() {
     <div className="App">
       
  
-=======
 {/*<ViewResult></ViewResult>*/}
  
 
@@ -84,38 +85,31 @@ function App() {
 
            {/* <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
-
   <Link to ="/view_candidate">Show</Link>
-
   <Link to ="/view_candidate">Show</Link>*/}
 
 
 
-      <Switch>
+
+        <Switch>
           <Route exact path="/">
             <Home/>
           </Route>
-
-
           <Route exact path="/services">
             <Services/>
           </Route>
-
           <Route path="/admin_services">
             <AdminService/>
           </Route>
-
           <Route path="/VoterServices">
           <VoterServices/>
           </Route>
-
           <Route path="/add_candidate">
             <CandidateForm/>
           </Route>
           <Route path="/view_candidate">
           <ViewCandidates/>
           </Route>
-
           <Route path="/election">
           <AddElection/>
           </Route>
@@ -125,8 +119,9 @@ function App() {
           <Route exact path="/RegisterUser">
             <RegisterUser></RegisterUser>
           </Route>
-
         </Switch> 
+
+        
             
 
        
