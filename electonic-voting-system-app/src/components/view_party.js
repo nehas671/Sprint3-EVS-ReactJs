@@ -19,10 +19,6 @@ function ViewParty(){
     return (
         <div>
   
-          
-          
-  
-  
           <header class="Custom-container py-md-2 py-3   ">
     <div class="header-before"><span class="mr-4"><img src="logo.jpg" alt="brand-name" class="logo"/></span><h1 class="d-inline">Electronic Voting System</h1></div>
           <nav class="navbar navbar-expand-md  navbar-light d-md-block d-lg-flex px-sm-0 py-0 text-wrap ">

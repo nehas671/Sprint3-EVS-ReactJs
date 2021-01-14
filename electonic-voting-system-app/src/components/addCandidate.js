@@ -8,14 +8,18 @@ import * as icons from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Carousel from 'react-bootstrap/Carousel'
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 import AddCandidateAction from '../actions/addCandidate';
+import AdminHeader from './adminheader';
+
 import Candidate from '../models/candidate';
 import Header from "./header";
 import Slogan from "./slogan";
 import Aside from "./aside";
 import Footer from "./footer";
+import { Toast } from 'bootstrap';
 
 
 
@@ -42,54 +46,8 @@ const AddCandidate= (props) => {
     
     return (
     <div>
-        
-        <header class="Custom-container py-md-2 py-3   ">
-            <div class="header-before"><span class="mr-4"><img src="logo.jpg" alt="brand-name" class="logo"/></span><h1 class="d-inline">Electronic Voting System</h1></div>
-            <nav class="navbar navbar-expand-md  navbar-light d-md-block d-lg-flex px-sm-0 py-0 text-wrap ">
 
-
-            {/*<div class="navbar-brand nav-custom-brand mb-3 mb-md-0 py-0">
-                
-    </div>*/}
-            <button class="navbar-toggler  custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav flex-wrap w-100">
-                    <li class="nav-item  nav-item-custom mb-2 mb-md-0 flex-wrap ">
-                        <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="#">Home</a>
-                    </li>
-                    <li class="nav-item  nav-item-custom  mb-2 mb-md-0 flex-wrap ">
-                        <a class="nav-link text-dark px-md-0 border-primary nav-custom-link  " href="#">About Us</a>
-                    </li>
-                    <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        <a class="nav-link text-dark px-md-0  border-primary  nav-custom-link " href="#">Candidate</a>
-                    </li>
-                    <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                        <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">View Candidate</a>
-                    </li>
-                </ul>
-
-                <div class=" d-flex sky-color search-box ">
-                    <input type="search" class=" border-0 sky-color  ml-md-auto" placeholder="search..."></input>
-                    <div class="">
-                        <button class=" btn search-button border-0 sky-color " type="button" id="search-button" ><FontAwesomeIcon icon={icons.faSearch} /></button>
-                    </div>
-                </div>
-
-
-            </div>
-        </nav>
-
-
-    </header>
-
-    
-
+        <AdminHeader/>
 
    <main>
    <Slogan/>
@@ -155,12 +113,14 @@ const AddCandidate= (props) => {
 
     <div class=" form-group row">
         <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">Party Name :</label>
-        <select class="form-control col-7 state" id="exampleFormControlSelect1" onChange={handleChange}>
+        <select class="form-control col-7 state" id="exampleFormControlSelect1" onChange={handleChange} required>
         {renderPartys(partyList)}
     </select>
     </div>
     
-    <center><button class="btn btn-primary">ADD-Candidate</button></center>
+    <center>
+            <button class="btn btn-primary">ADD-Candidate</button>
+    </center>
   
 </form>
 </div>
@@ -208,10 +168,14 @@ function renderPartys(partyList) {
     const email = data.get('email');
     const candidateObj = new Candidate(candidateName, address, age, contact_number, email, selectedPartyName);
     dispatch(AddCandidateAction(candidateObj));
-    history.push('/');
+    history.push('/admin_services');
 };
 
-
+let validCandidateName=false;
+let validCandidateAddress=false;
+let validCandidateAge=false;
+let validCandidateNumber=false;
+let validCandidateEmail=false;
 
 function validateCandidateName(event){
 
@@ -226,11 +190,15 @@ function validateCandidateName(event){
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
+
+      validCandidateName=true;
   
     } else {
   
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
+
+      validCandidateName=true;
     }
 };
 
@@ -247,11 +215,15 @@ function validateCandidateAddress(event){
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
+
+      validCandidateAddress=true;
   
     } else {
   
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
+
+      validCandidateAddress=false;
     }
 
 }
@@ -269,11 +241,15 @@ function validateCandidateAge(event){
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
+
+      validCandidateAge=true;
   
     } else {
   
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
+
+      validCandidateAge=true;
     }
 
 }
@@ -291,11 +267,15 @@ function validateCandidateNumber(event){
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
+
+      validCandidateNumber=true;
   
     } else {
   
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
+
+      validCandidateNumber=false;
     }
 
 }
@@ -313,12 +293,17 @@ function validateCandidateEmail(event){
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
+
+      validCandidateEmail=true;
   
     } else {
   
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
+
+      validCandidateEmail=false;
     }
+
 
 }
 

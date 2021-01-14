@@ -6,22 +6,12 @@ import Aside from './aside';
 import Footer from './footer';
 import Slogan from './slogan';
 
-let dispatch
-const ViewVoterId =(props)=>{
-    //const value=document.getElementById("id").value;
-    let voterList=useSelector(state=>state.userReducer);
+let dispatch;
+let voterlist
+const ViewVoterId =(props)=>{    
+     voterlist= useSelector(state=>state.userReducer);
      dispatch =useDispatch();
-   /* React.useEffect(()=>{
-        VoterList()
-    },[]);
-    const VoterList=()=>{
-        dispatch(viewVoterIdAction(value));
-    }*/
-    console.log("List:",voterList);
-    if(!Array.isArray(voterList)){
-        voterList=[];
-        console.log("set to null array");
-    }
+    console.log("List outside:",voterlist);
     return (
     <div>
 
@@ -63,8 +53,7 @@ const ViewVoterId =(props)=>{
                              </tr>
                          </thead>
                          <tbody>
-                             {renderTableData(voterList)}
-                             {console.log("function called")}
+                             {renderTableData(voterlist)}
                          </tbody>
                      </table>
                    </div> 
@@ -75,29 +64,31 @@ const ViewVoterId =(props)=>{
     </main>
     <Footer/>
 </div>
-)
+);
 };
-function renderTableData(voterList){
-    console.log("list:",voterList);
-    return voterList.map((voter,index)=>{
-        const{user_id,name,dob,voter_id,status}=voter;
-        return(
-            <tr key={user_id}>
-                <td>{user_id}</td>
-                <td>{name}</td>
-                <td>{dob}</td>
-                <td>{voter_id}</td>
-                <td>{status}</td>
-            </tr>
-        )
-    })
+
+
+function renderTableData(voterlist){
+
+    console.log("list inside:",voterlist);
     
-};
+        return(
+            <tr key={voterlist.user_id}>
+                <td>{voterlist.user_id}</td>
+                <td>{voterlist.name}</td>
+                <td>{voterlist.dob}</td>
+                <td>{voterlist.voter_id}</td>
+                <td>{voterlist.status}</td>
+           </tr>
+        )
+    };
+
 function handleSearch(event){
     event.preventDefault();
-  // const data = new FormData(event.target);
-    //const value=data.get('id');
-   const value=document.getElementById("id").value;
+  const data = new FormData(event.target);
+ 
+  console.log("in handle submit:",data)
+  const value = data.get('id');
     console.log("value:",value)
     dispatch(viewVoterIdAction(value));
 }
