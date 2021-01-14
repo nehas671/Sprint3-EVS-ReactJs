@@ -11,6 +11,7 @@ import ShowElections from './components/viewElection'
 import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import AddRequest from './components/addVoterRequest';
+import viewParty from './components/view_party';
 
 import AdminService from './components/adminService';
 import Services from './components/login';
