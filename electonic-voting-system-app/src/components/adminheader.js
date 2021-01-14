@@ -45,10 +45,10 @@ const AdminHeader = (props) =>
                 Party
               </a>
               <div class="dropdown-menu nav-drop-custom  nav-drop position-absolute " aria-labelledby="navbarDropdown">
-                <a class="dropdown-item drop " href="#">
+                <a class="dropdown-item drop " href="/addparty">
                   Add Party
                 </a>
-                <a class="dropdown-item drop" href="#">
+                <a class="dropdown-item drop" href="/viewparty">
                   View Party
                 </a>
               </div>
@@ -67,7 +67,7 @@ const AdminHeader = (props) =>
                 <a class="dropdown-item drop" href="/view_candidate">
                   View Candidate
                 </a>
-                <a class="dropdown-item drop " href="#">
+                <a class="dropdown-item drop " href="/updatecandidate">
                   Update Candidate
                 </a>
                 <a class="dropdown-item drop" href="#">
@@ -83,13 +83,13 @@ const AdminHeader = (props) =>
                 Voter Request
               </a>
               <div class="dropdown-menu nav-drop-custom  nav-drop position-absolute " aria-labelledby="navbarDropdown">
-                <a class="dropdown-item drop " href="#">View VoterRequest</a>
-                <a class="dropdown-item drop" href="#">Approve VoterRequest</a>
+                <a class="dropdown-item drop " href="/viewVoterReq">View VoterRequest</a>
+                <a class="dropdown-item drop" href="/approveRequest">Approve VoterRequest</a>
               </div>
             </li>
           </div>
           <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-            <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">Declare Result</a>
+            <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="/addResult">Declare Result</a>
           </li>
         </ul>
         <div class=" d-flex sky-color search-box ">

@@ -16,11 +16,12 @@ import AdminService from './components/adminService';
 import Services from './components/login';
 import VoterServices from './components/voter_services'
 
-
+import AddParty from './components/add_party'
 import RegisterUser from './components/register_user';
 import AddCandidate from './components/addCandidate';
-
-
+import ViewParty from './components/view_party';
+import ViewVoterReq from './components/view_voterReq';
+import ApproveRequest from './components/approve_request'
 //import ButtonForm from './components/button';
 
 
@@ -119,6 +120,30 @@ function App() {
           <Route exact path="/RegisterUser">
             <RegisterUser></RegisterUser>
           </Route>
+
+          <Route exact path="/viewParty">
+            <ViewParty></ViewParty>
+          </Route>
+
+          <Route exact path="/addParty">
+            <AddParty></AddParty>
+          </Route>
+
+          <Route exact path="/viewVoterReq">
+            <ViewVoterReq></ViewVoterReq>
+          </Route>
+          <Route exact path="/approveRequest">
+            <ApproveRequest></ApproveRequest>
+          </Route>
+          <Route exact path="/addResult">
+            <AddResult></AddResult>
+          </Route>
+
+          <Route exact path="/Officer_services">
+            <Officer></Officer>
+          </Route>
+
+          
         </Switch> 
 
         
