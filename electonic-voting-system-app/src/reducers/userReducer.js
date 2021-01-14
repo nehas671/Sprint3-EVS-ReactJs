@@ -1,3 +1,4 @@
+
 const initialState = [];
 const userReducer = (state=initialState, action) => 
 {
@@ -6,10 +7,15 @@ const userReducer = (state=initialState, action) =>
             return action.payload;
         
         case 'SHOW_DISTRICTS':
-                return action.payload;
+            return action.payload;
+        
+         case 'VIEW_VOTERID':
+             console.log("In reducer",action.payload);
+            return action.payload;
         default:
             return [];
     }
 }
 
 export default userReducer;
+

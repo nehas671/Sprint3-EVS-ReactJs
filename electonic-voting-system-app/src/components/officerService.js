@@ -10,17 +10,18 @@ import Header from './header';
 import Aside from './aside';
 import Footer from './footer';
 import Slogan from './slogan';
-import AdminHeader from './adminheader';
+import OfficerHeader from './officerHeader';
 
 
 
 
-const AdminService = (props) =>
+
+const OfficerService = (props) =>
 {
   return(
   <div>
 
-    <AdminHeader/>
+    <OfficerHeader/>
     <main>
       <Slogan/>
       <section class="Custom-container technology-container">
@@ -36,4 +37,4 @@ const AdminService = (props) =>
   </div>)
 } 
 
-export default AdminService;
+export default OfficerService;

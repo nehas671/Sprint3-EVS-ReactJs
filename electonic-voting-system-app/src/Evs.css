@@ -38,10 +38,25 @@ body {
     margin: 0 auto;
 }
 
+.drop{
+    border: none;
+    outline: none;
 
+}
+.drop:hover{
+    border: none;
+    outline: none;
+
+}
 /*.btn:focus {
     box-shadow: none;
 }*/
+
+.show>.dropdown-menu {
+    display: block;
+   
+    left: 50px
+  }
 
 
 .custom-valid {
@@ -63,6 +78,10 @@ body {
     width: 80px;
 }
 
+.service
+{
+font-family:'Times New Roman', Times, serif;
+}
 
 .header-before{
     text-align: left;
@@ -500,6 +519,12 @@ footer {
         border-bottom: 7px solid;
         margin-bottom: -17px;
     }
+
+    .nav-drop-custom a:hover {
+        border-bottom: none;
+        margin-bottom: 0px;
+    }
+
     .nav-item-custom a:focus {
         border-bottom: 7px solid;
         margin-bottom: -17px;

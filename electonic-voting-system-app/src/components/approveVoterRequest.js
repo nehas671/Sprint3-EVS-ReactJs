@@ -1,23 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as icons from '@fortawesome/free-solid-svg-icons'
+import Slogan from "./slogan";
+import Aside from "./aside";
+import Footer from './footer';
+import { Button } from 'react-bootstrap';
 
-let dispatch;
-let history;
+
 const ApproveRequest = (props)=>{
-
-       
-        dispatch = useDispatch();
-        history = useHistory();
-        
-       
-        React.useEffect(() => {
-            DistrictsList() }, []);
-        
-          const DistrictsList = () => {
-            dispatch(showDistrictsAction())
-          }
-    
-        console.log("DistrictList: ", districtList);
     
         const addVoterRequest = ()=>{
             
@@ -82,14 +71,12 @@ const ApproveRequest = (props)=>{
             <h2>Add Voter Request</h2>
             <br></br>
     
-            <form onSubmit={handleSubmitt}>
+            <form onSubmit="">
                 <div class="form-group row ">
                 <label for="Name" class="col-4 col-form-label font-weight-bold">Name :</label>
                 <div class="col-8">
-            <input type="text"  class="form-control" id="Name" onBlur={validateUserName} required></input>
-            <small id="namevalid" class="form-text text-danger invalid-feedback">
-                Name should only contain characters
-           </small>
+            <input type="text"  class="form-control" id="Name"  required></input>
+        
         </div>
         </div>
         
@@ -97,46 +84,37 @@ const ApproveRequest = (props)=>{
         <div class="form-group row ">
                 <label for="contactNumber" class="col-4 col-form-label font-weight-bold">Mobile Number :</label>
                 <div class="col-8">
-            <input type="text"  class="form-control" id="contactNumber" onBlur={validateMobileNumber} required></input>
-            <small id="numbervalid" class="form-text text-danger invalid-feedback">
-                Number should only contain 10 digits
-           </small>
+            <input type="text"  class="form-control" id="contactNumber"  required></input>
        </div>
         </div>
     
         <div class="form-group row ">
                 <label for="emailId" class="col-4 col-form-label font-weight-bold">Email Id :</label>
                 <div class="col-8">
-            <input type="text"  class="form-control" id="emailId" onBlur={validateEmailId} required></input>
-            <small id="numbervalid" class="form-text text-danger invalid-feedback">
-                Email Id should be in proper format
-           </small>
+            <input type="text"  class="form-control" id="emailId"  required></input>
+            
         </div>
         </div>
     
         <div class="form-group row ">
                 <label for="constituency" class="col-4 col-form-label font-weight-bold">Constituency :</label>
                 <div class="col-8">
-            <input type="text"  class="form-control" id="constituency" onBlur={validateConstiuency} required></input>
-            <small id="namevalid" class="form-text text-danger invalid-feedback">
-                Constituency should only contain characters
-           </small>
+            <input type="text"  class="form-control" id="constituency"  required></input>
+           
         </div>
         </div>
     
         <div class="form-group row">
         <label for="dob" class="col-4 col-form-label mr-3 font-weight-bold">Date Of Birth :</label>
-        <input type="date" id="dob" name="dob" class="col-4 " onBlur={validateDate} required></input>
-        <small id="namevalid" class="form-text text-danger invalid-feedback">
-                    Date of Birth should be less than the current Date
-            </small>
+        <input type="date" id="dob" name="dob" class="col-4 "  required></input>
+        
           </div>
     
     
         <div class=" form-group row">
             <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">District :</label>
-            <select class="form-control col-7 state" id="exampleFormControlSelect1" onChange={handleChange} required>
-               {renderDistrict(districtList)} 
+            <select class="form-control col-7 state" id="exampleFormControlSelect1"  required>
+               
                
         </select>
         </div>

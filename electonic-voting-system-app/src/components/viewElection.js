@@ -5,10 +5,13 @@ import viewByStateAction from '../actions/viewByState';
 import viewByConstituencyAction from '../actions/viewByConstituency';
 import viewByElectionNameAction from '../actions/viewByElectionName';
 import viewByDateAction from '../actions/viewByDate';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import * as icons from '@fortawesome/free-solid-svg-icons'
 import Header from './header';
 import Aside from './aside';
 import Footer from './footer';
 import Slogan from './slogan';
+import AdminHeader from './adminheader';
 
 
 let dispatch;
@@ -34,7 +37,9 @@ const ShowElections = (props) => {
     return (
 
 <div>
-  <Header/>
+<AdminHeader/>
+  
+
       <main>
 
       <Slogan/>
@@ -43,32 +48,36 @@ const ShowElections = (props) => {
           <div class="row mx-0 px-sm-0 mb-4  ">
                             
 
-          <div class="col-8  pl-0 pr-5 bg-light">
+          <div class="col-8  border border-dark pl-0 pr-5 bg-light">
 
-          <div class="container pt-5 ">
+          <div class="container pt-5 px-5 ">
             
-          <form onSubmit={handleSearch}>
-            <div class="form-group row ">
-              <div class="form-inline col-5">
-              <label for="name" class="col-form-label font-weight-bold">Enter choice:</label>
-                <input type="text" class="form-control " id="name" name="name" placeholder="Enter Value"></input>
-              </div>
+          <h3 class="addElectionTitle mb-3">VIEW ELECTION</h3>
+          <form onSubmit={handleSearch} class="d-flex mb-4">
+            <div className="col-9">
+                      <div class=" form-inline row mb-3">
+                      <label for="view" class=" mr-3 font-weight-bold mr-4">View Election By :</label>
+                      <select class="form-control col-5 " id="view">
+                      <option value="ViewAll">View All</option>
+                        <option value="State">State</option>
+                        <option value="ElectionName">Election Name</option>
+                        <option value="Constituency">Constituency</option>
+                        <option value="Date">Date</option>
+                      </select>
+                    </div>
 
-              <div class=" form-inline row">
-              <label for="view" class=" col-4 mr-3 font-weight-bold">Select Option:</label>
-              <select class="form-control col-5 " id="view">
-              <option value="ViewAll">View All</option>
-                <option value="State">State</option>
-                <option value="ElectionName">Election Name</option>
-                <option value="Constituency">Constituency</option>
-                <option value="Date">Date</option>
-              </select>
-            </div>
-            <div class="col-2">
-            <button>Search</button>
-            </div>
-            
-            </div>
+                      <div class="form-group row ">
+                        <div class="form-inline ">
+                        <label for="name" class="col-form-label font-weight-bold mr-2">Enter Search Value : </label>
+                          <input type="text" class="form-control " id="name" name="name" placeholder="Enter Value"></input>
+                        </div>
+                        </div>
+                        </div>
+                  <div class="mt-4">
+                  <button className="btn btn-primary">Search</button>
+                  </div>
+                  
+           
             
             </form>
           <center>

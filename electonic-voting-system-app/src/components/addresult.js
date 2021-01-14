@@ -11,7 +11,7 @@ import showStateAction from '../actions/add_states';
 import showVoteCountAction from '../actions/vote_count';
 import stateReducer from '../reducers/stateReducer';
 import resultReducer from '../reducers/resultReducer';
-
+import addResultAction from '../actions/add_result';
 
 let selectedstateId;
 let history;
@@ -20,16 +20,15 @@ export const AddResult= (props) => {
   
    dispatch = useDispatch();
    let resultList= useSelector(state=> state.resultReducer)
-  let stateList = useSelector(state => state.stateReducer);
-
-    
+  /*let stateList = useSelector(state => state.stateReducer);
+ 
   const StateList = () => {
     dispatch(showStateAction())
   }
   React.useEffect(() => {
     StateList()
   }, []);
-
+/*
   
 
   /*const ResultList = () => {
@@ -40,33 +39,43 @@ export const AddResult= (props) => {
     ResultList()
   }, []);*/
 
-
    return (<div>
 
 <Header></Header>
-<Slogal></Slogal>
-<h2 align='center'>Declare Result</h2>
 
+<main>
+
+<Slogal/>
+<section class="Custom-container technology-container">
+            <div class="row mx-0 px-sm-0 mb-4">
+
+<div class="col-8  pl-0 pr-5">
         <div class="col-8 border border-dark p-5 ml-auto mr-auto">
-       <form onSubmit={handleVoteCount}>
-  <div class="form-group row ">
-    <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name :</label>
+        <h2 class="addElectionTitle">Declare Result</h2>
+       <form onSubmit={handleAdd} >
+  <div class="form-group row pt-4 pb-3 ">
+
+    
+    <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name</label>
     <div class="col-8">
       <input type="text"  class="form-control" name="electionname" id="electionname" ></input>
     </div>
   </div>
   <div class=" form-group row">
-    <label for="statename" class="col-4 mr-3 font-weight-bold">Select State :</label>
+    <label for="statename" class="col-4 mr-3 font-weight-bold">Select State</label>
     <select class="form-control col-7 state" id="statename" >
-    {renderStates(stateList )}
+    <option>Maharashtra</option>
+    <option>Madhya Pradesh</option>
     </select>
 
   </div>
 
-  <button >CountVote</button>
-      <button >Add Result</button>
-        <div class='table  border border-dark col-12'>
-      <table class="table table-hover col-12" >
+  
+  <button  onClick={handleAlternative} type="button" class="btn btn-outline-primary ml-5 mr-5">CountVote</button>
+  <button type="submit" class="btn btn-outline-primary">Add Result</button>
+     
+  <div class="col-3">
+      <table class="table table-border table-striped">
       <thead>
             <tr>
 <th>Election Name</th>
@@ -86,9 +95,16 @@ export const AddResult= (props) => {
 </div>
 
 </form>
-</div>
-<Footer></Footer>
-    </div>)
+      </div>
+            </div>
+
+            <Aside/>
+          </div>
+        </section>
+
+        </main>
+        <Footer/>
+    </div>);
 
 
 }
@@ -130,13 +146,19 @@ return resultList.map((resultList, index) => {
      )
   })
 };
-function handleVoteCount(event) {
+function handleAdd(event) {
   event.preventDefault();
   const data = new FormData(event.target);
   console.log("in handle voteCount:",data)
   const value = data.get('electionname');
   var e = document.getElementById("statename").value;
-  dispatch(showVoteCountAction(value,e))
+  dispatch(addResultAction(value,e))
 }
 
 
+function  handleAlternative(event) {
+  event.preventDefault();
+  const value=document.getElementById('electionname').value;
+  var e = document.getElementById("statename").value;
+  dispatch(showVoteCountAction(value,e))
+}
