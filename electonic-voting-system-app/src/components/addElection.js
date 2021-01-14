@@ -16,6 +16,7 @@ import Aside from "./aside";
 import Footer from "./footer";
 import AdminHeader from "./adminheader";
 import { useState } from 'react';
+import AdminAsideComponent from './adminAside';
 
 
 
@@ -113,7 +114,7 @@ const AddElection= (props) => {
 </div>
             </div>
             
-            <Aside/>
+            <AdminAsideComponent/>
            
             </div>
         </section>
