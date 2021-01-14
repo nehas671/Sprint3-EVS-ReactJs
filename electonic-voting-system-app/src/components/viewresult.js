@@ -31,8 +31,71 @@ export const ViewResult= (props) => {
         console.log("Set resultList to blank array");
     }
     return (<div>
+      
+<div class="container col-6 pt-5">
+<form onSubmit={filterResult}>
+  <div class="form-group row ">
+   
+  <div class=" form-inline row">
+    <label for="viewby" class="col-4 mr-3 font-weight-bold">View Result:</label>
+    <select class="form-control col-5 " id="viewby">
+      <option value="election"> By Election Name</option>
+      <option value="state"> By State Name</option>
+      <option value="party"> By Party Name</option>
+      <option value="view">All Result</option>
+    </select>
+  </div>
 
-<Header>
+
+  <div class="form-inline col-5">
+    <label for="viewbyfilter" class="col-form-label font-weight-bold">Enter Value</label>
+      <input type="text"  class="form-control"  name="viewbyfilter" id="viewbyfilter" ></input>
+  </div>
+     
+
+  <div class="col-2">
+  <button>Search</button>
+  </div>
+
+
+  
+  </div>
+  </form>
+    <center>
+
+
+    <h2 class="font-weight-bold">Result List</h2>
+    
+    
+    <table class="table table-hover col-12" >
+        <thead>
+          
+            <tr>
+                <th>ResultId</th>
+<th>Election Name</th>
+<th>State</th> 
+<th>Date</th>
+<th>Candidate Name</th>
+<th>Party Name</th>
+<th>Constituency</th>
+<th> Votes</th>
+  </tr>
+</thead>
+<tbody>
+  {renderResult(resultList)}
+</tbody>
+</table>
+
+
+</center>
+    </div>
+</div>);
+};
+
+
+
+
+{/*<Header>
 </Header>
 <Slogal></Slogal>
 <h1 align='center'>View Result</h1>
@@ -87,7 +150,7 @@ export const ViewResult= (props) => {
      
      <Footer/>
       </div>);
-    };
+    }*/}
 
 
     function renderResult(resultList) {
@@ -134,7 +197,7 @@ export const ViewResult= (props) => {
       }
       else if(selected=="view")
       {
-        dispatch(viewAllResultAction());
+        dispatch(viewAllResultAction())
       }
     }
 

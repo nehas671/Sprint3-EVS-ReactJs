@@ -18,19 +18,11 @@ import VoterServices from './components/voter_services'
 
 import AddParty from './components/add_party'
 import RegisterUser from './components/register_user';
-<<<<<<< HEAD
-
-
-
-//import ButtonForm from './components/button';
-
-=======
 import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
 import ApproveRequest from './components/approve_request'
 //import ButtonForm from './components/button';
->>>>>>> 51c90248901ed0643881e46dd0d8536e31b7d8f1
 
 
 
@@ -45,18 +37,12 @@ function App() {
    { /*<ShowElections/>*/}
 
     
-   { /*<AddElection></AddElection>*/}
-   { /*<ViewCandidates></ViewCandidates>*/}
+   { /*<AddElection></AddElection>
+   <ViewCandidates></ViewCandidates>*/}
 
    
-<<<<<<< HEAD
-
-   { /* <CandidateForm></CandidateForm>*/}
-
-=======
   
    {/*<CandidateForm></CandidateForm>*/}
->>>>>>> 51c90248901ed0643881e46dd0d8536e31b7d8f1
    {/*<CandidateForm></CandidateForm>*/}
 
 
@@ -66,23 +52,17 @@ function App() {
 
 
 
-
-   { /*<AddElection></AddElection>*/}
-   {/* <ViewCandidates></ViewCandidates>*/}
+   { /*<AddElection></AddElection>
+   <ViewCandidates></ViewCandidates>*/}
 
    
-   {/*<CandidateForm></CandidateForm>*/}
+   {/*<CandidateForm></CandidateForm>
     
-   {/*<RegisterUser></RegisterUser> */}
-   {/*<Home></Home> */}
+   <RegisterUser></RegisterUser>
+   <Home></Home>*/}
  
-<<<<<<< HEAD
-<AddResult></AddResult>
-
-=======
 
 {/*<AddResult></AddResult>*/}
->>>>>>> 51c90248901ed0643881e46dd0d8536e31b7d8f1
 {/*<AddResult></AddResult>*/}
 
 {/*<ButtonForm></ButtonForm>*/}
@@ -105,18 +85,12 @@ function App() {
 
 
            {/* <Link to="/"></Link>
-
             <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
   <Link to ="/view_candidate">Show</Link>
   <Link to ="/view_candidate">Show</Link>*/}
 
-<<<<<<< HEAD
-
-
-=======
       <Switch>
->>>>>>> 51c90248901ed0643881e46dd0d8536e31b7d8f1
 
           <Route exact path="/">
             <Home/>
@@ -145,13 +119,6 @@ function App() {
           <Route exact path="/RegisterUser">
             <RegisterUser></RegisterUser>
           </Route>
-<<<<<<< HEAD
-
-        </Switch> */}
-
-
-
-=======
 
           <Route exact path="/viewParty">
             <ViewParty></ViewParty>
@@ -179,15 +146,15 @@ function App() {
         </Switch> 
 
         
->>>>>>> 51c90248901ed0643881e46dd0d8536e31b7d8f1
             
 
        
         </div>       
            
-</div>
 
-    );
+
+  
+        </div>   );
  
 }
 
