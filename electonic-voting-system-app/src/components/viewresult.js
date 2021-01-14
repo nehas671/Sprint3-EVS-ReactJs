@@ -51,18 +51,16 @@ export const ViewResult= (props) => {
 
   <div class="form-group row ">
     <label for="viewbyfilter" class="col-4 col-form-label font-weight-bold">Enter Value</label>
-    <div class="col-8">
+    <div class="col-4" >
       <input type="text"  class="form-control"  name="viewbyfilter" id="viewbyfilter" ></input>
+      <br></br>
+      <button align='center' id='btn1'>Search</button>
     </div>
-    <div class="col-2">
+    <div class="col-8 pl-7" >
 
-   <button id='btn1'>Search</button>
+  
     </div>
   </div>
-
-
-
-
 
 </form>
 

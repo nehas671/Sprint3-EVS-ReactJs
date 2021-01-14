@@ -4,6 +4,8 @@ const  resultReducer = (state=[],  action) => {
             return action.payload;
             case 'VIEW_RESULT':
                 return action.payload;
+             case 'ADD_RESULT':
+                    return action.payload   
         default:
             return [];
     }

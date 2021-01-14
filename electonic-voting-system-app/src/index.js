@@ -1,4 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import $ from 'jquery';
+import Popper from 'popper.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,21 +12,24 @@ import { createStore, applyMiddleware, compose,combineReducers } from 'redux';
 import electionReducer from './reducers/electionReducer';
 import castVoteReducer from './reducers/voteReducer';
 import candidateReducer from './reducers/candidateReducer';
+import partyReducer from './reducers/partyReducer';
 import resultReducer from './reducers/resultReducer';
 import OfficerReducer from './reducers/officerReducer';
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { BrowserRouter} from "react-router-dom";
+import userReducer from './reducers/userReducer';
 
 import stateReducer from './reducers/stateReducer';
+import UserReducer from './reducers/userReducer';
+import scheduleReducer from './reducers/schedule_reducer';
 
+let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer,
+'officerReducer':OfficerReducer,'userReducer':UserReducer,'scheduleReducer':scheduleReducer, 'partyReducer':partyReducer})
 
-let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer
-,'officerReducer':OfficerReducer})
 let store = createStore(allReducers, 
   compose(applyMiddleware(ReduxThunk)
   ) );
-
 
 
 
@@ -35,7 +41,7 @@ ReactDOM.render(
 
      <Provider store={store}>
      <BrowserRouter>
-    <App />
+    <App store={store}/>
     </BrowserRouter>
     </Provider>
   </React.StrictMode>

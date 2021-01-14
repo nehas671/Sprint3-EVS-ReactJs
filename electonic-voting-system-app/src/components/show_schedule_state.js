@@ -9,7 +9,7 @@ let selectedElectionId
 const ViewScheduleState = (props) => {
 
 
-    let scheduleList = useSelector(state => state);
+    let scheduleList = useSelector(state => state.scheduleReducer);
 
     const dispatch = useDispatch();
     const myInput = useRef();
@@ -42,11 +42,11 @@ function handleChange(event) {
 
 function renderScheduleStates(scheduleList) {
     console.log("stateList: ", scheduleList);
-    //console.log("deptList[0].deptId: ", scheduleList[0].electionId);
+    //console.log("scheduleList[0].state: ", scheduleList[0].state);
     return scheduleList.map((schedule, index) => {
        const {  electionId,state } = schedule //destructuring
        return (
-        <option key={electionId} value={electionId}>{state}</option>
+        <option key={electionId} value={state}>{state}</option>
        )
     })
  };
