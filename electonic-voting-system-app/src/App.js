@@ -19,7 +19,6 @@ import Services from './components/login';
 
 
 import RegisterUser from './components/register_user';
-import AddParty from './components/add_party';
 
 //import ButtonForm from './components/button';
 
@@ -29,7 +28,7 @@ import AddParty from './components/add_party';
 function App() {
   return(
     <div>
-<AddParty></AddParty>
+
 
 {/* <AddElection></AddElection>*/}
 
@@ -67,7 +66,7 @@ function App() {
     <div className="App">
       
  
-
+=======
 {/*<ViewResult></ViewResult>*/}
  
 
