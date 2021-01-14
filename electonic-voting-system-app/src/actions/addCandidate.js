@@ -1,29 +1,30 @@
-let addCandidateAction = (candidate) => {
-    return async function (dispatch) {
-        console.log("in action",candidate.party.partyName);
-        let name=candidate.party.partyName;
-        let leader=candidate.party.leader;
-        let symbol=candidate.party.symbol;
-        const res = await fetch(
-            "http://localhost:8080/evs/candidate", { 
-                method: "POST", 
-                body: JSON.stringify({ 
-                    candidateName: candidate.candidateName, 
-                    address: candidate.address,
-                    age: candidate.age,
-                    contact_number: candidate.contact_number,
-                    email: candidate.email,
-                    party: {"partyName": name, "leader": leader, 
-                    "symbol": symbol}
-                    
-                }), 
-                headers: { 
+import axios from 'axios';
+
+const AddCandidateAction = (candidate) => {
+    return async function(dispatch) {
+        //let name=candidate.party.partyName;
+        //let leader=candidate.party.leader;
+        //let symbol=candidate.party.symbol;
+        const res = await axios.post(
+            "http://localhost:8080/evs/candidate",
+            { 
+                candidateName: candidate.candidateName, 
+                address: candidate.address,
+                age: candidate.age,
+                contact_number: candidate.contact_number,
+                email: candidate.email,
+                party: {"partyName": candidate.party.partyName, "leader": candidate.party.leader, 
+                        "symbol": candidate.party.symbol}
+            },
+
+            {
                     "Content-type": "application/json; charset=UTF-8"
-                }
-            });
-          const data = await res.json();
-          dispatch({type: "ADD_CANDIDATE", payload: data});
+            }
+            );
+          console.log('Add Candidate serverResponse: ', res.data);
+          dispatch({type: "ADD_CANDIDATE", payload: res.data});
+
     }
 }
 
-export default addCandidateAction;
+export default AddCandidateAction;

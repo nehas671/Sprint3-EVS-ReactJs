@@ -3,7 +3,7 @@ import Home from './components/home'
 
 import Officer from './components/electrorall_officer';
 import ViewCandidates from './components/ViewCandidate';
-import AddCandidate from './components/addCandidate';
+
 
 import AddElection from './components/addElection'
 import ViewResult from './components/viewresult'
@@ -110,7 +110,7 @@ function App() {
           </Route>
 
           <Route path="/add_candidate">
-            <AddCandidate/>
+            <CandidateForm/>
           </Route>
           <Route path="/view_candidate">
           <ViewCandidates/>

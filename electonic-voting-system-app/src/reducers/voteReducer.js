@@ -1,10 +1,16 @@
-const intitialState = [];
-const castVoteReducer = (state=intitialState, action) =>
+
+const castVoteReducer = (state={candidates:[], castvote:[]}, action) =>
 {
     switch (action.type)
     {
         case 'GET_CANDIDATE':
-            return action.payload;
+            state.candidates = action.payload;
+            return state;
+
+        case 'ADD_VOTE':
+            state.castvote = action.payload;
+            return state;
+
         default:
             return [];
     }
