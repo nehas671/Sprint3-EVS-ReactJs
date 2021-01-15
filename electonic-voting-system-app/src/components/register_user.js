@@ -98,7 +98,7 @@ const Registeruser = (props) => {
         <div class="form-group row ">
             <label for="Name" class="col-4 col-form-label font-weight-bold">Name :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="Name" placeholder="Enter name"  onBlur={validateUserName} required></input>
+        <input type="text"  class="form-control" id="Name"  name="name" placeholder="Enter name"  onBlur={validateUserName} required></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
             Name should only contain characters
        </small>
@@ -147,13 +147,14 @@ const Registeruser = (props) => {
 
       <div class=" form-group row">
         <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">District :</label>
-        <select class="form-control col-7 state" id="exampleFormControlSelect1" onChange={handleChange} required>
+        <select class="form-control col-7 state" id="exampleFormControlSelect1" placeholder="Select District" onChange={handleChange} required>
            {renderDistrict(districtList)} 
+           
            
     </select>
     </div>
-    
-    <Button variant="primary" name="add" value="Register User" onClick={RegisterUser}>RegisterUser</Button>
+
+    <button class="btn btn-primary" >ADD</button>
   
     </form>
         </div>
@@ -317,11 +318,12 @@ function validateDate(event) {
     console.log("selected District: ", selectedDistrict);
   }
   function renderDistrict(districtList) {
+      
     console.log("DistrictsList: ", districtList);
     return districtList.map((district, index) => {
         console.log("district:",district);
        return (
-        <option key={district.district} value={district.district}>{district}</option>
+        <option key={district.district} value={district.district}>{district.district}</option>
        )
     })
   };
@@ -334,8 +336,8 @@ function validateDate(event) {
   const name = data.get('name');
   const address = data.get('address');
   
-  const contactNumber = data.get('contactNumber');
-  const emailId= data.get('emailId');
+  const contactNumber = data.get('contact_number');
+  const emailId= data.get('email');
   const dob = data.get('dob');
   console.log(dob);
   
