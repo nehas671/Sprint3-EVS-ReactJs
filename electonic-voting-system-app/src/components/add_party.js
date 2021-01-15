@@ -130,7 +130,7 @@ function handleSubmit(event) {
   console.log("partyObj:",partyObj);
   dispatch(addPartyAction(partyObj));
   alert("Party Added Succesfully");
-  history.push('/viewParty');
+  history.push('/admin_service');
   
   
     
@@ -157,8 +157,6 @@ function validatePartyName(event) {
     
         // inputRequired(username, str);
         validPartyname = false;
-
-
   }
 }
 

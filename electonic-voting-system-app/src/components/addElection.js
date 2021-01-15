@@ -163,6 +163,7 @@ function handleSubmit(event) {
   const empObj = new Election(name, selectedState, constituency,date);
   console.log("electionObj:",empObj);
   dispatch(addElectionAction(empObj));
+  alert("Party Added Succesfully");
   history.push('/election');
   
   

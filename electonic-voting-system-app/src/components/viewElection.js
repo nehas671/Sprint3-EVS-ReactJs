@@ -17,6 +17,7 @@ import Footer from './footer';
 import Slogan from './slogan';
 import AdminHeader from './adminheader';
 import { useState } from 'react';
+import AdminAsideComponent from './adminAside';
 
 let dispatch;
 let selectedview;
@@ -208,7 +209,7 @@ const ShowElections = (props) => {
           
           </div>
           
-          <Aside/>
+          <AdminAsideComponent/>
           
 
           </div>

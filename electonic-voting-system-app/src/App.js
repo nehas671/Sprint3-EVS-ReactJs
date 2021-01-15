@@ -32,6 +32,8 @@ import DeleteCandidate from './components/deleteCandidate';
 
 import ViewVoterId from './components/viewVoterId';
 
+
+
 //import ButtonForm from './components/button';
 
 
@@ -89,7 +91,7 @@ function App() {
 
 
    
-<DeleteResult></DeleteResult>
+
 
   <div className="App">
       
@@ -161,6 +163,7 @@ function App() {
             <OfficerService></OfficerService>
           </Route>
 
+
           <Route exact path='/votecast'>
             <CastVote />
           </Route>
@@ -171,13 +174,20 @@ function App() {
             <Route exact path ="/deleteCandidate">
             <DeleteCandidate/>
             </Route>
+            
+            <Route exact path ="/appRejVoterReq">
+            <ApproveRequest/>
+            </Route>
+
+            <Route exact path ="/addVoterReq">
+            <AddRequest/>
+            </Route>
+
+            
            
-
+            
         
-          <Route exact path='/votecast'>
-            <CastVote />
-          </Route>
-
+         
           <Route exact path="/addVoterRequest">
             <AddRequest></AddRequest>
           </Route>

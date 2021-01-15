@@ -14,14 +14,13 @@ const VoterHeader = (props)=>
                 <h1 class="d-inline">Electronic Voting System</h1>
             </div>
             <nav class="navbar navbar-expand-md  navbar-light d-md-block d-lg-flex px-sm-0 py-0 text-wrap ">
-                {/<div class="navbar-brand nav-custom-brand mb-3 mb-md-0 py-0"></div>/}
+                {/*<div class="navbar-brand nav-custom-brand mb-3 mb-md-0 py-0"></div>*/}
                 <button class="navbar-toggler  custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav flex-wrap w-100">
-                        <li class="nav-item  nav-item-custom mb-2 mb-md-0 flex-wrap ">
-                            <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="/VoterServices">
+                        <li class="nav-item  nav-item-custom mb-2 mb-md-0 flex-wrap "><a  href="/VoterServices">
                                 Home
                             </a>
                         </li>
