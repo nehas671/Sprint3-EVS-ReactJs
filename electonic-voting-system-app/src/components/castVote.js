@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { Button, Card, Table} from 'react-bootstrap';
 import Election from '../models/election';
@@ -10,6 +10,7 @@ import { BrowserRouter as Router,  Switch,  Route,  Link, useHistory } from "rea
 import Footer from "./footer";
 import VoterHeader from './voterHeader';
 import VoterAsideComponent from './voterAside'
+import showStatesAction from '../actions/get_states';
 
 let dispatch;
 let listState = false;
@@ -51,6 +52,17 @@ function handleStateChange(event)
         console.error('State should have characters only!')
     }
 }
+
+function renderStates(stateList ) {
+    console.log("stateList: ", stateList);
+    return stateList.map((states, index) => {
+      const { state } = states 
+      return (
+        <option key={state} value={state}>{state}</option>
+      )
+    })
+};
+
 
 function handleConstituencyChange(event)
 {
@@ -155,9 +167,31 @@ const handleList = (event)=>
     }
 }
 
+
+
 const CastVote =(props)=>
 {   
+    dispatch = useDispatch();
+
+    let [filter, setStateList] = useState();
+    
     let candidateList = useSelector((state) => state.castVoteReducer.candidates);
+    let stateList = useSelector((state)=>state.castVoteReducer.statelist);
+    
+    React.useEffect(()=>{
+        StateList()
+    }, []);
+    
+    const StateList = () => 
+    {    
+        dispatch(showStatesAction())
+    }
+
+    if(!Array.isArray(stateList))
+    {
+        stateList = [];
+        console.log("Set stateList to blank array");
+    }
 
     const electionNameRef = useRef(null);
     const stateRef = useRef(null);
@@ -167,7 +201,7 @@ const CastVote =(props)=>
     const partyNameRef = useRef(null);
     const voterIDRef = useRef(null);
 
-    dispatch = useDispatch();
+    
     
     history = useHistory();
 
@@ -265,10 +299,13 @@ const CastVote =(props)=>
                                                 Election State:
                                             </label>
                                             <div>
-                                                <input id="state" name="state" type="text" placeholder="Eg. Maharashtra"  ref={stateRef} onBlur={handleStateChange} required/>
-                                                <small id="namevalid" class="form-text text-danger invalid-feedback">
-                                                    State should only contain characters!
-                                                </small> 
+                                                <select id="state" name="state" ref={stateRef} onBlur={handleStateChange} required>
+                                                    <option></option>
+                                                    {renderStates(stateList)}
+                                                    <small id="namevalid" class="form-text text-danger invalid-feedback">
+                                                        State should only contain characters!
+                                                    </small> 
+                                                </select>
                                             </div>
                                         </div>
                                         <div className="form-group row pb-2" >
