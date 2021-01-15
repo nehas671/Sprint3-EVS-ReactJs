@@ -19,6 +19,16 @@ import Slogal from './slogan';
 let selectedstateId;
 let history;
 let dispatch
+
+let listState = false;
+let set = true;
+let validElectionName = false;
+let validState = false;
+
+
+
+
+
 export const AddResult= (props) => {
    dispatch = useDispatch();
 
@@ -104,7 +114,7 @@ if(!Array.isArray(stateList)) {
             <div class="col-8  pl-0 pr-5">
             <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
               <h2 class="addElectionTitle">Declare Result</h2>
-              <form onSubmit={handleAdd} >
+              <form onSubmit={handleAdd} onMouseMove={EnableDisable}>
   {/*<div class="form-group row pt-4 pb-3">
   <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name</label>
     <div class="col-8">
@@ -118,23 +128,41 @@ if(!Array.isArray(stateList)) {
 
   <div class=" form-group row">
     <label for="electionname" class="col-4 mr-3 font-weight-bold">Select Election Name</label>
-    <select class="form-control col-7 state" id="electionname" onChange={handleElectionName} >
+    <select class="form-control col-7 state" id="electionname" onChange={handleElectionName}  onBlur={handleElectionNameChange} >
+   <option></option>
    {renderElection(electionList)}
     </select>
+
+    <small id="namevalid" class="form-text text-danger invalid-feedback">
+   Please select Election Name from the list!
+
+   </small>
   </div>
 
 
   <div class=" form-group row">
     <label for="statename" class="col-4 mr-3 font-weight-bold">Select State</label>
-    <select class="form-control col-7 state" id="statename" onChange={handleChange} >
+    <select class="form-control col-7 state" id="statename"  onBlur={handleStateChange}   onChange={handleChange} >
+  <option></option>
+  
    {renderStates(stateList)}
     </select>
+
+
+
+    <small id="namevalid" class="form-text text-danger invalid-feedback">
+   Please select  State Name from the list
+
+   </small>
+
+
+
 
   </div>
 
  
-  <button  onClick={handleAlternative} type="button" class="btn btn-outline-primary ml-5 mb-3 mr-5">Vote Count</button>
-  <button type="submit" class="btn btn-outline-primary mb-3">Add Result</button>
+  <button  onClick={handleAlternative}   id="btnsubmit" disabled="disabled" type="button" class="btn btn-outline-primary ml-5 mb-3 mr-5">Vote Count</button>
+  <button type="submit"    id="btnsubmit2" disabled="disabled" class="btn btn-outline-primary mb-3">Add Result</button>
      
 
   <div class="col-3">
@@ -242,6 +270,76 @@ function  handleAlternative(event) {
   var e = document.getElementById("statename").value;
   dispatch(showVoteCountAction(value,e))
 }
+
+
+
+
+function handleElectionNameChange(event)
+{
+    var enteredElectionName=event.target.value;
+    if(enteredElectionName ==="")
+    {
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+        console.error("Please select election name from drop down!")
+    }
+    else
+    {
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+        console.log({enteredElectionName});
+        validElectionName = true;
+    }
+}
+
+
+
+
+function handleStateChange(event)
+{
+    var enteredState = event.target.value;
+    if(enteredState ==="")
+    {
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+        console.error("Please select state from drop down!")
+    }
+    else
+    {
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+        console.log({enteredState});
+        validState = true;
+    }
+}
+
+
+
+function EnableDisable(event)
+{
+    event.preventDefault();
+    var btnsubmit=document.getElementById("btnsubmit");
+    var btnsubmit2=document.getElementById("btnsubmit2")
+    console.log("handle disabled called");
+    console.log("validElectionName: ",validElectionName);
+    console.log("validState:",validState);
+    
+    if(validElectionName&&validState)
+    {
+        set=false;
+        console.log("set",set);
+        btnsubmit.disabled=false;
+        btnsubmit2.disabled=false;
+    }
+    else
+    {
+        btnsubmit.disabled=true;
+        btnsubmit2.disabled=true;
+    }
+}
+
+
+
 
 
 /*let validElectionname=false;
