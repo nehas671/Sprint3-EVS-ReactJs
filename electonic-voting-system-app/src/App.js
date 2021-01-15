@@ -1,37 +1,29 @@
 import './App.css';
 import Home from './components/home'
 
-
-
-import AddCandidate from './components/addCandidate';
-
 import OfficerService from './components/officerService';
-
 import ViewCandidates from './components/ViewCandidate';
 
 
 import AddElection from './components/addElection'
-
+import ViewResult from './components/viewresult'
 import ShowElections from './components/viewElection'
-import AddResult from './components/AddResult';
+import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import AddRequest from './components/addVoterRequest';
-
-
 import viewParty from './components/view_party';
 
 import AdminService from './components/adminService';
 import Services from './components/login';
-import VoterServices from './components/voter_services';
+import VoterServices from './components/voter_services'
 
-import AddParty from './components/add_party';
+import AddParty from './components/add_party'
 import RegisterUser from './components/register_user';
-
+import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
-import ApproveRequest from './components/approveVoterRequest';
+import ApproveRequest from './components/approveVoterRequest'
 //import ButtonForm from './components/button';
-
 
 
 
@@ -39,12 +31,6 @@ import ApproveRequest from './components/approveVoterRequest';
 function App() {
   return(
     <div>
-
-    
-
-   
-    <div className="App">
-      
  
 
 {/* <AddElection></AddElection>*/}
@@ -103,7 +89,6 @@ function App() {
 
             <Link to="/"></Link>
 
-
            {/* <Link to="/">Home</Link>&nbsp;&nbsp;
 
 
@@ -115,21 +100,11 @@ function App() {
   <Link to ="/view_candidate">Show</Link>*/}
 
 
-<<<<<<< HEAD
-
-
-
-      <Switch>
-=======
      <Switch>
->>>>>>> 06adc08ff7a40a0d34db7f2a12953b5c4c52685e
 
           <Route exact path="/">
             <Home/>
           </Route>
-
-
-
           <Route exact path="/services">
             <Services/>
           </Route>
@@ -139,24 +114,20 @@ function App() {
           <Route path="/VoterServices">
           <VoterServices/>
           </Route>
-
           <Route path="/add_candidate">
             <AddCandidate/>
           </Route>
           <Route path="/view_candidate">
           <ViewCandidates/>
           </Route>
-
-
-
           <Route path="/election">
           <AddElection/>
           </Route>
           <Route path="/showelection">
           <ShowElections/>
           </Route>
-          <Route exact path="/addVoterRequest">
-            <AddRequest></AddRequest>
+          <Route exact path="/RegisterUser">
+            <RegisterUser></RegisterUser>
           </Route>
 
           <Route exact path="/viewParty">
@@ -184,30 +155,17 @@ function App() {
           
      </Switch> 
 
-<<<<<<< HEAD
-        </div>       
-       
-        
-    </div>
-  );
-}
-        
-=======
          
   
->>>>>>> 06adc08ff7a40a0d34db7f2a12953b5c4c52685e
             
-
-
 
        
         </div>       
 
 
   
-          )
+        </div>   );
  
-};
-
+}
 
 export default App;

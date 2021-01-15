@@ -64,6 +64,7 @@ const RegisterUser = (props) => {
         <input type="text"  class="form-control" id="Address" onBlur={validateAddress} required></input>
         
     </div>
+    
     </div>
 
     <div class="form-group row">
