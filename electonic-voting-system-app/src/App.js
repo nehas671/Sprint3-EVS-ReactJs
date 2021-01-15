@@ -18,7 +18,7 @@ import Services from './components/login';
 import VoterServices from './components/voter_services'
 
 import AddParty from './components/add_party'
-import RegisterUser from './components/register_user';
+import Registeruser from './components/register_user';
 import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
@@ -127,7 +127,7 @@ function App() {
           <ShowElections/>
           </Route>
           <Route exact path="/RegisterUser">
-            <RegisterUser></RegisterUser>
+            <Registeruser></Registeruser>
           </Route>
 
           <Route exact path="/viewParty">
