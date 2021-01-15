@@ -6,12 +6,12 @@ import CastVoteModel from '../models/castVoteModel';
 import getCandidateListAction from '../actions/getCandidateAction';
 import castVoteAction from '../actions/castVoteAction';
 import Slogan from './slogan';
-import { BrowserRouter as Router,  Switch,  Route,  Link, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
 import Footer from "./footer";
 import VoterHeader from './voterHeader';
 import VoterAsideComponent from './voterAside'
-import showStatesAction from '../actions/get_states';
-import GetAllElectionElectionName from '../actions/getAllElectionName';
+import GetStateAction from '../actions/getState';
+import GetDistinctElectionName from '../actions/getElectionName';
 
 let dispatch;
 let listState = false;
@@ -38,7 +38,7 @@ const CastVote =(props)=>
 
     const ElectionNameList = () =>
     {
-        dispatch(GetAllElectionElectionName())
+        dispatch(GetDistinctElectionName())
         .then((response) => {
             console.log("Response: ", response);
             console.log("electionNameList ", electionNameList);
@@ -58,7 +58,7 @@ const CastVote =(props)=>
     
     const StateList = () => 
     {    
-        dispatch(showStatesAction())
+        dispatch(GetStateAction())
     }
 
     if(!Array.isArray(stateList))
@@ -346,27 +346,26 @@ function handleConstituencyChange(event)
     }
 }
 
-function EnableDisable(event){
+function EnableDisable(event)
+{
     event.preventDefault();
     var btnsubmit=document.getElementById("btnsubmit");
-  
+    
     console.log("handle disabled called");
     console.log("validElectionName: ",validElectionName);
     console.log("validState:",validState);
-    console.log("validConstituency:",validConstituency)
+    console.log("validConstituency:",validConstituency);
     if(validElectionName&&validState&&validConstituency)
-          {  
-              set=false;
-            console.log("set",set);
-            btnsubmit.disabled=false;
-           
-          }
-          else{
-            btnsubmit.disabled=true;
-        }
-      
-   
-  }
+    {
+        set=false;
+        console.log("set",set);
+        btnsubmit.disabled=false;
+    }
+    else
+    {
+        btnsubmit.disabled=true;
+    }
+}
 
 function handleCandidateNameChange(event)
 {
@@ -405,23 +404,6 @@ function handlePartyNameChange(event)
         event.target.classList.remove('custom-valid');
         event.target.classList.add('custom-invalid');
         console.error('Party Name should have characters only!');
-    }
-}
-
-function handleVoterIDChange(event)
-{
-    var enteredVoterId = event.target.value;
-    if(enteredVoterId ==="")
-    {
-        event.target.classList.remove('custom-valid');
-        event.target.classList.add('custom-invalid');
-        console.error("Please select state from drop down!")
-    }
-    else
-    {
-        event.target.classList.remove('custom-invalid');
-        event.target.classList.add('custom-valid');
-        console.log({enteredVoterId});
     }
 }
 

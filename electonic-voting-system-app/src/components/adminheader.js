@@ -4,7 +4,7 @@ import * as icons from '@fortawesome/free-solid-svg-icons'
 const AdminHeader = (props) =>
 {
   return(
-    <header class="Custom-container py-md-2 py-3   ">
+  <header class="Custom-container py-md-2 py-3">
     <div class="header-before">
       <span class="mr-4">
         <img src="logo.jpg" alt="brand-name" class="logo"/>
@@ -88,9 +88,6 @@ const AdminHeader = (props) =>
               </div>
             </li>
           </div>
-
-
-
           <div className='btn-group dropdown'>
             <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
               {/* <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">Voter Request</a>*/}
@@ -103,9 +100,6 @@ const AdminHeader = (props) =>
               </div>
             </li>
           </div>
-
-
-        
         </ul>
         <div class=" d-flex sky-color search-box ">
           <input type="search" class=" border-0 sky-color  ml-md-auto" placeholder="search..."></input>
