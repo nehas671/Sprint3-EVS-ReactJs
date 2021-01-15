@@ -202,7 +202,8 @@ function renderTableData(voterList) {
                 <td>{district}</td>
                 <td>{voter_id}</td>
                 <td>{status}</td>
-                <td><Button as="input" type="button" value="approve/reject"></Button></td>
+                <td><Button as="input" type="button" value="approve"></Button></td>
+                <td><Button as="input" type="button" value="reject"></Button></td>
         </tr>
      )
   })
