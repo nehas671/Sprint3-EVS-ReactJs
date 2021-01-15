@@ -11,6 +11,7 @@ import ShowElections from './components/viewElection'
 import {AddResult} from './components/addresult';
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 import AddRequest from './components/addVoterRequest';
+import viewParty from './components/view_party';
 
 import AdminService from './components/adminService';
 import Services from './components/login';
@@ -22,6 +23,7 @@ import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
 import ApproveRequest from './components/approveVoterRequest'
+import CastVote from './components/castVote';
 //import ButtonForm from './components/button';
 
 
@@ -92,14 +94,13 @@ function App() {
 
 
            {/* <Link to="/"></Link>
-
             <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
   <Link to ="/view_candidate">Show</Link>
   <Link to ="/view_candidate">Show</Link>*/}
 
 
-      <Switch>
+     <Switch>
 
           <Route exact path="/">
             <Home/>
@@ -150,11 +151,18 @@ function App() {
           <Route exact path="/Officer_services">
             <OfficerService></OfficerService>
           </Route>
-
+          <Route exact path='/votecast'>
+            <CastVote />
+          </Route>
           <Route exact path="/addVoterRequest">
             <AddRequest></AddRequest>
           </Route>
-        </Switch>  
+     </Switch> 
+
+
+          
+         
+
             
 
        

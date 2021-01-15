@@ -1,11 +1,21 @@
-const  resultReducer = (state=[],  action) => {
+import { act } from "react-dom/test-utils";
+
+const  resultReducer = (state={viewresult:[],votecount:[],statelist:[],addresult:[]},  action) => {
     switch(action.type) {
             case 'SHOW_VOTECOUNT':
-            return action.payload;
+                state.votecount=action.payload;
+            return state;
+
             case 'VIEW_RESULT':
-                return action.payload;
+                state.viewresult=action.payload;
+                return state;
              case 'ADD_RESULT':
-                    return action.payload   
+                 state.addresult=action.payload;
+                    return state;
+
+                    case 'SHOW_STATES':
+                        state.statelist=action.payload;
+                        return state;
         default:
             return [];
     }

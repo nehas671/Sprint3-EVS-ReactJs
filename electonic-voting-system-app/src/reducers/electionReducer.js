@@ -1,12 +1,27 @@
-const initialState = [];
-const electionReducer = (state=initialState, action) => {
+
+const electionReducer = (state={initialState:[],filter:[],statelist:[]}, action) => {
     switch(action.type) {
         case 'ADD_ELECTION':
-            return action.payload;
+            state.initialState.push(action.payload);
+            return state;
         case 'SHOW_ELECTION':
-            return action.payload;
+            state.initialState=action.payload;
+            return state;
             case 'SHOW_STATES':
-                return action.payload;
+                state.statelist=action.payload;
+                return state;
+            case 'CONSTITUENCY_NAME':
+                 state.filter=action.payload;
+            return state;
+            case 'ELECTION_NAME':
+                state.filter=action.payload;
+           return state;
+           case 'STATE':
+            state.filter=action.payload;
+          return state;
+           case 'DATE':
+                    state.filter=action.payload;
+                 return state;
         default:
             return [];
     }
