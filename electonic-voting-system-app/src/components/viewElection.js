@@ -17,6 +17,7 @@ import Footer from './footer';
 import Slogan from './slogan';
 import AdminHeader from './adminheader';
 import { useState } from 'react';
+import AdminAsideComponent from './adminAside';
 
 let dispatch;
 let selectedview;
@@ -155,7 +156,7 @@ const ShowElections = (props) => {
           <div class="container pt-5 px-5 ">
             
           <h3 class="addElectionTitle mb-3">VIEW ELECTION</h3>
-          <form onSubmit={handleSearch} class="d-flex mb-4">
+          <form onSubmit={handleSearch} class="d-flex mb-4" onMouseMove={EnableDisable}>
             <div className="col-9">
                       <div class=" form-inline row mb-3">
                       <label for="view" class=" mr-3 font-weight-bold mr-4">View Election By :</label>
@@ -178,7 +179,7 @@ const ShowElections = (props) => {
                      
                         </div>
                   <div class="mt-4">
-                  <button className="btn btn-primary">Search</button>
+                  <button className="btn btn-primary" id="btnsubmit" disabled="disabled">Search</button>
                   </div>
                   
            
@@ -208,7 +209,7 @@ const ShowElections = (props) => {
           
           </div>
           
-          <Aside/>
+          <AdminAsideComponent/>
           
 
           </div>
@@ -225,6 +226,26 @@ const ShowElections = (props) => {
      
 );
 };
+
+
+
+function EnableDisable(event){
+  event.preventDefault();
+  var btnsubmit=document.getElementById("btnsubmit");
+  console.log("selectedOption",selectedOption);
+  let option=undefined;
+  if(selectedOption!=undefined)
+        {  
+           
+          btnsubmit.disabled=false;
+         
+        }
+        else{
+          btnsubmit.disabled=true;
+      }
+    
+ 
+}
 
 
 

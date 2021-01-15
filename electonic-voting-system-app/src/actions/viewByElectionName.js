@@ -1,7 +1,7 @@
 let viewByElectionNameAction = (electionname) => {
     return async function (dispatch) {
         const res = await fetch(
-            `http://localhost:8080/evs/election/electionname/${electionname}`, {
+            `http://localhost:9090/evs/election/electionname/${electionname}`, {
                 method: "GET",
                 headers: {
                     "Access-Control-Allow-Origin": "*"

@@ -130,11 +130,18 @@ const ViewCandidates = (props) => {
             <div className="col-9">
                       <div class=" form-inline row mb-3">
                       <label for="view" class=" mr-3 font-weight-bold mr-4">Candidate View By</label>
+<<<<<<< HEAD
                       <select class="form-control col-5 " id="view" onChange={searchHandleChange} required> 
                       <option >Select View All</option>
                       <option >View All</option>
                         <option >Candidate Name</option>
                         <option>Party Name</option>
+=======
+                      <select class="form-control col-5 " id="view" required> 
+                      <option value="ViewAll">View All</option>
+                        <option value="CandidateName">Candidate Name</option>
+                        <option value="PartyName">Party Name</option>
+>>>>>>> 9b2be4ce1d8848a7ff5353c3064f204dd734f8d8
                       </select>
                     </div>
 
@@ -252,6 +259,7 @@ function renderFilterList(filterList) {
 
 
 
+<<<<<<< HEAD
 export default ViewCandidates;
 
 
@@ -261,3 +269,6 @@ export default ViewCandidates;
 
 
 
+=======
+export default ViewCandidates;
+>>>>>>> 9b2be4ce1d8848a7ff5353c3064f204dd734f8d8

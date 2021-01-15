@@ -4,7 +4,7 @@ let addElectionAction = (election) => {
     console.log("election in action",election.election_name);
     return async function (dispatch) {
         const res = await axios.post(
-            "http://localhost:8080/evs/election",
+            "http://localhost:9090/evs/election",
              {     
                     state: election.state,
                     constituency: election.constituency,

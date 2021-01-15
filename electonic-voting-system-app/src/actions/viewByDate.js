@@ -1,7 +1,7 @@
 let viewByDateAction = (date) => {
     return async function (dispatch) {
         const res = await fetch(
-            `http://localhost:8080/evs/election/date/${date}`, {
+            `http://localhost:9090/evs/election/date/${date}`, {
                 method: "GET",
                 headers: {
                     "Access-Control-Allow-Origin": "*"

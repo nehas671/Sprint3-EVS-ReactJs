@@ -2,7 +2,7 @@ import axios from 'axios';
 let viewScheduleConstituencyAction = (constituency) => {
     return async function (dispatch) {
         const res = await fetch(
-            `http://localhost:8080/evs/schedule/constituency/${constituency}`, {
+            `http://localhost:9090/evs/schedule/constituency/${constituency}`, {
                 method: "GET",
                 headers: {
                     "Access-Control-Allow-Origin": "*"
