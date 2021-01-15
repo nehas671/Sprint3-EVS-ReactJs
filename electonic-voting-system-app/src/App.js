@@ -24,6 +24,7 @@ import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
 import ApproveRequest from './components/approveVoterRequest'
 import CastVote from './components/castVote';
+import ViewVoterId from './components/viewVoterId';
 //import ButtonForm from './components/button';
 
 
@@ -38,7 +39,7 @@ function App() {
 
    { /*<ShowElections/>*/}
 
-    
+    {/*<ViewVoterId></ViewVoterId>*/}
    { /*<AddElection></AddElection>
    <ViewCandidates></ViewCandidates>*/}
 

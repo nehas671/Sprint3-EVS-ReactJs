@@ -11,10 +11,20 @@ let viewVoterIdAction=(user_id)=>{
                 } 
             }
 
-        ); 
+        )
+        .then(response=>{
+            console.log("response:",response);
+            dispatch({type:"VIEW_VOTERID",payload:res.data});
+            
+        }) .catch(error => {
+            console.log("error Response:",error.response)
+            console.log("data:",error.response.data.message);
+            alert(error.response.data.message);
+            
+        });
        // const data =await res.json();
         //console.log("action data:",data);
-        dispatch({type:"VIEW_VOTERID",payload:res.data});
+        
     }
 }
 export default viewVoterIdAction;
