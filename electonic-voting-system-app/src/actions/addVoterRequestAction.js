@@ -4,7 +4,7 @@ const addVoterRequestAction = (voterRequest) => {
     console.log("Request in action",voterRequest.name);
     return async function (dispatch) {
         const res =  await axios.post(
-            "http://localhost:8080/evs/user/voter_request", 
+            "http://localhost:9090/evs/user/voter_request", 
                 { 
                     name: voterRequest.name, 
                     district: voterRequest.district,
