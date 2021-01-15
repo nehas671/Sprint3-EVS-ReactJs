@@ -38,16 +38,10 @@ export const AddResult= (props) => {
   })
 }
 
-
-
-
- 
-  if(!Array.isArray(stateList)) {
+if(!Array.isArray(stateList)) {
     stateList = [];
       console.log("Set stateList to blank array");
   }
-
-
 
 
   let resultList= useSelector(state=> state.resultReducer.votecount)
@@ -130,8 +124,9 @@ export const AddResult= (props) => {
     </div>);
 }
 
-function renderStates(stateList ) {
 
+
+function renderStates(stateList ) {
   console.log("stateList: ", stateList);
   return stateList.map((states, index) => {
     const { state } = states 
@@ -160,9 +155,7 @@ return resultList.map((resultList, index) => {
            <td>{candidate_name}</td>
            <td>{party_name}</td>
 <td>{constituency}</td>
-<td>{votes}</td>
-           
-         
+<td>{votes}</td>   
         </tr>
      )
   })
@@ -174,6 +167,7 @@ function handleAdd(event) {
   const value = data.get('electionname');
   var e = document.getElementById("statename").value;
   dispatch(addResultAction(value,e))
+ 
 }
 
 
