@@ -96,7 +96,7 @@ const AddRequest = (props) => {
             <div class="form-group row ">
             <label for="Name" class="col-4 col-form-label font-weight-bold">Name :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="Name" onBlur={validateUserName} required></input>
+        <input type="text"  class="form-control" id="Name" name="name" onBlur={validateUserName} required></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
             Name should only contain characters
        </small>
@@ -107,7 +107,7 @@ const AddRequest = (props) => {
     <div class="form-group row ">
             <label for="contactNumber" class="col-4 col-form-label font-weight-bold">Mobile Number :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="contactNumber" onBlur={validateMobileNumber} required></input>
+        <input type="text"  class="form-control" id="contactNumber" name="contactNumber" onBlur={validateMobileNumber} required></input>
         <small id="numbervalid" class="form-text text-danger invalid-feedback">
             Number should only contain 10 digits
        </small>
@@ -117,7 +117,7 @@ const AddRequest = (props) => {
     <div class="form-group row ">
             <label for="emailId" class="col-4 col-form-label font-weight-bold">Email Id :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="emailId" onBlur={validateEmailId} required></input>
+        <input type="text"  class="form-control" id="emailId" name="emailId" onBlur={validateEmailId} required></input>
         <small id="numbervalid" class="form-text text-danger invalid-feedback">
             Email Id should be in proper format
        </small>
@@ -127,7 +127,7 @@ const AddRequest = (props) => {
     <div class="form-group row ">
             <label for="constituency" class="col-4 col-form-label font-weight-bold">Constituency :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="constituency" onBlur={validateConstiuency} required></input>
+        <input type="text"  class="form-control" id="constituency" name ="constituency" onBlur={validateConstiuency} required></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
             Constituency should only contain characters
        </small>
