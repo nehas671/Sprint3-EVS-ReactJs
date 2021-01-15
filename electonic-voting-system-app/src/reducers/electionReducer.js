@@ -2,7 +2,7 @@
 const electionReducer = (state={initialState:[],filter:[],statelist:[]}, action) => {
     switch(action.type) {
         case 'ADD_ELECTION':
-            state.initialState.push(action.payload);
+            state.initialState=action.payload;
             return state;
         case 'SHOW_ELECTION':
             state.initialState=action.payload;

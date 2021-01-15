@@ -61,8 +61,8 @@ const ViewCandidates = (props) => {
           <form onSubmit={handleSearch} class="d-flex mb-4">
             <div className="col-9">
                       <div class=" form-inline row mb-3">
-                      <label for="view" class=" mr-3 font-weight-bold mr-4">Select View By</label>
-                      <select class="form-control col-5 " id="view">
+                      <label for="view" class=" mr-3 font-weight-bold mr-4">Candidate View By</label>
+                      <select class="form-control col-5 " id="view" required> 
                       <option value="ViewAll">View All</option>
                         <option value="CandidateName">Candidate Name</option>
                         <option value="PartyName">Party Name</option>
@@ -191,8 +191,3 @@ function renderTableData(candidateList) {
 
 
 export default ViewCandidates;
-
-
-
-
-

@@ -15,7 +15,6 @@ const Slogan = (props) => {
             </div>
 
         </div>
-
     </div>
     )
 }
