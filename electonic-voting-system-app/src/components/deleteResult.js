@@ -27,13 +27,13 @@ let dispatch
    history = useHistory();
   let resultList = useSelector(state => state.resultReducer.viewall);
  
- /* React.useEffect(() => {
+  React.useEffect(() => {
     ResultList()
   }, []);
 
   const ResultList = () => {
     dispatch(viewAllDeleteAction())
-  }*/
+  }
 console.log("resultList: ", resultList);
 if(!Array.isArray(resultList)) {
     resultList = [];
@@ -110,7 +110,7 @@ function renderTableData(resultList ) {
 
   <td> <div class="btn-group" role="group" aria-label="Basic mixed styles example">
              {/*<button type="button" class="btn btn-outline-warning" onClick={(e) => updateCandidate(e, candidate)}>Edit</button>*/}
-             <button class="btn btn-outline-danger" onClick={(e) => deleteResult(e, result_id)}>Delete</button>
+             <button  onClick={() => deleteResult( result_id)}>Delete</button>
              </div>
             </td>
           </tr>
@@ -122,9 +122,9 @@ function renderTableData(resultList ) {
 
 
 
-    function deleteResult(event , result_id)
+    function deleteResult( result_id)
     {
-   event.preventDefault();
+  
    dispatch(deleteResultAction(result_id))  
    history.push('/deleteresult')  
    }

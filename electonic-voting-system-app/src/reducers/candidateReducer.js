@@ -1,15 +1,29 @@
-const initialState = [];
-const candidateReducer = (state=initialState, action) => {
+const candidateReducer = (state={initialState:[],filter:[]}, action) => {
     switch(action.type) {
         case 'ADD_CANDIDATE':
-            console.log("reducer in",action.payload);
-            return action.payload;
-            case 'SHOW_PARTYS':
-                return action.payload;
-                case 'VIEW_CANDIDATE':
-                return action.payload;
-                case 'DELETE_CANDIDATE':
-                return action.payload;
+            state.initialState.push(action.payload);
+            return state;
+        
+            case 'VIEW_CANDIDATE':
+                state.initialState=action.payload;
+                return state;
+
+            
+                case 'SHOW_PARTYS':
+                    state.initialState=action.payload;
+                    return state;
+
+                case 'CANDIDATE_NAME':
+                 state.filter=action.payload;
+                return state;
+
+                case 'PARTY_NAME':
+                 state.filter=action.payload;
+                return state;
+                //case 'DELETE_CANDIDATE':
+                    //state.filter=action.payload;
+                  // return state;
+                
         default:
             return [];
     }
