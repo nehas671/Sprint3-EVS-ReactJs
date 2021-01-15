@@ -89,7 +89,7 @@ function App() {
 
 
    
-<DeleteResult></DeleteResult>
+
 
   <div className="App">
       

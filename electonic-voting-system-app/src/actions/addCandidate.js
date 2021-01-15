@@ -6,7 +6,7 @@ const AddCandidateAction = (candidate) => {
         //let leader=candidate.party.leader;
         //let symbol=candidate.party.symbol;
         const res = await axios.post(
-            "http://localhost:8080/evs/candidate",
+            "http://localhost:9090/evs/candidate",
             { 
                 candidateName: candidate.candidateName, 
                 address: candidate.address,
