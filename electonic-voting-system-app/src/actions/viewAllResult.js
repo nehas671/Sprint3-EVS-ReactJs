@@ -2,7 +2,7 @@ import axios from "axios";
 let viewAllResultAction = () => {
     return async function (dispatch) {
         const res = await axios.get(
-            "http://localhost:8091/evs/result"
+            "http://localhost:9090/evs/result"
           );
          
           console.log("VIEW all result  data:",res.data);

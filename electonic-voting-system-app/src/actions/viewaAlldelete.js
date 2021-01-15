@@ -2,7 +2,7 @@ import axios from "axios";
 let viewAllDeleteAction = () => {
     return async function (dispatch) {
         const res = await axios.get(
-            "http://localhost:8091/evs/result"
+            "http://localhost:9090/evs/result"
           );
          
           console.log("VIEW all data:",res.data);
