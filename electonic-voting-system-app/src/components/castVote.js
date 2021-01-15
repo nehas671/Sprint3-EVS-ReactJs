@@ -35,21 +35,18 @@ function handleElectionNameChange(event)
 
 function handleStateChange(event)
 {
-    var enteredState=event.target.value;
-    let inputdata = enteredState;
-    let string = inputdata.trim();
-    let pattern = /[a-zA-Z]{3,}$/;
-    if(pattern.test(string) && string != "")
-    {
-        console.log({enteredState});
-        event.target.classList.remove('custom-invalid');
-        event.target.classList.add('custom-valid');
-    }
-    else 
+    var enteredState = event.target.value;
+    if(enteredState ==="")
     {
         event.target.classList.remove('custom-valid');
         event.target.classList.add('custom-invalid');
-        console.error('State should have characters only!')
+        console.error("Please select state from drop down!")
+    }
+    else
+    {
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+        console.log({enteredState});
     }
 }
 
@@ -172,8 +169,6 @@ const handleList = (event)=>
 const CastVote =(props)=>
 {   
     dispatch = useDispatch();
-
-    let [filter, setStateList] = useState();
     
     let candidateList = useSelector((state) => state.castVoteReducer.candidates);
     let stateList = useSelector((state)=>state.castVoteReducer.statelist);
@@ -303,7 +298,7 @@ const CastVote =(props)=>
                                                     <option></option>
                                                     {renderStates(stateList)}
                                                     <small id="namevalid" class="form-text text-danger invalid-feedback">
-                                                        State should only contain characters!
+                                                        Select from State from the list!
                                                     </small> 
                                                 </select>
                                             </div>
