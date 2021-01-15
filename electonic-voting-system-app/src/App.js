@@ -23,7 +23,11 @@ import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
 import ApproveRequest from './components/approveVoterRequest'
+import UpdateCandidate from './components/update_candidate';
+import DeleteCandidate from './components/deleteCandidate';
 import CastVote from './components/castVote';
+import ViewVoterId from './components/viewVoterId';
+
 //import ButtonForm from './components/button';
 
 
@@ -38,7 +42,7 @@ function App() {
 
    { /*<ShowElections/>*/}
 
-    
+    {/*<ViewVoterId></ViewVoterId>*/}
    { /*<AddElection></AddElection>
    <ViewCandidates></ViewCandidates>*/}
 
@@ -151,12 +155,23 @@ function App() {
           <Route exact path="/Officer_services">
             <OfficerService></OfficerService>
           </Route>
+
+
+          
+            <Route exact path ="/deleteCandidate">
+            <DeleteCandidate/>
+            </Route>
+           
+
+        
           <Route exact path='/votecast'>
             <CastVote />
           </Route>
+
           <Route exact path="/addVoterRequest">
             <AddRequest></AddRequest>
           </Route>
+
      </Switch> 
 
 

@@ -76,7 +76,6 @@ let validId=false;
 function renderTableData(voterlist){
 
     console.log("list inside:",voterlist);
-
         return(
             <tr key={voterlist.user_id}>
                 <td>{voterlist.user_id}</td>

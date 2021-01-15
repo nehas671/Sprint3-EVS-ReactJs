@@ -45,7 +45,7 @@ const VoterAsideComponent = ()=>
             </ul>
             <h3>
                 <marquee direction="up" height="210" width="200" >
-                    Scrolling News
+                Maharashtra Gram Panchayat Election: Aurangabad, Thane, Palghar, Gadchiroli among 34 districts voting today
                 </marquee>
             </h3>
             </div>

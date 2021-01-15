@@ -19,7 +19,7 @@ const AdminHeader = (props) =>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav flex-wrap w-100">
           <li class="nav-item  nav-item-custom mb-2 mb-md-0 flex-wrap ">
-            <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="/admin_services">
+            <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="/">
               Home
             </a>
           </li>
@@ -70,10 +70,10 @@ const AdminHeader = (props) =>
                 <a class="dropdown-item drop " href="/updatecandidate">
                   Update Candidate
                 </a>
-                <a class="dropdown-item drop" href="#">
+                <a class="dropdown-item drop" href="/deleteCandidate">
                   Delete Candidate
                 </a>
-              </div>
+              </div> 
             </li>
           </div>
           <div className='btn-group dropdown'>

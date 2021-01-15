@@ -1,8 +1,8 @@
 import axios from 'axios';
-let viewScheduleElectionNameAction = (name) => {
+let viewScheduleDateAction = (date) => {
     return async function (dispatch) {
         const res = await fetch(
-            `http://localhost:9090/evs/schedule/name/${name}`, {
+            `http://localhost:9090/evs/schedule/dates/${date}`, {
                 method: "GET",
                 headers: {
                     "Access-Control-Allow-Origin": "*"
@@ -14,4 +14,4 @@ let viewScheduleElectionNameAction = (name) => {
     }
 }
 
-export default viewScheduleElectionNameAction;
+export default viewScheduleDateAction;

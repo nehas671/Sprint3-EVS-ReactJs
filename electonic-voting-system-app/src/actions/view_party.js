@@ -3,7 +3,7 @@ import axios from 'axios';
 let showPartyAction = () => {
     return async function (dispatch) {
         const res = await axios.get(
-            "http://localhost:8080/evs/election/party"
+            "http://localhost:9090/evs/election/party"
           );
           //const data = await res.json();
           //console.log("party data:",data);

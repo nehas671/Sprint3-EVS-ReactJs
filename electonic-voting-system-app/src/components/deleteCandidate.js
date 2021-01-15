@@ -5,19 +5,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 
 import ViewCandidatesAction from '../actions/viewCandidate';
-import viewByCandidateNameAction from '../actions/viewByCandidateName'
+import viewByCandidateNameAction from '../actions/viewByCandidateName';
+import DeleteCandidateAction from '../actions/delete_candidate';
 import Header from "./header";
 import Slogan from "./slogan";
 import Aside from "./aside";
 import Footer from "./footer";
 import viewByPartyNameAction from '../actions/viewByPartyName';
 import AdminHeader from './adminheader';
+import UpdateCandidateAction from '../actions/update_candidate';
 
 
 
 let dispatch;
 
-const ViewCandidates = (props) => {
+const DeleteCandidate = (props) => {
 
 
     let candidateList = useSelector(state => state.candidateReducer);
@@ -57,12 +59,13 @@ const ViewCandidates = (props) => {
 
           <div class="container pt-5 px-5 ">
             
-          <h3 class="addCandidate mb-3">View Candidate</h3>
+          <h3 class="addCandidate mb-3">Delete Candidate</h3>
+          <h6>View by :</h6>
           <form onSubmit={handleSearch} class="d-flex mb-4">
             <div className="col-9">
                       <div class=" form-inline row mb-3">
-                      <label for="view" class=" mr-3 font-weight-bold mr-4">Candidate View By</label>
-                      <select class="form-control col-5 " id="view" required> 
+                      <label for="view" class=" mr-3 font-weight-bold mr-4">Select View By</label>
+                      <select class="form-control col-5 " id="view">
                       <option value="ViewAll">View All</option>
                         <option value="CandidateName">Candidate Name</option>
                         <option value="PartyName">Party Name</option>
@@ -86,8 +89,8 @@ const ViewCandidates = (props) => {
           <center>
           <h2 class="font-weight-bold">Candidate List</h2>
       
-          <table class="table table-border table-striped table table w-auto text-xsmall" id="tableData">
-          <thead>
+          <table class="table table-border table-striped table-sm table-bordered table table w-auto text-xsmall table-hover" id="tableData">
+          <thead class ="thead-dark">
               <tr>
                   <th>ID</th>
                   <th>Name</th>
@@ -96,6 +99,7 @@ const ViewCandidates = (props) => {
                   <th>Mobile</th>
                   <th>Email</th>
                   <th>Party</th>
+                  <th>Activity</th>
               </tr>
           </thead>
           <tbody>
@@ -150,12 +154,12 @@ function renderTableData(candidateList) {
              <td>{email}</td>
              <td>{partyName}</td>
              
-             {/*
-             <td> <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-             <button type="button" class="btn btn-outline-warning" disabled>Edit</button>
-             <button class="btn btn-outline-danger" onClick={handleDelete}>Delete</button>
              
-            </td>*/}
+             <td> <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+             {/*<button type="button" class="btn btn-outline-warning" onClick={(e) => updateCandidate(e, candidate)}>Edit</button>*/}
+             <button class="btn btn-outline-danger" onClick={(e) => deleteCandidate(e, candidateId)}>Delete</button>
+             </div>
+            </td>
              
           </tr>
        )
@@ -190,4 +194,25 @@ function renderTableData(candidateList) {
 
 
 
-export default ViewCandidates;
+  function deleteCandidate(event,candidateId) {
+    event.preventDefault();
+    console.log("id",candidateId);
+    dispatch(DeleteCandidateAction(candidateId));
+    alert("Candidate deleted successfully");
+}
+
+
+/*function updateCandidate(event,candidate){
+
+  event.preventDefault();
+  dispatch(UpdateCandidateAction(candidate));
+}*/
+
+export default DeleteCandidate;
+
+
+
+
+
+
+
