@@ -21,11 +21,8 @@ const VoterHeader = (props)=>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav flex-wrap w-100">
                         <li class="nav-item  nav-item-custom mb-2 mb-md-0 flex-wrap ">
-<<<<<<< HEAD
-                            <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="/">
-=======
+
                             <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="/VoterServices">
->>>>>>> 9d8441e6a1b8b1ffc1c2d0ff49461d377a66bb03
                                 Home
                             </a>
                         </li>

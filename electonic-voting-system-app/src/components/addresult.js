@@ -13,6 +13,7 @@ import stateReducer from '../reducers/stateReducer';
 import resultReducer from '../reducers/resultReducer';
 import addResultAction from '../actions/add_result';
 import AdminHeader from './adminheader';
+import showElectionNameAction  from'../actions/electionname'; 
 import Slogal from './slogan';
 
 let selectedstateId;
@@ -20,10 +21,43 @@ let history;
 let dispatch
 export const AddResult= (props) => {
    dispatch = useDispatch();
+
+   let [election, setElectionNamelist] =useState();
    let [filter, setStatelist] = useState();
-   let [result,setResultList] = useState();
+   let [result, setResultList] = useState();
+
+
+
+
+   let electionList=useSelector(state => state.resultReducer.electionname);
   let stateList = useSelector(state => state.resultReducer.statelist);
- 
+
+
+  React.useEffect(() => {
+    ElectionList()
+  }, []);
+
+
+
+  const ElectionList = () => {
+    dispatch(showElectionNameAction())
+    .then((response) => {
+      console.log("REsponse: ", response);
+      console.log("routeList: ", electionList);
+      setElectionNamelist(electionList);
+  })
+}
+
+
+
+
+if(!Array.isArray(electionList)) {
+    electionList = [];
+      console.log("Set electionList to blank array");
+  }
+
+
+
   React.useEffect(() => {
     StateList()
   }, []);
@@ -71,7 +105,7 @@ if(!Array.isArray(stateList)) {
             <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
               <h2 class="addElectionTitle">Declare Result</h2>
               <form onSubmit={handleAdd} >
-  <div class="form-group row pt-4 pb-3">
+  {/*<div class="form-group row pt-4 pb-3">
   <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name</label>
     <div class="col-8">
       <input type="text"  class="form-control" name="electionname" id="electionname" placeholder="Enter Election Name" onBlur={validateElectionName} ></input>
@@ -79,7 +113,16 @@ if(!Array.isArray(stateList)) {
         Election Name only contain characters and Size should be greater than 3
        </small>
     </div>
+  </div>*/}
+
+
+  <div class=" form-group row">
+    <label for="electionname" class="col-4 mr-3 font-weight-bold">Select Election Name</label>
+    <select class="form-control col-7 state" id="electionname" onChange={handleElectionName} >
+   {renderElection(electionList)}
+    </select>
   </div>
+
 
   <div class=" form-group row">
     <label for="statename" class="col-4 mr-3 font-weight-bold">Select State</label>
@@ -126,7 +169,29 @@ if(!Array.isArray(stateList)) {
 
 
 
-function renderStates(stateList ) {
+function renderElection(electionList)
+{
+  console.log("electionList: ", electionList);
+  return electionList.map((value) => {
+    return (
+        <option value = {value}>{value}</option>
+    )
+})
+
+}
+
+
+
+
+
+function handleElectionName(event)
+{
+  selectedstateId=
+  event.preventDefault(); 
+}
+
+
+function renderStates( stateList ) {
   console.log("stateList: ", stateList);
   return stateList.map((states, index) => {
     const { state } = states 
@@ -164,7 +229,7 @@ function handleAdd(event) {
   event.preventDefault();
   const data = new FormData(event.target);
   console.log("in handle voteCount:",data)
-  const value = data.get('electionname');
+  const value=document.getElementById('electionname').value;
   var e = document.getElementById("statename").value;
   dispatch(addResultAction(value,e))
  
@@ -179,7 +244,7 @@ function  handleAlternative(event) {
 }
 
 
-let validElectionname=false;
+/*let validElectionname=false;
 function validateElectionName(event) {
   const data = event.target.value;
   console.log("target",data);
@@ -198,4 +263,4 @@ event.target.classList.remove('custom-valid');
  event.target.classList.add('custom-invalid');
   validElectionname = false;
   }
-}
+}*/

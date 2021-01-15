@@ -13,9 +13,18 @@ import Slogal from './slogan';
 import deleteResultAction from '../actions/delete_result';
 import viewAllDeleteAction from '../actions/viewaAlldelete';
 
+
+
+let history;
 let dispatch
 export const DeleteResult= (props) => {
+
+
+ 
    dispatch = useDispatch();
+
+
+   history = useHistory();
   let resultList = useSelector(state => state.resultReducer.viewall);
  
   React.useEffect(() => {
@@ -80,27 +89,45 @@ if(!Array.isArray(resultList)) {
 }
 
 
+
+
+
+
 function renderTableData(resultList ) {
-    return resultList.map((resultList, index) => {
-         const { result_id ,election_name, state,date, candidate_name, party_name, constituency, votes} = resultList //destructuring
-         return (
-            <tr key={result_id}>
-                <td>{result_id}</td>
-              <td>{election_name}</td>
-               <td>{state}</td>
-               <td>{date}</td>
-               <td>{candidate_name}</td>
-               <td>{party_name}</td>
-    <td>{constituency}</td>
-    <td>{votes}</td> 
-    <td><input type="submit" value="delete" onClick={(e)=>deleteResult(e, result_id)}></input></td>
-            </tr>
-         )
-      })
-    };
+  return resultList.map((resultList, index) => {
+       const { result_id ,election_name, state,date, candidate_name, party_name, constituency, votes} = resultList //destructuring
+       return (
+          <tr key={result_id}>
+              <td>{result_id}</td>
+            <td>{election_name}</td>
+             <td>{state}</td>
+             <td>{date}</td>
+             <td>{candidate_name}</td>
+             <td>{party_name}</td>
+  <td>{constituency}</td>
+  <td>{votes}</td> 
+
+
+  <td> <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+             {/*<button type="button" class="btn btn-outline-warning" onClick={(e) => updateCandidate(e, candidate)}>Edit</button>*/}
+             <button class="btn btn-outline-danger" onClick={(e) => deleteResult(e, result_id)}>Delete</button>
+             </div>
+            </td>
+          </tr>
+       )
+    })
+  };
+
+
+
+
 
     function deleteResult(event , result_id)
-     {
-    event.preventDefault();
-    dispatch(deleteResultAction(result_id))    
-    }
+    {
+   event.preventDefault();
+   dispatch(deleteResultAction(result_id))  
+   history.push('/deleteresult')  
+   }
+
+   
+    export default DeleteResult;
