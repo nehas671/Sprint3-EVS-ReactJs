@@ -1,16 +1,13 @@
+import axios from "axios";
+
 let showVoteCountAction = (election_name,state_name) => {
     return async function (dispatch) {
-        const res = await fetch(
-            `http://localhost:8091/evs/result/${election_name}/${state_name}`, {
-                method: "GET",
-                headers: {
-                    "Access-Control-Allow-Origin": "*"
-                }
-            }
+        const res = await axios.get(
+            `http://localhost:8091/evs/result/${election_name}/${state_name}`
+              
           );
-          const data = await res.json();
-          console.log("showResultAction ", data);
-          dispatch({type: "SHOW_VOTECOUNT", payload: data});
+          console.log("showResultAction ", res.data);
+          dispatch({type: "SHOW_VOTECOUNT", payload: res.data});
     }
 }
 

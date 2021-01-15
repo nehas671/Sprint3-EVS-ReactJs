@@ -30,6 +30,7 @@ const AddParty= (props) => {
   history = useHistory();
  
 
+
     return (
         <div>
   <Router>
@@ -38,7 +39,7 @@ const AddParty= (props) => {
           
         </Router>
       <AdminHeader/>
-          
+
       <main>
 
 <Slogan/>

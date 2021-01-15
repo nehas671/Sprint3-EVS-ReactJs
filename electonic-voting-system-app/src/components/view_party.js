@@ -14,6 +14,7 @@ import Aside from "./aside";
 import Footer from "./footer";
 import AdminHeader from './adminheader'
 
+
 let dispatch;
 
 const ViewParty = (props) => {
@@ -36,9 +37,9 @@ const ViewParty = (props) => {
     return (
         <div>
   
-  <AdminHeader></AdminHeader>
-  
-  
+
+  <AdminHeader/>
+
   
       <main>
   

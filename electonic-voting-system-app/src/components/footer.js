@@ -13,7 +13,7 @@ remote e-voting via the Internet (also called i-voting) where the voter submits 
 
                 <div class="col-lg-6 col-md-6  text-lg-right light-grey  mb-3 mb-md-0 px-sm-0 px-md-2">
                     <div class="footer-headings mb-1">Follow Us</div>
-                    <div class="d-flex flex-wrap justify-content-lg-end"><img src="followus.png" class="col-2" alt="followus"/>
+                    <div class="d-flex flex-wrap justify-content-lg-end"><a href="#"><img src="followus.png" class="col-2" alt="followus"/></a>
                                             </div>
                 </div>
 

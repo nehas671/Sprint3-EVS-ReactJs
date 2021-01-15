@@ -7,7 +7,7 @@ import ShowElections from '../components/viewElection'
 import Carousel from 'react-bootstrap/Carousel'
 import Carouselcomponent from '../components/Carousel'
 import Header from './header';
-import Aside from './aside';
+import AdminAsideComponent from './adminAside';
 import Footer from './footer';
 import Slogan from './slogan';
 import AdminHeader from './adminheader';
@@ -28,7 +28,7 @@ const AdminService = (props) =>
           <div class="col-8  pl-0 pr-5">
             <Carouselcomponent></Carouselcomponent>
           </div>
-          <Aside/>
+          <AdminAsideComponent/>
         </div>
       </section>
     </main>

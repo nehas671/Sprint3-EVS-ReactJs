@@ -6,70 +6,76 @@ import viewResultByElectionNameAction from '../actions/viewrResultByElectionName
 import viewAllResultAction from '../actions/viewAllResult';
 import viewResultByPartyNameAction from '../actions/viewResultByPartyName';
 import Header from './header';
-import Slogal from './slogan';
+
 import Footer from './footer';
 import showVoteCountAction from '../actions/vote_count'
 import viewByElectionNameAction from '../actions/viewByElectionName';
+import VoterAsideComponent from './voterAside';
+import VoterHeader from './voterHeader';
+
+import Slogal from './slogan';
 
 let dispatch
 export const ViewResult= (props) => {
   dispatch = useDispatch();
     
-  let resultList= useSelector(state=> state.resultReducer)
-  const ResultList = () => {
+  let resultList= useSelector(state=> state.resultReducer.viewresult)
+  /*const ResultList = () => {
     dispatch(viewAllResultAction())
   }
   React.useEffect(() => {
     ResultList()
-  }, []);
-
+  }, []);*/
 
     console.log("ResultList: ", resultList);
     if(!Array.isArray(resultList)) {
        resultList = [];
         console.log("Set resultList to blank array");
     }
-   
-    
     return (<div>
-
-<Header>
-</Header>
-<Slogal></Slogal>
-<h1 align='center'>View Result</h1>
-<div class="col-9 border border-dark p-5 ml-auto mr-auto">
  
+ <VoterHeader />
+ <main>
+ <Slogal/>
+          
+
+                <section class="Custom-container technology-container">
+            <div class="row mx-0 px-sm-0 mb-4">
+            <div class="col-8  pl-0 pr-5">
+            <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
+              <h2 class="addElectionTitle"> View Election Result</h2>
 <form onSubmit={filterResult}>
-  <div class=" form-group row">
-    <label for="viewby" class="col-4 mr-3 font-weight-bold">View Result:</label>
-    <select class="form-control col-7 state" id="viewby">
-      <option value="election">Election Name</option>
-      <option value="state">State Name</option>
-      <option value="party">Party Name</option>
+
+<div class=" form-group row">
+<label for="viewby" class="col-4 mr-3 font-weight-bold">View Result:</label>
+<select class="form-control col-7 state"  id="viewby">
+      <option value="election"> By Election Name</option>
+      <option value="state"> By State Name</option>
+      <option value="party"> By Party Name</option>
+      <option value="view">All Result</option>
     </select>
   </div>
 
-  <div class="form-group row ">
-    <label for="viewbyfilter" class="col-4 col-form-label font-weight-bold">Enter Value</label>
-    <div class="col-4" >
-      <input type="text"  class="form-control"  name="viewbyfilter" id="viewbyfilter" ></input>
-      <br></br>
-      <button align='center' id='btn1'>Search</button>
-    </div>
-    <div class="col-8 pl-7" >
 
-  
-    </div>
+
+  <div class="form-group row pt-4 pb-3">
+  <label for="viewbyfilter" class="col-4 col-form-label font-weight-bold">Enter Value</label>
+  <div class="col-8">
+  <input type="text"  class="form-control"  name="viewbyfilter" id="viewbyfilter" ></input>
+
   </div>
+</div>
 
-</form>
+     
+<center><button type="submit" class="btn btn-outline-primary mb-3 ml-5 mr-5">Search</button></center>
+  
+  
 
-          <h2 class="font-weight-bold " >Result</h2>
-          <div class='table  border border-dark col-12'>
-      <table class="table table-hover col-12" >
-        <thead>
-          
-            <tr>
+    
+    <div class="col-4">
+    <table class="table table-border table-striped">
+    <thead>
+          <tr>
                 <th>ResultId</th>
 <th>Election Name</th>
 <th>State</th> 
@@ -80,23 +86,30 @@ export const ViewResult= (props) => {
 <th> Votes</th>
   </tr>
 </thead>
-
 <tbody>
   {renderResult(resultList)}
-
 </tbody>
 </table>
-         
-          </div>
-     </div>
-     
-     <Footer/>
-      </div>);
-      
+</div>
 
 
+</form>
+    </div>
+    </div>
+    <aside class="col-4  rounded  pr-0  aside-custom d-flex justify-content-center">
+                        <VoterAsideComponent/>
+                    </aside>
+                
+                </div>
+              
+            </section>
+            </main>
+       
+        <Footer/>
 
-    };
+</div>);
+};
+
 
 
     function renderResult(resultList) {
@@ -141,75 +154,12 @@ export const ViewResult= (props) => {
       {
         dispatch(viewResultByPartyNameAction(value));
       }
-      
+      else if(selected=="view")
+      {
+        dispatch(viewAllResultAction())
+      }
     }
 
 
 
-
-/*
-
-   
-<div class='table  border border-dark col-12'>
-      <table class="table table-hover col-12" >
-        <thead>
-            <tr>
-                <th>ResultId</th>
-<th>Election Name</th>
-<th>State</th> 
-<th>Date</th>
-<th>Candidate Name</th>
-<th>Party Name</th>
-<th>Constituency</th>
-<th> Votes</th>
-  </tr>
-</thead>
-
-<tbody>
-  {renderResult(resultList)}
-
-</tbody>
-</table>
-</div>
-  
-
-
-</div>
-</div>
-    );
-};
-
-
-
-
-
-function handleSearch(event) {
-  event.preventDefault();
-  const data = new FormData(event.target);
- 
-  console.log("in handle submit:",data)
-  const val = data.get('viewbyfilter');
-
- var e = document.getElementById("viewby");
-var selected = e.options[e.selectedIndex].val;
- console.log("value :",val);
- console.log("view selected",selected);
-  if(selected==="election")
-  {
-    dispatch(viewResultByElectionNameAction(val));
-  }else if(selected==="state")
-  {
-    dispatch(viewResultByStateNameAction(val));
-  }else if(selected==="party")
-  {
-    dispatch(viewResultByPartyNameAction(val));
-  }
-}
-
-
-
-export default ViewResult;
-
-
-*/
 export default ViewResult

@@ -31,13 +31,13 @@ const ShowElections = (props) => {
   
    dispatch = useDispatch();
 
-  React.useEffect(() => {
+ /* React.useEffect(() => {
       ElectionList()
     }, []);
   
     const ElectionList = () => {
       dispatch(showElectionAction())
-    }
+    }*/
   console.log("employeeList: ", electionList);
   if(!Array.isArray(electionList)) {
       electionList = [];
@@ -94,17 +94,15 @@ const ShowElections = (props) => {
 
   function handleSearch(event) {
     event.preventDefault();
-   /* const data = new FormData(event.target);
-   
-    console.log("in handle submit:",data)
-    const value = data.get('name');*/
-  
-  /* var e = document.getElementById("view");
-  var selected = e.options[e.selectedIndex].value;*/
-  // console.log("value :",value);
-  // console.log("view selected",selected);
-  
-   if(selectedOption==="State"){
+    if(selectedOption==="View All"){
+      dispatch(showElectionAction())
+      .then((response) => {
+        console.log("REsponse: ", response);
+        console.log("routeList: ", electionList);
+        setInitialState(electionList);
+    });
+  }
+   else if(selectedOption==="State"){
       dispatch(viewByStateAction(selectedview))
       .then((response) => {
         console.log("REsponse: ", response);
@@ -146,15 +144,12 @@ const ShowElections = (props) => {
 <div>
 <AdminHeader/>
   
-
       <main>
 
       <Slogan/>
 
       <section class="Custom-container technology-container">
           <div class="row mx-0 px-sm-0 mb-4  ">
-                            
-
           <div class="col-8  border border-dark pl-0 pr-5 bg-light">
 
           <div class="container pt-5 px-5 ">
@@ -166,24 +161,21 @@ const ShowElections = (props) => {
                       <label for="view" class=" mr-3 font-weight-bold mr-4">View Election By :</label>
                       <select class="form-control col-5 " id="view" onChange={searchHandleChange} required>
                       <option>Select View By</option>
+                        <option>View All</option>
                         <option>State</option>
                         <option>Election Name</option>
                         <option>Constituency</option>
                         <option>Date</option>
                       </select>
                     </div>
-                    <div class="item">
-                    <p>Filter</p>
-                    <select id="filter" onChange={filterHandleChange} required>
+                    <div class="item form-inline row ">
+                    <label for="view" class=" mr-3 font-weight-bold mr-4">Filter :</label>
+                    <select id="filter" onChange={filterHandleChange} required class="w-50 form-control">
+                    <option>select</option>
                         {renderFilterList(filterList)}
                     </select>
                 </div>
-                     { /*<div class="form-group row ">
-                        <div class="form-inline ">
-                        <label for="name" class="col-form-label font-weight-bold mr-2">Enter Search Value : </label>
-                          <input type="text" class="form-control " id="name" name="name" placeholder="Enter Value"></input>
-                        </div>
-    </div>*/}
+                     
                         </div>
                   <div class="mt-4">
                   <button className="btn btn-primary">Search</button>
