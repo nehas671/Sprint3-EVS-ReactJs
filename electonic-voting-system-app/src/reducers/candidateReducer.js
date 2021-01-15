@@ -8,6 +8,8 @@ const candidateReducer = (state=initialState, action) => {
                 return action.payload;
                 case 'VIEW_CANDIDATE':
                 return action.payload;
+                case 'DELETE_CANDIDATE':
+                return action.payload;
         default:
             return [];
     }
