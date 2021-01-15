@@ -88,9 +88,22 @@ const AdminHeader = (props) =>
               </div>
             </li>
           </div>
-          <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-            <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="/addResult">Declare Result</a>
-          </li>
+
+
+
+          <div className='btn-group dropdown'>
+            <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
+              {/* <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="#">Voter Request</a>*/}
+              <a class="nav-link  text-dark px-md-0  position-relative border-primary  nav-custom-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Result
+              </a>
+              <div class="dropdown-menu nav-drop-custom  nav-drop position-absolute " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item drop " href="/addResult">Declare Result</a>
+                <a class="dropdown-item drop" href="/deleteresult">Delete Result</a>
+              </div>
+            </li>
+          </div>
+
         </ul>
         <div class=" d-flex sky-color search-box ">
           <input type="search" class=" border-0 sky-color  ml-md-auto" placeholder="search..."></input>

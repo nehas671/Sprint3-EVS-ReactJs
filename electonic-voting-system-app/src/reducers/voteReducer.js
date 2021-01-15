@@ -1,8 +1,12 @@
 
-const castVoteReducer = (state={statelist:[], candidates:[], castvote:[]}, action) =>
+const castVoteReducer = (state={electionNamelist:[], statelist:[], candidates:[], castvote:[]}, action) =>
 {
     switch (action.type)
     {
+        case 'ELECTION_NAME':
+            state.electionNamelist = action.payload;
+            return state;
+
         case 'SHOW_STATES':
                 state.statelist=action.payload;
                 return state;

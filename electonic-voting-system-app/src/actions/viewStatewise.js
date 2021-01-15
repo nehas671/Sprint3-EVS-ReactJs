@@ -3,7 +3,7 @@ import axios from 'axios';
 let ViewStatewiseAction = () => {
     return async function (dispatch) {
         const res = await axios.get(
-            "http://localhost:8091/evs/statewise"
+            "http://localhost:9090/evs/statewise"
           );
           dispatch({type: "STATE_WISE", payload: res.data});
     }

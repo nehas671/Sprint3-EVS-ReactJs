@@ -1,6 +1,6 @@
 import { act } from "react-dom/test-utils";
 
-const  resultReducer = (state={viewresult:[],votecount:[],addresult:[],statelist:[],refine:[], delete:[], viewall:[]},  action) => {
+const  resultReducer = (state={viewresult:[],votecount:[],addresult:[],statelist:[],refine:[], electionname:[], delete:[], viewall:[]},  action) => {
     switch(action.type) {
             case 'SHOW_VOTECOUNT':
                 state.votecount=action.payload;
@@ -37,6 +37,9 @@ const  resultReducer = (state={viewresult:[],votecount:[],addresult:[],statelist
                      state.viewall=action.payload ;
                      return state;  
 
+                    case 'SHOW_ELECTION_NAME':
+                        state.electionname=action.payload;
+                        return state;
                  default:
                     return [];
     }

@@ -2,7 +2,7 @@ import axios from "axios";
 let viewResultByElectionNameAction = (election_name) => {
     return async function (dispatch) {
         const res = await axios.get(
-            `http://localhost:8091/evs/result/electionname/${election_name}`
+            `http://localhost:9090/evs/result/electionname/${election_name}`
               
           );
           

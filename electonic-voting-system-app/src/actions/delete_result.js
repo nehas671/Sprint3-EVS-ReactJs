@@ -4,7 +4,7 @@ let deleteResultAction = (resultid)=>
 {
     return async function (dispatch) {
         const res = await axios.delete(
-            `http://localhost:8091/evs/result/${resultid}`
+            `http://localhost:9090/evs/result/${resultid}`
           );
 
           console.log("showdeleteAction ", res.data);

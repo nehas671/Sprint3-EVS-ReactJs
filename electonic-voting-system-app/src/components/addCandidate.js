@@ -13,6 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import AddCandidateAction from '../actions/addCandidate';
 import AdminHeader from './adminheader';
+import ViewCandidatesAction from '../actions/viewCandidate';
 
 import Candidate from '../models/candidate';
 import Header from "./header";
@@ -33,7 +34,7 @@ const AddCandidate= (props) => {
 
     dispatch = useDispatch();
     history = useHistory();
-    let partyList = useSelector(state => state.candidateReducer);
+    let partyList = useSelector(state => state.candidateReducer.initialState);
 
     React.useEffect(() => {
         PartyList()
@@ -43,7 +44,16 @@ const AddCandidate= (props) => {
         dispatch(ShowPartysAction())
     }
     console.log("PartysList: ", partyList);
-    
+
+
+   // console.log("CandidateList:", partyList);
+
+   console.log("PartyList:", partyList);
+    if(!Array.isArray(partyList)) {
+        partyList = [];
+        console.log("Set partyList to blank array");
+    }
+
     return (
     <div>
 
@@ -95,7 +105,7 @@ const AddCandidate= (props) => {
             <div class="col-8">
         <input type="text"  class="form-control" id="contact_number" name="contact_number" placeholder="eg. 9100011134" onBlur={validateCandidateNumber} required></input>
         <small id="emailvalid" class="form-text text-danger invalid-feedback">
-        Phone number should be of 10 digits only 
+        Phone number should be of 10 digits only  
        </small>
     </div>
     </div>
