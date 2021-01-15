@@ -33,7 +33,10 @@ const ViewVoterId =(props)=>{
                      <div class='form-group row pt-4 pb-3'>
                          <div class="form-inline col-5">
                              <label htmlFor="id" class="col-form-label font-weight-bold">Enter User id:</label>
-                             <input type='text' class='form-control' id='id' name='id' placeholder='Enter value'></input>
+                             <input type='text' class='form-control' id='id' name='id' placeholder='Enter value' onBlur={validateId} required></input>
+                         <small id='validid' class="form-text text-danger invalid-feedback">
+                             UserId should only contain numbers 
+                         </small>
                          </div>
                         
                          <div class='col-2'>
@@ -66,12 +69,14 @@ const ViewVoterId =(props)=>{
 </div>
 );
 };
+let validId=false;
+
 
 
 function renderTableData(voterlist){
 
     console.log("list inside:",voterlist);
-    
+
         return(
             <tr key={voterlist.user_id}>
                 <td>{voterlist.user_id}</td>
@@ -91,5 +96,25 @@ function handleSearch(event){
   const value = data.get('id');
     console.log("value:",value)
     dispatch(viewVoterIdAction(value));
+}
+
+function validateId(event){
+    const data=event.target.value;
+    console.log("target",data);
+
+    let regex=/[0-9]$/;
+    let inputdata=data;
+    let str=inputdata.trim();
+    console.log(regex,str);
+    if(regex.test(str)&&str!=""){
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+        validId=true;
+    }else{
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+
+        validId=false;
+    }
 }
 export default ViewVoterId;
