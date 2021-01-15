@@ -2,7 +2,7 @@ import axios from 'axios';
 let viewReqByDistrictAction=(district)=>{
     return async function (dispatch){
         const res=await axios.get(
-            `http://localhost:8080/evs/admin/voterRequest/${district}`,{
+            `http://localhost:9090/evs/admin/voterRequest/${district}`,{
                 method:"GET",
                 headers:{
                     "Access-Control-Allow-Origin":"*"
