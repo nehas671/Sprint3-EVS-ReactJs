@@ -2,9 +2,8 @@ const initialState=[];
 const OfficerReducer =(state={initialState:[],filter:[],statelist:[]},action)=>{
     switch(action.type){
         case 'VIEW_VOTERREQ':
-            return action.payload;
-        case 'APPROVE_REQUEST':
-            return action.payload;
+            state.initialState=action.payload;
+            return state;
         case 'VIEW_DISTRICT':
             state.filter=action.payload;
             return state;

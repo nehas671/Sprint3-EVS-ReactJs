@@ -1,3 +1,4 @@
+import { Button } from 'bootstrap';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import viewVoterIdAction from '../actions/viewVoterId'
@@ -33,14 +34,14 @@ const ViewVoterId =(props)=>{
                      <div class='form-group row pt-4 pb-3'>
                          <div class="form-inline col-5">
                              <label htmlFor="id" class="col-form-label font-weight-bold">Enter User id:</label>
-                             <input type='text' class='form-control' id='id' name='id' placeholder='Enter value' onBlur={validateId} required></input>
+                             <input type='text' class='form-control' id='id' name='id' placeholder='Enter value' onBlur={validateId} required onKeyUpCapture={EnableDisable}></input>
                          <small id='validid' class="form-text text-danger invalid-feedback">
                              UserId should only contain numbers 
                          </small>
                          </div>
                         
                          <div class='col-2'>
-                             <button>Search</button>
+                             <button  id="btnsubmit" disabled="disabled">Search</button>
                          </div>   
                      </div>
                  </form>
@@ -72,7 +73,16 @@ const ViewVoterId =(props)=>{
 let validId=false;
 
 
+function EnableDisable(id){
+    var btnsubmit=document.getElementById("btnsubmit");
+    if(id.value!=""){
+        btnsubmit.disabled=false;
+    }
+    else{
+        btnsubmit.disabled=true;
+    }
 
+}
 function renderTableData(voterlist){
 
     console.log("list inside:",voterlist);
@@ -100,6 +110,7 @@ function handleSearch(event){
 function validateId(event){
     const data=event.target.value;
     console.log("target",data);
+    
 
     let regex=/[0-9]$/;
     let inputdata=data;
