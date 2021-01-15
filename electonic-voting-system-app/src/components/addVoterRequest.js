@@ -31,9 +31,7 @@ const AddRequest = (props) => {
 
     console.log("DistrictList: ", districtList);
 
-    const addVoterRequest = ()=>{
-        
-    }
+    
     return (
     <div>
     
@@ -147,13 +145,14 @@ const AddRequest = (props) => {
 
     <div class=" form-group row">
         <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">District :</label>
-        <select class="form-control col-7 state" id="exampleFormControlSelect1" onChange={handleChange} required>
+        <select class="form-control col-7 state" id="exampleFormControlSelect1" placeholder="Select District" onChange={handleChange} required>
            {renderDistrict(districtList)} 
+           
            
     </select>
     </div>
-    
-    <Button variant="primary" name="add" value="ADD VOTER REQUEST" onClick={addVoterRequest}>ADD VOTER REQUEST</Button>
+    <button class="btn btn-primary" >ADD</button>
+    {/*<Button variant="primary" name="add" value="ADD VOTER REQUEST" >ADD VOTER REQUEST</Button>*/}
   
 </form>
         </div>
@@ -165,7 +164,6 @@ const AddRequest = (props) => {
 </main>
             
     <Footer/>
-
 
 </div>
 )
@@ -317,11 +315,12 @@ function validateDate(event) {
     console.log("selected District: ", selectedDistrict);
   }
   function renderDistrict(districtList) {
+      
     console.log("DistrictsList: ", districtList);
     return districtList.map((district, index) => {
         console.log("district:",district);
        return (
-        <option key={district.district} value={district.district}>{district}</option>
+        <option key={district.district} value={district.district}>{district.district}</option>
        )
     })
   };
@@ -333,9 +332,9 @@ function validateDate(event) {
   console.log("in handle submit:",data)
   const name = data.get('name');
   const constituency = data.get('constituency');
-  const applicationStatus = data.get('Pending');
-  const contactNumber = data.get('contactNumber');
   const emailId= data.get('emailId');
+  const applicationStatus = 'Pending';
+  const contactNumber = data.get('contactNumber');
   const dob = data.get('dob');
   console.log(dob);
   
@@ -344,8 +343,7 @@ function validateDate(event) {
   console.log("voterRequestObj:",voterObj);
   dispatch(addVoterRequestAction(voterObj));
   history.push('/');
-
-        
+     
   }
   export default AddRequest;
 

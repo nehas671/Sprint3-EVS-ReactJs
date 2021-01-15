@@ -1,13 +1,17 @@
 import axios from 'axios';
 
-const UpdateProductAction = (requestObj) => {
+const ApproveRequestAction = (requestObj) => {
     return async function(dispatch) {
         const res = await axios.put(
-            "http://localhost:8080/myapp/product/" + requestObj.id,
+            "http://localhost:9090/evs/voter_request" + requestObj.id,
                 { 
                     name: requestObj.name, 
-                    quantity: requestObj.quantity,
-                    price: requestObj.price
+                    district: requestObj.district,
+                    constituency: requestObj.constituency,
+                    dob:requestObj.dob,
+                    emailId:requestObj.emailId,
+                    contactNumber:requestObj.contactNumber,
+                     applicationStatus:requestObj.applicationStatus
                 }, 
                 { 
                     "Content-type": "application/json; charset=UTF-8"
@@ -19,4 +23,4 @@ const UpdateProductAction = (requestObj) => {
     }
 }
 
-export default UpdateProductAction;
+export default ApproveRequestAction;

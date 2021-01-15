@@ -27,7 +27,7 @@ const OfficerHeader = (props) =>
             <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="/viewVoterReq">View Voter Request</a>
           </li>
           <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-            <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="/appRejVoterReq">Approve/Reject Voter Request</a>
+            <a class="nav-link text-dark px-md-0  border-primary nav-custom-link " href="/approveRequest">Approve/Reject Voter Request</a>
           </li>
         </ul>
         <div class=" d-flex sky-color search-box ">
