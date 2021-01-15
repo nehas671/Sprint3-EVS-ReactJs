@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const UpdateCandidateAction = (candidateObj) => {
     return async function(dispatch) {
         const res = await axios.put(
@@ -18,3 +20,6 @@ const UpdateCandidateAction = (candidateObj) => {
 
     }
 }
+
+
+    export default UpdateCandidateAction;

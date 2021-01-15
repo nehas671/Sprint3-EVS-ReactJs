@@ -5,9 +5,8 @@ import Election from '../models/election';
 import CastVoteModel from '../models/castVoteModel';
 import getCandidateListAction from '../actions/getCandidateAction';
 import castVoteAction from '../actions/castVoteAction';
-import { useHistory } from "react-router-dom";
 import Slogan from './slogan';
-import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
+import { BrowserRouter as Router,  Switch,  Route,  Link, useHistory } from "react-router-dom";
 import Footer from "./footer";
 import VoterHeader from './voterHeader';
 import VoterAsideComponent from './voterAside'
@@ -225,12 +224,15 @@ const CastVote =(props)=>
         const castVoteObj = new CastVoteModel(election_name, state, constituency, date, candidate_name, party_name, voter_id);
 
         dispatch(castVoteAction(castVoteObj));
-        history.push('/');
+        history.push('/votecast');
         console.log({castVoteObj});
     }
 
     return(
     <div>
+        <Router>
+            <Link to="/votecast"></Link>
+        </Router>
         <VoterHeader/>
         <main>
             <Slogan />
@@ -351,9 +353,7 @@ const CastVote =(props)=>
                             </Card>
                         </div>
                     </div>
-                    <aside class="col-4  rounded  pr-0  aside-custom d-flex justify-content-center">
-                        <VoterAsideComponent/>
-                    </aside>
+                    <VoterAsideComponent/>
                 </div>
             </section>
         </main>

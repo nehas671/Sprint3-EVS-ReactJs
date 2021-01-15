@@ -16,8 +16,7 @@ import Aside from "./aside";
 import Footer from "./footer";
 import AdminHeader from "./adminheader";
 import { useState } from 'react';
-
-
+import AdminAsideComponent from './adminAside';
 
 
 
@@ -77,7 +76,7 @@ const AddElection= (props) => {
   <div class="form-group row pt-4 pb-3">
     <label for="electionName" class="col-4 col-form-label font-weight-bold">Election Name :</label>
     <div class="col-8">
-      <input type="text" class="form-control" id="electionName" name="name" placeholder="Enter Election Name" onBlur={validateElectionName}></input>
+      <input type="text" class="form-control" id="electionName" name="name" placeholder="Enter Election Name" onBlur={validateElectionName} required></input>
       <small id="namevalid" class="form-text text-danger invalid-feedback">
         Electionname should only  contain characters 
        </small>
@@ -85,14 +84,14 @@ const AddElection= (props) => {
   </div>
   <div class=" form-group row pb-3">
     <label for="state" class="col-4 mr-3 font-weight-bold">Select State :</label>
-    <select class="form-control col-7 state" id="state"  onChange={handleChange}>
+    <select class="form-control col-7 state" id="state"  onChange={handleChange} required>
     {renderStates(statlist)}
     </select>
   </div>
   <div class="form-group row pb-3">
   <label for="constituency" class="col-4 col-form-label font-weight-bold">Constituency :</label>
     <div class="col-8">
-      <input type="text"  class="form-control" id="constituency" name="constituency" placeholder="Enter Constituency" onBlur={validateConstituencyName} ></input>
+      <input type="text"  class="form-control" id="constituency" name="constituency" placeholder="Enter Constituency" onBlur={validateConstituencyName} required ></input>
       <small id="namevalid" class="form-text text-danger invalid-feedback">
         Constituency name should only contain characters
        </small>
@@ -101,19 +100,19 @@ const AddElection= (props) => {
   <div class="form-group row pb-3">
   <label for="date" class="col-4 col-form-label mr-3 font-weight-bold">Election Date :</label>
   <div>
-  <input type="date" id="date" name="date" class="col-12" onBlur={validateDate}></input>
+  <input type="date" id="date" name="date" class="col-12" onBlur={validateDate} required></input>
   <small id="namevalid" class="form-text text-danger invalid-feedback">
         Election Date should not be the previous or current date
   </small>
   </div>
    
       </div>
-      <button class="btn btn-primary" disabled={setdisable}>ADD</button>
+      <button class="btn btn-primary">ADD</button>
 </form>
 </div>
             </div>
             
-            <Aside/>
+            <AdminAsideComponent/>
            
             </div>
         </section>
@@ -149,10 +148,7 @@ function renderStates(statlist) {
 function handleSubmit(event) {
   event.preventDefault();
 
-  /*if(validConstituency&&validElectionname&&validDate)
-  {
-      disable=false;   
-  }*/
+ 
   const data = new FormData(event.target);
   console.log("in handle submit:",data)
   const name = data.get('name');
@@ -167,7 +163,6 @@ function handleSubmit(event) {
   const empObj = new Election(name, selectedState, constituency,date);
   console.log("electionObj:",empObj);
   dispatch(addElectionAction(empObj));
-  alert("Election Added Succesfully");
   history.push('/election');
   
   

@@ -20,9 +20,7 @@ const VoterServices = (props) =>
                     <div class="col-8  pl-0 pr-5">
                         <Carouselcomponent></Carouselcomponent>
                     </div>
-                    <aside class="col-4  rounded  pr-0  aside-custom d-flex justify-content-center">
-                        <VoterAsideComponent/>
-                    </aside>
+                    <VoterAsideComponent/>
                 </div>
             </section>
         </main>

@@ -17,7 +17,7 @@ const Aside = (props) => {
               <a class="nav-link text-primary font-weight-bold" href="#">Login</a>
             </li>
           </ul>
-          <h3><marquee direction="up" height="210" width="200" >Scrolling News</marquee>
+          <h3><marquee direction="up" height="210" width="200" >Maharashtra Gram Panchayat Election: Aurangabad, Thane, Palghar, Gadchiroli among 34 districts voting today</marquee>
           </h3>
           </div></aside>
     )

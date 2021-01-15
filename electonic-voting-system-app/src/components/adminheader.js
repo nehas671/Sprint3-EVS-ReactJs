@@ -70,10 +70,10 @@ const AdminHeader = (props) =>
                 <a class="dropdown-item drop " href="/updatecandidate">
                   Update Candidate
                 </a>
-                <a class="dropdown-item drop" href="#">
+                <a class="dropdown-item drop" href="/deleteCandidate">
                   Delete Candidate
                 </a>
-              </div>
+              </div> 
             </li>
           </div>
           <div className='btn-group dropdown'>

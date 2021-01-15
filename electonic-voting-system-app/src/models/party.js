@@ -1,7 +1,7 @@
 class Party {
-    constructor(partyName, leader, symbol) {
+    constructor(party_name, leader, symbol) {
     
-      this.partyNmae  = partyName;
+      this.party_name  = party_name;
       this.leader = leader;
       this.symbol = symbol;
       

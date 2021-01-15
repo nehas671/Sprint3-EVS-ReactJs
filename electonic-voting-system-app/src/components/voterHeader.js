@@ -5,8 +5,8 @@ import * as icons from '@fortawesome/free-solid-svg-icons'
 const VoterHeader = (props)=>
 {
     return(
-        <div>
-            <header class="Custom-container py-md-2 py-3   ">
+    <div>
+        <header class="Custom-container py-md-2 py-3   ">
             <div class="header-before">
                 <span class="mr-4">
                     <img src="logo.jpg" alt="brand-name" class="logo"/>
@@ -16,12 +16,16 @@ const VoterHeader = (props)=>
             <nav class="navbar navbar-expand-md  navbar-light d-md-block d-lg-flex px-sm-0 py-0 text-wrap ">
                 {/*<div class="navbar-brand nav-custom-brand mb-3 mb-md-0 py-0"></div>*/}
                 <button class="navbar-toggler  custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav flex-wrap w-100">
                         <li class="nav-item  nav-item-custom mb-2 mb-md-0 flex-wrap ">
+<<<<<<< HEAD
                             <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="/">
+=======
+                            <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="/VoterServices">
+>>>>>>> 9d8441e6a1b8b1ffc1c2d0ff49461d377a66bb03
                                 Home
                             </a>
                         </li>
@@ -43,7 +47,7 @@ const VoterHeader = (props)=>
                                     <a class="dropdown-item drop" href="#">
                                         View Candidate
                                     </a>
-                                    <a class="dropdown-item drop" href="#">
+                                    <a class="dropdown-item drop" href='/votecast'>
                                         Cast Vote
                                     </a>
                                     <a class="dropdown-item drop" href="/viewResult">
@@ -82,7 +86,7 @@ const VoterHeader = (props)=>
                 </div>
             </nav>
         </header>
-        </div>
+    </div>
     )    
 }
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 let viewScheduleMonthAction = (month) => {
     return async function (dispatch) {
         const res = await fetch(
-            `http://localhost:8080/evs/schedule/month/${month}`, {
+            `http://localhost:9090/evs/schedule/month/${month}`, {
                 method: "GET",
                 headers: {
                     "Access-Control-Allow-Origin": "*"
@@ -10,7 +10,7 @@ let viewScheduleMonthAction = (month) => {
             }
           );
           const data = await res.json();
-          dispatch({type: "VIEW_SCHEDULE_STATE", payload: data});
+          dispatch({type: "VIEW_SCHEDULE", payload: data});
     }
 }
 
