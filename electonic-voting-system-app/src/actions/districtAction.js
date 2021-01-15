@@ -2,7 +2,7 @@
 let showDistrictAction = () => {
     return async function (dispatch) {
         const res = await fetch(
-            "http://localhost:8080/evs/districts",
+            "http://localhost:9090/evs/districts",
             {
                 "Access-Control-Allow-Origin": "*"
             }
