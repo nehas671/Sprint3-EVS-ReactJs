@@ -3,7 +3,7 @@ import axios from "axios";
 let viewReqByStatusAction=(status)=>{
     return async function (dispatch){
         const res=await axios.get(
-            `http://localhost:8080/evs/admin/voterRequestbystatus/${status}`,{
+            `http://localhost:9090/evs/admin/voterRequestbystatus/${status}`,{
                 method:"GET",
                 headers:{
                     "Access-Control-Allow-Origin":"*"
