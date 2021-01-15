@@ -11,168 +11,47 @@ import Footer from "./footer";
 import VoterHeader from './voterHeader';
 import VoterAsideComponent from './voterAside'
 import showStatesAction from '../actions/get_states';
+import GetAllElectionElectionName from '../actions/getAllElectionName';
 
 let dispatch;
 let listState = false;
 let history;
-
-function handleElectionNameChange(event)
-{
-    var enteredElectionName=event.target.value;
-    if(enteredElectionName ==="")
-    {
-        event.target.classList.remove('custom-valid');
-        event.target.classList.add('custom-invalid');
-        console.error("Please select election name from drop down!")
-    }
-    else
-    {
-        event.target.classList.remove('custom-invalid');
-        event.target.classList.add('custom-valid');
-        console.log({enteredElectionName});
-    }
-}
-
-function handleStateChange(event)
-{
-    var enteredState = event.target.value;
-    if(enteredState ==="")
-    {
-        event.target.classList.remove('custom-valid');
-        event.target.classList.add('custom-invalid');
-        console.error("Please select state from drop down!")
-    }
-    else
-    {
-        event.target.classList.remove('custom-invalid');
-        event.target.classList.add('custom-valid');
-        console.log({enteredState});
-    }
-}
-
-function renderStates(stateList ) {
-    console.log("stateList: ", stateList);
-    return stateList.map((states, index) => {
-      const { state } = states 
-      return (
-        <option key={state} value={state}>{state}</option>
-      )
-    })
-};
-
-
-function handleConstituencyChange(event)
-{
-    var enteredConstituency=event.target.value;
-    let inputdata = enteredConstituency;
-    let string = inputdata.trim();
-    let pattern = /[a-zA-Z]{3,}$/;
-    if(pattern.test(string) && string != "")
-    {
-        console.log({enteredConstituency});
-        event.target.classList.remove('custom-invalid');
-        event.target.classList.add('custom-valid');
-    }
-    else 
-    {
-        event.target.classList.remove('custom-valid');
-        event.target.classList.add('custom-invalid');
-        console.error('Constituency should have characters only!')
-    }
-}
-function handleCandidateNameChange(event)
-{
-    var enteredCandidateName=event.target.value;
-    let inputdata = enteredCandidateName;
-    let string = inputdata.trim();
-    let pattern = /[a-zA-Z]{3,}$/;
-    if(pattern.test(string) && string != "")
-    {
-        console.log({enteredCandidateName});
-        event.target.classList.remove('custom-invalid');
-        event.target.classList.add('custom-valid');
-    }
-    else 
-    {
-        event.target.classList.remove('custom-valid');
-        event.target.classList.add('custom-invalid');
-        console.error('Candidate Name should have characters only!');
-    }
-}
-
-function handlePartyNameChange(event)
-{
-    var enteredPartyName=event.target.value;
-    let inputdata = enteredPartyName;
-    let string = inputdata.trim();
-    let pattern = /[a-zA-Z]{3,}$/;
-    if(pattern.test(string) && string != "")
-    {
-        console.log({enteredPartyName});
-        event.target.classList.remove('custom-invalid');
-        event.target.classList.add('custom-valid');
-    }
-    else 
-    {
-        event.target.classList.remove('custom-valid');
-        event.target.classList.add('custom-invalid');
-        console.error('Party Name should have characters only!');
-    }
-}
-
-
-
-function renderTableData(candidateList) 
-{
-    return candidateList.map((candidate, index) => {
-        const { candidateName, partyName } = candidate //destructuring
-        return (
-        <tr key={index}>
-            <td>{candidateName}</td>
-            <td>{partyName}</td>
-        </tr>
-        )
-    })
-};
-
-
-const handleList = (event)=>
-{
-    event.preventDefault();
-    const data = new FormData(event.target);
-    
-    const election_name = data.get('electionName');
-    console.log({election_name});
-    
-    const state = data.get('state');
-    console.log({state});
-    
-    const constituency = data.get('constituency');
-    console.log({constituency});
-    
-    const date = data.get('date');
-    console.log({date});
-
-    const electionObj = new Election(election_name, state, constituency, date);
-
-    dispatch(getCandidateListAction(electionObj));
-    
-    const candidateList = dispatch(getCandidateListAction(electionObj));
-    if(candidateList!=null)
-    {
-        listState = true;
-    }
-}
-
-
+let set = true;
+let validElectionName = false;
+let validState = false;
+let validConstituency = false;
 
 const CastVote =(props)=>
 {   
     dispatch = useDispatch();
-    
-    let candidateList = useSelector((state) => state.castVoteReducer.candidates);
+
+    let [electionList, setElectionList] = useState();
+
+    let electionNameList = useSelector(state=>state.castVoteReducer.electionNamelist)
     let stateList = useSelector((state)=>state.castVoteReducer.statelist);
+    let candidateList = useSelector((state) => state.castVoteReducer.candidates);
     
+    React.useEffect(()=>
+    {
+        ElectionNameList()
+    },[]);
+
+    const ElectionNameList = () =>
+    {
+        dispatch(GetAllElectionElectionName())
+        .then((response) => {
+            console.log("Response: ", response);
+            console.log("electionNameList ", electionNameList);
+            setElectionList(electionNameList);
+        });
+    }
+
+    if(!Array.isArray(electionNameList))
+    {
+        electionNameList = [];
+        console.log("Set electionNameList to blank array.");
+    }
+
     React.useEffect(()=>{
         StateList()
     }, []);
@@ -195,11 +74,8 @@ const CastVote =(props)=>
     const candidateNameRef = useRef(null);
     const partyNameRef = useRef(null);
     const voterIDRef = useRef(null);
-
-    
     
     history = useHistory();
-
     console.log("candidateList:", candidateList);
 
     if(!Array.isArray(candidateList))
@@ -273,7 +149,7 @@ const CastVote =(props)=>
                             <br></br>
                             <Card border='primary'>
                                 <Card.Body>
-                                    <form onSubmit={handleList}>
+                                    <form onSubmit={handleList} onMouseMove={EnableDisable}>
                                         <div className="form-group row pb-2">
                                             <label htmlFor='electionName' className='col-3 col-form-label font-weight-bold'>
                                                 Election Name:
@@ -281,8 +157,7 @@ const CastVote =(props)=>
                                             <div>
                                                 <select id="electionName" name="electionName" ref={electionNameRef} onBlur={handleElectionNameChange} required>
                                                     <option></option>
-                                                    <option>Lok Sabha</option>
-                                                    <option>Vidhan Sabha</option>
+                                                    {renderElectionName(electionNameList)}
                                                 </select>
                                                 <small id="namevalid" class="form-text text-danger invalid-feedback">
                                                     Please select valid Election Name from the list!
@@ -297,10 +172,10 @@ const CastVote =(props)=>
                                                 <select id="state" name="state" ref={stateRef} onBlur={handleStateChange} required>
                                                     <option></option>
                                                     {renderStates(stateList)}
-                                                    <small id="namevalid" class="form-text text-danger invalid-feedback">
-                                                        Select from State from the list!
-                                                    </small> 
                                                 </select>
+                                                <small id="namevalid" class="form-text text-danger invalid-feedback">
+                                                    Select from State from the list!
+                                                </small> 
                                             </div>
                                         </div>
                                         <div className="form-group row pb-2" >
@@ -322,7 +197,7 @@ const CastVote =(props)=>
                                                 <input type='text' id='date' name='date' ref={dateRef} value={date} readOnly></input>
                                             </div>
                                         </div>
-                                        <Button type = 'submit' variant='outline-primary'>Get Candidate List</Button>
+                                        <Button type='submit' variant='outline-primary' id="btnsubmit" disabled="disabled">Get Candidate List</Button>
                                     </form>
                                     {
                                     listState?
@@ -393,5 +268,203 @@ const CastVote =(props)=>
     </div>
     );
 };
+
+function handleElectionNameChange(event)
+{
+    var enteredElectionName=event.target.value;
+    if(enteredElectionName ==="")
+    {
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+        console.error("Please select election name from drop down!")
+    }
+    else
+    {
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+        console.log({enteredElectionName});
+        validElectionName = true;
+    }
+}
+
+function renderElectionName(electionNameList ) {
+    console.log("electionNameList: ", electionNameList);
+    return electionNameList.map((value) => {
+        return (
+            <option value = {value}>{value}</option>
+        )
+    })
+};
+
+function handleStateChange(event)
+{
+    var enteredState = event.target.value;
+    if(enteredState ==="")
+    {
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+        console.error("Please select state from drop down!")
+    }
+    else
+    {
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+        console.log({enteredState});
+        validState = true;
+    }
+}
+
+function renderStates(stateList ) {
+    console.log("stateList: ", stateList);
+    return stateList.map((states, index) => {
+      const { state } = states 
+      return (
+        <option key={state} value={state}>{state}</option>
+      )
+    })
+};
+
+
+function handleConstituencyChange(event)
+{
+    var enteredConstituency=event.target.value;
+    let inputdata = enteredConstituency;
+    let string = inputdata.trim();
+    let pattern = /[a-zA-Z]{3,}$/;
+    if(pattern.test(string) && string != "")
+    {
+        console.log({enteredConstituency});
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+        validConstituency = true;
+    }
+    else 
+    {
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+        console.error('Constituency should have characters only!')
+    }
+}
+
+function EnableDisable(event){
+    event.preventDefault();
+    var btnsubmit=document.getElementById("btnsubmit");
+  
+    console.log("handle disabled called");
+    console.log("validElectionName: ",validElectionName);
+    console.log("validState:",validState);
+    console.log("validConstituency:",validConstituency)
+    if(validElectionName&&validState&&validConstituency)
+          {  
+              set=false;
+            console.log("set",set);
+            btnsubmit.disabled=false;
+           
+          }
+          else{
+            btnsubmit.disabled=true;
+        }
+      
+   
+  }
+
+function handleCandidateNameChange(event)
+{
+    var enteredCandidateName=event.target.value;
+    let inputdata = enteredCandidateName;
+    let string = inputdata.trim();
+    let pattern = /[a-zA-Z]{3,}$/;
+    if(pattern.test(string) && string != "")
+    {
+        console.log({enteredCandidateName});
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+    }
+    else 
+    {
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+        console.error('Candidate Name should have characters only!');
+    }
+}
+
+function handlePartyNameChange(event)
+{
+    var enteredPartyName=event.target.value;
+    let inputdata = enteredPartyName;
+    let string = inputdata.trim();
+    let pattern = /[a-zA-Z]{3,}$/;
+    if(pattern.test(string) && string != "")
+    {
+        console.log({enteredPartyName});
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+    }
+    else 
+    {
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+        console.error('Party Name should have characters only!');
+    }
+}
+
+function handleVoterIDChange(event)
+{
+    var enteredVoterId = event.target.value;
+    if(enteredVoterId ==="")
+    {
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+        console.error("Please select state from drop down!")
+    }
+    else
+    {
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+        console.log({enteredVoterId});
+    }
+}
+
+function renderTableData(candidateList) 
+{
+    return candidateList.map((candidate, index) => {
+        const { candidateName, partyName } = candidate //destructuring
+        return (
+        <tr key={index}>
+            <td>{candidateName}</td>
+            <td>{partyName}</td>
+        </tr>
+        )
+    })
+};
+
+
+const handleList = (event)=>
+{
+    event.preventDefault();
+    const data = new FormData(event.target);
+    
+    const election_name = data.get('electionName');
+    console.log({election_name});
+    
+    const state = data.get('state');
+    console.log({state});
+    
+    const constituency = data.get('constituency');
+    console.log({constituency});
+    
+    const date = data.get('date');
+    console.log({date});
+
+    const electionObj = new Election(election_name, state, constituency, date);
+
+    dispatch(getCandidateListAction(electionObj));
+    
+    const candidateList = dispatch(getCandidateListAction(electionObj));
+    if(candidateList!=null)
+    {
+        listState = true;
+    }
+}
 
 export default CastVote;
