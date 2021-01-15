@@ -166,7 +166,6 @@ const AddRequest = (props) => {
             
     <Footer/>
 
-
 </div>
 )
 };
@@ -344,8 +343,7 @@ function validateDate(event) {
   console.log("voterRequestObj:",voterObj);
   dispatch(addVoterRequestAction(voterObj));
   history.push('/');
-
-        
+     
   }
   export default AddRequest;
 
