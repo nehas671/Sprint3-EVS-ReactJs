@@ -4,18 +4,19 @@ const registerUserAction = (user) => {
     console.log("Registration in action",user.name);
     return async function (dispatch) {
         const res = await axios.post(
-            "http://localhost:8080/evs/user",
+            "http://localhost:9090/evs/user",
              { 
                
                     name: user.name, 
                     district: user.district,
                     address: user.address,
-                    contactNumber: user.contactNumber,
+                    mobileNumber: user.mobileNumber,
                     emailId: user.emailId,
                     dob: user.dob,
                 }, 
                 { 
-                    "Content-type": "application/json; charset=UTF-8"
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Access-Control-Allow-Origin": "*"
                 }
             );
            

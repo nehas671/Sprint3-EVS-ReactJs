@@ -23,12 +23,12 @@ import AdminAsideComponent from './adminAside';
 let dispatch;
 let history;
 let selectedState;
-
-
+let set;
+let x;
 const AddElection= (props) => {
 
   let [filter, setdisable] = useState();
-   setdisable=true;
+   set=true;
   dispatch = useDispatch();
   history = useHistory();
   let statlist = useSelector(state => state.electionReducer.statelist);
@@ -47,6 +47,8 @@ const AddElection= (props) => {
      
       console.log("Set electionList to blank array");
   }
+
+   
     
     return (
       <div>
@@ -71,7 +73,7 @@ const AddElection= (props) => {
             <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
            
               <h2 class="addElectionTitle">ADD ELECTION</h2>
-<form onSubmit={handleSubmit}>
+<form onSubmit={handleSubmit} onMouseMove={EnableDisable}>
 
   <div class="form-group row pt-4 pb-3">
     <label for="electionName" class="col-4 col-form-label font-weight-bold">Election Name :</label>
@@ -92,6 +94,7 @@ const AddElection= (props) => {
   <label for="constituency" class="col-4 col-form-label font-weight-bold">Constituency :</label>
     <div class="col-8">
       <input type="text"  class="form-control" id="constituency" name="constituency" placeholder="Enter Constituency" onBlur={validateConstituencyName} required ></input>
+
       <small id="namevalid" class="form-text text-danger invalid-feedback">
         Constituency name should only contain characters
        </small>
@@ -100,14 +103,15 @@ const AddElection= (props) => {
   <div class="form-group row pb-3">
   <label for="date" class="col-4 col-form-label mr-3 font-weight-bold">Election Date :</label>
   <div>
-  <input type="date" id="date" name="date" class="col-12" onBlur={validateDate} required></input>
+  <input type="date" id="date" name="date" class="col-12" onBlur={validateDate} required ></input>
   <small id="namevalid" class="form-text text-danger invalid-feedback">
         Election Date should not be the previous or current date
   </small>
   </div>
    
       </div>
-      <button class="btn btn-primary">ADD</button>
+      <button class="btn btn-primary" id="btnsubmit" disabled="disabled">ADD</button>
+     
 </form>
 </div>
             </div>
@@ -129,6 +133,30 @@ const AddElection= (props) => {
 let validElectionname=false;
 let validConstituency=false;
 let validDate=false;
+
+
+function EnableDisable(event){
+  event.preventDefault();
+  var btnsubmit=document.getElementById("btnsubmit");
+
+  console.log("handle disabled called");
+  console.log("validConstituency",validConstituency);
+  console.log("validDate",validDate);
+  console.log("validElectionname",validElectionname)
+  if(validConstituency&&validDate&&validElectionname)
+        {  
+            set=false;
+          console.log("set",set);
+          btnsubmit.disabled=false;
+         
+        }
+        else{
+          btnsubmit.disabled=true;
+      }
+    
+ 
+}
+
 
 
 function handleChange(event) {
@@ -163,6 +191,7 @@ function handleSubmit(event) {
   const empObj = new Election(name, selectedState, constituency,date);
   console.log("electionObj:",empObj);
   dispatch(addElectionAction(empObj));
+  alert("Party Added Succesfully");
   history.push('/election');
   
   
