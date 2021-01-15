@@ -25,22 +25,19 @@ import ViewVoterReq from './components/view_voterReq';
 import ApproveRequest from './components/approveVoterRequest'
 
 import CastVote from './components/castVote';
-<<<<<<< HEAD
 import DeleteResult  from './components/deleteResult';
-=======
-import { DeleteResult } from './components/deleteResult';
 
->>>>>>> 9b2be4ce1d8848a7ff5353c3064f204dd734f8d8
+
+
+
 import UpdateCandidate from './components/update_candidate';
 import DeleteCandidate from './components/deleteCandidate';
 
 import ViewVoterId from './components/viewVoterId';
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 9b2be4ce1d8848a7ff5353c3064f204dd734f8d8
+
 //import ButtonForm from './components/button';
 
 
@@ -174,19 +171,18 @@ function App() {
             <OfficerService></OfficerService>
           </Route>
 
-<<<<<<< HEAD
          
           <Route exact path='/votecast'>
             <CastVote />
           </Route>
-=======
+
 
           <Route exact path='/votecast'>
             <CastVote />
           </Route>
 
 
->>>>>>> 9b2be4ce1d8848a7ff5353c3064f204dd734f8d8
+
 
           
             <Route exact path ="/deleteCandidate">
@@ -210,10 +206,8 @@ function App() {
             <AddRequest></AddRequest>
           </Route>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 9b2be4ce1d8848a7ff5353c3064f204dd734f8d8
+
      </Switch> 
 
 

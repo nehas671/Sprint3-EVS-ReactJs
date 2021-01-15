@@ -17,7 +17,7 @@ import viewAllDeleteAction from '../actions/viewaAlldelete';
 
 let history;
 let dispatch
-export const DeleteResult= (props) => {
+ const DeleteResult= (props) => {
 
 
  
@@ -27,13 +27,13 @@ export const DeleteResult= (props) => {
    history = useHistory();
   let resultList = useSelector(state => state.resultReducer.viewall);
  
-  React.useEffect(() => {
+ /* React.useEffect(() => {
     ResultList()
   }, []);
 
   const ResultList = () => {
     dispatch(viewAllDeleteAction())
-  }
+  }*/
 console.log("resultList: ", resultList);
 if(!Array.isArray(resultList)) {
     resultList = [];
@@ -129,5 +129,5 @@ function renderTableData(resultList ) {
    history.push('/deleteresult')  
    }
 
-   
+
     export default DeleteResult;
