@@ -1,16 +1,13 @@
+import axios from "axios";
 let viewResultByPartyNameAction = (party_name) => {
     return async function (dispatch) {
-        const res = await fetch(
-            `http://localhost:8091/evs/result/partyname/${party_name}`, {
-                method: "GET",
-                headers: {
-                    "Access-Control-Allow-Origin": "*"
-                }
-            }
+        const res = await axios.get(
+            `http://localhost:8091/evs/result/partyname/${party_name}`
+              
           );
-          const data = await res.json();
-          console.log("result by partyname:",data);
-          dispatch({type: "VIEW_RESULT", payload: data});
+         
+          console.log("result by partyname:",res.data);
+          dispatch({type: "VIEW_RESULT", payload: res.data});
     }
 }
 

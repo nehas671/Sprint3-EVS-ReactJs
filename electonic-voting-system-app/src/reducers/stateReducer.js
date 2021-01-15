@@ -1,10 +1,24 @@
-const stateReducer = (state=[],  action) => {
+const stateReducer = (state={statename:[]},  action) => {
     switch(action.type) {
         case 'SHOW_STATES':
-            return action.payload;
-           
+            state.statename=action.payload;
+            return state;
         default:
             return [];
     }
 }
 export default stateReducer;
+
+
+/*
+const stateReducer = (state = {statename:[]},  action) => {
+    switch(action.type) {
+        case 'SHOW_STATES':
+            state.statename = action.payload;
+            return state;
+        default:
+            return [];
+    }
+}
+export default stateReducer;
+*/
