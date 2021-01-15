@@ -224,7 +224,7 @@ const CastVote =(props)=>
         const castVoteObj = new CastVoteModel(election_name, state, constituency, date, candidate_name, party_name, voter_id);
 
         dispatch(castVoteAction(castVoteObj));
-        history.push('/');
+        history.push('/votecast');
         console.log({castVoteObj});
     }
 
