@@ -161,8 +161,18 @@ function App() {
             <Route exact path ="/deleteCandidate">
             <DeleteCandidate/>
             </Route>
-           
+            
+            <Route exact path ="/appRejVoterReq">
+            <ApproveRequest/>
+            </Route>
 
+            <Route exact path ="/addVoterReq">
+            <AddRequest/>
+            </Route>
+
+            
+           
+            
         
           <Route exact path='/votecast'>
             <CastVote />
