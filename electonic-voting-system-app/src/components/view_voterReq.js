@@ -34,7 +34,6 @@ const ViewVoterReq = (props) => {
   console.log("voterList: ", voterList);
   if(!Array.isArray(voterList)) {
       voterList = [];
-     
       console.log("Set List to blank array");
   }
 
@@ -52,7 +51,7 @@ const ViewVoterReq = (props) => {
     if(selectedOption === "Status") {
         dispatch(getAllVoterStatusAction())
         .then((response) => {
-            console.log("REsponse: ", response);
+            console.log("Response: ", response);
             console.log("filterList: ", filterList);
             setFilter(filterList);
         });
@@ -203,7 +202,7 @@ function renderTableData(voterList) {
                 <td>{district}</td>
                 <td>{voter_id}</td>
                 <td>{status}</td>
-                <td><Button as="input" type="button" value="approve/reject"><a href="/approveVoterRequest"></a></Button></td>
+                <td><Button as="input" type="button" value="approve/reject"></Button></td>
         </tr>
      )
   })
