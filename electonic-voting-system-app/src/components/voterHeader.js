@@ -34,7 +34,7 @@ const VoterHeader = (props)=>
                                     <a class="dropdown-item drop " href="#">
                                         Add Voter Request
                                     </a>
-                                    <a class="dropdown-item drop" href="#">
+                                    <a class="dropdown-item drop" href="/viewVoterId">
                                         View Voter ID
                                     </a>
                                     <a class="dropdown-item drop" href="#">

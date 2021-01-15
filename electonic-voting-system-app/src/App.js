@@ -158,6 +158,10 @@ function App() {
             <ViewResult/>
           </Route>
 
+          <Route exact path="/viewVoterId">
+            <ViewVoterId/>
+          </Route>
+
 
           <Route exact path="/Officer_services">
             <OfficerService></OfficerService>
@@ -184,9 +188,7 @@ function App() {
             </Route>
 
             
-           
-            
-        
+  
          
           <Route exact path="/addVoterRequest">
             <AddRequest></AddRequest>
