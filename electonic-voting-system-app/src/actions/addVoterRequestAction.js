@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const addVoterRequestAction = (voterRequest) => {
-    console.log("Rquest in action",voterRequest.name);
+    console.log("Request in action",voterRequest.name);
     return async function (dispatch) {
         const res =  await axios.post(
             "http://localhost:8080/evs/user/voter_request", 
@@ -14,8 +14,10 @@ const addVoterRequestAction = (voterRequest) => {
                     emailId: voterRequest.emailId,
                     applicationStatus:"Pending"
                 }, 
+
                  { 
-                    "Content-type": "application/json; charset=UTF-8"
+                    "Content-type": "application/json; charset=UTF-8",
+                     "Access-Control-Allow-Origin": "*"
                 }
             );
             dispatch({type: "Add_VoterRequest", payload: res.data});  
