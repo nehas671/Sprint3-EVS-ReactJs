@@ -24,7 +24,7 @@ import UserReducer from './reducers/userReducer';
 import scheduleReducer from './reducers/schedule_reducer';
 
 let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer,
-'officerReducer':OfficerReducer,'userReducer':UserReducer,'scheduleReducer':scheduleReducer})
+'officerReducer':OfficerReducer,'userReducer':userReducer,'scheduleReducer':scheduleReducer})
 
 let store = createStore(allReducers, 
   compose(applyMiddleware(ReduxThunk)
@@ -47,6 +47,7 @@ ReactDOM.render(
   ,
   document.getElementById('root')
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

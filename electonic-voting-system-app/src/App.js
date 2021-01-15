@@ -151,11 +151,10 @@ function App() {
             <OfficerService></OfficerService>
           </Route>
 
-          
-        </Switch> 
-
-
-        
+          <Route exact path="/addVoterRequest">
+            <AddRequest></AddRequest>
+          </Route>
+        </Switch>  
             
 
        
