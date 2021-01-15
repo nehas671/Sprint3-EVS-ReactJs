@@ -11,7 +11,7 @@ const OfficerAsideComponent = (props) =>
                     <a class="nav-link text-primary font-weight-bold" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary font-weight-bold" href="/election">Approve voter Request</a>
+                    <a class="nav-link text-primary font-weight-bold" href="/appRejVoterReq">Approve voter Request</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-primary font-weight-bold" href="/viewVoterReq">View VoterRequests</a>
