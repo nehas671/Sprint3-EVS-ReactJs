@@ -12,8 +12,7 @@ import Header from "./header";
 import Slogan from "./slogan";
 import Aside from "./aside";
 import Footer from "./footer";
-import AdminHeader from './adminheader'
-
+import AdminHeader from "./adminheader";
 
 let dispatch;
 
@@ -37,9 +36,7 @@ const ViewParty = (props) => {
     return (
         <div>
   
-
   <AdminHeader/>
-
   
       <main>
   
@@ -72,6 +69,18 @@ const ViewParty = (props) => {
         {renderTableData(partyList)}
     </tbody>
     </table>
+
+    <div>
+                <ul class="pagination -lg pager">
+                    <li class="previous"><a href="#">Previous</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li class="next"><a href="#">Next</a></li>
+                </ul>
+            </div>
     </div>
    
     

@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 let addPartyAction = (party) => {
-    console.log("party in action",party.partyName);
+    console.log("party in action",party.party_name);
     return async function (dispatch) {
         const res = await axios.post(
-            "http://localhost:8080/evs/election/party",
+            "http://localhost:9090/evs/election/party",
              {     
-                    partyName: party.partyName,
+                    party_name: party.party_name,
                     leader: party.leader,
                     symbol:party.symbol,
                    

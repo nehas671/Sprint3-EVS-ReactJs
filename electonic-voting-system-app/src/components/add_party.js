@@ -58,9 +58,9 @@ const AddParty= (props) => {
   <form  onSubmit={handleSubmit}>
 
     <div class="form-group row pt-4 pb-3">
-      <label for="partyName" class="col-4 col-form-label font-weight-bold">Party Name :</label>
+      <label for="party_name" class="col-4 col-form-label font-weight-bold">Party Name :</label>
       <div class="col-8">
-        <input type="text" class="form-control" id="partyName" name="partyName" placeholder="Enter Party Name" onBlur={validatePartyName}></input>
+        <input type="text" class="form-control" id="party_name" name="party_name" placeholder="Enter Party Name" onBlur={validatePartyName}></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
           PrtyName should only  contain characters 
          </small>
@@ -117,7 +117,7 @@ function handleSubmit(event) {
   }*/
   const data = new FormData(event.target);
   console.log("in handle submit:",data)
-  const partyName = data.get('partyName');
+  const partyName = data.get('party_name');
   const leader = data.get('leader');
   const symbol = data.get('symbol');
   
