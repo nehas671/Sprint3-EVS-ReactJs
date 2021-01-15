@@ -22,10 +22,12 @@ import userReducer from './reducers/userReducer';
 import stateReducer from './reducers/stateReducer';
 import UserReducer from './reducers/userReducer';
 import scheduleReducer from './reducers/schedule_reducer';
+
 import partyReducer from './reducers/partyReducer'
 
 let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer,
 'officerReducer':OfficerReducer,'userReducer':userReducer,'scheduleReducer':scheduleReducer, 'partyReducer':partyReducer})
+
 
 let store = createStore(allReducers, 
   compose(applyMiddleware(ReduxThunk)

@@ -31,6 +31,12 @@ const ViewParty = (props) => {
       }
 
     console.log("partyList: ", partyList);
+    if(!Array.isArray(partyList)) {
+   
+        partyList=[];
+        console.log("Set electionList to blank array");
+    }
+    
 
 
     return (

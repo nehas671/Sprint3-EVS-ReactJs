@@ -20,8 +20,6 @@ import AdminAsideComponent from './adminAside';
 
 
 
-
-
 let dispatch;
 let history;
 let selectedState;
