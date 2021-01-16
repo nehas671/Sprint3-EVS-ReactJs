@@ -35,7 +35,7 @@ const VoterHeader = (props)=>
                                     Voter Services
                                 </a>
                                 <div class="dropdown-menu nav-drop-custom  nav-drop position-absolute " aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item drop " href="#">
+                                    <a class="dropdown-item drop " href="/addVoterReq">
                                         Add Voter Request
                                     </a>
                                     <a class="dropdown-item drop" href="/viewVoterId">
