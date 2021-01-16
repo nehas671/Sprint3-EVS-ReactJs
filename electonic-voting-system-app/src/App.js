@@ -29,6 +29,7 @@ import DeleteCandidate from './components/deleteCandidate'
 import DeleteResult from './components/deleteResult'
 import ViewSchedule from './components/show_schedule'
 import ShowSchedules from './components/schedule';
+import EvsLogin from './components/evslogin'
 //import ButtonForm from './components/button';
 
 
@@ -204,8 +205,12 @@ function App() {
             <AddRequest></AddRequest>
           </Route>
 
+          <Route exact path="/evslogin">
+            <EvsLogin></EvsLogin>
+          </Route>
 
 
+          
 
      </Switch> 
 

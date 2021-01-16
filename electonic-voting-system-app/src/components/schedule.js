@@ -179,7 +179,10 @@ const ShowSchedules = (props) => {
     return (
 
 <div>
-
+<Router>
+      <Link to="/viewschedule"></Link>
+     
+    </Router>
 <VoterHeader/>
   
       <main>
@@ -200,7 +203,7 @@ const ShowSchedules = (props) => {
                         
                       <label for="view" class="col-4 col-form-label font-weight-bold">View Schedule :</label>
                       <div class="col-8">
-                      <select class="form-control col-5 " id="view" onBlur={searchHandleChange} >
+                      <select class="form-control col-15 " id="view" onBlur={searchHandleChange} >
                       <option>View By</option>
                         <option>View All</option>
                         <option>State</option>
@@ -216,7 +219,7 @@ const ShowSchedules = (props) => {
                     <div class="form-group row pb-3">
                     <label for="view" class="col-4 col-form-label font-weight-bold">Filter :</label>
                     <div class="col-8">
-                    <select id="filter" onChange={filterHandleChange} required class="w-50 form-control">
+                    <select id="filter" onChange={filterHandleChange} required  class="form-control col-15 ">
                     <option>select</option>
                         {renderFilterList(filterList)}
                     </select>
