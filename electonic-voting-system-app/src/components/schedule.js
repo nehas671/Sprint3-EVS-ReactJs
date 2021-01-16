@@ -1,8 +1,4 @@
 
-
-
-
-
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import viewScheduleStateAction from '../actions/schedule_state_action'
@@ -24,12 +20,16 @@ import viewScheduleMonthListAction from '../actions/schedule_month_list';
 import viewScheduleDateListAction from '../actions/schedule_date_list';
 import viewScheduleDateAction from '../actions/schedule_date';
 import VoterAsideComponent from './voterAside';
+import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
 
 let dispatch;
 let selectedview;
 let selectedOption;
+let set;
+let selectCriteria=false;
+let selectFilter=false;
 const ShowSchedules = (props) => {
-
+  set=true;
   let [filter, setFilter] = useState();
   let [initialState, setInitialState] = useState();
   let scheduleList = useSelector(state => state.scheduleReducer.initialState);
@@ -55,6 +55,20 @@ const ShowSchedules = (props) => {
 
   const searchHandleChange = (event) => {
     selectedOption = event.target.value;
+    if(selectedOption ==="View By")
+    {
+        event.target.classList.remove('custom-valid');
+        event.target.classList.add('custom-invalid');
+        console.error("Please select view by criteria from drop down!")
+        selectCriteria=false;
+    }
+    else
+    {
+        event.target.classList.remove('custom-invalid');
+        event.target.classList.add('custom-valid');
+        console.log({selectedOption});
+        selectCriteria=true;
+    }
     console.log("Selected option: " + selectedOption);
     if(selectedOption === "State") {
         dispatch(viewScheduleStateListAction())
@@ -102,6 +116,7 @@ const ShowSchedules = (props) => {
 
 
   function handleSearch(event) {
+   
     event.preventDefault();
     if(selectedOption==="View All"){
       dispatch(viewScheduleAction())
@@ -109,6 +124,7 @@ const ShowSchedules = (props) => {
         console.log("REsponse: ", response);
         console.log("routeList: ", scheduleList);
         setInitialState(scheduleList);
+        
     });
   }
    else if(selectedOption==="State"){
@@ -163,6 +179,7 @@ const ShowSchedules = (props) => {
     return (
 
 <div>
+
 <VoterHeader/>
   
       <main>
@@ -175,15 +192,16 @@ const ShowSchedules = (props) => {
 
           <div class="container pt-5 px-5 ">
             
-          <h3 class="addElectionTitle mb-3"><center>VIEW SCHEDULE</center></h3><br/>
-          <form onSubmit={handleSearch} class="form-inline">
+          <h3 class="addElectionTitle mb-3"><center>VIEW SCHEDULE</center></h3>
+          <form onSubmit={handleSearch} onMouseMove={EnableDisable}>
             
                       
-                      <div class="form-group">
+                      <div class="form-group row  pb-3">
                         
-                      <label for="view" class=" mr-3 font-weight-bold mr-4">View Schedule :</label>
-                      <select class="form-control col-5 " id="view" onChange={searchHandleChange} required>
-                      <option>Select View By</option>
+                      <label for="view" class="col-4 col-form-label font-weight-bold">View Schedule :</label>
+                      <div class="col-8">
+                      <select class="form-control col-5 " id="view" onBlur={searchHandleChange} >
+                      <option>View By</option>
                         <option>View All</option>
                         <option>State</option>
                         <option>Election Name</option>
@@ -191,19 +209,26 @@ const ShowSchedules = (props) => {
                         <option>Date</option>
                         <option>Month</option>
                       </select>
+                      <small id="namevalid" class="form-text text-danger invalid-feedback">
+                      Please select view by criteria from drop down
+                      </small></div>
                     </div>
-                    <div class="form-group">
-                    <label for="view" class=" mr-3 font-weight-bold mr-4">Filter :</label>
+                    <div class="form-group row pb-3">
+                    <label for="view" class="col-4 col-form-label font-weight-bold">Filter :</label>
+                    <div class="col-8">
                     <select id="filter" onChange={filterHandleChange} required class="w-50 form-control">
                     <option>select</option>
                         {renderFilterList(filterList)}
                     </select>
+                    <small id="namevalid" style={{'width':"100 px"}} class="form-text text-danger invalid-feedback">
+                      Please select filter by option from drop down
+                      </small></div>
                 </div>
                      
                         
-                <div class="form-group">
-                  <button className="btn btn-primary">Search</button>
-                  </div>
+                <center>
+                  <button className="btn btn-primary" id="btnsubmit" disabled="disabled">Search</button></center>
+                  
                   
                   
                   
@@ -272,9 +297,23 @@ function renderTableData(scheduleList) {
 
 function filterHandleChange(event) {
   selectedview = event.target.value
+  
   console.log("Selected view: " + selectedview);
+  if(selectedview ==="select")
+  {
+      event.target.classList.remove('custom-valid');
+      event.target.classList.add('custom-invalid');
+      console.error("Please select filter by option from drop down")
+      
+  }
+  else
+  {
+      event.target.classList.remove('custom-invalid');
+      event.target.classList.add('custom-valid');
+      console.log({selectedview});
+      
 }
-
+}
 function renderFilterList(filterList) {
   console.log("filterList", filterList);
   return filterList.map((value) => {
@@ -284,4 +323,25 @@ function renderFilterList(filterList) {
   })
 } 
 
+function EnableDisable(event)
+{
+  event.preventDefault();
+  var btnsubmit=document.getElementById("btnsubmit");
+  
+  console.log("handle disabled called");
+  console.log("selectCriteria",selectCriteria);
+  console.log("selectFilter",selectFilter);
+  
+  
+  if(selectCriteria)
+  {  
+    set=false;
+    console.log("set",set);
+    btnsubmit.disabled=false;
+  }
+  else
+  {
+    btnsubmit.disabled=true;
+  }
+}
 export  default ShowSchedules;
