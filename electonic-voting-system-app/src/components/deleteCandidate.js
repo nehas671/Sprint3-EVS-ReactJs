@@ -211,8 +211,3 @@ function renderTableData(candidateList) {
 export default DeleteCandidate;
 
 
-
-
-
-
-

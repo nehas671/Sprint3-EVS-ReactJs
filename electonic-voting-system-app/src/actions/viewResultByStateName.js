@@ -2,7 +2,7 @@ import axios from "axios";
 let viewResultByStateNameAction = (state) => {
     return async function (dispatch) {
         const res = await axios.get(
-            `http://localhost:8091/evs/result/statename/${state}`
+            `http://localhost:9090/evs/result/statename/${state}`
           );
          
           console.log("result by statename:", res.data);

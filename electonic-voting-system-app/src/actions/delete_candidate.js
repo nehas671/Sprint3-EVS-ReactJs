@@ -3,7 +3,7 @@ import axios from 'axios';
 const DeleteCandidateAction = (candidateId) => {
     return async function(dispatch) {
         const res = await axios.delete(
-            `http://localhost:8080/evs/deleteCandidate/${candidateId}`, { 
+            `http://localhost:9090/evs/deleteCandidate/${candidateId}`, { 
                 headers: { 
                     "Content-type": "application/json; charset=UTF-8"
                 }

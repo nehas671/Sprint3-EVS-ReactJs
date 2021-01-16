@@ -3,7 +3,7 @@ import axios from 'axios';
 let viewByCandidateNameAction = (candidatename) => {
     return async function (dispatch) {
         const res = await axios.get(
-            `http://localhost:8080/evs/candidate/${candidatename}`
+            `http://localhost:9090/evs/candidate/${candidatename}`
             );
           
           //console.log("candidate data:",data);
