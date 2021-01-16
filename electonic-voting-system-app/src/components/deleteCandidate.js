@@ -22,11 +22,10 @@ let dispatch;
 const DeleteCandidate = (props) => {
 
 
-    let candidateList = useSelector(state => state.candidateReducer);
+    let candidateList = useSelector(state => state.candidateReducer.initialState);
 
     dispatch = useDispatch();
-/*
-    React.useEffect(() => {
+/*    React.useEffect(() => {
         CandidateList()
       }, []);
     

@@ -9,7 +9,7 @@ const DeleteCandidateAction = (candidateId) => {
                 }
             });
           console.log('Delete Candidate serverResponse: ', res.data);
-          dispatch({type: "DELETE_CANDIDATE", payload: res.data});
+          dispatch({type:"DELETE_CANDIDATE", payload: res.data});
 
     }
 }
