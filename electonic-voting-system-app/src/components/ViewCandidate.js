@@ -16,6 +16,7 @@ import GetAllCandidateName from '../actions/getAllCandidateName';
 import GetAllPartyName from '../actions/getAllPartyName';
 import GetAllCandidateEmail from '../actions/getAllCandidateEmail';
 import GetAllCandidateNumber from '../actions/getAllCandidateNumber';
+import AdminAsideComponent from './adminAside';
 
 
 
@@ -231,7 +232,7 @@ const ViewCandidates = (props) => {
       
       </div>
       
-      <Aside/>
+      <AdminAsideComponent/>
       
 
       </div>
