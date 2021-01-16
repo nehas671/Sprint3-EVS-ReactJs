@@ -316,7 +316,7 @@ function validateCandidateNumber(event){
 
 //let unique=false;
 //let mobile_number; 
-let index = 0;  
+//let index = 0;  
     const data = event.target.value;
     console.log("target",data);
 
@@ -328,15 +328,16 @@ let index = 0;
       console.log("mobile_number_list", mobile_number)
     });
     
-     */
+    
 
   
 candidateList.forEach(myFunction); 
 function myFunction(item, index) 
 { 
-    console.log(item.contactNumber.get(index)); 
+    console.log(); 
     
 }
+ */
   
     let regex = /^\d{10}$/;
     let inputdata = data;
