@@ -314,9 +314,9 @@ function validateCandidateAge(event){
 
 function validateCandidateNumber(event){
 
-//let unique=false;
+let unique=false;
 //let mobile_number; 
-//let index = 0;  
+let index = 0;  
     const data = event.target.value;
     console.log("target",data);
 
@@ -327,23 +327,28 @@ function validateCandidateNumber(event){
       mobile_number=candidate.contactNumber;
       console.log("mobile_number_list", mobile_number)
     });
-    
+    */
     
 
   
 candidateList.forEach(myFunction); 
 function myFunction(item, index) 
-{ 
-    console.log(); 
-    
+{
+  console.log("number", item.contactNumber);
+    if(item.contactNumber === data){
+    unique=false;
+}else{
+  unique=true;
+} 
 }
- */
+console.log("unique", unique);
+ 
   
     let regex = /^\d{10}$/;
     let inputdata = data;
     let str = inputdata.trim();
     console.log(regex, str);
-    if (regex.test(str) && str != "") {
+    if (regex.test(str) && str != "" && unique) {
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
