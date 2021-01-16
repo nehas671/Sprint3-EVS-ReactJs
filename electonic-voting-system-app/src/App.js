@@ -38,7 +38,7 @@ function App() {
   return(
     <div>
  
- <RegisterUser></RegisterUser>
+ {/*<RegisterUser></RegisterUser>*/}
 {/* <AddElection></AddElection>*/}
 
    { /*<ShowElections/>*/}
