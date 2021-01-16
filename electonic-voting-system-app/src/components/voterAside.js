@@ -23,7 +23,7 @@ const VoterAsideComponent = ()=>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary font-weight-bold" href="#">
+                    <a class="nav-link text-primary font-weight-bold" href="/viewschedule">
                         View Election Schedule
                     </a>
                 </li>

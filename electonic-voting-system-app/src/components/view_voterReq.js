@@ -10,10 +10,13 @@ import AdminHeader from '../components/adminheader';
 import Aside from './aside';
 import Footer from './footer';
 import Slogan from './slogan';
+import ApproveRequestAction from '../actions/approveVoterRequestAction';
+import { useHistory } from "react-router-dom";
 
 let dispatch;
 let selectedview;
 let selectedOption;
+let history;
 
 const ViewVoterReq = (props) => {
 
@@ -24,6 +27,7 @@ const ViewVoterReq = (props) => {
   let filterList = useSelector(state => state.officerReducer.filter);
   
    dispatch = useDispatch();
+   history= useHistory();
 
  /* React.useEffect(() => {
       VoterList()
@@ -226,13 +230,31 @@ function renderTableData(voterList) {
                 <td>{district}</td>
                 
                 <td>{status}</td>
-                <td><Button as="input" type="button" value="approve"></Button></td>
-                <td><Button as="input" type="button" value="reject"></Button></td>
+                <td><Button as="input" type="button" value="approve" onClick={(e) =>aproveVoterRequest(e,voter_id)}></Button></td>
+                <td><Button as="input" type="button" value="reject" onClick = {(e)=>rejectVoterRequest(e,voter_id)}></Button></td>
         </tr>
      )
   })
 };
 
+function aproveVoterRequest(event,voter_id) {
+
+  event.preventDefault();
+  //console.log("eventtt",event.name);
+  console.log("user_id",voter_id);     
+   dispatch(ApproveRequestAction(voter_id));
+   console.log("voterRequestObj:",voter_id);
+   history.push("/viewVoterReq");
+   }
+function rejectVoterRequest(event,voter_id) {
+  event.preventDefault();
+  //console.log("eventtt",event.name);
+  console.log("user_id",voter_id);
+      
+    dispatch(ApproveRequestAction(voter_id));
+   console.log("voterRequestObj:",voter_id);
+    history.push("/viewVoterReq");
+    }
 
    
 function filterHandleChange(event) {

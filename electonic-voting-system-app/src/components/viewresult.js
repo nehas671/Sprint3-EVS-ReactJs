@@ -141,11 +141,13 @@ let refineList=useSelector(state=>state.resultReducer.refine)
             <div class="col-8  pl-0 pr-5">
             <div class="col border border-dark bg-light py-5 ml-auto mr-auto ">
               <h2 class="addElectionTitle mb-3"> View Election Result</h2>
-<form onSubmit={filterResult}>
+<form onSubmit={filterResult}  onMouseMove={EnableDisable}>
 
 <div class=" form-group row">
 <label for="viewby" class="col-4 mr-3 font-weight-bold">View Result By:</label>
 <select class="form-control col-7 state" id="viewby"  onChange={showRefineList} >
+
+<option>Select View By</option>
       <option > Election Name</option>
       <option > State Name</option>
       <option > Party Name</option>
@@ -163,7 +165,7 @@ let refineList=useSelector(state=>state.resultReducer.refine)
      </select>
    </div>
      
-<center><button type="submit" class="btn btn-outline-primary mb-3 ml-5 mr-5">Search</button></center>
+<center><button type="submit"   id="btnsubmit" disabled="disabled"  class="btn btn-outline-primary mb-3 ml-5 mr-5">Search</button></center>
   
   
 
@@ -231,6 +233,28 @@ let refineList=useSelector(state=>state.resultReducer.refine)
     
 
     
+function EnableDisable(event)
+{
+  event.preventDefault();
+  
+  var btnsubmit=document.getElementById("btnsubmit");
+  console.log("selectedOption",selected);
+  
+  let option=undefined;
+  if(selected!=undefined)
+  {  
+    btnsubmit.disabled=false;
+  }
+  else
+  {
+    btnsubmit.disabled=true;
+  } 
+}
+
+
+
+
+
 
      function handleRefine(event)
      {

@@ -126,7 +126,7 @@ const CastVote =(props)=>
         let voter_id = voterIDRef.current.value;
         console.log({voter_id});
 
-        const castVoteObj = new CastVoteModel(election_name, state, constituency, date, candidate_name, party_name, voter_id);
+        const castVoteObj = new CastVoteModel(election_name.toUpperCase(), state.toUpperCase(), constituency.toUpperCase(), date, candidate_name.toUpperCase(), party_name.toUpperCase(), voter_id);
 
         dispatch(castVoteAction(castVoteObj));
         history.push('/votecast');
@@ -426,13 +426,13 @@ const handleList = (event)=>
     event.preventDefault();
     const data = new FormData(event.target);
     
-    const election_name = data.get('electionName');
+    const election_name = data.get('electionName').toUpperCase();
     console.log({election_name});
     
-    const state = data.get('state');
+    const state = data.get('state').toUpperCase();
     console.log({state});
     
-    const constituency = data.get('constituency');
+    const constituency = data.get('constituency').toUpperCase();
     console.log({constituency});
     
     const date = data.get('date');

@@ -13,9 +13,25 @@ let addResultAction = (election_name,state_name) => {
                { 
                     "Content-type": "application/json; charset=UTF-8"
                 }
-        );
+        )
+
+
+        .then(response=>{
+            console.log("showResultAction ",response);
+            dispatch({type:"ADD_RESULT",payload:response.data});
+            alert("Data Inserted Sucessfully");
+
+            
+        }) .catch(error => {
+            console.log("error Response:",error.response)
+            console.log("data:",error.response.data.message);
+            alert(error.response.data.message);
+            
+        });
+
+
           
-          dispatch({type: "ADD_RESULT", payload: res.data});
+         
     }
 }
 export default addResultAction;

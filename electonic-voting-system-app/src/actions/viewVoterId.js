@@ -1,11 +1,11 @@
 import axios from "axios";
 
-let viewVoterIdAction=(user_id)=>{
+let viewVoterIdAction=(emailId)=>{
     return async function (dispatch){
-        console.log("IN action id",user_id);
+        console.log("IN action id",emailId);
         
         const res=await axios.get(
-            `http://localhost:9090/evs/user/voterId/${user_id}`,{
+            `http://localhost:9090/evs/user/voterIdbyemail/${emailId}`,{
                 method:"GET",
                 headers:{
                     "Access-Control-Allow-Origin":"*"

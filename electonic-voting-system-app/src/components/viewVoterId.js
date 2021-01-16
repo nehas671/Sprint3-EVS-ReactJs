@@ -8,6 +8,7 @@ import Footer from './footer';
 import Slogan from './slogan';
 
 let dispatch;
+
 let voterlist
 const ViewVoterId =(props)=>{    
      voterlist= useSelector(state=>state.userReducer);
@@ -33,15 +34,15 @@ const ViewVoterId =(props)=>{
                  <form onSubmit={handleSearch}>
                      <div class='form-group row pt-4 pb-3'>
                          <div class="form-inline col-5">
-                             <label htmlFor="id" class="col-form-label font-weight-bold">Enter User id:</label>
+                             <label htmlFor="id" class="col-form-label font-weight-bold">Enter email id:</label>
                              <input type='text' class='form-control' id='id' name='id' placeholder='Enter value' onBlur={validateId} required onKeyUpCapture={EnableDisable}></input>
                          <small id='validid' class="form-text text-danger invalid-feedback">
-                             UserId should only contain numbers 
+                            Please enter a valid email id
                          </small>
                          </div>
                         
                          <div class='col-2'>
-                             <button  id="btnsubmit" disabled="disabled">Search</button>
+                             <button  className="btn btn-primary" id="btnsubmit" disabled="disabled">Search</button>
                          </div>   
                      </div>
                  </form>
@@ -49,8 +50,9 @@ const ViewVoterId =(props)=>{
                      <table class= 'table table-border table-striped'>
                          <thead>
                              <tr>
-                             <th>UserId</th>
+                             
                             <th>Name</th>
+                            <th>Email Id</th>
                             <th>date of birth</th>
                             <th>VoterId</th>
                             <th>Status</th>
@@ -87,9 +89,9 @@ function renderTableData(voterlist){
 
     console.log("list inside:",voterlist);
         return(
-            <tr key={voterlist.user_id}>
-                <td>{voterlist.user_id}</td>
+            <tr key={voterlist.voter_id}>
                 <td>{voterlist.name}</td>
+                <td>{voterlist.emailId}</td>
                 <td>{voterlist.dob}</td>
                 <td>{voterlist.voter_id}</td>
                 <td>{voterlist.status}</td>
@@ -112,7 +114,7 @@ function validateId(event){
     console.log("target",data);
     
 
-    let regex=/[0-9]$/;
+    let regex = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
     let inputdata=data;
     let str=inputdata.trim();
     console.log(regex,str);
