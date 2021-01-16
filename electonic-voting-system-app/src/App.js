@@ -18,22 +18,17 @@ import Services from './components/login';
 import VoterServices from './components/voter_services'
 
 import AddParty from './components/add_party'
-import Registeruser from './components/register_user';
+import RegisterUser from './components/register_user';
 import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
 import ApproveRequest from './components/approveVoterRequest'
-
 import CastVote from './components/castVote';
-import { DeleteResult } from './components/deleteResult';
-
-import UpdateCandidate from './components/update_candidate';
-import DeleteCandidate from './components/deleteCandidate';
-
 import ViewVoterId from './components/viewVoterId';
-
-
-
+import DeleteCandidate from './components/deleteCandidate'
+import DeleteResult from './components/deleteResult'
+import ViewSchedule from './components/show_schedule'
+import ShowSchedules from './components/schedule';
 //import ButtonForm from './components/button';
 
 
@@ -43,12 +38,12 @@ function App() {
   return(
     <div>
  
-
+ {/*<RegisterUser></RegisterUser>*/}
 {/* <AddElection></AddElection>*/}
 
    { /*<ShowElections/>*/}
 
-    {/*<ViewVoterId></ViewVoterId>*/}
+    
    { /*<AddElection></AddElection>
    <ViewCandidates></ViewCandidates>*/}
 
@@ -57,6 +52,7 @@ function App() {
    {/*<CandidateForm></CandidateForm>
     
    
+
   
    {/*<CandidateForm></CandidateForm>*/}
    {/*<CandidateForm></CandidateForm>*/}
@@ -100,6 +96,8 @@ function App() {
             <Link to="/"></Link>
 
            {/* <Link to="/">Home</Link>&nbsp;&nbsp;
+
+
            {/* <Link to="/"></Link>
             <Link to="/">Home</Link>&nbsp;&nbsp;
             <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
@@ -134,7 +132,7 @@ function App() {
           <ShowElections/>
           </Route>
           <Route exact path="/RegisterUser">
-            <Registeruser></Registeruser>
+            <RegisterUser></RegisterUser>
           </Route>
 
           <Route exact path="/viewParty">
@@ -154,19 +152,35 @@ function App() {
           <Route exact path="/addResult">
             <AddResult></AddResult>
           </Route>
+
           <Route exact path="/viewResult">
             <ViewResult/>
           </Route>
 
+          <Route exact path="/viewVoterId">
+            <ViewVoterId/>
+          </Route>
+
+
+          <Route exact path="/deleteresult">
+            <DeleteResult/>
+          </Route>
+
+
+          <Route exact path="/viewSchedule">
+            <ShowSchedules/>
+          </Route>
+
+
+          
 
           <Route exact path="/Officer_services">
             <OfficerService></OfficerService>
           </Route>
-
-
           <Route exact path='/votecast'>
             <CastVote />
           </Route>
+
 
 
 
@@ -184,21 +198,19 @@ function App() {
             </Route>
 
             
-           
-            
-        
+
          
           <Route exact path="/addVoterRequest">
             <AddRequest></AddRequest>
           </Route>
 
 
+
+
      </Switch> 
 
-
-          
          
-
+  
             
 
        
