@@ -1,6 +1,6 @@
 class RegisterUser{
 
-    constructor( name,  district,  address,  emailId, contactNumber,  dob){
+    constructor( name,  district,  address,  emailId, contactNumber,  dob, gender){
 
         this.name = name;
         this.district = district;
@@ -8,6 +8,7 @@ class RegisterUser{
         this.emailId = emailId;
         this.contactNumber = contactNumber;
         this.dob = dob;
+        this.gender = gender;
     }
 }
 export default RegisterUser;
