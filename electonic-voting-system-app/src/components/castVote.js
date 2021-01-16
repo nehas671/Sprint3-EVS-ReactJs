@@ -426,13 +426,13 @@ const handleList = (event)=>
     event.preventDefault();
     const data = new FormData(event.target);
     
-    const election_name = data.get('electionName');
+    const election_name = data.get('electionName').toUpperCase();
     console.log({election_name});
     
-    const state = data.get('state');
+    const state = data.get('state').toUpperCase();
     console.log({state});
     
-    const constituency = data.get('constituency');
+    const constituency = data.get('constituency').toUpperCase();
     console.log({constituency});
     
     const date = data.get('date');
