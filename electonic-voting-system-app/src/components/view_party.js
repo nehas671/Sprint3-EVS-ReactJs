@@ -16,109 +16,123 @@ import AdminHeader from "./adminheader";
 
 let dispatch;
 
-const ViewParty = (props) => {
-
-
+const ViewParty = (props) => 
+{
     let partyList = useSelector(state => state.partyReducer);
 
     dispatch = useDispatch();
     React.useEffect(() => {
         PartyList()
-      }, []);
+    }, []
+    );
     
-      const PartyList = () => {
+    const PartyList = () =>
+    {
         dispatch(showPartyAction())
-      }
+    }
 
     console.log("partyList: ", partyList);
-    if(!Array.isArray(partyList)) {
-   
+    
+    if(!Array.isArray(partyList))
+    {
         partyList=[];
         console.log("Set electionList to blank array");
     }
-    
 
-
-    return (
-        <div>
-  
-  <AdminHeader/>
-  
-      <main>
-  
-        <Slogan/>
-         
-  
-          <section class="Custom-container technology-container">
-              <div class="row mx-0 px-sm-0 mb-4">
-                                
-  
-              <div class="col-8  pl-0 pr-5">
-              <div >
-              <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
-            
-<h2 class="font-weight-bold" >VIEW PARTY</h2><br/>
-
-    <div class=" h-100 p-12"><br/><br/>
-    
-    
-    <table class="table table-border table-striped"  >
-    <thead>
-        <tr>
-            <th>PartyName</th>
-            <th>LeaderName</th>
-            <th>Symbol</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        {renderTableData(partyList)}
-    </tbody>
-    </table>
-
+    return(
     <div>
-                <ul class="pagination -lg pager">
-                    <li class="previous"><a href="#">Previous</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li class="next"><a href="#">Next</a></li>
-                </ul>
-            </div>
+        <AdminHeader/>
+        <main>
+            <Slogan/>
+            <section class="Custom-container technology-container">
+                <div class="row mx-0 px-sm-0 mb-4">
+                    <div class="col-8  pl-0 pr-5">
+                        <div >
+                            <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
+                                <h2 class="font-weight-bold">
+                                    VIEW PARTY
+                                </h2>
+                                <br/>
+                                <div class=" h-100 p-12">
+                                    <br/><br/>
+                                    <table class="table table-border table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>PartyName</th>
+                                                <th>LeaderName</th>
+                                                <th>Symbol</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {renderTableData(partyList)}
+                                        </tbody>
+                                    </table>
+                                    <div>
+                                        <ul class="pagination -lg pager">
+                                            <li class="previous">
+                                                <a href="#">
+                                                    Previous
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    1
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    2
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    3
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    4
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    5
+                                                </a>
+                                            </li>
+                                            <li class="next">
+                                                <a href="#">
+                                                    Next
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <Aside/>
+                </div>
+            </section>
+        </main>
+        <Footer/>
     </div>
-   
-    
-</div></div>
-              </div>
-              
-              <Aside/>
-             
-              </div>
-          </section>
-  
-      </main>
-  
-     <Footer/>
-  
-          
-  </div>
-  )
+    )
 }
 
-function renderTableData(partyList) {
+function renderTableData(partyList)
+{
     console.log("partyList: ", partyList);
-    return partyList.map((party, index) => {
-       const { party_name, leader, symbol} = party //destructuring
-       return (
-          <tr key={party_name}>
-              <td>{party_name}</td>
-             <td>{leader}</td>
-             <td>{symbol}</td>
-          </tr>
-       )
+    return partyList.map((party, index) =>
+    {
+        const { party_name, leader, symbol} = party //destructuring
+        return (
+        <tr key={party_name}>
+            <td>{party_name}</td>
+            <td>{leader}</td>
+            <td>{symbol}</td>
+        </tr>
+        )
     })
-  };
+};
   
-export default ViewParty
+export default ViewParty;

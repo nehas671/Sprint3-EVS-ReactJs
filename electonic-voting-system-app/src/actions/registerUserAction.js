@@ -10,7 +10,7 @@ const registerUserAction = (user) => {
                     name: user.name, 
                     district: user.district,
                     address: user.address,
-                    mobileNumber: user.mobileNumber,
+                    mobile_number: user.contactNumber,
                     emailId: user.emailId,
                     dob: user.dob,
                 }, 

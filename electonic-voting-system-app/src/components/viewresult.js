@@ -139,8 +139,8 @@ let refineList=useSelector(state=>state.resultReducer.refine)
                 <section class="Custom-container technology-container">
             <div class="row mx-0 px-sm-0 mb-4">
             <div class="col-8  pl-0 pr-5">
-            <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
-              <h2 class="addElectionTitle"> View Election Result</h2>
+            <div class="col border border-dark bg-light py-5 ml-auto mr-auto ">
+              <h2 class="addElectionTitle mb-3"> View Election Result</h2>
 <form onSubmit={filterResult}>
 
 <div class=" form-group row">
