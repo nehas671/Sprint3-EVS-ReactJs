@@ -28,6 +28,7 @@ import ViewVoterId from './components/viewVoterId';
 import DeleteCandidate from './components/deleteCandidate'
 import DeleteResult from './components/deleteResult'
 import ViewSchedule from './components/show_schedule'
+import ShowSchedules from './components/schedule';
 //import ButtonForm from './components/button';
 
 
@@ -37,7 +38,7 @@ function App() {
   return(
     <div>
  
-
+ {/*<RegisterUser></RegisterUser>*/}
 {/* <AddElection></AddElection>*/}
 
    { /*<ShowElections/>*/}
@@ -167,7 +168,7 @@ function App() {
 
 
           <Route exact path="/viewSchedule">
-            <ViewSchedule/>
+            <ShowSchedules/>
           </Route>
 
 

@@ -20,9 +20,9 @@ const candidateReducer = (state={initialState:[],filter:[]}, action) => {
                 case 'PARTY_NAME':
                  state.filter=action.payload;
                 return state;
-                //case 'DELETE_CANDIDATE':
-                    //state.filter=action.payload;
-                  // return state;
+                case 'DELETE_CANDIDATE':
+                    state.initialState=action.payload;
+                   return state;
                 
         default:
             return [];

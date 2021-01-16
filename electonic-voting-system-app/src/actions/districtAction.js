@@ -6,8 +6,6 @@ let showDistrictAction = () => {
             {
                 "Access-Control-Allow-Origin": "*"
             }
-            
-
           );
 
           const data = await res.json();

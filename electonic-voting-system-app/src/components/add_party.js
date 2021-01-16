@@ -21,14 +21,14 @@ import Party from '../models/party'
 
 let dispatch;
 let history;
-
+let set;
 let disable=true;
 
 const AddParty= (props) => {
 
   dispatch = useDispatch();
   history = useHistory();
- 
+  set=true;
 
 
     return (
@@ -55,12 +55,12 @@ const AddParty= (props) => {
            
                 <h2 class="font-weight-bold">ADD PARTY</h2>
 
-  <form  onSubmit={handleSubmit}>
+  <form  onSubmit={handleSubmit} onMouseMove={EnableDisable}>
 
     <div class="form-group row pt-4 pb-3">
       <label for="party_name" class="col-4 col-form-label font-weight-bold">Party Name :</label>
       <div class="col-8">
-        <input type="text" class="form-control" id="party_name" name="party_name" placeholder="Enter Party Name" onBlur={validatePartyName}></input>
+        <input type="text" class="form-control" id="party_name" name="party_name" placeholder="Enter Party Name" onBlur={validatePartyName} required></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
           PrtyName should only  contain characters 
          </small>
@@ -69,7 +69,7 @@ const AddParty= (props) => {
     <div class=" form-group row pb-3">
       <label for="leader" class="col-4 col-form-label font-weight-bold">Leader Name :</label>
       <div class="col-8">
-        <input type="text" class="form-control" id="leader" name="leader" placeholder="Enter Leader Name" onBlur={validateLeaderName} ></input>
+        <input type="text" class="form-control" id="leader" name="leader" placeholder="Enter Leader Name" onBlur={validateLeaderName} required></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
           leader name should only  contain characters 
          </small>
@@ -78,14 +78,14 @@ const AddParty= (props) => {
     <div class="form-group row pb-3">
     <label for="symbol" class="col-4 col-form-label font-weight-bold">Symbol :</label>
       <div class="col-8">
-        <input type="text"  class="form-control" id="symbol" name="symbol" placeholder="Enter Symbol" required></input>
+        <input type="text"  class="form-control" id="symbol" name="symbol" placeholder="Enter Symbol" onBlur={validatePartySymbol} required></input>
         <small id="namevalid" class="form-text text-danger invalid-feedback">
-          Constituency name should only contain characters
+        Party symbol should only  contain characters 
          </small>
       </div>
     </div>
     <center>
-        <button class="btn btn-primary" >ADD</button>
+        <button class="btn btn-primary" id="btnsubmit" disabled="disabled">ADD</button>
         </center>
   </form>
   </div>
@@ -106,7 +106,29 @@ const AddParty= (props) => {
 }
 let validPartyname=false;
 let validLeadername=false;
+let validPartysymbol=false;
 
+function EnableDisable(event)
+{
+  event.preventDefault();
+  var btnsubmit=document.getElementById("btnsubmit");
+  
+  console.log("handle disabled called");
+  console.log("validPartyname",validPartyname);
+  console.log("validLeadername",validLeadername);
+  console.log("validPartysymbol",validPartysymbol)
+  
+  if(validPartyname&&validLeadername&&validPartysymbol)
+  {  
+    set=false;
+    console.log("set",set);
+    btnsubmit.disabled=false;
+  }
+  else
+  {
+    btnsubmit.disabled=true;
+  }
+}
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -186,4 +208,33 @@ function validateLeaderName(event) {
 
   }
 }
+
+function validatePartySymbol(event) {
+  const data = event.target.value;
+  console.log("target",data);
+  let regex = /[a-zA-Z]{3,10}$/;
+  let inputdata = data;
+  let str = inputdata.trim();
+  console.log(regex, str);
+  if (regex.test(str) && str != "") {
+
+    event.target.classList.remove('custom-invalid');
+    event.target.classList.add('custom-valid');
+     // valid(username);
+     validPartysymbol = true;
+
+  } else {
+
+    event.target.classList.remove('custom-valid');
+    event.target.classList.add('custom-invalid');
+    
+        // inputRequired(username, str);
+        validPartysymbol = false;
+
+
+  }
+}
+
+
+
 export default AddParty

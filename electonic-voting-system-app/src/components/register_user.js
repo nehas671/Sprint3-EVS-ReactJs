@@ -34,6 +34,13 @@ const Registeruser = (props) => {
     const register_user = ()=>{
         
     }
+
+    if(!Array.isArray( districtList)) 
+  {
+    districtList = [];
+    console.log("Set electionList to blank array");
+  }
+
     return (
     <div>
     
@@ -340,10 +347,12 @@ function validateDate(event) {
   const emailId= data.get('email');
   const dob = data.get('dob');
   console.log(dob);
+  console.log(contactNumber);
   
   
   const userObj = new RegisterUser(name, selectedDistrict,address, emailId ,contactNumber,dob);
   console.log("RegisterUserObj:",userObj);
+
   dispatch(registerUserAction(userObj));
   history.push('/');
 
