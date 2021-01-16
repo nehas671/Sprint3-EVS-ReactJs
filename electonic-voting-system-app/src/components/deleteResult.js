@@ -111,7 +111,7 @@ function renderTableData(resultList ) {
 
   <td> <div class="btn-group" role="group" aria-label="Basic mixed styles example">
              {/*<button type="button" class="btn btn-outline-warning" onClick={(e) => updateCandidate(e, candidate)}>Edit</button>*/}
-             <button  onClick={() => deleteResult( result_id)}>Delete</button>
+             <button   class="btn btn-outline-primary mb-3"  onClick={() => deleteResult( result_id)}>Delete</button>
              </div>
             </td>
           </tr>

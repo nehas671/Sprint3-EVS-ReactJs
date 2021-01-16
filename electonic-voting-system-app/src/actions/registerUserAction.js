@@ -13,6 +13,7 @@ const registerUserAction = (user) => {
                     mobile_number: user.contactNumber,
                     emailId: user.emailId,
                     dob: user.dob,
+                    gender: user.gender,
                 }, 
                 { 
                     "Content-type": "application/json; charset=UTF-8",

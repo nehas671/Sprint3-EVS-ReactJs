@@ -15,6 +15,7 @@ import registerUserAction from '../actions/registerUserAction';
 let dispatch;
 let history;
 let selectedDistrict;
+let set;
 
 const Registeruser = (props) => {
    
@@ -101,7 +102,7 @@ const Registeruser = (props) => {
         <h2>Register User</h2>
         <br></br>
 
-        <form onSubmit={handleSubmitt}>
+        <form onSubmit={handleSubmitt} onMouseMove={EnableDisable}>
         <div class="form-group row ">
             <label for="Name" class="col-4 col-form-label font-weight-bold">Name :</label>
             <div class="col-8">
@@ -122,6 +123,15 @@ const Registeruser = (props) => {
        </small>
     </div>
     </div>
+
+    <div class="form-group row ">
+            <label for="gender" class="col-4 col-form-label font-weight-bold">Gender :</label>
+            <div class="col-4">
+        <input type="radio" value="Male" name="gender" /> Male
+        <input type="radio" value="Female" name="gender" /> Female
+        <input type="radio" value="Other" name="gender" /> Other
+      </div>
+      </div>
 
     <div class="form-group row ">
             <label for="email" class="col-4 col-form-label font-weight-bold">EmailId :</label>
@@ -160,9 +170,9 @@ const Registeruser = (props) => {
            
     </select>
     </div>
-
-    <button class="btn btn-primary" >ADD</button>
-  
+    <button class="btn btn-primary" id="btnsubmit" disabled="disabled">
+                  ADD
+                </button>
     </form>
         </div>
         
@@ -185,6 +195,28 @@ let validNumber=false;
 let validEmailId=false;
 let validAddress=false;
 let validDate=false;
+
+function EnableDisable(event)
+{
+  event.preventDefault();
+  var btnsubmit=document.getElementById("btnsubmit");
+  
+  console.log("handle disabled called");
+  
+  console.log("validUsername",validUsername)
+  
+  if(validAddress&&validDate&&validUsername&&validNumber&&validEmailId)
+  
+  {  
+    set=false;
+    console.log("set",set);
+    btnsubmit.disabled=false;
+  } 
+  else
+  {
+    btnsubmit.disabled=true;
+  }
+}
 
 function validateUserName(event) {
     
@@ -342,6 +374,7 @@ function validateDate(event) {
   console.log("in handle submit:",data)
   const name = data.get('name');
   const address = data.get('address');
+  const gender = data.get('gender');
   
   const contactNumber = data.get('contact_number');
   const emailId= data.get('email');
@@ -350,7 +383,7 @@ function validateDate(event) {
   console.log(contactNumber);
   
   
-  const userObj = new RegisterUser(name, selectedDistrict,address, emailId ,contactNumber,dob);
+  const userObj = new RegisterUser(name, selectedDistrict,address, emailId ,contactNumber,dob,gender);
   console.log("RegisterUserObj:",userObj);
 
   dispatch(registerUserAction(userObj));
@@ -359,5 +392,3 @@ function validateDate(event) {
         
   }
 export default Registeruser;
-
-

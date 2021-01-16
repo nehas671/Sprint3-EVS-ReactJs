@@ -8,7 +8,7 @@ const AdminAsideComponent = (props) =>
             <h3>Quick Links</h3>
             <ul class="nav flex-column mb-4">
                 <li class="nav-item">
-                    <a class="nav-link text-primary font-weight-bold" href="/">Home</a>
+                    <a class="nav-link text-primary font-weight-bold" href="/">Logout</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-primary font-weight-bold" href="/election">Add Election</a>
