@@ -59,7 +59,7 @@ export const AddResult= (props) => {
 }
 
 
-
+ console.log("electionlist",electionList)
 
 if(!Array.isArray(electionList)) {
     electionList = [];
@@ -161,8 +161,8 @@ if(!Array.isArray(stateList)) {
   </div>
 
  
-  <button  onClick={handleAlternative}   id="btnsubmit" disabled="disabled" type="button" class="btn btn-outline-primary ml-5 mb-3 mr-5">Vote Count</button>
-  <button type="submit"    id="btnsubmit2" disabled="disabled" class="btn btn-outline-primary mb-3">Add Result</button>
+  <button  onClick={handleAlternative}   id="btnsubmit"  type="button" class="btn btn-outline-primary ml-5 mb-3 mr-5">Vote Count</button>
+  <button type="submit"  id="btnsubmit2" class="btn btn-outline-primary mb-3">Add Result</button>
      
 
   <div class="col-3">
