@@ -154,6 +154,9 @@ const ViewVoterReq = (props) => {
               <th>UserId</th>
               <th>Name</th>
             <th>date of birth</th>
+            <th>Constituency</th>
+            <th>Email Id</th>
+            <th>Contact Number</th>
             <th>District</th>
             <th>VoterId</th>
             <th>Status</th>
@@ -171,7 +174,7 @@ const ViewVoterReq = (props) => {
           
           </div>
           
-          <Aside/>
+          
           
 
           </div>
@@ -194,16 +197,19 @@ const ViewVoterReq = (props) => {
 function renderTableData(voterList) {
   console.log("voterList: ", voterList);
   return voterList.map((voter, index) => {
-     const { user_id,name,dob,district,voter_id,status} = voter //destructuring
+     const { user_id,name,dob,constituency,emailId,contact_no,district,voter_id,status} = voter //destructuring
      return (
-        <tr key={user_id}>
+        <tr key={voter_id}>
                 <td>{user_id}</td>
                 <td>{name}</td>
                 <td>{dob}</td>
+                <td>{constituency}</td>
+                <td>{emailId}</td>
+                <td>{contact_no}</td>
                 <td>{district}</td>
                 <td>{voter_id}</td>
                 <td>{status}</td>
-                <td><Button as="input" type="button" value="approve"><a href="/approveRequest"></a></Button></td>
+                <td><Button as="input" type="button" value="approve" onClick={aproveVoterRequest}></Button></td>
                 <td><Button as="input" type="button" onClick = {rejectVoterRequest} value="reject"></Button></td>
         </tr>
      )
@@ -211,20 +217,21 @@ function renderTableData(voterList) {
 };
 
 function aproveVoterRequest(event) {
-  /*
-  console.log("In Request Approve :",event.voterRequest)
-  const name = event.voterRequest.name;
-  const constituency = event.get('constituency');
-  const emailId= event.get('emailId');
+  
+  console.log("In Request Approve :",event)
+  const name = event.name;
+  const constituency = event.constituency;
+  const emailId= event.emailId;
+ const district = event.district;
   const applicationStatus = "Approved";
-  const contactNumber = event.get('contactNumber');
-  const dob = event.get('dob');
+  const contactNumber = event.contact_no;
+  const dob = event.dob;
   console.log(dob);
   
   
-  dispatch(ApproveRequestAction(event.voterRequest)).then((response) => {
+  dispatch(ApproveRequestAction(event)).then((response) => {
     event.AddVoterRequest();
-  }) */
+  }) 
 }
 function rejectVoterRequest(event) {
   console.log('Update product: ', event.voterRequest);
@@ -236,7 +243,7 @@ function rejectVoterRequest(event) {
   const constituency = data.get('constituency');
   const emailId= data.get('emailId');
   const applicationStatus = "Rejected";
-  const contactNumber = data.get('contactNumber');
+  const contactNumber = data.get('contact_no');
   const dob = data.get('dob');
   console.log(dob);
   

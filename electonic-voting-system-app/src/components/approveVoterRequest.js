@@ -13,6 +13,7 @@ let userNameRef;
 let userConstituencyRef;
 let userDistrictRef;
 let userDobRef;
+let userEmailRef;
 let userMobileRef;
 let dispatch;
 
@@ -24,6 +25,7 @@ const ApproveRequest = (props)=>{
     userConstituencyRef = useRef(null);
     userDistrictRef = useRef(null);
     userDobRef = useRef(null);
+    userEmailRef = useRef(null);
     userMobileRef = useRef(null);
     dispatch = useDispatch();
 
@@ -44,16 +46,25 @@ const ApproveRequest = (props)=>{
             <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
             <h2> Voter Request</h2>
             <br></br>
-    
+            <h3>
             <form onSubmit="">
                 ID: {getSpaces(14)}<input type="text" readOnly= {true} ref={userIdRef} value={props.voterRequest.id}   /><br/><br/>
                 Name: {getSpaces(8)}<input type="text" ref={userNameRef} defaultValue={props.voterRequest.name} /><br/><br/>
-        
-        
-        
+                Mobile Number:{getSpaces(4)}<input type="text" ref={userMobileRef} defaultValue={props.voterRequest.contactNumber}/><br/><br/>
+                Email Id :{getSpaces(6)}<input type="text" ref={userEmailRef} defaultValue={props.voterRequest.emailId}/><br/><br/>
+                Constituency:{getSpaces(5)}<input type="text" ref={userConstituencyRef} defaultValue={props.voterRequest.constituency}/><br/><br/>
+                Date Of Birth ::{getSpaces(4)}<input type="text" ref={userDobRef} defaultValue={props.voterRequest.dob}/><br/><br/>
+                District:{getSpaces(6)}<input type="text" ref={userDistrictRef} defaultValue={props.voterRequest.district}/><br/><br/>
+                
+                <Button variant="primary" name="add" value="APPROVE VOTER REQUEST" onClick={aproveVoterRequest}>APPROVE VOTER REQUEST</Button>
+                {'\u00A0'}{'\u00A0'}{'\u00A0'}
+                <Button variant="primary" name="add" value="REJECT VOTER REQUEST" onClick={rejectVoterRequest}>REJECT VOTER REQUEST</Button>
+                
+                </form>
+                </h3>
         
     
-        <div class="form-group row ">
+               {/*<div class="form-group row ">
                 <label for="contactNumber" class="col-4 col-form-label font-weight-bold">Mobile Number :</label>
                 <div class="col-8">
             <input type="text"  class="form-control" id="contactNumber" ref={userMobileRef}  required></input>
@@ -94,7 +105,7 @@ const ApproveRequest = (props)=>{
         <Button variant="primary" name="add" value="APPROVE VOTER REQUEST" onClick={aproveVoterRequest}>APPROVE VOTER REQUEST</Button>
         {'\u00A0'}{'\u00A0'}{'\u00A0'}
         <Button variant="primary" name="add" value="REJECT VOTER REQUEST" onClick={rejectVoterRequest}>REJECT VOTER REQUEST</Button>
-    </form>
+        </form>*/}
             </div>
             
     </div>
