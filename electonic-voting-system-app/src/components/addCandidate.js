@@ -12,7 +12,7 @@ import ViewCandidatesAction from '../actions/viewCandidate';
 
 import Candidate from '../models/candidate';
 import Slogan from "./slogan";
-import Aside from "./aside";
+import AdminAsideComponent from './adminAside';
 import Footer from "./footer";
 
 
@@ -32,7 +32,7 @@ const AddCandidate= (props) => {
 
     dispatch = useDispatch();
     history = useHistory();
-    let partyList = useSelector(state => state.candidateReducer.initialState);
+    let partyList = useSelector(state => state.candidateReducer.partylist);
 
     React.useEffect(() => {
         PartyList()
@@ -52,9 +52,9 @@ const AddCandidate= (props) => {
 
 
 
-/*
-  candidateList = useSelector(state => state.candidateReducer.initialState);
 
+  candidateList = useSelector(state => state.candidateReducer.initialState);
+  
     React.useEffect(() => {
         CandidateList()
     }, []);
@@ -62,7 +62,7 @@ const AddCandidate= (props) => {
     const CandidateList = () => {
         dispatch(ViewCandidatesAction())
     }
-    console.log("CandidateList: ", candidateList);
+    console.log("CandidateList valid: ", candidateList);
 
 
    
@@ -73,7 +73,7 @@ const AddCandidate= (props) => {
         console.log("Set candidateList to blank array");
     }
 
-    */
+  
 
 
     return (
@@ -159,7 +159,7 @@ const AddCandidate= (props) => {
 </div>
     </div>
             
-            <Aside/>
+    <AdminAsideComponent/>
            
             </div>
         </section>
@@ -314,7 +314,9 @@ function validateCandidateAge(event){
 
 function validateCandidateNumber(event){
 
-//let unique=false;  
+//let unique=false;
+//let mobile_number; 
+let index = 0;  
     const data = event.target.value;
     console.log("target",data);
 
@@ -322,14 +324,19 @@ function validateCandidateNumber(event){
     candidateList.map((candidate, index) => {
 
       console.log("Number", candidate.contactNumber);
-      if(candidate.contactNumber === data){
-        unique=false;
-      }
-      else{
-        unique=true;
-      }
+      mobile_number=candidate.contactNumber;
+      console.log("mobile_number_list", mobile_number)
     });
-    */
+    
+     */
+
+  
+candidateList.forEach(myFunction); 
+function myFunction(item, index) 
+{ 
+    console.log(item.contactNumber.get(index)); 
+    
+}
   
     let regex = /^\d{10}$/;
     let inputdata = data;
