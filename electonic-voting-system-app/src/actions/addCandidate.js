@@ -11,7 +11,7 @@ const AddCandidateAction = (candidate) => {
                 candidateName: candidate.candidateName, 
                 address: candidate.address,
                 age: candidate.age,
-                contact_number: candidate.contact_number,
+                contactNumber: candidate.contactNumber,
                 email: candidate.email,
                 party: {"partyName": candidate.party.partyName, "leader": candidate.party.leader, 
                         "symbol": candidate.party.symbol}

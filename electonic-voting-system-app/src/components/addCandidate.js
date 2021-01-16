@@ -1,14 +1,9 @@
 import React from 'react';
 
-import { Container } from "react-bootstrap";
+
 import { useSelector, useDispatch } from 'react-redux';
 import ShowPartysAction from '../actions/getParty';
 import { useHistory } from "react-router-dom";
-import * as icons from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Carousel from 'react-bootstrap/Carousel'
-import { BrowserRouter as Router,  Switch,  Route,  Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
 
 
 import AddCandidateAction from '../actions/addCandidate';
@@ -16,11 +11,9 @@ import AdminHeader from './adminheader';
 import ViewCandidatesAction from '../actions/viewCandidate';
 
 import Candidate from '../models/candidate';
-import Header from "./header";
 import Slogan from "./slogan";
 import Aside from "./aside";
 import Footer from "./footer";
-import { Toast } from 'bootstrap';
 
 
 
@@ -28,9 +21,14 @@ import { Toast } from 'bootstrap';
 let dispatch;
 let history;
 let selectedPartyName;
-
+let candidateList;
+let set;
+//let x;
 
 const AddCandidate= (props) => {
+
+  //let [filter, setdisable] = useState();
+  set=true;
 
     dispatch = useDispatch();
     history = useHistory();
@@ -43,16 +41,40 @@ const AddCandidate= (props) => {
     const PartyList = () => {
         dispatch(ShowPartysAction())
     }
-    console.log("PartysList: ", partyList);
 
-
-   // console.log("CandidateList:", partyList);
 
    console.log("PartyList:", partyList);
     if(!Array.isArray(partyList)) {
         partyList = [];
         console.log("Set partyList to blank array");
     }
+    console.log("PartyList ", partyList);
+
+
+
+/*
+  candidateList = useSelector(state => state.candidateReducer.initialState);
+
+    React.useEffect(() => {
+        CandidateList()
+    }, []);
+    
+    const CandidateList = () => {
+        dispatch(ViewCandidatesAction())
+    }
+    console.log("CandidateList: ", candidateList);
+
+
+   
+
+   console.log("CandidateList:", candidateList);
+    if(!Array.isArray(partyList)) {
+        candidateList = [];
+        console.log("Set candidateList to blank array");
+    }
+
+    */
+
 
     return (
     <div>
@@ -67,7 +89,7 @@ const AddCandidate= (props) => {
                 <div class="col-8  pl-0 pr-5">
                 <div class="col-12 border border-dark p-5 ml-auto mr-auto bg-light">
         <h3 align='center'>Add Candidate</h3>
-        <form  onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit} onMouseMove={EnableDisable}>
             
             <div class="form-group row ">
             <label for="candidateName" class="col-4 col-form-label font-weight-bold">Candidate Name :</label>
@@ -103,7 +125,7 @@ const AddCandidate= (props) => {
     <div class="form-group row ">
             <label for="contact_number" class="col-4 col-form-label font-weight-bold">Mobile Number :</label>
             <div class="col-8">
-        <input type="text"  class="form-control" id="contact_number" name="contact_number" placeholder="eg. 9100011134" onBlur={validateCandidateNumber} required></input>
+        <input type="text"  class="form-control" id="contactNumber" name="contactNumber" placeholder="eg. 9100011134" onBlur={validateCandidateNumber} required></input>
         <small id="emailvalid" class="form-text text-danger invalid-feedback">
         Phone number should be of 10 digits only  
        </small>
@@ -124,12 +146,13 @@ const AddCandidate= (props) => {
     <div class=" form-group row">
         <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">Party Name :</label>
         <select class="form-control col-7 state" id="exampleFormControlSelect1" onChange={handleChange} required>
+          <option>Select</option>
         {renderPartys(partyList)}
     </select>
     </div>
     
     <center>
-            <button class="btn btn-primary">ADD-Candidate</button>
+            <button class="btn btn-primary" id="btnsubmit" disabled="disabled">ADD-Candidate</button>
     </center>
   
 </form>
@@ -151,6 +174,37 @@ const AddCandidate= (props) => {
         
 )
 };
+
+
+let validCandidateName=false;
+let validCandidateAddress=false;
+let validCandidateAge=false;
+let validCandidateNumber=false;
+let validCandidateEmail=false;
+
+function EnableDisable(event)
+{
+  event.preventDefault();
+  var btnsubmit=document.getElementById("btnsubmit");
+  
+  console.log("handle disabled called");
+  console.log("validCandidateName",validCandidateName);
+  console.log("validCandidateAddress",validCandidateAddress);
+  console.log("validCandidateAge",validCandidateAge);
+  console.log("validCandidateNumber",validCandidateNumber);
+  console.log("validCandidateEmail",validCandidateEmail);
+  
+  if(validCandidateName&&validCandidateAddress&&validCandidateAge&&validCandidateNumber&&validCandidateEmail)
+  {  
+    set=false;
+    console.log("set",set);
+    btnsubmit.disabled=false;
+  }
+  else
+  {
+    btnsubmit.disabled=true;
+  }
+}
 
 function handleChange(event) {
     selectedPartyName = event.target.value
@@ -174,18 +228,12 @@ function renderPartys(partyList) {
     const candidateName = data.get('candidateName');
     const address = data.get('address');
     const age = data.get('age');
-    const contact_number = data.get('contact_number');
+    const contactNumber = data.get('contactNumber');
     const email = data.get('email');
-    const candidateObj = new Candidate(candidateName, address, age, contact_number, email, selectedPartyName);
+    const candidateObj = new Candidate(candidateName, address, age, contactNumber, email, selectedPartyName);
     dispatch(AddCandidateAction(candidateObj));
     history.push('/admin_services');
 };
-
-let validCandidateName=false;
-let validCandidateAddress=false;
-let validCandidateAge=false;
-let validCandidateNumber=false;
-let validCandidateEmail=false;
 
 function validateCandidateName(event){
 
@@ -208,7 +256,7 @@ function validateCandidateName(event){
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
 
-      validCandidateName=true;
+      validCandidateName=false;
     }
 };
 
@@ -259,16 +307,30 @@ function validateCandidateAge(event){
       event.target.classList.remove('custom-valid');
       event.target.classList.add('custom-invalid');
 
-      validCandidateAge=true;
+      validCandidateAge=false;
     }
 
 }
 
 function validateCandidateNumber(event){
 
+//let unique=false;  
     const data = event.target.value;
     console.log("target",data);
-   
+
+    /*
+    candidateList.map((candidate, index) => {
+
+      console.log("Number", candidate.contactNumber);
+      if(candidate.contactNumber === data){
+        unique=false;
+      }
+      else{
+        unique=true;
+      }
+    });
+    */
+  
     let regex = /^\d{10}$/;
     let inputdata = data;
     let str = inputdata.trim();

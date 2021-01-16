@@ -4,7 +4,9 @@ import { useState } from 'react';
 
 
 import ViewCandidatesAction from '../actions/viewCandidate';
-import viewByCandidateNameAction from '../actions/viewByCandidateName'
+import viewByCandidateNameAction from '../actions/viewByCandidateName';
+import viewByCandidateEmailAction from '../actions/viewByCandidateEmail';
+import viewByCandidateNumberAction from '../actions/viewByCandidateNumber';
 import Slogan from "./slogan";
 import Aside from "./aside";
 import Footer from "./footer";
@@ -12,6 +14,8 @@ import viewByPartyNameAction from '../actions/viewByPartyName';
 import AdminHeader from './adminheader';
 import GetAllCandidateName from '../actions/getAllCandidateName';
 import GetAllPartyName from '../actions/getAllPartyName';
+import GetAllCandidateEmail from '../actions/getAllCandidateEmail';
+import GetAllCandidateNumber from '../actions/getAllCandidateNumber';
 
 
 
@@ -70,7 +74,21 @@ const ViewCandidates = (props) => {
               console.log("filterList: ", filterList);
               setFilter(filterList);
           });
-      } 
+      }else if(selectedOption === "Email") {
+        dispatch(GetAllCandidateEmail())
+        .then((response) => {
+            console.log("Response: ", response);
+            console.log("filterList: ", filterList);
+            setFilter(filterList);
+        });
+    }else if(selectedOption === "Mobile Number") {
+      dispatch(GetAllCandidateNumber())
+      .then((response) => {
+          console.log("Response: ", response);
+          console.log("filterList: ", filterList);
+          setFilter(filterList);
+      });
+  }
   }
   
   
@@ -97,6 +115,22 @@ const ViewCandidates = (props) => {
       }else if(selectedOption==="Party Name")
       {
         dispatch(viewByPartyNameAction(selectedview))
+        .then((response) => {
+          console.log("Response: ", response);
+          console.log("routeList: ", candidateList);
+          setInitialState(candidateList);
+      });
+      }else if(selectedOption==="Email")
+      {
+        dispatch(viewByCandidateEmailAction(selectedview))
+        .then((response) => {
+          console.log("Response: ", response);
+          console.log("routeList: ", candidateList);
+          setInitialState(candidateList);
+      });
+      }else if(selectedOption==="Mobile Number")
+      {
+        dispatch(viewByCandidateNumberAction(selectedview))
         .then((response) => {
           console.log("Response: ", response);
           console.log("routeList: ", candidateList);
@@ -132,10 +166,12 @@ const ViewCandidates = (props) => {
                   <div class=" form-inline row mb-3">
                   <label for="view" class=" mr-3 font-weight-bold mr-4">Candidate View By</label>
                   <select class="form-control col-5 " id="view" onChange={searchHandleChange} required> 
-                  <option >Select View All</option>
+                  <option >Select View By</option>
                   <option >View All</option>
                     <option >Candidate Name</option>
                     <option>Party Name</option>
+                    <option>Email</option>
+                    <option> Mobile Number</option>
                   </select>
                 </div>
 
@@ -213,14 +249,14 @@ function renderTableData(candidateList) {
     console.log("candidateList inside render: ", candidateList);
     return candidateList.map((candidate, index) => {
         const partyName = candidate.party.partyName;
-       const { candidateId, candidateName, address, age, contact_number, email } = candidate //destructuring
+       const { candidateId, candidateName, address, age, contactNumber, email } = candidate //destructuring
        return (
           <tr key={candidateId}>
              <td>{candidateId}</td>
              <td>{candidateName}</td>
              <td>{address}</td>
              <td>{age}</td>
-             <td>{contact_number}</td>
+             <td>{contactNumber}</td>
              <td>{email}</td>
              <td>{partyName}</td>
              

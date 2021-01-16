@@ -17,6 +17,14 @@ const candidateReducer = (state={initialState:[],filter:[]}, action) => {
                  state.filter=action.payload;
                 return state;
 
+                case 'CANDIDATE_EMAIL':
+                 state.filter=action.payload;
+                return state;
+
+                case 'CANDIDATE_NUMBER':
+                 state.filter=action.payload;
+                return state;
+
                 case 'PARTY_NAME':
                  state.filter=action.payload;
                 return state;
