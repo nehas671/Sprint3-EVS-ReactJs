@@ -1,21 +1,22 @@
 import axios from 'axios';
 
-const ApproveRequestAction = (requestObj) => {
-    console.log("Request in action",requestObj);
+const ApproveRequestAction = (userId) => {
+    console.log("Request in action",userId);
     return async function(dispatch) {
         const res = await axios.put(
-            "http://localhost:9090/evs/voter_request" ,
+            `http://localhost:9090/evs/voter_request/${userId}` ,
                 { 
-                    name: requestObj.name, 
+                   /* name: requestObj.name, 
                     district: requestObj.district,
                     constituency: requestObj.constituency,
                     dob:requestObj.dob,
                     emailId:requestObj.emailId,
                     contactNumber:requestObj.contactNumber,
-                     applicationStatus:requestObj.applicationStatus
+                     applicationStatus:requestObj.applicationStatus*/
                 }, 
                 { 
-                    "Content-type": "application/json; charset=UTF-8"
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Access-Control-Allow-Origin": "*"
                 }
             );
           console.log('Request serverResponse: ', res.data);

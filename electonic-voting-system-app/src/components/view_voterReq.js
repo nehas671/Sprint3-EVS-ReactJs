@@ -10,11 +10,11 @@ import AdminHeader from '../components/adminheader';
 import Aside from './aside';
 import Footer from './footer';
 import Slogan from './slogan';
-import ApproveRequestAction from '../actions/approveVoterRequestAction';
 
 let dispatch;
 let selectedview;
 let selectedOption;
+
 const ViewVoterReq = (props) => {
 
   let [filter, setFilter] = useState();
@@ -113,12 +113,12 @@ const ViewVoterReq = (props) => {
 
       <section class="Custom-container technology-container">
           <div class="row mx-0 px-sm-0 mb-4  ">
-          <div class="col-8  border border-dark pl-0 pr-5 bg-light">
+          <div class="col-12  border border-dark pl-0 pr-5 bg-light">
 
-          <div class="container pt-5 px-5 ">
+         <div class="container pt-5 px-5 ">
             
           <h3 class="addElectionTitle mb-3">VIEW  VOTER REQUEST</h3>
-          <form onSubmit={handleSearch} class="d-flex mb-4">
+          <form onSubmit={handleSearch} onMouseMoveCapture={EnableDisable} class="d-flex mb-4" >
             <div className="col-9">
                       <div class=" form-inline row mb-3">
                       <label for="view" class=" mr-3 font-weight-bold mr-4">View By :</label>
@@ -135,11 +135,11 @@ const ViewVoterReq = (props) => {
                     <option>select</option>
                         {renderFilterList(filterList)}
                     </select>
-                </div>
+              </div>
                      
                         </div>
                   <div class="mt-4">
-                  <button className="btn btn-primary">Search</button>
+                  <button className="btn btn-primary" id="btnsubmit" disabled="disabled">Search</button>
                   </div>
                   
            
@@ -151,14 +151,14 @@ const ViewVoterReq = (props) => {
           <table class="table table-border table-striped">
           <thead>
               <tr>
-              <th>UserId</th>
+              <th>VoterId</th>
               <th>Name</th>
             <th>date of birth</th>
             <th>Constituency</th>
             <th>Email Id</th>
             <th>Contact Number</th>
             <th>District</th>
-            <th>VoterId</th>
+            
             <th>Status</th>
             <th>Actions</th>
               </tr>
@@ -171,7 +171,7 @@ const ViewVoterReq = (props) => {
           </center>
     </div>
     
-          
+    
           </div>
           
           
@@ -192,65 +192,49 @@ const ViewVoterReq = (props) => {
 );
 };
 
+function EnableDisable(event)
+{
+  event.preventDefault();
+  
+  var btnsubmit=document.getElementById("btnsubmit");
+  console.log("selectedOption",selectedOption);
+  
+  let option=undefined;
+  if(selectedOption!=undefined)
+  {  
+    btnsubmit.disabled=false;
+  }
+  else
+  {
+    btnsubmit.disabled=true;
+  } 
+}
 
 
 function renderTableData(voterList) {
   console.log("voterList: ", voterList);
   return voterList.map((voter, index) => {
-     const { user_id,name,dob,constituency,emailId,contact_no,district,voter_id,status} = voter //destructuring
+     const { name,dob,constituency,emailId,contact_no,district,voter_id,status} = voter //destructuring
      return (
         <tr key={voter_id}>
-                <td>{user_id}</td>
+          <td>{voter_id}</td>
                 <td>{name}</td>
                 <td>{dob}</td>
                 <td>{constituency}</td>
                 <td>{emailId}</td>
                 <td>{contact_no}</td>
                 <td>{district}</td>
-                <td>{voter_id}</td>
+                
                 <td>{status}</td>
-                <td><Button as="input" type="button" value="approve" onClick={aproveVoterRequest}></Button></td>
-                <td><Button as="input" type="button" onClick = {rejectVoterRequest} value="reject"></Button></td>
+                <td><Button as="input" type="button" value="approve"></Button></td>
+                <td><Button as="input" type="button" value="reject"></Button></td>
         </tr>
      )
   })
 };
 
-function aproveVoterRequest(event) {
-  
-  console.log("In Request Approve :",event)
-  const name = event.name;
-  const constituency = event.constituency;
-  const emailId= event.emailId;
- const district = event.district;
-  const applicationStatus = "Approved";
-  const contactNumber = event.contact_no;
-  const dob = event.dob;
-  console.log(dob);
-  
-  
-  dispatch(ApproveRequestAction(event)).then((response) => {
-    event.AddVoterRequest();
-  }) 
-}
-function rejectVoterRequest(event) {
-  console.log('Update product: ', event.voterRequest);
-  event.preventDefault();
 
-  const data = new FormData(event.target);
-  console.log("In Request Approve :",data)
-  const name = data.get('name');
-  const constituency = data.get('constituency');
-  const emailId= data.get('emailId');
-  const applicationStatus = "Rejected";
-  const contactNumber = data.get('contact_no');
-  const dob = data.get('dob');
-  console.log(dob);
-  
-  dispatch(ApproveRequestAction(event.voterRequest)).then((response) => {
-    event.AddVoterRequest();
-  })
-}   
+   
 function filterHandleChange(event) {
   selectedview = event.target.value
   console.log("Selected view: " + selectedview);
@@ -264,5 +248,25 @@ function renderFilterList(filterList) {
       )
   })
 } 
-
+/*function EnableDisable(event)
+{
+  event.preventDefault();
+  var btnsubmit=document.getElementById("btnsubmit");
+  
+  console.log("handle disabled called");
+  console.log("selectCriteria",selectCriteria);
+  console.log("selectFilter",selectFilter);
+  
+  
+  if(selectCriteria)
+  {  
+    set=false;
+    console.log("set",set);
+    btnsubmit.disabled=false;
+  }
+  else
+  {
+    btnsubmit.disabled=true;
+  }
+}*/
 export  default ViewVoterReq;

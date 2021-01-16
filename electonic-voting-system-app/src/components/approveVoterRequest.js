@@ -1,149 +1,266 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as icons from '@fortawesome/free-solid-svg-icons'
-import Slogan from "./slogan";
-import Aside from "./aside";
-import Footer from './footer';
+import React, { useState, useRef } from 'react';
 import { Button } from 'react-bootstrap';
-import OfficerHeader from '../components/officerHeader';
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import getAllVoterDistrictAction from '../actions/getAllVoterDistrict';
+import getAllVoterStatusAction from '../actions/getAllVoterStatus';
+import viewReqByDistrictAction from '../actions/viewReqByDistrict';
+import viewReqByStatusAction from '../actions/viewReqByStatus';
+import ViewVoterReqAction from '../actions/view_voterReq' 
+import AdminHeader from '../components/adminheader';
+import Aside from './aside';
+import Footer from './footer';
+import Slogan from './slogan';
+import ApproveRequestAction from '../actions/approveVoterRequestAction';
+import VoterRequest from '../models/VoterRequest';
+import { useHistory } from "react-router-dom";
 
-let userIdRef;
-let userNameRef;
-let userConstituencyRef;
-let userDistrictRef;
-let userDobRef;
-let userEmailRef;
-let userMobileRef;
+
 let dispatch;
+let selectedview;
+let selectedOption;
+let history;
+const ViewVoterReq = (props) => {
+    
+
+  let [filter, setFilter] = useState();
+  let [initialState, setInitialState] = useState();
+  let voterList = useSelector(state => state.officerReducer.initialState);
+  history= useHistory();
+  let filterList = useSelector(state => state.officerReducer.filter);
+
+   dispatch = useDispatch();
+
+ /* React.useEffect(() => {
+      VoterList()
+    }, []);
+  
+    const VoterList = () => {
+      dispatch(showElectionAction())
+    }*/
+  console.log("voterList: ", voterList);
+  if(!Array.isArray(voterList)) {
+      voterList = [];
+      console.log("Set List to blank array");
+  }
+
+  if(!Array.isArray(filterList)) {
+   
+    filterList=[];
+    console.log("Set filterList to blank array");
+}
 
 
-const ApproveRequest = (props)=>{
-    
-    userIdRef = useRef(null);
-    userNameRef = useRef(null);
-    userConstituencyRef = useRef(null);
-    userDistrictRef = useRef(null);
-    userDobRef = useRef(null);
-    userEmailRef = useRef(null);
-    userMobileRef = useRef(null);
-    dispatch = useDispatch();
 
 
-        return (
-        <div>
-        
-        <OfficerHeader></OfficerHeader>
+
+ 
+
+
+
+
+
+  const searchHandleChange = (event) => {
+    selectedOption = event.target.value;
+    console.log("Selected option: " + selectedOption);
+    if(selectedOption === "Status") {
+        dispatch(getAllVoterStatusAction())
+        .then((response) => {
+            console.log("Response: ", response);
+            console.log("filterList: ", filterList);
+            setFilter(filterList);
+        });
+    } else if(selectedOption === "District") {
+        dispatch(getAllVoterDistrictAction())
+        .then((response) => {
+            console.log("Response: ", response);
+            console.log("filterList: ", filterList);
+            setFilter(filterList);
+        });
+    } 
     
-    
-        <main>
-            <Slogan/>
-    
-            <section class="Custom-container technology-container">
-                <div class="row mx-0 px-sm-0 mb-4">
-    
-            <div class="col-8  pl-0 pr-5">
-            <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
-            <h2> Voter Request</h2>
-            <br></br>
-            <h3>
-            <form onSubmit="">
-                ID: {getSpaces(14)}<input type="text" readOnly= {true} ref={userIdRef} value={props.voterRequest.id}   /><br/><br/>
-                Name: {getSpaces(8)}<input type="text" ref={userNameRef} defaultValue={props.voterRequest.name} /><br/><br/>
-                Mobile Number:{getSpaces(4)}<input type="text" ref={userMobileRef} defaultValue={props.voterRequest.contactNumber}/><br/><br/>
-                Email Id :{getSpaces(6)}<input type="text" ref={userEmailRef} defaultValue={props.voterRequest.emailId}/><br/><br/>
-                Constituency:{getSpaces(5)}<input type="text" ref={userConstituencyRef} defaultValue={props.voterRequest.constituency}/><br/><br/>
-                Date Of Birth ::{getSpaces(4)}<input type="text" ref={userDobRef} defaultValue={props.voterRequest.dob}/><br/><br/>
-                District:{getSpaces(6)}<input type="text" ref={userDistrictRef} defaultValue={props.voterRequest.district}/><br/><br/>
-                
-                <Button variant="primary" name="add" value="APPROVE VOTER REQUEST" onClick={aproveVoterRequest}>APPROVE VOTER REQUEST</Button>
-                {'\u00A0'}{'\u00A0'}{'\u00A0'}
-                <Button variant="primary" name="add" value="REJECT VOTER REQUEST" onClick={rejectVoterRequest}>REJECT VOTER REQUEST</Button>
-                
-                </form>
-                </h3>
-        
-    
-               {/*<div class="form-group row ">
-                <label for="contactNumber" class="col-4 col-form-label font-weight-bold">Mobile Number :</label>
-                <div class="col-8">
-            <input type="text"  class="form-control" id="contactNumber" ref={userMobileRef}  required></input>
-       </div>
-        </div>
-    
-        <div class="form-group row ">
-                <label for="emailId" class="col-4 col-form-label font-weight-bold">Email Id :</label>
-                <div class="col-8">
-            <input type="text"  class="form-control" id="emailId" ref={userMobileRef}  required></input>
-            
-        </div>
-        </div>
-    
-        <div class="form-group row ">
-                <label for="constituency" class="col-4 col-form-label font-weight-bold">Constituency :</label>
-                <div class="col-8">
-            <input type="text"  class="form-control" id="constituency" ref={userMobileRef}  required></input>
-           
-        </div>
-        </div>
-    
-        <div class="form-group row">
-        <label for="dob" class="col-4 col-form-label mr-3 font-weight-bold">Date Of Birth :</label>
-        <input type="date" id="dob" name="dob" class="col-4 " ref={userMobileRef}  required></input>
-        
-          </div>
-    
-    
-        <div class=" form-group row">
-            <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">District :</label>
-            <select class="form-control col-7 state" id="exampleFormControlSelect1" ref={userMobileRef}  required>
-               
-               
-        </select>
-        </div>
-        
-        <Button variant="primary" name="add" value="APPROVE VOTER REQUEST" onClick={aproveVoterRequest}>APPROVE VOTER REQUEST</Button>
-        {'\u00A0'}{'\u00A0'}{'\u00A0'}
-        <Button variant="primary" name="add" value="REJECT VOTER REQUEST" onClick={rejectVoterRequest}>REJECT VOTER REQUEST</Button>
-        </form>*/}
-            </div>
-            
-    </div>
-            
-            </div>
-            </section>
-    </main>
-                
-        <Footer/>
-    
-    
-    </div>
-    )
-    };
-function getSpaces(no) {
-        var spaces = '';
-        for(var i=0;i<no;i++) {
-            spaces += '\u00A0';
-        }
-        return spaces;
+}
+
+
+
+
+
+  function handleSearch(event) {
+    event.preventDefault();
+    if(selectedOption==="View All"){
+      dispatch(ViewVoterReqAction())
+      .then((response) => {
+        console.log("REsponse: ", response);
+        console.log("voterList: ", voterList);
+        setInitialState(voterList);
+    });
+  }
+   else if(selectedOption==="Status"){
+      dispatch(viewReqByStatusAction(selectedview))
+      .then((response) => {
+        console.log("REsponse: ", response);
+        console.log("voterList: ", voterList);
+        setInitialState(voterList);
+    });
+    }else if(selectedOption==="District")
+    {
+      dispatch(viewReqByDistrictAction(selectedview))
+      .then((response) => {
+        console.log("REsponse: ", response);
+        console.log("voterList: ", voterList);
+        setInitialState(voterList);
+    });
     }
-function aproveVoterRequest(props) {
-    console.log('Update product: ', props.voterRequest);
-    props.voterRequest.id = userIdRef.current.value;
-    props.voterRequest.name = userNameRef.current.value;
-    props.voterRequest.applicationStatus = "Approved"
-    dispatch(ApproveRequest(props.voterRequest)).then((response) => {
-        props.AddVoterRequest();
-    })
-}
-function rejectVoterRequest(props) {
-    console.log('Update product: ', props.voterRequest);
-    props.voterRequest.id = userIdRef.current.value;
-    props.voterRequest.name = userNameRef.current.value;
-    props.voterRequest.applicationStatus = "Rejected"
-    dispatch(ApproveRequest(props.voterRequest)).then((response) => {
-        props.AddVoterRequest();
-    })
+    
+  }
+
+
+
+    return (
+
+<div>
+<AdminHeader/>
+  
+      <main>
+
+      <Slogan/>
+
+      <section class="Custom-container technology-container">
+          <div class="row mx-0 px-sm-0 mb-4  ">
+          <div class="col-8  border border-dark pl-0 pr-5 bg-light">
+
+          <div class="container pt-5 px-5 ">
+            
+          <h3 class="addElectionTitle mb-3">VIEW  VOTER REQUEST</h3>
+          <form onSubmit={handleSearch} class="d-flex mb-4">
+            <div className="col-9">
+                      <div class=" form-inline row mb-3">
+                      <label for="view" class=" mr-3 font-weight-bold mr-4">View By :</label>
+                      <select class="form-control col-5 " id="view" onChange={searchHandleChange} required>
+                      <option>Select View By</option>
+                        <option>View All</option>
+                        <option>Status</option>
+                        <option>District</option>
+                      </select>
+                    </div>
+                    <div class="item form-inline row ">
+                    <label for="view" class=" mr-3 font-weight-bold mr-4">Filter :</label>
+                    <select id="filter" onChange={filterHandleChange} required class="w-50 form-control">
+                    <option>select</option>
+                        {renderFilterList(filterList)}
+                    </select>
+                </div>
+                     
+                        </div>
+                  <div class="mt-4">
+                  <button className="btn btn-primary">Search</button>
+                  </div>
+                  
+           
+            
+            </form>
+          <center>
+          <h2 class="font-weight-bold">voter request List</h2>
+          
+          <table class="table table-border table-striped">
+          <thead>
+              <tr>
+              <th>UserId</th>
+              <th>Name</th>
+            <th>date of birth</th>
+            <th>Constituency</th>
+            <th>Email Id</th>
+            <th>Contact Number</th>
+            <th>District</th>
+            <th>VoterId</th>
+            <th>Status</th>
+            <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+          {renderTableData(voterList)}
+          </tbody>
+          </table>
+          
+          </center>
+    </div>
+    
+          
+          </div>
+          
+          
+          
+
+          </div>
+      </section>          
+     
+
+  </main>
+
+<Footer/>
+
+  </div>
+
+   
+     
+);
+};
+   
+function filterHandleChange(event) {
+  selectedview = event.target.value
+  console.log("Selected view: " + selectedview);
 }
 
-export default ApproveRequest
+function renderFilterList(filterList) {
+  console.log("filterList", filterList);
+  return filterList.map((value) => {
+      return (
+          <option value = {value}>{value}</option>
+      )
+  })
+} 
+
+function renderTableData(voterList) {
+    console.log("voterList: ", voterList);
+    
+    return voterList.map((voter, index) => {
+       const { user_id,name,dob,constituency,emailId,contact_no,district,voter_id,status} = voter //destructuring
+       return (
+          <tr key={user_id}>
+                  <td >{user_id}</td>
+                  <td >{name}</td>
+                  <td >{dob}</td>
+                  <td >{constituency}</td>
+                  <td >{emailId}</td>
+                  <td >{contact_no}</td>
+                  <td >{district}</td>
+                  <td>{voter_id}</td>
+                  <td >{status}</td>
+                  
+                  <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <Button class="btn btn-outline-danger"  onClick={(e) =>aproveVoterRequest(e,user_id)}>Approve</Button></div></td>
+                  <td><div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                      <Button class="btn btn-outline-danger" onClick = {(e)=>rejectVoterRequest(e,user_id)}>Reject</Button></div></td>
+          </tr>
+       )
+    })
+    
+  };
+
+  function aproveVoterRequest(event,user_id) {
+
+    event.preventDefault();
+    //console.log("eventtt",event.name);
+    console.log("user_id",user_id);     
+     dispatch(ApproveRequestAction(user_id));
+     console.log("voterRequestObj:",user_id);
+     history.push("/viewVoterReq");
+     }
+ function rejectVoterRequest(event,user_id) {
+    event.preventDefault();
+    //console.log("eventtt",event.name);
+    console.log("user_id",user_id);
+        
+        dispatch(ApproveRequestAction(user_id));
+        history.push("/viewVoterReq");
+      }
+export  default ViewVoterReq;
