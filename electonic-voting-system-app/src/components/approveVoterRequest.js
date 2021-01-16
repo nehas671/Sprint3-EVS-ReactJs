@@ -46,9 +46,9 @@ const ApproveRequest = (props)=>{
             <br></br>
     
             <form onSubmit="">
-               {/*} ID: {getSpaces(14)}<input type="text" readOnly= {true} ref={userIdRef} value={props.voterRequest.id}   /><br/><br/>
+                ID: {getSpaces(14)}<input type="text" readOnly= {true} ref={userIdRef} value={props.voterRequest.id}   /><br/><br/>
                 Name: {getSpaces(8)}<input type="text" ref={userNameRef} defaultValue={props.voterRequest.name} /><br/><br/>
-        */}
+        
         
         
         

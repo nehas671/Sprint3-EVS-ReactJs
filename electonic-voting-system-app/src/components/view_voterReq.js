@@ -10,6 +10,7 @@ import AdminHeader from '../components/adminheader';
 import Aside from './aside';
 import Footer from './footer';
 import Slogan from './slogan';
+import ApproveRequestAction from '../actions/approveVoterRequestAction';
 
 let dispatch;
 let selectedview;
@@ -202,15 +203,47 @@ function renderTableData(voterList) {
                 <td>{district}</td>
                 <td>{voter_id}</td>
                 <td>{status}</td>
-                <td><Button as="input" type="button" value="approve"></Button></td>
-                <td><Button as="input" type="button" value="reject"></Button></td>
+                <td><Button as="input" type="button" value="approve"><a href="/approveRequest"></a></Button></td>
+                <td><Button as="input" type="button" onClick = {rejectVoterRequest} value="reject"></Button></td>
         </tr>
      )
   })
 };
 
+function aproveVoterRequest(event) {
+  /*
+  console.log("In Request Approve :",event.voterRequest)
+  const name = event.voterRequest.name;
+  const constituency = event.get('constituency');
+  const emailId= event.get('emailId');
+  const applicationStatus = "Approved";
+  const contactNumber = event.get('contactNumber');
+  const dob = event.get('dob');
+  console.log(dob);
+  
+  
+  dispatch(ApproveRequestAction(event.voterRequest)).then((response) => {
+    event.AddVoterRequest();
+  }) */
+}
+function rejectVoterRequest(event) {
+  console.log('Update product: ', event.voterRequest);
+  event.preventDefault();
 
-   
+  const data = new FormData(event.target);
+  console.log("In Request Approve :",data)
+  const name = data.get('name');
+  const constituency = data.get('constituency');
+  const emailId= data.get('emailId');
+  const applicationStatus = "Rejected";
+  const contactNumber = data.get('contactNumber');
+  const dob = data.get('dob');
+  console.log(dob);
+  
+  dispatch(ApproveRequestAction(event.voterRequest)).then((response) => {
+    event.AddVoterRequest();
+  })
+}   
 function filterHandleChange(event) {
   selectedview = event.target.value
   console.log("Selected view: " + selectedview);

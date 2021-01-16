@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 const ApproveRequestAction = (requestObj) => {
+    console.log("Request in action",requestObj.emailId);
     return async function(dispatch) {
         const res = await axios.put(
-            "http://localhost:9090/evs/voter_request" + requestObj.id,
+            "http://localhost:9090/evs/voter_request" ,
                 { 
                     name: requestObj.name, 
                     district: requestObj.district,
