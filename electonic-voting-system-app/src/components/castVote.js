@@ -126,7 +126,7 @@ const CastVote =(props)=>
         let voter_id = voterIDRef.current.value;
         console.log({voter_id});
 
-        const castVoteObj = new CastVoteModel(election_name, state, constituency, date, candidate_name, party_name, voter_id);
+        const castVoteObj = new CastVoteModel(election_name.toUpperCase(), state.toUpperCase(), constituency.toUpperCase(), date, candidate_name.toUpperCase(), party_name.toUpperCase(), voter_id);
 
         dispatch(castVoteAction(castVoteObj));
         history.push('/votecast');
