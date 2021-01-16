@@ -1,4 +1,4 @@
-const candidateReducer = (state={initialState:[],filter:[]}, action) => {
+const candidateReducer = (state={initialState:[],filter:[],partylist:[]}, action) => {
     switch(action.type) {
         case 'ADD_CANDIDATE':
             state.initialState.push(action.payload);
@@ -10,10 +10,18 @@ const candidateReducer = (state={initialState:[],filter:[]}, action) => {
 
             
                 case 'SHOW_PARTYS':
-                    state.initialState=action.payload;
+                    state.partylist=action.payload;
                     return state;
 
                 case 'CANDIDATE_NAME':
+                 state.filter=action.payload;
+                return state;
+
+                case 'CANDIDATE_EMAIL':
+                 state.filter=action.payload;
+                return state;
+
+                case 'CANDIDATE_NUMBER':
                  state.filter=action.payload;
                 return state;
 
