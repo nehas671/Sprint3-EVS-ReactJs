@@ -15,6 +15,7 @@ import viewParty from './components/view_party';
 
 import AdminService from './components/adminService';
 import Services from './components/login';
+
 import VoterServices from './components/voter_services'
 
 import AddParty from './components/add_party'
@@ -27,8 +28,16 @@ import ViewVoterId from './components/viewVoterId';
 import DeleteCandidate from './components/deleteCandidate'
 import DeleteResult from './components/deleteResult'
 import ViewSchedule from './components/show_schedule'
+
+import Contactus from './components/contactus';
+import Aboutus from './components/aboutus';
+
 import ShowSchedules from './components/schedule';
+
+import ApproveRejectRequest from './components/approveVoterRequest';
+
 import EvsLogin from './components/evslogin'
+
 //import ButtonForm from './components/button';
 import MultipleLoginComponent from './components/Multilogin'
 import LoginUserComponent from './components/LoginUser'
@@ -36,12 +45,20 @@ import LoginUserComponent from './components/LoginUser'
 
 
 
+
+//import ButtonForm from './components/button';
+
 function App() {
   return(
     <div>
+
+
  
+
  
  {/*<RegisterUser></RegisterUser>*/}
+
+
 {/* <AddElection></AddElection>*/}
 
    { /*<ShowElections/>*/}
@@ -57,8 +74,10 @@ function App() {
    
 
   
+
    {/*<CandidateForm></CandidateForm>*/}
    {/*<CandidateForm></CandidateForm>*/}
+
 
 
 
@@ -71,7 +90,7 @@ function App() {
    <RegisterUser></RegisterUser>
    <Home></Home>*/}
  
- 
+
 {/*<AddResult></AddResult>*/}
 
 
@@ -84,7 +103,11 @@ function App() {
     <div className="App">
       
  
+
 {/*<ViewResult></ViewResult>*/}
+
+
+
  
 
 
@@ -92,11 +115,12 @@ function App() {
    
 
 
+
   <div className="App">
-      
+  
 
 
-            <Link to="/"></Link>
+            
 
            {/* <Link to="/">Home</Link>&nbsp;&nbsp;
 
@@ -107,15 +131,24 @@ function App() {
   <Link to ="/view_candidate">Show</Link>
   <Link to ="/view_candidate">Show</Link>*/}
 
-
      <Switch>
-
+  
           <Route exact path="/">
-            <Home/>
+         <Home></Home>
           </Route>
           <Route exact path="/services">
             <Services/>
           </Route>
+          <Route exact path="/contactus">
+            <Contactus/>
+          </Route>
+
+          <Route exact path="/aboutus">
+            <Aboutus></Aboutus>
+          </Route>
+    
+
+
           <Route path="/admin_services">
             <AdminService/>
           </Route>
@@ -135,12 +168,24 @@ function App() {
           <ShowElections/>
           </Route>
           <Route exact path="/RegisterUser">
+
+            <RegisterUser></RegisterUser>
+            </Route>
+
+
+
+
+
+
             <Registeruser></Registeruser>
+
           </Route>
+
 
           <Route exact path="/viewParty">
             <ViewParty></ViewParty>
           </Route>
+
 
           <Route exact path="/addParty">
             <AddParty></AddParty>
@@ -149,7 +194,8 @@ function App() {
           <Route exact path="/viewVoterReq">
             <ViewVoterReq></ViewVoterReq>
           </Route>
-          
+
+
           <Route exact path="/addResult">
             <AddResult></AddResult>
           </Route>
@@ -166,14 +212,17 @@ function App() {
           <Route exact path="/deleteresult">
             <DeleteResult/>
           </Route>
-
+          <Route exact path="/approveRequest">
+            <ApproveRejectRequest></ApproveRejectRequest>
+          </Route>
 
           <Route exact path="/viewSchedule">
-            <ShowSchedules/>
+            <ViewSchedule/>
           </Route>
 
 
           
+
 
           <Route exact path="/Officer_services">
             <OfficerService></OfficerService>
@@ -182,10 +231,6 @@ function App() {
             <CastVote />
           </Route>
 
-
-
-
-          
             <Route exact path ="/deleteCandidate">
             <DeleteCandidate/>
             </Route>
@@ -194,9 +239,6 @@ function App() {
             <Route exact path ="/addVoterReq">
             <AddRequest/>
             </Route>
-
-            
-
          
           <Route exact path="/addVoterRequest">
             <AddRequest></AddRequest>
@@ -206,7 +248,8 @@ function App() {
             <EvsLogin></EvsLogin>
 </Route>
 
-          <Route exact path="/evslogin">
+
+         <Route exact path="/evslogin">
           <MultipleLoginComponent/>
           </Route>
 
@@ -217,18 +260,17 @@ function App() {
 
                    
 
+
      </Switch> 
 
-         
-  
-            
-
-       
+              
         </div>       
 
 
   
+
         </div>   );
+
  
 }
 

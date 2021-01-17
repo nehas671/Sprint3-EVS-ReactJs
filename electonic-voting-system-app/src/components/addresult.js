@@ -266,7 +266,6 @@ function handleAdd(event) {
  
 }
 
-
 function  handleAlternative(event) {
   event.preventDefault();
   const value=document.getElementById('electionname').value;
