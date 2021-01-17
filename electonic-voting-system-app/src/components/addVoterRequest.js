@@ -15,13 +15,15 @@ import addVoterRequestAction from '../actions/addVoterRequestAction';
 let dispatch;
 let history;
 let selectedDistrict;
+let set;
 
 const AddRequest = (props) => {
    
     dispatch = useDispatch();
     history = useHistory();
     let districtList = useSelector(state => state.userReducer);
-   
+   set = true;
+
     React.useEffect(() => {
         DistrictsList() }, []);
     
@@ -30,6 +32,12 @@ const AddRequest = (props) => {
       }
 
     console.log("DistrictList: ", districtList);
+    if(!Array.isArray(districtList)) {
+      districtList = [];
+      console.log("Set List to blank array");
+  }
+
+
 
     
     return (
@@ -92,7 +100,7 @@ const AddRequest = (props) => {
         <h2>Add Voter Request</h2>
         <br></br>
 
-        <form onSubmit={handleSubmitt}>
+        <form onSubmit={handleSubmitt} onMouseMove={EnableDisable}>
             <div class="form-group row ">
             <label for="Name" class="col-4 col-form-label font-weight-bold">Name :</label>
             <div class="col-8">
@@ -151,7 +159,7 @@ const AddRequest = (props) => {
            
     </select>
     </div>
-    <button class="btn btn-primary" >ADD</button>
+    <button class="btn btn-primary" id="btnsubmit" disabled="disabled" >ADD</button>
     {/*<Button variant="primary" name="add" value="ADD VOTER REQUEST" >ADD VOTER REQUEST</Button>*/}
   
 </form>
@@ -175,6 +183,28 @@ let validNumber=false;
 let validEmailId=false;
 let validConstituency=false;
 let validDate=false;
+
+function EnableDisable(event)
+{
+  event.preventDefault();
+  var btnsubmit=document.getElementById("btnsubmit");
+  
+  console.log("handle disabled called");
+  console.log("validConstituency",validConstituency);
+  console.log("validDate",validDate);
+  console.log("validUsername",validUsername)
+  
+  if(validConstituency&&validDate&&validUsername&&validEmailId&&validNumber)
+  {  
+    set=false;
+    console.log("set",set);
+    btnsubmit.disabled=false;
+  }
+  else
+  {
+    btnsubmit.disabled=true;
+  }
+}
 
 function validateUserName(event) {
     
@@ -342,7 +372,8 @@ function validateDate(event) {
   const voterObj = new VoterRequest(name, selectedDistrict,constituency, emailId ,applicationStatus,contactNumber,dob);
   console.log("voterRequestObj:",voterObj);
   dispatch(addVoterRequestAction(voterObj));
-  history.push('/');
+  alert("Voter Request Added Succesfully");
+  history.push('/Officer_services');
      
   }
   export default AddRequest;

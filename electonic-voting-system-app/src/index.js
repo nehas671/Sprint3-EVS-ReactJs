@@ -24,9 +24,10 @@ import UserReducer from './reducers/userReducer';
 import scheduleReducer from './reducers/schedule_reducer';
 
 import partyReducer from './reducers/partyReducer'
+import loginReducer from './reducers/loginReducer'
 
 let allReducers= combineReducers({'castVoteReducer':castVoteReducer,'electionReducer':electionReducer,"candidateReducer":candidateReducer,'resultReducer':resultReducer,'stateReducer':stateReducer,
-'officerReducer':OfficerReducer,'userReducer':userReducer,'scheduleReducer':scheduleReducer, 'partyReducer':partyReducer})
+'officerReducer':OfficerReducer,'userReducer':userReducer,'scheduleReducer':scheduleReducer, 'partyReducer':partyReducer,'loginReducer':loginReducer})
 
 
 let store = createStore(allReducers, 
