@@ -12,6 +12,7 @@ import VoterHeader from './voterHeader';
 import VoterAsideComponent from './voterAside'
 import GetStateAction from '../actions/getState';
 import GetDistinctElectionName from '../actions/getElectionName';
+import castVoteReducer from '../reducers/voteReducer';
 
 let dispatch;
 let listState = false;
@@ -30,7 +31,8 @@ const CastVote =(props)=>
     let electionNameList = useSelector(state=>state.castVoteReducer.electionNamelist)
     let stateList = useSelector((state)=>state.castVoteReducer.statelist);
     let candidateList = useSelector((state) => state.castVoteReducer.candidates);
-    
+    let voteCastList = useSelector((state)=> state.castVoteReducer.castvote);
+
     React.useEffect(()=>
     {
         ElectionNameList()
@@ -83,6 +85,13 @@ const CastVote =(props)=>
         candidateList = [];
         console.log("Set candidateList to blank array");
     }
+
+    if(!Array.isArray(voteCastList))
+    {
+        voteCastList = [];
+        console.log("Set voteCastList to blank array");
+    }
+
     var today = new Date();
     
     var day = 13 //today.getDate();
@@ -126,10 +135,11 @@ const CastVote =(props)=>
         let voter_id = voterIDRef.current.value;
         console.log({voter_id});
 
-        const castVoteObj = new CastVoteModel(election_name, state, constituency, date, candidate_name, party_name, voter_id);
+        const castVoteObj = new CastVoteModel(election_name.toUpperCase(), state.toUpperCase(), constituency.toUpperCase(), date, candidate_name.toUpperCase(), party_name.toUpperCase(), voter_id);
 
-        dispatch(castVoteAction(castVoteObj));
-        history.push('/votecast');
+        dispatch(castVoteAction(castVoteObj))
+        
+        history.push('/VoterServices');
         console.log({castVoteObj});
     }
 
@@ -426,13 +436,13 @@ const handleList = (event)=>
     event.preventDefault();
     const data = new FormData(event.target);
     
-    const election_name = data.get('electionName');
+    const election_name = data.get('electionName').toUpperCase();
     console.log({election_name});
     
-    const state = data.get('state');
+    const state = data.get('state').toUpperCase();
     console.log({state});
     
-    const constituency = data.get('constituency');
+    const constituency = data.get('constituency').toUpperCase();
     console.log({constituency});
     
     const date = data.get('date');

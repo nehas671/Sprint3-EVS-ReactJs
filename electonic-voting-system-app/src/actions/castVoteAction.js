@@ -13,7 +13,6 @@ let castVoteAction =(castVote)=>
                     candidateName: castVote.candidate_name,
                     partyName: castVote.party_name,
                     voterId: castVote.voter_id
-
             },
             { 
                 "Content-type": "application/json; charset=UTF-8"
@@ -27,7 +26,6 @@ let castVoteAction =(castVote)=>
                     console.log("error Response:",error.response)
                     console.log("data:",error.response.data.message);
                     alert(error.response.data.message);
-                    
                 }
             );
         }

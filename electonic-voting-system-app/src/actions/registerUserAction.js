@@ -10,9 +10,11 @@ const registerUserAction = (user) => {
                     name: user.name, 
                     district: user.district,
                     address: user.address,
-                    mobileNumber: user.mobileNumber,
+                    mobile_number: user.contactNumber,
                     emailId: user.emailId,
+                    password:user.password,
                     dob: user.dob,
+                    gender: user.gender,
                 }, 
                 { 
                     "Content-type": "application/json; charset=UTF-8",

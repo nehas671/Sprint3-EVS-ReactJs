@@ -59,7 +59,7 @@ export const AddResult= (props) => {
 }
 
 
-
+ console.log("electionlist",electionList)
 
 if(!Array.isArray(electionList)) {
     electionList = [];
@@ -114,7 +114,7 @@ if(!Array.isArray(stateList)) {
             <div class="col-8  pl-0 pr-5">
             <div class="col border border-dark bg-light p-5 ml-auto mr-auto">
               <h2 class="addElectionTitle">Declare Result</h2>
-              <form onSubmit={handleAdd} onMouseMove={EnableDisable}>
+              <form onSubmit={handleAdd} onMouseMove={EnableDisable} >
   {/*<div class="form-group row pt-4 pb-3">
   <label for="electionname" class="col-4 col-form-label font-weight-bold">Election Name</label>
     <div class="col-8">
@@ -128,7 +128,7 @@ if(!Array.isArray(stateList)) {
 
   <div class=" form-group row">
     <label for="electionname" class="col-4 mr-3 font-weight-bold">Select Election Name</label>
-    <select class="form-control col-7 state" id="electionname" onChange={handleElectionName}  onBlur={handleElectionNameChange} >
+    <select class="form-control col-7 state" id="electionname"   onBlur={handleElectionNameChange}   onChange={handleElectionName}  >
    <option></option>
    {renderElection(electionList)}
     </select>
@@ -142,7 +142,7 @@ if(!Array.isArray(stateList)) {
 
   <div class=" form-group row">
     <label for="statename" class="col-4 mr-3 font-weight-bold">Select State</label>
-    <select class="form-control col-7 state" id="statename"  onBlur={handleStateChange}   onChange={handleChange} >
+    <select class="form-control col-7 state" id="statename"  onBlur={handleStateChange} onChange={handleChange} >
   <option></option>
   
    {renderStates(stateList)}
@@ -161,8 +161,10 @@ if(!Array.isArray(stateList)) {
   </div>
 
  
-  <button  onClick={handleAlternative}   id="btnsubmit" disabled="disabled" type="button" class="btn btn-outline-primary ml-5 mb-3 mr-5">Vote Count</button>
-  <button type="submit"    id="btnsubmit2" disabled="disabled" class="btn btn-outline-primary mb-3">Add Result</button>
+  
+  <button  onClick={handleAlternative}   id="btnsubmit"  class="btn btn-outline-primary ml-5 mb-3 mr-5">Vote Count</button>
+  <button type="submit"    id="btnsubmit2"  class="btn btn-outline-primary mb-3">Add Result</button>
+
      
 
   <div class="col-3">
@@ -260,6 +262,7 @@ function handleAdd(event) {
   const value=document.getElementById('electionname').value;
   var e = document.getElementById("statename").value;
   dispatch(addResultAction(value,e))
+
  
 }
 
@@ -270,7 +273,6 @@ function  handleAlternative(event) {
   var e = document.getElementById("statename").value;
   dispatch(showVoteCountAction(value,e))
 }
-
 
 
 
@@ -291,8 +293,6 @@ function handleElectionNameChange(event)
         validElectionName = true;
     }
 }
-
-
 
 
 function handleStateChange(event)
@@ -330,11 +330,13 @@ function EnableDisable(event)
         console.log("set",set);
         btnsubmit.disabled=false;
         btnsubmit2.disabled=false;
+  
     }
     else
     {
         btnsubmit.disabled=true;
         btnsubmit2.disabled=true;
+      
     }
 }
 

@@ -15,6 +15,7 @@ import registerUserAction from '../actions/registerUserAction';
 let dispatch;
 let history;
 let selectedDistrict;
+let set;
 
 const Registeruser = (props) => {
    
@@ -34,6 +35,13 @@ const Registeruser = (props) => {
     const register_user = ()=>{
         
     }
+
+    if(!Array.isArray( districtList)) 
+  {
+    districtList = [];
+    console.log("Set electionList to blank array");
+  }
+
     return (
     <div>
     
@@ -94,7 +102,7 @@ const Registeruser = (props) => {
         <h2>Register User</h2>
         <br></br>
 
-        <form onSubmit={handleSubmitt}>
+        <form onSubmit={handleSubmitt} onMouseMove={EnableDisable}>
         <div class="form-group row ">
             <label for="Name" class="col-4 col-form-label font-weight-bold">Name :</label>
             <div class="col-8">
@@ -117,6 +125,17 @@ const Registeruser = (props) => {
     </div>
 
     <div class="form-group row ">
+            <label for="gender" class="col-4 col-form-label font-weight-bold">Gender :</label>
+            <div class="col-4">
+        <div class="d-flex">
+        <input type="radio" value="Male" name="gender" class="col-4" /> Male
+        <input type="radio" value="Female" name="gender" class=" col-4"/> Female
+        <input type="radio" value="Other" name="gender" class=" col-4" /> Other
+        </div>
+      </div>
+      </div>
+
+    <div class="form-group row ">
             <label for="email" class="col-4 col-form-label font-weight-bold">EmailId :</label>
             <div class="col-8">
         <input type="text"  class="form-control" id="email" name="email" placeholder="eg. patil@gmail.com" onBlur={validateEmailId} required></input>
@@ -125,6 +144,20 @@ const Registeruser = (props) => {
        </small>
     </div>
     </div>
+
+
+
+    <div class="form-group row ">
+            <label for="password" class="col-4 col-form-label font-weight-bold">Password :</label>
+            <div class="col-8">
+        <input type="password"  class="form-control" id="password" name="password" placeholder="Enter password" onBlur={validateUserPassword} required></input>
+        <small id="passvalid" class="form-text text-danger invalid-feedback">
+        Password Format must match : For eg : User@123
+       </small>
+    </div>
+    </div>
+
+
 
     <div class="form-group row ">
             <label for="address" class="col-4 col-form-label font-weight-bold">Address :</label>
@@ -147,15 +180,15 @@ const Registeruser = (props) => {
 
       <div class=" form-group row">
         <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">District :</label>
-        <select class="form-control col-7 state" id="exampleFormControlSelect1" placeholder="Select District" onChange={handleChange} required>
+        <select class="form-control col-7 state" id="exampleFormControlSelect1" placeholder="Select District" onChange={handleChange} >
            {renderDistrict(districtList)} 
            
            
     </select>
     </div>
-
-    <button class="btn btn-primary" >ADD</button>
-  
+    <button class="btn btn-primary" id="btnsubmit" disabled="disabled">
+                  ADD
+                </button>
     </form>
         </div>
         
@@ -178,6 +211,49 @@ let validNumber=false;
 let validEmailId=false;
 let validAddress=false;
 let validDate=false;
+
+function EnableDisable(event)
+{
+  event.preventDefault();
+  var btnsubmit=document.getElementById("btnsubmit");
+  
+  console.log("handle disabled called");
+  
+  console.log("validUsername",validUsername)
+  
+  if(validAddress&&validDate&&validUsername&&validNumber&&validEmailId)
+  
+  {  
+    set=false;
+    console.log("set",set);
+    btnsubmit.disabled=false;
+  } 
+  else
+  {
+    btnsubmit.disabled=true;
+  }
+}
+
+
+
+
+function validateUserPassword(event)
+{
+    const data = event.target.value;
+
+    let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    let str = data;
+
+    if(regex.test(str) && str != "" && str != null)
+    {
+    }
+    else
+    {
+        alert("Enter valid password and Password must contain a number.");
+    }
+}
+
+
 
 function validateUserName(event) {
     
@@ -335,20 +411,22 @@ function validateDate(event) {
   console.log("in handle submit:",data)
   const name = data.get('name');
   const address = data.get('address');
+  const gender = data.get('gender');
   
   const contactNumber = data.get('contact_number');
   const emailId= data.get('email');
+  const password=data.get('password');
   const dob = data.get('dob');
   console.log(dob);
+  console.log(contactNumber);
   
   
-  const userObj = new RegisterUser(name, selectedDistrict,address, emailId ,contactNumber,dob);
+  const userObj = new RegisterUser(name, selectedDistrict,address, emailId,password ,contactNumber,dob,gender);
   console.log("RegisterUserObj:",userObj);
+
   dispatch(registerUserAction(userObj));
-  history.push('/');
+  history.push('/loginuser');
 
         
   }
 export default Registeruser;
-
-
