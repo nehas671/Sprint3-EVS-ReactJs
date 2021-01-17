@@ -8,6 +8,7 @@ import Footer from './footer';
 import Slogan from './slogan';
 
 let dispatch;
+
 let voterlist
 const ViewVoterId =(props)=>{    
      voterlist= useSelector(state=>state.userReducer);

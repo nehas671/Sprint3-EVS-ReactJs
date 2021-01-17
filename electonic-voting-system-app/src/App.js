@@ -22,7 +22,6 @@ import RegisterUser from './components/register_user';
 import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
-import ApproveRequest from './components/approveVoterRequest'
 import CastVote from './components/castVote';
 import ViewVoterId from './components/viewVoterId';
 import DeleteCandidate from './components/deleteCandidate'
@@ -146,9 +145,7 @@ function App() {
           <Route exact path="/viewVoterReq">
             <ViewVoterReq></ViewVoterReq>
           </Route>
-          <Route exact path="/approveRequest">
-            <ApproveRequest></ApproveRequest>
-          </Route>
+          
           <Route exact path="/addResult">
             <AddResult></AddResult>
           </Route>
@@ -189,9 +186,6 @@ function App() {
             <DeleteCandidate/>
             </Route>
             
-            <Route exact path ="/appRejVoterReq">
-            <ApproveRequest/>
-            </Route>
 
             <Route exact path ="/addVoterReq">
             <AddRequest/>
