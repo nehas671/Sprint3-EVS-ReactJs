@@ -1,7 +1,7 @@
 import axios from 'axios';
 let viewScheduleStateAction = (state) => {
     return async function (dispatch) {
-        const res = await fetch(
+        const res = await axios.get(
             `http://localhost:9090/evs/schedule/state/${state}`, {
                 method: "GET",
                 headers: {
@@ -9,8 +9,8 @@ let viewScheduleStateAction = (state) => {
                 }
             }
           );
-          const data = await res.json();
-          dispatch({type: "VIEW_SCHEDULE", payload: data});
+          
+          dispatch({type: "VIEW_SCHEDULE", payload: res.data});
     }
 }
 
