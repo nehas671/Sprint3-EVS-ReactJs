@@ -4,6 +4,7 @@ import * as icons from '@fortawesome/free-solid-svg-icons'
 
 const VoterHeader = (props)=>
 {
+    
     return(
     <div>
         <header class="Custom-container py-md-2 py-3   ">
@@ -21,11 +22,7 @@ const VoterHeader = (props)=>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav flex-wrap w-100">
                         <li class="nav-item  nav-item-custom mb-2 mb-md-0 flex-wrap ">
-
-
-
                         <a class="nav-link text-dark border-primary nav-custom-link px-md-0 " href="/VoterServices">
-
                                 Home
                             </a>
                         </li>
@@ -89,5 +86,4 @@ const VoterHeader = (props)=>
     </div>
     )    
 }
-
 export default VoterHeader;

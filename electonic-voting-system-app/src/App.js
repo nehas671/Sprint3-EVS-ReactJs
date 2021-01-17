@@ -31,6 +31,7 @@ import ViewSchedule from './components/show_schedule'
 import ShowSchedules from './components/schedule';
 import EvsLogin from './components/evslogin'
 //import ButtonForm from './components/button';
+import MultipleLoginComponent from './components/Multilogin'
 
 
 
@@ -38,6 +39,7 @@ import EvsLogin from './components/evslogin'
 function App() {
   return(
     <div>
+ 
  
  {/*<RegisterUser></RegisterUser>*/}
 {/* <AddElection></AddElection>*/}
@@ -69,7 +71,7 @@ function App() {
    <RegisterUser></RegisterUser>
    <Home></Home>*/}
  
-
+ 
 {/*<AddResult></AddResult>*/}
 
 
@@ -205,10 +207,15 @@ function App() {
             <AddRequest></AddRequest>
           </Route>
 
-          <Route exact path="/evslogin">
+         {/* <Route exact path="/evslogin">
             <EvsLogin></EvsLogin>
+</Route>*/}
+
+          <Route exact path="/evslogin">
+          <MultipleLoginComponent/>
           </Route>
 
+         
 
           
 
