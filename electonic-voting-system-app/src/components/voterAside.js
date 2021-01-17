@@ -13,13 +13,13 @@ const VoterAsideComponent = ()=>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary font-weight-bold" href="#">
+                    <a class="nav-link text-primary font-weight-bold" href="/addVoterReq">
                         Apply for Voter ID
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary font-weight-bold" href="#">
-                        Check Voter ID status
+                    <a class="nav-link text-primary font-weight-bold" href="/viewVoterId">
+                        View Voter ID
                     </a>
                 </li>
                 <li class="nav-item">
@@ -38,7 +38,7 @@ const VoterAsideComponent = ()=>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary font-weight-bold" href="#">
+                    <a class="nav-link text-primary font-weight-bold" href="/aboutus">
                         About Us
                     </a>
                 </li>
