@@ -28,6 +28,7 @@ import DeleteCandidate from './components/deleteCandidate'
 import DeleteResult from './components/deleteResult'
 import ViewSchedule from './components/show_schedule'
 import ShowSchedules from './components/schedule';
+import ApproveRejectRequest from './components/approveVoterRequest';
 //import ButtonForm from './components/button';
 
 
@@ -162,7 +163,9 @@ function App() {
           <Route exact path="/deleteresult">
             <DeleteResult/>
           </Route>
-
+          <Route exact path="/approveRequest">
+            <ApproveRejectRequest></ApproveRejectRequest>
+          </Route>
 
           <Route exact path="/viewSchedule">
             <ShowSchedules/>

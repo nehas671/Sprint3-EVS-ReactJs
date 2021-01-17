@@ -18,7 +18,7 @@ let selectedview;
 let selectedOption;
 let history;
 
-const ViewVoterReq = (props) => {
+const ApproveRejectRequest = (props) => {
 
   let [filter, setFilter] = useState();
   let [initialState, setInitialState] = useState();
@@ -164,6 +164,7 @@ const ViewVoterReq = (props) => {
             <th>District</th>
             
             <th>Status</th>
+            <th>Actions</th>
               </tr>
           </thead>
           <tbody>
@@ -229,12 +230,33 @@ function renderTableData(voterList) {
                 <td>{district}</td>
                 
                 <td>{status}</td>
-                </tr>
+                <td><Button as="input" type="button" value="approve" onClick={(e) =>aproveVoterRequest(e,voter_id)}></Button></td>
+                <td><Button as="input" type="button" value="reject" onClick = {(e)=>rejectVoterRequest(e,voter_id)}></Button></td>
+        </tr>
      )
   })
 };
 
+function aproveVoterRequest(event,voter_id) {
 
+  event.preventDefault();
+  //console.log("eventtt",event.name);
+  console.log("user_id",voter_id);     
+   dispatch(ApproveRequestAction(voter_id));
+   console.log("voterRequestObj:",voter_id);
+   alert("Approved Successfully");
+   history.push("/viewVoterReq");
+   }
+function rejectVoterRequest(event,voter_id) {
+  event.preventDefault();
+  //console.log("eventtt",event.name);
+  console.log("user_id",voter_id);
+      
+    dispatch(ApproveRequestAction(voter_id));
+   console.log("voterRequestObj:",voter_id);
+   alert("Rejected Successfully");
+    history.push("/viewVoterReq");
+    }
 
    
 function filterHandleChange(event) {
@@ -250,25 +272,5 @@ function renderFilterList(filterList) {
       )
   })
 } 
-/*function EnableDisable(event)
-{
-  event.preventDefault();
-  var btnsubmit=document.getElementById("btnsubmit");
-  
-  console.log("handle disabled called");
-  console.log("selectCriteria",selectCriteria);
-  console.log("selectFilter",selectFilter);
-  
-  
-  if(selectCriteria)
-  {  
-    set=false;
-    console.log("set",set);
-    btnsubmit.disabled=false;
-  }
-  else
-  {
-    btnsubmit.disabled=true;
-  }
-}*/
-export  default ViewVoterReq;
+
+export  default ApproveRejectRequest;
