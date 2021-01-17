@@ -9,7 +9,10 @@ const OfficerReducer =(state={initialState:[],filter:[],statelist:[]},action)=>{
             return state;
         case 'VIEW_STATUS':
             state.filter=action.payload;
-            return state;    
+            return state; 
+        case 'APPROVE_REQUEST':
+            state.initialState=action.payload;
+            return state;   
         default:
             return [];
 

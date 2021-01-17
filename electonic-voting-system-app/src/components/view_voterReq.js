@@ -10,10 +10,13 @@ import AdminHeader from '../components/adminheader';
 import Aside from './aside';
 import Footer from './footer';
 import Slogan from './slogan';
+import ApproveRequestAction from '../actions/approveVoterRequestAction';
+import { useHistory } from "react-router-dom";
 
 let dispatch;
 let selectedview;
 let selectedOption;
+let history;
 
 const ViewVoterReq = (props) => {
 
@@ -24,6 +27,7 @@ const ViewVoterReq = (props) => {
   let filterList = useSelector(state => state.officerReducer.filter);
   
    dispatch = useDispatch();
+   history= useHistory();
 
  /* React.useEffect(() => {
       VoterList()
@@ -160,7 +164,6 @@ const ViewVoterReq = (props) => {
             <th>District</th>
             
             <th>Status</th>
-            <th>Actions</th>
               </tr>
           </thead>
           <tbody>
@@ -226,12 +229,11 @@ function renderTableData(voterList) {
                 <td>{district}</td>
                 
                 <td>{status}</td>
-                <td><Button as="input" type="button" value="approve"></Button></td>
-                <td><Button as="input" type="button" value="reject"></Button></td>
-        </tr>
+                </tr>
      )
   })
 };
+
 
 
    
