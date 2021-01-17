@@ -28,17 +28,15 @@ import ViewVoterId from './components/viewVoterId';
 import DeleteCandidate from './components/deleteCandidate'
 import DeleteResult from './components/deleteResult'
 import ViewSchedule from './components/show_schedule'
-import ShowSchedules from './components/schedule';
+import Contactus from './components/contactus';
+import Aboutus from './components/aboutus';
+
+
 //import ButtonForm from './components/button';
-
-
-
 
 function App() {
   return(
     <div>
- 
- {/*<RegisterUser></RegisterUser>*/}
 {/* <AddElection></AddElection>*/}
 
    { /*<ShowElections/>*/}
@@ -82,18 +80,13 @@ function App() {
       
  
 {/*<ViewResult></ViewResult>*/}
- 
-
-
-
-   
 
 
   <div className="App">
-      
+  
 
 
-            <Link to="/"></Link>
+            
 
            {/* <Link to="/">Home</Link>&nbsp;&nbsp;
 
@@ -104,15 +97,24 @@ function App() {
   <Link to ="/view_candidate">Show</Link>
   <Link to ="/view_candidate">Show</Link>*/}
 
-
      <Switch>
-
+  
           <Route exact path="/">
-            <Home/>
+         <Home></Home>
           </Route>
           <Route exact path="/services">
             <Services/>
           </Route>
+          <Route exact path="/contactus">
+            <Contactus/>
+          </Route>
+
+          <Route exact path="/aboutus">
+            <Aboutus></Aboutus>
+          </Route>
+    
+
+
           <Route path="/admin_services">
             <AdminService/>
           </Route>
@@ -133,7 +135,11 @@ function App() {
           </Route>
           <Route exact path="/RegisterUser">
             <RegisterUser></RegisterUser>
-          </Route>
+            </Route>
+
+
+
+
 
           <Route exact path="/viewParty">
             <ViewParty></ViewParty>
@@ -168,7 +174,7 @@ function App() {
 
 
           <Route exact path="/viewSchedule">
-            <ShowSchedules/>
+            <ViewSchedule/>
           </Route>
 
 
@@ -196,24 +202,15 @@ function App() {
             <Route exact path ="/addVoterReq">
             <AddRequest/>
             </Route>
-
-            
-
          
           <Route exact path="/addVoterRequest">
             <AddRequest></AddRequest>
           </Route>
 
 
-
-
      </Switch> 
 
-         
-  
-            
-
-       
+              
         </div>       
 
 

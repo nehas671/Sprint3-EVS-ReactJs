@@ -43,8 +43,6 @@ let refineList=useSelector(state=>state.resultReducer.refine)
   }
 
 
-
-
   const showRefineList = (event) => {
     selected = event.target.value;
     console.log("Selected option: " + selected);
@@ -74,10 +72,6 @@ let refineList=useSelector(state=>state.resultReducer.refine)
         });
     }
 }
-
-
-
-
 
 
 
@@ -134,8 +128,6 @@ let refineList=useSelector(state=>state.resultReducer.refine)
 
 
 
-
-
                 <section class="Custom-container technology-container">
             <div class="row mx-0 px-sm-0 mb-4">
             <div class="col-8  pl-0 pr-5">
@@ -156,7 +148,6 @@ let refineList=useSelector(state=>state.resultReducer.refine)
   </div>
 
 
-
   <div class=" form-group row">
   <label for="viewbyfilter" class="col-4 mr-3 font-weight-bold">Select:</label>
   <select id="viewbyfilter" onChange={handleRefine} required class="w-50 form-control">
@@ -169,7 +160,6 @@ let refineList=useSelector(state=>state.resultReducer.refine)
   
   
 
-    
     
     <table class="table table-border table-striped">
     <thead>
