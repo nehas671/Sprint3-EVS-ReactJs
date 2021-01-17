@@ -17,6 +17,7 @@ const castVoteReducer = (state={electionNamelist:[], statelist:[], candidates:[]
 
         case 'ADD_VOTE':
             state.castvote = action.payload;
+            alert("Thank you for voting! You have voted successfully!");
             return state;
 
         default:
