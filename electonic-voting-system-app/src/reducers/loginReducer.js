@@ -3,7 +3,7 @@ const loginReducer = (state=[], action) => {
         case 'LOGIN':
             state=action.payload;
             return state;
-       
+           
         default:
             return [];
     }

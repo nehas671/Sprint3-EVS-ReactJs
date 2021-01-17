@@ -4,15 +4,16 @@ let UserLoginAction = (loginObj) => {
     
     return async function (dispatch) {
             const res = await axios.post(
-                "http://localhost:9090/myapp/user/login", {
+                "http://localhost:9090/evs/user/login", {
                         
                         emailId : loginObj.emailId,
                         password : loginObj.password,
-                        role: loginObj.role,
+                        role: loginObj.role
                         
                     }, 
                     { 
-                        "Content-type": "application/json; charset=UTF-8"
+                        "Content-type": "application/json; charset=UTF-8",
+                        "Access-Control-Allow-Origin": "*"
                     }
             )
               console.log('Response from server'+ res.data);

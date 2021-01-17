@@ -22,13 +22,10 @@ const Services = (props) =>
                                 Services
                             </h1>
                             <button type="button" onClick={loginAdmin} class="btn btn-outline-primary col-6 ml-3 mb-4 mr-3 font-weight-bold">
-                                Administrator Service
-                            </button>
-                            <button type="button"  onClick={loginOfficer} class="btn btn-outline-primary col-6 ml-3 mb-4 mr-3 font-weight-bold">
-                                Electrol Officer
+                                Administrator/Electoral Officer Login
                             </button>
                             <button type="button" onClick={loginVoter} class="btn btn-outline-primary col-6 ml-3 mb-4 mr-3 font-weight-bold">
-                                Voter Service
+                                Voter Login
                             </button>
                         </div>
                     </div>
@@ -43,18 +40,12 @@ const Services = (props) =>
 
 function loginAdmin()
 {
-    history.push('/admin_services');
+    history.push('/evslogin');
 }
-
-function loginOfficer()
-{
-    history.push('/Officer_services');
-}
-
 
 function loginVoter()
 {
-    history.push('/VoterServices');
+    history.push('/loginuser');
 }
 
 export default Services;
