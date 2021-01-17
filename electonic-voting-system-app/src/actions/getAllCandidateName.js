@@ -5,8 +5,8 @@ let GetAllCandidateName = () => {
     return async function (dispatch) {
         const res = await axios.get(
             "http://localhost:9090/evs/candidatename"
-          );
-          dispatch({type: "CANDIDATE_NAME", payload: res.data});
+        );
+        dispatch({ type: "CANDIDATE_NAME", payload: res.data });
     }
 }
 

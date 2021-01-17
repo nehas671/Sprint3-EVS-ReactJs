@@ -5,8 +5,8 @@ let GetAllCandidateEmail = () => {
     return async function (dispatch) {
         const res = await axios.get(
             "http://localhost:9090/evs/email"
-          );
-          dispatch({type: "CANDIDATE_EMAIL", payload: res.data});
+        );
+        dispatch({ type: "CANDIDATE_EMAIL", payload: res.data });
     }
 }
 
