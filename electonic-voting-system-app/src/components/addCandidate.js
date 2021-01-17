@@ -23,7 +23,7 @@ let history;
 let selectedPartyName;
 let candidateList;
 let set;
-//let x;
+let x;
 
 const AddCandidate= (props) => {
 
@@ -146,7 +146,7 @@ const AddCandidate= (props) => {
     <div class=" form-group row">
         <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">Party Name :</label>
         <select class="form-control col-7 state" id="exampleFormControlSelect1" onChange={handleChange} required>
-          <option>Select</option>
+          {/*<option>Select</option>*/}
         {renderPartys(partyList)}
     </select>
     </div>
@@ -314,7 +314,7 @@ function validateCandidateAge(event){
 
 function validateCandidateNumber(event){
 
-let unique=false;
+//let unique=false;
 //let mobile_number; 
 let index = 0;  
     const data = event.target.value;
@@ -327,7 +327,7 @@ let index = 0;
       mobile_number=candidate.contactNumber;
       console.log("mobile_number_list", mobile_number)
     });
-    */
+    
     
 
   
@@ -342,13 +342,15 @@ function myFunction(item, index)
 } 
 }
 console.log("unique", unique);
+
+*/
  
   
     let regex = /^\d{10}$/;
     let inputdata = data;
     let str = inputdata.trim();
     console.log(regex, str);
-    if (regex.test(str) && str != "" && unique) {
+    if (regex.test(str) && str != "") {
   
       event.target.classList.remove('custom-invalid');
       event.target.classList.add('custom-valid');
