@@ -67,9 +67,6 @@ const AdminHeader = (props) =>
                 <a class="dropdown-item drop" href="/view_candidate">
                   View Candidate
                 </a>
-                <a class="dropdown-item drop " href="/updatecandidate">
-                  Update Candidate
-                </a>
                 <a class="dropdown-item drop" href="/deleteCandidate">
                   Delete Candidate
                 </a>

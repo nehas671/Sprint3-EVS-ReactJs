@@ -32,6 +32,12 @@ const AddRequest = (props) => {
       }
 
     console.log("DistrictList: ", districtList);
+    if(!Array.isArray(districtList)) {
+      districtList = [];
+      console.log("Set List to blank array");
+  }
+
+
 
     
     return (
@@ -367,7 +373,7 @@ function validateDate(event) {
   console.log("voterRequestObj:",voterObj);
   dispatch(addVoterRequestAction(voterObj));
   alert("Voter Request Added Succesfully");
-  history.push('/addVoterRequest');
+  history.push('/Officer_services');
      
   }
   export default AddRequest;

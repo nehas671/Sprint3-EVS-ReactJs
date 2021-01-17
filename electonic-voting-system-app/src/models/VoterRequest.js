@@ -1,7 +1,7 @@
 class VoterRequest{
 
-    constructor( voterId,name,  district,  constituency,  emailId, applicationStatus, contactNumber,  dob){
-        this.voterId=voterId;
+    constructor( name,  district,  constituency,  emailId, applicationStatus, contactNumber,  dob){
+        
         this.name = name;
         this.district = district;
         this.constituency = constituency;
