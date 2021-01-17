@@ -22,7 +22,7 @@ let dispatch;
 const DeleteCandidate = (props) => {
 
 
-    let candidateList = useSelector(state => state.candidateReducer);
+    let candidateList = useSelector(state => state.candidateReducer.initialState);
 
     dispatch = useDispatch();
 /*
@@ -107,19 +107,6 @@ const DeleteCandidate = (props) => {
           </tbody>
           </table>
 
-          <div>
-                <ul class="pagination -lg pager">
-                    <li class="previous"><a href="#">Previous</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li class="next"><a href="#">Next</a></li>
-                </ul>
-            </div>
-
-
           </center>
     </div>
     
@@ -202,11 +189,7 @@ function renderTableData(candidateList) {
 }
 
 
-/*function updateCandidate(event,candidate){
 
-  event.preventDefault();
-  dispatch(UpdateCandidateAction(candidate));
-}*/
 
 export default DeleteCandidate;
 
