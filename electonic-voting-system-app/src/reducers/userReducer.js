@@ -15,6 +15,8 @@ const userReducer = (state=initialState, action) =>
          case 'VIEW_VOTERID':
              console.log("In reducer",action.payload);
             return action.payload;
+            case 'USER_LOGIN':
+                return  action.payload;
         default:
             return [];
     }

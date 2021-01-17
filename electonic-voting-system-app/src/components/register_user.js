@@ -127,9 +127,11 @@ const Registeruser = (props) => {
     <div class="form-group row ">
             <label for="gender" class="col-4 col-form-label font-weight-bold">Gender :</label>
             <div class="col-4">
-        <input type="radio" value="Male" name="gender" /> Male
-        <input type="radio" value="Female" name="gender" /> Female
-        <input type="radio" value="Other" name="gender" /> Other
+        <div class="d-flex">
+        <input type="radio" value="Male" name="gender" class="col-4" /> Male
+        <input type="radio" value="Female" name="gender" class=" col-4"/> Female
+        <input type="radio" value="Other" name="gender" class=" col-4" /> Other
+        </div>
       </div>
       </div>
 
@@ -142,6 +144,20 @@ const Registeruser = (props) => {
        </small>
     </div>
     </div>
+
+
+
+    <div class="form-group row ">
+            <label for="password" class="col-4 col-form-label font-weight-bold">Password :</label>
+            <div class="col-8">
+        <input type="password"  class="form-control" id="password" name="password" placeholder="Enter password" onBlur={validateUserPassword} required></input>
+        <small id="passvalid" class="form-text text-danger invalid-feedback">
+        Password Format must match : For eg : User@123
+       </small>
+    </div>
+    </div>
+
+
 
     <div class="form-group row ">
             <label for="address" class="col-4 col-form-label font-weight-bold">Address :</label>
@@ -164,7 +180,7 @@ const Registeruser = (props) => {
 
       <div class=" form-group row">
         <label for="exampleFormControlSelect1" class="col-4 mr-3 font-weight-bold">District :</label>
-        <select class="form-control col-7 state" id="exampleFormControlSelect1" placeholder="Select District" onChange={handleChange} required>
+        <select class="form-control col-7 state" id="exampleFormControlSelect1" placeholder="Select District" onChange={handleChange} >
            {renderDistrict(districtList)} 
            
            
@@ -217,6 +233,27 @@ function EnableDisable(event)
     btnsubmit.disabled=true;
   }
 }
+
+
+
+
+function validateUserPassword(event)
+{
+    const data = event.target.value;
+
+    let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    let str = data;
+
+    if(regex.test(str) && str != "" && str != null)
+    {
+    }
+    else
+    {
+        alert("Enter valid password and Password must contain a number.");
+    }
+}
+
+
 
 function validateUserName(event) {
     
@@ -378,16 +415,17 @@ function validateDate(event) {
   
   const contactNumber = data.get('contact_number');
   const emailId= data.get('email');
+  const password=data.get('password');
   const dob = data.get('dob');
   console.log(dob);
   console.log(contactNumber);
   
   
-  const userObj = new RegisterUser(name, selectedDistrict,address, emailId ,contactNumber,dob,gender);
+  const userObj = new RegisterUser(name, selectedDistrict,address, emailId,password ,contactNumber,dob,gender);
   console.log("RegisterUserObj:",userObj);
 
   dispatch(registerUserAction(userObj));
-  history.push('/');
+  history.push('/loginuser');
 
         
   }
