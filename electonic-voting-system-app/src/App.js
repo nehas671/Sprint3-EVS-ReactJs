@@ -19,7 +19,7 @@ import Services from './components/login';
 import VoterServices from './components/voter_services'
 
 import AddParty from './components/add_party'
-import Registeruser from './components/register_user';
+import RegisterUser from './components/register_user';
 import AddCandidate from './components/addCandidate';
 import ViewParty from './components/view_party';
 import ViewVoterReq from './components/view_voterReq';
@@ -27,103 +27,46 @@ import CastVote from './components/castVote';
 import ViewVoterId from './components/viewVoterId';
 import DeleteCandidate from './components/deleteCandidate'
 import DeleteResult from './components/deleteResult'
-import ViewSchedule from './components/show_schedule'
+
+
+import Contactus from './components/contactus';
+import Aboutus from './components/aboutus';
+
 import ShowSchedules from './components/schedule';
+
+import ApproveRejectRequest from './components/approveVoterRequest';
+
 import EvsLogin from './components/evslogin'
+
 //import ButtonForm from './components/button';
 import MultipleLoginComponent from './components/Multilogin'
 import LoginUserComponent from './components/LoginUser'
 
 
 
-
+//import ButtonForm from './components/button';
 
 function App() {
   return(
     <div>
- 
-
- 
- {/*<RegisterUser></RegisterUser>*/}
-
-{/* <AddElection></AddElection>*/}
-
-   { /*<ShowElections/>*/}
-
-    
-   { /*<AddElection></AddElection>
-   <ViewCandidates></ViewCandidates>*/}
-
-   
-
-   {/*<CandidateForm></CandidateForm>
-    
-   
-
-  
-
-   {/*<CandidateForm></CandidateForm>*/}
-   {/*<CandidateForm></CandidateForm>*/}
-
-
-
-
-   { /*<AddElection></AddElection>
-   <ViewCandidates></ViewCandidates>*/}
-
-   
-   {/*<CandidateForm></CandidateForm>
-    
-   <RegisterUser></RegisterUser>
-   <Home></Home>*/}
- 
-
-{/*<AddResult></AddResult>*/}
-
-
-{/*<AddResult></AddResult>*/}
-
-{/*<ButtonForm></ButtonForm>*/}
-{/*<ViewResult></ViewResult>*/}
-   {/*<Router>
-   
-    <div className="App">
-      
- 
-
-{/*<ViewResult></ViewResult>*/}
-
- 
-
-
-
-   
-
-
-  <div className="App">
-      
-
-
-            <Link to="/"></Link>
-
-           {/* <Link to="/">Home</Link>&nbsp;&nbsp;
-
-
-           {/* <Link to="/"></Link>
-            <Link to="/">Home</Link>&nbsp;&nbsp;
-            <Link to ="/add_candidate">Add </Link>&nbsp;&nbsp;
-  <Link to ="/view_candidate">Show</Link>
-  <Link to ="/view_candidate">Show</Link>*/}
-
-
      <Switch>
-
+  
           <Route exact path="/">
-            <Home/>
+         <Home></Home>
           </Route>
           <Route exact path="/services">
             <Services/>
           </Route>
+          <Route exact path="/contactus">
+            <Contactus/>
+          </Route>
+
+          <Route exact path="/aboutus">
+            <Aboutus></Aboutus>
+          </Route>
+    
+
+
           <Route path="/admin_services">
             <AdminService/>
           </Route>
@@ -144,9 +87,15 @@ function App() {
           </Route>
           <Route exact path="/RegisterUser">
 
-            <Registeruser></Registeruser>
+            <RegisterUser></RegisterUser>
+            </Route>
 
-          </Route>
+
+
+
+
+
+
 
           <Route exact path="/viewParty">
             <ViewParty></ViewParty>
@@ -178,7 +127,9 @@ function App() {
           <Route exact path="/deleteresult">
             <DeleteResult/>
           </Route>
-
+          <Route exact path="/approveRequest">
+            <ApproveRejectRequest></ApproveRejectRequest>
+          </Route>
 
           <Route exact path="/viewSchedule">
             <ShowSchedules/>
@@ -203,9 +154,6 @@ function App() {
             <Route exact path ="/addVoterReq">
             <AddRequest/>
             </Route>
-
-            
-
          
           <Route exact path="/addVoterRequest">
             <AddRequest></AddRequest>
@@ -226,19 +174,16 @@ function App() {
 
                    
 
+
      </Switch> 
 
-         
-  
-            
-
-       
+              
         </div>       
 
 
   
 
-        </div>   );
+          );
 
  
 }

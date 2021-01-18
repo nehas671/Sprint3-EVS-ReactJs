@@ -13,6 +13,7 @@ import Slogal from './slogan';
 import deleteResultAction from '../actions/delete_result';
 import viewAllDeleteAction from '../actions/viewaAlldelete';
 import AdminAsideComponent from './adminAside';
+import getResultElectionNameAction from '../actions/getResultElectionName';
 
 
 
@@ -20,14 +21,36 @@ let history;
 let dispatch
  const DeleteResult= (props) => {
 
-
  
    dispatch = useDispatch();
 
-
+   let [election, setElectionNamelist] =useState();
    history = useHistory();
-  let resultList = useSelector(state => state.resultReducer.viewall);
- 
+
+  let electionList=useSelector(state => state.resultReducer.resultelectionname);
+   let resultList = useSelector(state => state.resultReducer.viewall);
+
+  React.useEffect(() => {
+    ElectionList()
+  }, []);
+
+  const ElectionList = () => {
+    dispatch(getResultElectionNameAction())
+    .then((response) => {
+      console.log("REsponse: ", response);
+      console.log("routeList: ", electionList);
+      setElectionNamelist(electionList);
+  })
+}
+
+
+if(!Array.isArray(electionList)) {
+    electionList = [];
+      console.log("Set electionList to blank array");
+  }
+
+
+
   React.useEffect(() => {
     ResultList()
   }, []);
@@ -40,6 +63,7 @@ if(!Array.isArray(resultList)) {
     resultList = [];
     console.log("Set resultList to blank array");
 }
+
 
    return (<div>
 <AdminHeader></AdminHeader>
@@ -55,6 +79,11 @@ if(!Array.isArray(resultList)) {
 
               <br></br>
               <form >
+ 
+
+
+
+
  
 
  

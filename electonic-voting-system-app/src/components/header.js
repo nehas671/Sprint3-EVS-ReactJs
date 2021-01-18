@@ -26,12 +26,12 @@ const Header = (props) =>
                             </a>
                         </li>
                         <li class="nav-item  nav-item-custom  mb-2 mb-md-0 flex-wrap ">
-                            <a class="nav-link text-dark px-md-0 border-primary nav-custom-link  " href="#">
+                            <a class="nav-link text-dark px-md-0 border-primary nav-custom-link  " href="aboutus">
                                 About Us
                             </a>
                         </li>
                         <li class="nav-item nav-item-custom  mb-2 mb-md-0 flex-wrap">
-                            <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="#">
+                            <a class="nav-link text-dark px-md-0 border-primary  nav-custom-link" href="contactus">
                                 Contact Us
                             </a>
                         </li>
