@@ -200,6 +200,7 @@ function handleSubmit(event) {
   const email = data.get('email');
   const candidateObj = new Candidate(candidateName, address, age, contactNumber, email, selectedPartyName);
   dispatch(AddCandidateAction(candidateObj));
+  alert("Candidate Added Succesfully");
 
 
   history.push('/add_candidate');
