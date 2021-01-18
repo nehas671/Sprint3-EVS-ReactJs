@@ -23,6 +23,8 @@ let candidateList;
 const AddCandidate = (props) => {
 
 
+  /* dispatch-- is the method used to dispatch actions and trigger state changes to the store*/
+
   dispatch = useDispatch();
   history = useHistory();
   let partyList = useSelector(state => state.candidateReducer.partylist);
@@ -51,19 +53,6 @@ const AddCandidate = (props) => {
     partyList = [];
     console.log("Set partyList to blank array");
   }
-  
-  
-
-
-/*
-
-  console.log("CandidateList:", candidateList);
-  if (!Array.isArray(partyList)) {
-    candidateList = [];
-    console.log("Set candidateList to blank array");
-  }
-
-*/
 
 
   return (
@@ -172,7 +161,12 @@ let validCandidateAge = false;
 let validCandidateNumber = false;
 let validCandidateEmail = false;
 
+
+/*function to enable Button when all the fields of form are validated*/
 function EnableDisable(event) {
+
+  /*  The preventDefault() method cancels the event if it is cancelable,
+    meaning that the default action that belongs to the event will not occur. */
   event.preventDefault();
   var btnsubmit = document.getElementById("btnsubmit");
 
@@ -193,6 +187,9 @@ function EnableDisable(event) {
 
 
 function handleSubmit(event) {
+
+  /*  The preventDefault() method cancels the event if it is cancelable,
+    meaning that the default action that belongs to the event will not occur. */
   event.preventDefault();
   const data = new FormData(event.target);
   console.log("in handle submit data:", data);
@@ -203,11 +200,13 @@ function handleSubmit(event) {
   const email = data.get('email');
   const candidateObj = new Candidate(candidateName, address, age, contactNumber, email, selectedPartyName);
   dispatch(AddCandidateAction(candidateObj));
-  history.push('/admin_services');
+
+
+  history.push('/add_candidate');
 };
 
 
-
+/*function to get all party name from database */
 function renderPartys(partyList) {
   console.log("PartyList: ", partyList);
   return partyList.map((party, index) => {
@@ -218,12 +217,13 @@ function renderPartys(partyList) {
   })
 };
 
-
+/*function to select party name from the dropdown*/
 function handleChange(event) {
   selectedPartyName = event.target.value
   console.log("selected party: ", selectedPartyName);
 };
 
+/*function to validate Candidate Name*/
 function validateCandidateName(event) {
 
   const data = event.target.value;
@@ -249,6 +249,7 @@ function validateCandidateName(event) {
   }
 };
 
+/*function to validate Address*/
 function validateCandidateAddress(event) {
 
   const data = event.target.value;
@@ -275,6 +276,7 @@ function validateCandidateAddress(event) {
 
 }
 
+/*function to validate Age*/
 function validateCandidateAge(event) {
 
   const data = event.target.value;
@@ -301,39 +303,11 @@ function validateCandidateAge(event) {
 
 }
 
+/*function to validate Mobile Number*/
 function validateCandidateNumber(event) {
 
-  //let unique=false;
-  //let mobile_number; 
-  //let index = 0;
   const data = event.target.value;
   console.log("target", data);
-
-  /*
-  candidateList.map((candidate, index) => {
-
-    console.log("Number", candidate.contactNumber);
-    mobile_number=candidate.contactNumber;
-    console.log("mobile_number_list", mobile_number)
-  });
-  
-  
-
- 
-candidateList.forEach(myFunction); 
-function myFunction(item, index) 
-{
-console.log("number", item.contactNumber);
-  if(item.contactNumber === data){
-  unique=false;
-}else{
-unique=true;
-} 
-}
-console.log("unique", unique);
-
-*/
-
 
   let regex = /^\d{10}$/;
   let inputdata = data;
@@ -356,6 +330,7 @@ console.log("unique", unique);
 
 }
 
+/*function to validate Email*/
 function validateCandidateEmail(event) {
 
   const data = event.target.value;

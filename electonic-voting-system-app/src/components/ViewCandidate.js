@@ -34,20 +34,14 @@ const ViewCandidates = (props) => {
   let [initialState, setInitialState] = useState();
   let candidateList = useSelector(state => state.candidateReducer.initialState);
 
+  /*   useSelector is a function that takes the current 
+      state as an argument and returns whatever data you want from it. */
   let filterList = useSelector(state => state.candidateReducer.filter);
 
+   /* dispatch-- is the method used to dispatch actions and trigger state changes to the store*/
   dispatch = useDispatch();
-  /*
-      React.useEffect(() => {
-          CandidateList()
-        }, []);
-      
-        const CandidateList = () => {
-          dispatch(ViewCandidatesAction())
-        }
-  
-      console.log("candidateList: ", candidateList);
-  */
+
+
   console.log("CandidateList:", candidateList);
   if (!Array.isArray(candidateList)) {
     candidateList = [];
@@ -62,6 +56,7 @@ const ViewCandidates = (props) => {
 
 
 
+  /*function to get data data fomm database a/c to filter selected*/
   const searchHandleChange = (event) => {
     selectedOption = event.target.value;
     console.log("Selected option: " + selectedOption);
@@ -100,6 +95,7 @@ const ViewCandidates = (props) => {
 
 
 
+  /*function to get data from database a/c to value selected*/
   function handleSearch(event) {
     event.preventDefault();
     if (selectedOption === "View All") {
@@ -225,14 +221,16 @@ const ViewCandidates = (props) => {
   );
 };
 
-
+/*function to enable Button when you select the view by dropdown*/
 function EnableDisable(event) {
+
+  /*  The preventDefault() method cancels the event if it is cancelable,
+       meaning that the default action that belongs to the event will not occur. */
   event.preventDefault();
 
   var btnsubmit = document.getElementById("btnsubmit");
   console.log("selectedOption", selectedOption);
 
-  //let option = undefined;
   if (selectedOption != undefined) {
     btnsubmit.disabled = false;
   }
@@ -241,6 +239,7 @@ function EnableDisable(event) {
   }
 }
 
+/*function to get Candiddate from database*/
 function renderTableData(candidateList) {
   console.log("candidateList inside render: ", candidateList);
   return candidateList.map((candidate, index) => {
@@ -266,6 +265,7 @@ function filterHandleChange(event) {
   selectedview = event.target.value
   console.log("Selected view: " + selectedview);
 }
+
 
 function renderFilterList(filterList) {
   console.log("filterList", filterList);
